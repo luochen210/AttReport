@@ -14,7 +14,9 @@ namespace AttReport
 {
     public partial class FrmMain : Form
     {
-        AttRecordService objAttRecordService = new AttRecordService();
+
+        private AttRecord objAttRecord = new AttRecord();
+        private  AttRecordService objAttRecordService = new AttRecordService();
 
         public FrmMain()
         {
@@ -91,10 +93,6 @@ namespace AttReport
             lvLogs.Items.Clear();
             axCZKEM1.EnableDevice(iMachineNumber, false);//disable the device
 
-            AttRecordService objAttRecordService = new AttRecordService();
-
-            
-
             if (axCZKEM1.ReadGeneralLogData(iMachineNumber))//read the records to the memory
             {
                 while (axCZKEM1.GetGeneralLogDataStr(iMachineNumber, ref idwEnrollNumber, ref idwVerifyMode, ref idwInOutMode, ref sTime))//get the records from memory
@@ -108,19 +106,22 @@ namespace AttReport
                     lvLogs.Items[iIndex].SubItems.Add(sTime);
                     iIndex++;
 
-                    //赋值
-                    AttRecord objAttRecord = new AttRecord()
-                    {
-                        MachineId = iMachineNumber,
-                        ClockId = idwEnrollNumber,
-                        VerifyMode = idwVerifyMode,
-                        InOutMode = idwInOutMode,
-                        ClockRecord = sTime
-                    };
+                    //封装考勤记录对象
+                    //AttRecord objAttRecord = new AttRecord()
+                    //{
+                    //    MachineId = iMachineNumber,
+                    //    ClockId = idwEnrollNumber,
+                    //    VerifyMode = idwVerifyMode,
+                    //    InOutMode = idwInOutMode,
+                    //    ClockRecord = sTime
+                    //};
 
-                    if (objAttRecord != objAttRecordService.GetAttRecord(objAttRecord))
+                    objAttRecordService.GetAttRecord(iMachineNumber, idwEnrollNumber, idwVerifyMode, idwInOutMode, sTime);
+
+
+                    if (objAttRecordService.GetAttRecord(objAttRecord)==null)
                     {
-                        objAttRecord = objAttRecordService.AddAttrecord(objAttRecord);
+                        objAttRecordService.AddAttrecord(objAttRecord);
                     }
                     else
                     {
