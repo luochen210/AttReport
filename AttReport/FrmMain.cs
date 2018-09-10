@@ -117,16 +117,26 @@ namespace AttReport
                     //};
 
                     objAttRecordService.GetAttRecord(iMachineNumber, idwEnrollNumber, idwVerifyMode, idwInOutMode, sTime);
-
-
-                    if (objAttRecordService.GetAttRecord(objAttRecord)==null)
+                    
+                    if (objAttRecordService.GetAttRecord(iMachineNumber, idwEnrollNumber, idwVerifyMode, idwInOutMode, sTime) ==null)
                     {
-                        objAttRecordService.AddAttrecord(objAttRecord);
+                        objAttRecordService.AddAttrecord(iMachineNumber, idwEnrollNumber, idwVerifyMode, idwInOutMode, sTime);
                     }
                     else
                     {
                         continue;
                     }
+
+                    //objAttRecordService.GetAttRecord(objAttRecord);
+
+                    //if (objAttRecordService.GetAttRecord(objAttRecord)==null)
+                    //{
+                    //    objAttRecordService.AddAttrecord(objAttRecord);
+                    //}
+                    //else
+                    //{
+                    //    continue;
+                    //}
                 }
             }
             else

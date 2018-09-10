@@ -16,15 +16,14 @@ namespace DAL
         /// </summary>
         /// <param name="objAttrecord">封装了考勤ID和记录的对象</param>
         /// <returns>包含了考勤ID和记录的对象</returns>
-        public AttRecord GetAttRecord(AttRecord objAttrecord)
+        public string GetAttRecord(int MachineId, int ClockId, int VerifyMode, int InOutMode, string ClockRecord)
         {
             string sql = "select * from OriginalLog where MachineId={0} and ClockId={1}  and VerifyMode={2}  and InOutMode={3}  and ClockRecord='{4}'";
-            sql = string.Format(sql, objAttrecord.MachineId, objAttrecord.ClockId, objAttrecord.VerifyMode, objAttrecord.InOutMode, objAttrecord.ClockRecord);
-            SqlDataReader objReader = SQLHelper.GetReader(sql);
+            sql = string.Format(sql, MachineId, ClockId, VerifyMode, InOutMode, ClockRecord);
 
-            objReader.Close();
+            SQLHelper.GetSingleResult(sql);
 
-            return objAttrecord;
+            return ClockRecord;
         }
 
 
@@ -33,14 +32,14 @@ namespace DAL
         /// </summary>
         /// <param name="objAttrecord">原始考勤记录对象</param>
         /// <returns>原始考勤记录对象</returns>
-        public AttRecord AddAttrecord(AttRecord objAttrecord)
+        public string AddAttrecord(int MachineId, int ClockId, int VerifyMode, int InOutMode, string ClockRecord)
         {
             string sql = "insert into  OriginalLog (MachineId,ClockId,VerifyMode,InOutMode,ClockRecord) values ({0},{1},{2},{3},'{4}')";
-            sql = string.Format(sql, objAttrecord.MachineId, objAttrecord.ClockId, objAttrecord.VerifyMode,objAttrecord.InOutMode, objAttrecord.ClockRecord);
+            sql = string.Format(sql, MachineId, ClockId, VerifyMode, InOutMode, ClockRecord);
 
             SQLHelper.Update(sql);
 
-            return objAttrecord;
+            return ClockRecord;
         }
     }
 }

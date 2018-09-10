@@ -96,6 +96,10 @@ namespace DAL
 
                 throw ex;
             }
+            finally
+            {
+                conn.Close();
+            }
         }
         /// <summary>
         /// 执行查询返回一个DataSet
