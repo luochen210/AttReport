@@ -40,6 +40,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AttRecordService.cs" />
     <Compile Include="Class1.cs" />
     <Compile Include="Helper\StringSecurity.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

@@ -7,8 +7,11 @@ namespace Modes
 {
     public class AttRecord
     {
-        public int DeviceId { get; set; }
+        public int MachineId { get; set; }
         public int ClockId { set; get; }
-        public string ClockRecord { get; set; }
+        public int VerifyMode { get; set; }
+        public int InOutMode { get; set; }
+        public string ClockTime { get; set; }
+
     }
 }
