@@ -6,7 +6,7 @@ using System.Text;
 using System.IO;
 using System.Security.Cryptography;
 
-namespace Common
+namespace AttReport.Common
 {
     /// <summary>
     /// 字符串加密解密类
@@ -38,8 +38,8 @@ namespace Common
 
         #region DES 加密/解密
 
-        private static byte[] key = ASCIIEncoding.ASCII.GetBytes("sa");
-        private static byte[] iv = ASCIIEncoding.ASCII.GetBytes("654123");
+        private static byte[] key = ASCIIEncoding.ASCII.GetBytes("uiertysd");
+        private static byte[] iv = ASCIIEncoding.ASCII.GetBytes("99008855");
 
         /// <summary>
         /// DES加密。

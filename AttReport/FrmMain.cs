@@ -19,6 +19,10 @@ namespace AttReport
         public FrmMain()
         {
             InitializeComponent();
+
+            //加密SQL连接字符串
+            //string connstring = DAL.SQLHelper.connString;
+            //connstring = Common.StringSecurity.DESEncrypt(connstring);
         }
 
         public zkemkeeper.CZKEMClass axCZKEM1 = new zkemkeeper.CZKEMClass();
