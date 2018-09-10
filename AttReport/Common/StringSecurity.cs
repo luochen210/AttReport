@@ -38,8 +38,8 @@ namespace Common
 
         #region DES 加密/解密
 
-        private static byte[] key = ASCIIEncoding.ASCII.GetBytes("uiertysd");
-        private static byte[] iv = ASCIIEncoding.ASCII.GetBytes("99008855");
+        private static byte[] key = ASCIIEncoding.ASCII.GetBytes("sa");
+        private static byte[] iv = ASCIIEncoding.ASCII.GetBytes("654123");
 
         /// <summary>
         /// DES加密。
