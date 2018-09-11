@@ -6,6 +6,7 @@ using System.Text;
 using System.Data;
 using System.Data.SqlClient;
 using Models;
+using System.Diagnostics;
 
 namespace DAL
 {
@@ -74,53 +75,50 @@ namespace DAL
 
         //    return SQLHelper.UpdateByTran(sql);
         //}
+        #endregion
 
-        public bool SaveAttData(List<AttRecord> attList)
+        #region 使用Bulk插入的实现方式
+        public string SaveAttData()
         {
-            //string insertSql = "";
-            //string updateSql = "";
-            //string deleteSql = "";
+            Stopwatch sw = new Stopwatch();
+            DataTable dt = GetTableSchema();
 
-            //添加的sql
-            StringBuilder insertSql = new StringBuilder();
-            insertSql.Append("insert into  OriginalLog values");
-            insertSql.Append(" (MachineId,ClockId,VerifyMode,InOutMode,ClockRecord)");
-            insertSql.Append(" values ({0},{1},{2},{3},'{4}')");
+            SqlConnection conn = new SqlConnection(SQLHelper.connString);
+            SqlCommand cmd = new SqlCommand(sql, conn);
+            bulkCopy.DestinationTableName = "OriginalLog";
+                bulkCopy.BatchSize = dt.Rows.Count;
+                conn.Open();
+                sw.Start();
 
-            //循环集合，生成对应的sql
-            List<string> sqlList = new List<string>();
-            foreach (AttRecord item in attList)
-            {
-                if (item.ClockRecord == ObjectStatus.Inserted)
+
+                for (int i = 0; i < totalRow; i++)
                 {
-                    string sql = string.Format(insertSql.ToString(), item.StudentName,
-                                         item.Gender, item.Birthday.ToString("yyyy-MM-dd"),
-                                         item.StudentIdNo, item.Age,
-                                         item.PhoneNumber, item.StudentAddress, item.CardNo,
-                                         item.ClassId, item.StuImage);
-                    sqlList.Add(sql);
+                    DataRow dr = dt.NewRow();
+                    dr[0] = Guid.NewGuid();
+                    dr[1] = string.Format("商品", i);
+                    dr[2] = (decimal)i;
+                    dt.Rows.Add(dr);
                 }
-                else if (item.OperationStatus == ObjectStatus.Updated)
+                if (dt != null && dt.Rows.Count != 0)
                 {
-                    string sql = string.Format(updateSql.ToString(), item.StudentName,
-                                        item.Gender, item.Birthday.ToString("yyyy-MM-dd"),
-                                        item.StudentIdNo, item.Age,
-                                        item.PhoneNumber, item.StudentAddress, item.CardNo,
-                                        item.ClassId, item.StuImage, item.StudentId);
-                    sqlList.Add(sql);
+                    bulkCopy.WriteToServer(dt);
+                    sw.Stop();
                 }
-                else if (item.OperationStatus == ObjectStatus.Deleted)
-                {
-                    string sql = string.Format(deleteSql, item.StudentId);
-                    sqlList.Add(sql);
-                }
+                Console.WriteLine(string.Format("插入{0}条记录共花费{1}毫秒，{2}分钟", totalRow, sw.ElapsedMilliseconds, GetMinute(sw.ElapsedMilliseconds)));
             }
-            //基于事务提交多条SQL语句
-            return SQLHelper.UpdateByTran(sqlList);
+            return SaveAttData;
         }
 
-
-
-        #endregion
+        public static DataTable GetTableSchema()
+        {
+            DataTable dt = new DataTable();
+            dt.Columns.AddRange(new DataColumn[] {
+                    new DataColumn("Id",typeof(Guid)),
+                    new DataColumn("Name",typeof(string)),
+                    new DataColumn("Price",typeof(decimal))});
+            return dt;
+        }
     }
+    #endregion
+}
 }

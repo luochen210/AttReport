@@ -6,6 +6,7 @@ using System.Text;
 using System.Data;
 using System.Data.SqlClient;
 using System.Configuration;
+using System.Diagnostics;
 
 namespace DAL
 {
@@ -155,13 +156,61 @@ namespace DAL
                 conn.Close();
             }
         }
-        /// <summary>
-        /// 获取服务器的时间
-        /// </summary>
-        /// <returns></returns>
-        public static DateTime GetServerTime()
+
+        #region 使用Bulk插入的实现方式
+        public string SaveAttData(string sql)
         {
-            return Convert.ToDateTime(GetSingleResult("select getdate()"));
+            SqlConnection conn = new SqlConnection(connString);
+            SqlCommand cmd = new SqlCommand(sql, conn);
+
+            Stopwatch sw = new Stopwatch();
+            DataTable dt = GetTableSchema();
+
+            SqlBulkCopy bulkCopy = new SqlBulkCopy(conn);
+            bulkCopy.DestinationTableName = "OriginalLog";
+            bulkCopy.BatchSize = dt.Rows.Count;
+            conn.Open();
+            sw.Start();
+
+
+            for (int i = 0; i < totalRow; i++)
+            {
+                DataRow dr = dt.NewRow();
+                dr[0] = Guid.NewGuid();
+                dr[1] = string.Format("商品", i);
+                dr[2] = (decimal)i;
+                dt.Rows.Add(dr);
+            }
+            if (dt != null && dt.Rows.Count != 0)
+            {
+                bulkCopy.WriteToServer(dt);
+                sw.Stop();
+            }
+            Console.WriteLine(string.Format("插入{0}条记录共花费{1}毫秒，{2}分钟", totalRow, sw.ElapsedMilliseconds, GetMinute(sw.ElapsedMilliseconds)));
+            return sql;
         }
+
+        public static DataTable GetTableSchema()
+        {
+            DataTable dt = new DataTable();
+            dt.Columns.AddRange(new DataColumn[] {
+                new DataColumn("Id",typeof(Guid)),
+                new DataColumn("Name",typeof(string)),
+                new DataColumn("Price",typeof(decimal))});
+            return dt;
+        }
+    }
+
+    #endregion
+
+
+
+    /// <summary>
+    /// 获取服务器的时间
+    /// </summary>
+    /// <returns></returns>
+    public static DateTime GetServerTime()
+    {
+        return Convert.ToDateTime(GetSingleResult("select getdate()"));
     }
 }
