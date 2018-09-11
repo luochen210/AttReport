@@ -2,27 +2,17 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-
 using System.Data;
-using System.Data.SqlClient;
-using System.Configuration;
+using System.Data.OleDb;
 
-namespace DAL
+namespace DAL.Helper
 {
-    /// <summary>
-    ///  通用数据访问类
-    /// </summary>
-    class SQLHelper
+    class OleDbHelper
     {
-
-        // private static readonly string connString = "Server=.;DataBase=StudentManageDB;Uid=sa;Pwd=password01!";
-
-
-        //private static readonly string connString =
-        //    ConfigurationManager.ConnectionStrings["connString"].ToString();
-
-        private static readonly string connString =
-            Common.StringSecurity.DESDecrypt(ConfigurationManager.ConnectionStrings["connString"].ToString());
+        //适合Excel2003版本
+        // private static string connString = "Provider=Microsoft.Jet.OLEDB.4.0;Data Source={0};Extended Properties=Excel 8.0";
+        //适合Excel2007以后的版本
+        private static string connString = "Provider=Microsoft.ACE.OLEDB.12.0;Data Source={0};Extended Properties=Excel 8.0";
 
         /// <summary>
         /// 执行增、删、改（insert/update/delete）
@@ -31,8 +21,8 @@ namespace DAL
         /// <returns></returns>
         public static int Update(string sql)
         {
-            SqlConnection conn = new SqlConnection(connString);
-            SqlCommand cmd = new SqlCommand(sql, conn);
+            OleDbConnection conn = new OleDbConnection(connString);
+            OleDbCommand cmd = new OleDbCommand(sql, conn);
             try
             {
                 conn.Open();
@@ -55,8 +45,8 @@ namespace DAL
         /// <returns></returns>
         public static object GetSingleResult(string sql)
         {
-            SqlConnection conn = new SqlConnection(connString);
-            SqlCommand cmd = new SqlCommand(sql, conn);
+            OleDbConnection conn = new OleDbConnection(connString);
+            OleDbCommand cmd = new OleDbCommand(sql, conn);
             try
             {
                 conn.Open();
@@ -77,14 +67,14 @@ namespace DAL
         /// </summary>
         /// <param name="sql"></param>
         /// <returns></returns>
-        public static SqlDataReader GetReader(string sql)
+        public static OleDbDataReader GetReader(string sql)
         {
-            SqlConnection conn = new SqlConnection(connString);
-            SqlCommand cmd = new SqlCommand(sql, conn);
+            OleDbConnection conn = new OleDbConnection(connString);
+            OleDbCommand cmd = new OleDbCommand(sql, conn);
             try
             {
                 conn.Open();
-                SqlDataReader objReader =
+                OleDbDataReader objReader =
                     cmd.ExecuteReader(CommandBehavior.CloseConnection);
                 return objReader;
             }
@@ -101,9 +91,9 @@ namespace DAL
         /// <returns></returns>
         public static DataSet GetDataSet(string sql)
         {
-            SqlConnection conn = new SqlConnection(connString);
-            SqlCommand cmd = new SqlCommand(sql, conn);
-            SqlDataAdapter da = new SqlDataAdapter(cmd); //创建数据适配器对象
+            OleDbConnection conn = new OleDbConnection(connString);
+            OleDbCommand cmd = new OleDbCommand(sql, conn);
+            OleDbDataAdapter da = new OleDbDataAdapter(cmd); //创建数据适配器对象
             DataSet ds = new DataSet();//创建一个内存数据集
             try
             {
@@ -121,47 +111,31 @@ namespace DAL
             }
         }
         /// <summary>
-        /// 启用事务执行多条SQL语句
-        /// </summary>      
-        /// <param name="sqlList">SQL语句列表</param>      
+        /// 读取数据到DataSet中
+        /// </summary>
+        /// <param name="sql"></param>
+        /// <param name="path"></param>
         /// <returns></returns>
-        public static bool UpdateByTran(List<string> sqlList)
+        public static DataSet GetDataSet(string sql, string path)
         {
-            SqlConnection conn = new SqlConnection(connString);
-            SqlCommand cmd = new SqlCommand();
-            cmd.Connection = conn;
+            OleDbConnection conn = new OleDbConnection(string.Format(connString, path));
+            OleDbCommand cmd = new OleDbCommand(sql, conn);
+            OleDbDataAdapter da = new OleDbDataAdapter(cmd); //创建数据适配器对象
+            DataSet ds = new DataSet();//创建一个内存数据集
             try
             {
                 conn.Open();
-                cmd.Transaction = conn.BeginTransaction();   //开启事务
-                foreach (string itemSql in sqlList)//循环提交SQL语句
-                {
-                    cmd.CommandText = itemSql;
-                    cmd.ExecuteNonQuery();
-                }
-                cmd.Transaction.Commit();  //提交事务(同时自动清除事务)
-                return true;
+                da.Fill(ds);  //使用数据适配器填充数据集
+                return ds;  //返回数据集
             }
             catch (Exception ex)
             {
-                if (cmd.Transaction != null)
-                    cmd.Transaction.Rollback();//回滚事务(同时自动清除事务)
-                throw new Exception("调用事务方法UpdateByTran(List<string> sqlList)时出现错误：" + ex.Message);
+                throw ex;
             }
             finally
             {
-                if (cmd.Transaction != null)
-                    cmd.Transaction = null;
                 conn.Close();
             }
-        }
-        /// <summary>
-        /// 获取服务器的时间
-        /// </summary>
-        /// <returns></returns>
-        public static DateTime GetServerTime()
-        {
-            return Convert.ToDateTime(GetSingleResult("select getdate()"));
         }
     }
 }

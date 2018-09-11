@@ -16,7 +16,8 @@ namespace AttReport
     {
 
         private AttRecord objAttRecord = new AttRecord();
-        private  AttRecordService objAttRecordService = new AttRecordService();
+        private AttRecordService objAttRecordService = new AttRecordService();
+        List<AttRecord> attList = new List<AttRecord>();
 
         public FrmMain()
         {
@@ -28,7 +29,7 @@ namespace AttReport
         }
 
         public zkemkeeper.CZKEMClass axCZKEM1 = new zkemkeeper.CZKEMClass();
-        
+
         #region 连接考勤机
         private bool bIsConnected = false;//the boolean value identifies whether the device is connected
         private int iMachineNumber = 1;//the serial number of the device.After connecting the device ,this value will be changed.
@@ -84,7 +85,7 @@ namespace AttReport
             int idwEnrollNumber = 0;
             int idwVerifyMode = 0;
             int idwInOutMode = 0;
-            string sTime = "";
+            string sTime ="";
 
             int iGLCount = 0;
             int iIndex = 0;
@@ -94,9 +95,12 @@ namespace AttReport
             axCZKEM1.EnableDevice(iMachineNumber, false);//disable the device
 
             if (axCZKEM1.ReadGeneralLogData(iMachineNumber))//read the records to the memory
-            {
+            {                
                 while (axCZKEM1.GetGeneralLogDataStr(iMachineNumber, ref idwEnrollNumber, ref idwVerifyMode, ref idwInOutMode, ref sTime))//get the records from memory
                 {
+                    //显示考勤数据到listView
+                    //this.lvLogs.BeginUpdate();//挂起UI
+
                     iGLCount++;
                     lvLogs.Items.Add(iGLCount.ToString());
                     lvLogs.Items[iIndex].SubItems.Add(iMachineNumber.ToString());
@@ -106,36 +110,17 @@ namespace AttReport
                     lvLogs.Items[iIndex].SubItems.Add(sTime);
                     iIndex++;
 
-                    //封装考勤记录对象
-                    //AttRecord objAttRecord = new AttRecord()
+                    //this.lvLogs.EndUpdate();//挂起结束
+
+                    //把考勤数据写入数据库
+                    //if (objAttRecordService.GetAttRecord(iMachineNumber, idwEnrollNumber, idwVerifyMode, idwInOutMode, sTime) != null)
                     //{
-                    //    MachineId = iMachineNumber,
-                    //    ClockId = idwEnrollNumber,
-                    //    VerifyMode = idwVerifyMode,
-                    //    InOutMode = idwInOutMode,
-                    //    ClockRecord = sTime
-                    //};
-
-                    objAttRecordService.GetAttRecord(iMachineNumber, idwEnrollNumber, idwVerifyMode, idwInOutMode, sTime);
-                    
-                    if (objAttRecordService.GetAttRecord(iMachineNumber, idwEnrollNumber, idwVerifyMode, idwInOutMode, sTime) ==null)
-                    {
-                        objAttRecordService.AddAttrecord(iMachineNumber, idwEnrollNumber, idwVerifyMode, idwInOutMode, sTime);
-                    }
-                    else
-                    {
-                        continue;
-                    }
-
-                    //objAttRecordService.GetAttRecord(objAttRecord);
-
-                    //if (objAttRecordService.GetAttRecord(objAttRecord)==null)
-                    //{
-                    //    objAttRecordService.AddAttrecord(objAttRecord);
+                    //    continue;
                     //}
                     //else
                     //{
-                    //    continue;
+                        objAttRecordService.AddAttrecord(iMachineNumber, idwEnrollNumber, idwVerifyMode, idwInOutMode, sTime);
+
                     //}
                 }
             }
@@ -158,5 +143,49 @@ namespace AttReport
             Cursor = Cursors.Default;
         }
         #endregion
+
+        private void btnSave_Click(object sender, EventArgs e)
+        {
+            if (bIsConnected == false)
+            {
+                MessageBox.Show("Please connect the device first", "Error");
+                return;
+            }
+
+            int idwErrorCode = 0;
+            int idwEnrollNumber = 0;
+            int idwVerifyMode = 0;
+            int idwInOutMode = 0;
+            string sTime = "";
+
+            Cursor = Cursors.WaitCursor;
+            lvLogs.Items.Clear();
+            axCZKEM1.EnableDevice(iMachineNumber, false);//disable the device
+
+            if (axCZKEM1.ReadGeneralLogData(iMachineNumber))//read the records to the memory
+            {
+                while (axCZKEM1.GetGeneralLogDataStr(iMachineNumber, ref idwEnrollNumber, ref idwVerifyMode, ref idwInOutMode, ref sTime))//get the records from memory
+                {
+                    objAttRecordService.AddAttrecord(iMachineNumber, idwEnrollNumber, idwVerifyMode, idwInOutMode, sTime);
+                }
+            }
+            else
+            {
+                Cursor = Cursors.Default;
+                axCZKEM1.GetLastError(ref idwErrorCode);
+
+                if (idwErrorCode != 0)
+                {
+                    MessageBox.Show("Reading data from terminal failed,ErrorCode: " + idwErrorCode.ToString(), "Error");
+                }
+                else
+                {
+                    axCZKEM1.GetLastError(ref idwErrorCode);
+                    MessageBox.Show("Operation failed,ErrorCode=" + idwErrorCode.ToString(), "Error");
+                }
+            }
+            axCZKEM1.EnableDevice(iMachineNumber, true);//enable the device
+            Cursor = Cursors.Default;
+        }
     }
 }
