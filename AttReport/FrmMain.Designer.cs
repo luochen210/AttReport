@@ -36,6 +36,7 @@
             this.txtPort = new System.Windows.Forms.TextBox();
             this.btnConnect = new System.Windows.Forms.Button();
             this.btnDown = new System.Windows.Forms.Button();
+            this.lblState = new System.Windows.Forms.Label();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.lvLogs = new System.Windows.Forms.ListView();
@@ -45,7 +46,6 @@
             this.columnHeader4 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader5 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.tabPage2 = new System.Windows.Forms.TabPage();
-            this.lblState = new System.Windows.Forms.Label();
             this.menuStrip1.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
@@ -53,92 +53,108 @@
             // 
             // menuStrip1
             // 
-            this.menuStrip1.BackColor = System.Drawing.Color.DodgerBlue;
+            this.menuStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.系统管理ToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(1008, 25);
+            this.menuStrip1.Size = new System.Drawing.Size(900, 28);
             this.menuStrip1.TabIndex = 0;
             this.menuStrip1.Text = "menuStrip1";
             // 
             // 系统管理ToolStripMenuItem
             // 
             this.系统管理ToolStripMenuItem.Name = "系统管理ToolStripMenuItem";
-            this.系统管理ToolStripMenuItem.Size = new System.Drawing.Size(68, 21);
+            this.系统管理ToolStripMenuItem.Size = new System.Drawing.Size(81, 24);
             this.系统管理ToolStripMenuItem.Text = "系统管理";
             // 
             // lblIP
             // 
             this.lblIP.AutoSize = true;
-            this.lblIP.Location = new System.Drawing.Point(16, 45);
+            this.lblIP.Location = new System.Drawing.Point(15, 46);
             this.lblIP.Name = "lblIP";
-            this.lblIP.Size = new System.Drawing.Size(17, 12);
+            this.lblIP.Size = new System.Drawing.Size(23, 15);
             this.lblIP.TabIndex = 1;
             this.lblIP.Text = "IP";
             // 
             // txtIP
             // 
-            this.txtIP.Location = new System.Drawing.Point(40, 41);
+            this.txtIP.Location = new System.Drawing.Point(44, 41);
             this.txtIP.Name = "txtIP";
-            this.txtIP.Size = new System.Drawing.Size(100, 21);
+            this.txtIP.Size = new System.Drawing.Size(127, 25);
             this.txtIP.TabIndex = 2;
             this.txtIP.Text = "192.168.1.201";
             // 
             // lblPort
             // 
             this.lblPort.AutoSize = true;
-            this.lblPort.Location = new System.Drawing.Point(165, 45);
+            this.lblPort.Location = new System.Drawing.Point(200, 46);
             this.lblPort.Name = "lblPort";
-            this.lblPort.Size = new System.Drawing.Size(29, 12);
+            this.lblPort.Size = new System.Drawing.Size(39, 15);
             this.lblPort.TabIndex = 1;
             this.lblPort.Text = "Port";
             // 
             // txtPort
             // 
-            this.txtPort.Location = new System.Drawing.Point(200, 41);
+            this.txtPort.Location = new System.Drawing.Point(245, 41);
             this.txtPort.Name = "txtPort";
-            this.txtPort.Size = new System.Drawing.Size(44, 21);
+            this.txtPort.Size = new System.Drawing.Size(57, 25);
             this.txtPort.TabIndex = 2;
             this.txtPort.Text = "4370";
             // 
             // btnConnect
             // 
-            this.btnConnect.Location = new System.Drawing.Point(276, 40);
+            this.btnConnect.AutoSize = true;
+            this.btnConnect.Location = new System.Drawing.Point(333, 41);
             this.btnConnect.Name = "btnConnect";
-            this.btnConnect.Size = new System.Drawing.Size(75, 23);
+            this.btnConnect.Size = new System.Drawing.Size(75, 25);
             this.btnConnect.TabIndex = 3;
             this.btnConnect.Text = "连接";
             this.btnConnect.UseVisualStyleBackColor = true;
+            this.btnConnect.Click += new System.EventHandler(this.btnConnect_Click);
             // 
             // btnDown
             // 
-            this.btnDown.Location = new System.Drawing.Point(382, 40);
+            this.btnDown.AutoSize = true;
+            this.btnDown.Location = new System.Drawing.Point(441, 41);
             this.btnDown.Name = "btnDown";
-            this.btnDown.Size = new System.Drawing.Size(75, 23);
+            this.btnDown.Size = new System.Drawing.Size(75, 25);
             this.btnDown.TabIndex = 3;
-            this.btnDown.Text = "下载记录";
+            this.btnDown.Text = "下载";
             this.btnDown.UseVisualStyleBackColor = true;
+            this.btnDown.Click += new System.EventHandler(this.btnDown_Click);
+            // 
+            // lblState
+            // 
+            this.lblState.AutoSize = true;
+            this.lblState.Location = new System.Drawing.Point(543, 46);
+            this.lblState.Name = "lblState";
+            this.lblState.Size = new System.Drawing.Size(112, 15);
+            this.lblState.TabIndex = 5;
+            this.lblState.Text = "等待连接下载！";
             // 
             // tabControl1
             // 
+            this.tabControl1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.tabControl1.Controls.Add(this.tabPage1);
             this.tabControl1.Controls.Add(this.tabPage2);
-            this.tabControl1.Location = new System.Drawing.Point(13, 79);
+            this.tabControl1.Location = new System.Drawing.Point(11, 89);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(983, 638);
-            this.tabControl1.TabIndex = 4;
+            this.tabControl1.Size = new System.Drawing.Size(881, 449);
+            this.tabControl1.TabIndex = 6;
             // 
             // tabPage1
             // 
             this.tabPage1.Controls.Add(this.lvLogs);
-            this.tabPage1.Location = new System.Drawing.Point(4, 22);
+            this.tabPage1.Location = new System.Drawing.Point(4, 25);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(975, 612);
+            this.tabPage1.Size = new System.Drawing.Size(873, 420);
             this.tabPage1.TabIndex = 0;
-            this.tabPage1.Text = "打卡记录";
+            this.tabPage1.Text = "tabPage1";
             this.tabPage1.UseVisualStyleBackColor = true;
             // 
             // lvLogs
@@ -149,62 +165,52 @@
             this.columnHeader3,
             this.columnHeader4,
             this.columnHeader5});
+            this.lvLogs.Dock = System.Windows.Forms.DockStyle.Fill;
             this.lvLogs.GridLines = true;
-            this.lvLogs.Location = new System.Drawing.Point(7, 7);
+            this.lvLogs.Location = new System.Drawing.Point(3, 3);
             this.lvLogs.Name = "lvLogs";
-            this.lvLogs.Size = new System.Drawing.Size(962, 599);
+            this.lvLogs.Size = new System.Drawing.Size(867, 414);
             this.lvLogs.TabIndex = 0;
             this.lvLogs.UseCompatibleStateImageBehavior = false;
             this.lvLogs.View = System.Windows.Forms.View.Details;
             // 
             // columnHeader1
             // 
-            this.columnHeader1.Width = 91;
+            this.columnHeader1.Width = 150;
             // 
             // columnHeader2
             // 
-            this.columnHeader2.Width = 92;
+            this.columnHeader2.Width = 150;
             // 
             // columnHeader3
             // 
-            this.columnHeader3.Width = 93;
+            this.columnHeader3.Width = 150;
             // 
             // columnHeader4
             // 
-            this.columnHeader4.Width = 91;
+            this.columnHeader4.Width = 150;
             // 
             // columnHeader5
             // 
-            this.columnHeader5.Width = 271;
+            this.columnHeader5.Width = 294;
             // 
             // tabPage2
             // 
-            this.tabPage2.Location = new System.Drawing.Point(4, 22);
+            this.tabPage2.Location = new System.Drawing.Point(4, 25);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(975, 612);
+            this.tabPage2.Size = new System.Drawing.Size(873, 420);
             this.tabPage2.TabIndex = 1;
-            this.tabPage2.Text = "日报表";
+            this.tabPage2.Text = "tabPage2";
             this.tabPage2.UseVisualStyleBackColor = true;
-            // 
-            // lblState
-            // 
-            this.lblState.AutoSize = true;
-            this.lblState.ForeColor = System.Drawing.Color.Red;
-            this.lblState.Location = new System.Drawing.Point(475, 45);
-            this.lblState.Name = "lblState";
-            this.lblState.Padding = new System.Windows.Forms.Padding(1);
-            this.lblState.Size = new System.Drawing.Size(91, 14);
-            this.lblState.TabIndex = 5;
-            this.lblState.Text = "等待连接下载！";
             // 
             // FrmMain
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1008, 729);
-            this.Controls.Add(this.lblState);
+            this.ClientSize = new System.Drawing.Size(900, 547);
             this.Controls.Add(this.tabControl1);
+            this.Controls.Add(this.lblState);
             this.Controls.Add(this.btnDown);
             this.Controls.Add(this.btnConnect);
             this.Controls.Add(this.txtPort);
@@ -234,16 +240,16 @@
         private System.Windows.Forms.TextBox txtPort;
         private System.Windows.Forms.Button btnConnect;
         private System.Windows.Forms.Button btnDown;
+        private System.Windows.Forms.Label lblState;
         private System.Windows.Forms.TabControl tabControl1;
         private System.Windows.Forms.TabPage tabPage1;
-        private System.Windows.Forms.TabPage tabPage2;
         private System.Windows.Forms.ListView lvLogs;
         private System.Windows.Forms.ColumnHeader columnHeader1;
         private System.Windows.Forms.ColumnHeader columnHeader2;
         private System.Windows.Forms.ColumnHeader columnHeader3;
         private System.Windows.Forms.ColumnHeader columnHeader4;
         private System.Windows.Forms.ColumnHeader columnHeader5;
-        private System.Windows.Forms.Label lblState;
+        private System.Windows.Forms.TabPage tabPage2;
     }
 }
 

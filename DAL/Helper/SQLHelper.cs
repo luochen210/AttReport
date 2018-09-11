@@ -16,10 +16,15 @@ namespace DAL
     /// </summary>
     public class SQLHelper
     {
-        // private static string connString = "Server=aaaa\\sqlexpress;DataBase=StudentManageDB;Uid=sa;Pwd=password01!";
+        //直接设置，不用读取App.config
+        //private static string connString = "Server=.;DataBase=StudentManageDB;Uid=sa;Pwd=password01!";
 
+        //明文读取App.config
+        //public static readonly string connString = ConfigurationManager.ConnectionStrings["connString"].ToString();
+
+        //密文读取App.config
         public static readonly string connString = Common.StringSecurity.DESDecrypt(ConfigurationManager.ConnectionStrings["connString"].ToString());
-        
+
         /// <summary>
         /// 执行增、删、改方法
         /// </summary>
@@ -90,6 +95,10 @@ namespace DAL
                 //将错误信息写入日志...
 
                 throw ex;
+            }
+            finally
+            {
+                conn.Close();
             }
         }
         /// <summary>

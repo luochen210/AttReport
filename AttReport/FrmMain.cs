@@ -6,27 +6,33 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
-using Modes;
+
+using Models;
 using DAL;
 
 namespace AttReport
 {
     public partial class FrmMain : Form
     {
-        private AttRecordService objAttRecordService = new AttRecordService();
+
+        private AttRecord objAttRecord = new AttRecord();
+        private  AttRecordService objAttRecordService = new AttRecordService();
+
         public FrmMain()
         {
             InitializeComponent();
+
+            //加密SQL连接字符串
+            //string connstring = DAL.SQLHelper.connString;
+            //connstring = Common.StringSecurity.DESEncrypt(connstring);
         }
 
-        //Create Standalone SDK class dynamicly.
         public zkemkeeper.CZKEMClass axCZKEM1 = new zkemkeeper.CZKEMClass();
         
         #region 连接考勤机
-
         private bool bIsConnected = false;//the boolean value identifies whether the device is connected
         private int iMachineNumber = 1;//the serial number of the device.After connecting the device ,this value will be changed.
-        
+
         private void btnConnect_Click(object sender, EventArgs e)
         {
             if (txtIP.Text.Trim() == "" || txtPort.Text.Trim() == "")
@@ -63,9 +69,9 @@ namespace AttReport
             }
             Cursor = Cursors.Default;
         }
-
         #endregion
 
+        #region 下载保存原始考勤记录
         private void btnDown_Click(object sender, EventArgs e)
         {
             if (bIsConnected == false)
@@ -84,13 +90,9 @@ namespace AttReport
             int iIndex = 0;
 
             Cursor = Cursors.WaitCursor;
-
-
-            AttRecord objAttRecord = new AttRecord();
-            objAttRecord = objAttRecordService.GetAttRecord(objAttRecord);
-
             lvLogs.Items.Clear();
             axCZKEM1.EnableDevice(iMachineNumber, false);//disable the device
+
             if (axCZKEM1.ReadGeneralLogData(iMachineNumber))//read the records to the memory
             {
                 while (axCZKEM1.GetGeneralLogDataStr(iMachineNumber, ref idwEnrollNumber, ref idwVerifyMode, ref idwInOutMode, ref sTime))//get the records from memory
@@ -104,18 +106,37 @@ namespace AttReport
                     lvLogs.Items[iIndex].SubItems.Add(sTime);
                     iIndex++;
 
-                    //获取对象值
+                    //封装考勤记录对象
+                    //AttRecord objAttRecord = new AttRecord()
+                    //{
+                    //    MachineId = iMachineNumber,
+                    //    ClockId = idwEnrollNumber,
+                    //    VerifyMode = idwVerifyMode,
+                    //    InOutMode = idwInOutMode,
+                    //    ClockRecord = sTime
+                    //};
 
                     objAttRecordService.GetAttRecord(iMachineNumber, idwEnrollNumber, idwVerifyMode, idwInOutMode, sTime);
-
-                    if (true)
+                    
+                    if (objAttRecordService.GetAttRecord(iMachineNumber, idwEnrollNumber, idwVerifyMode, idwInOutMode, sTime) ==null)
                     {
-
+                        objAttRecordService.AddAttrecord(iMachineNumber, idwEnrollNumber, idwVerifyMode, idwInOutMode, sTime);
+                    }
+                    else
+                    {
+                        continue;
                     }
 
+                    //objAttRecordService.GetAttRecord(objAttRecord);
 
-                    objAttRecordService.AddAttRecord(iMachineNumber, idwEnrollNumber, idwVerifyMode, idwInOutMode, sTime);
-
+                    //if (objAttRecordService.GetAttRecord(objAttRecord)==null)
+                    //{
+                    //    objAttRecordService.AddAttrecord(objAttRecord);
+                    //}
+                    //else
+                    //{
+                    //    continue;
+                    //}
                 }
             }
             else
@@ -136,5 +157,6 @@ namespace AttReport
             axCZKEM1.EnableDevice(iMachineNumber, true);//enable the device
             Cursor = Cursors.Default;
         }
+        #endregion
     }
 }
