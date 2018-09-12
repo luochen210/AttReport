@@ -93,19 +93,20 @@ namespace AttReport
 
             Cursor = Cursors.WaitCursor;
             lvLogs.Items.Clear();
+
+            //创建一个名为"AttLogTable"的DataTable空表
+            DataTable dt = new DataTable("AttLogTable");
+            //为AttLogTable表添加列
+            dt.Columns.Add("MachineId", typeof(int));
+            dt.Columns.Add("ClockId", typeof(int));
+            dt.Columns.Add("VerifyMode", typeof(int));
+            dt.Columns.Add("InOutMode", typeof(int));
+            dt.Columns.Add("ClockRecord", typeof(DateTime));
+
             axCZKEM1.EnableDevice(iMachineNumber, false);//disable the device
 
             if (axCZKEM1.ReadGeneralLogData(iMachineNumber))//read the records to the memory
             {
-                //创建一个名为"AttLogTable"的DataTable空表
-                DataTable dt = new DataTable("AttLogTable");
-                //为AttLogTable表添加列
-                dt.Columns.Add("MachineId", typeof(int));
-                dt.Columns.Add("ClockId", typeof(int));
-                dt.Columns.Add("VerifyMode", typeof(int));
-                dt.Columns.Add("InOutMode", typeof(int));
-                dt.Columns.Add("ClockRecord", typeof(DateTime));
-
                 while (axCZKEM1.GetGeneralLogDataStr(iMachineNumber, ref idwEnrollNumber, ref idwVerifyMode, ref idwInOutMode, ref sTime))//get the records from memory
                 {
                     //为AttLogTable创建新行
@@ -117,11 +118,15 @@ namespace AttReport
                     dr[3] = idwInOutMode;
                     dr[4] = sTime;
                     dt.Rows.Add(dr);
-
                     ////保存数据到SQL数据库(为存储过程赋值）
-                    //objAttRecordService.SaveAttrecord(iMachineNumber, idwEnrollNumber, idwVerifyMode, idwInOutMode, sTime);
+                    //objAttRecordService.SaveAttrecord(iMachineNumber, idwEnrollNumber, idwVerifyMode, idwInOutMode, sTime);                
+                    
+                }
+                if (objAttRecordService.GetAttRecord())
+                {
 
                 }
+                SQLHelper.WriteToServerByBulk(dt, "OriginalLog");
             }
             else
             {

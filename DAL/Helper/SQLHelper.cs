@@ -13,7 +13,7 @@ namespace DAL
     /// <summary>
     ///  通用数据访问类
     /// </summary>
-    class SQLHelper
+    public class SQLHelper
     {
         #region 连接字符串
 
@@ -271,7 +271,48 @@ namespace DAL
                 conn.Close();
             }
         }
-        #endregion        
+        #endregion
+
+        public static bool WriteToServerByBulk(DataTable dt, string sqlTableName)
+        {
+            SqlConnection conn = new SqlConnection(connString);
+            conn.Open();
+            SqlTransaction sqlBulkTransaction = conn.BeginTransaction();//打开事务
+            SqlBulkCopy bulkCopy = new SqlBulkCopy(conn, SqlBulkCopyOptions.CheckConstraints, sqlBulkTransaction);//开启约束检查和事务             
+            foreach (DataColumn item in dt.Columns)
+            {
+                bulkCopy.ColumnMappings.Add(item.ColumnName, item.ColumnName);
+            }
+            bulkCopy.DestinationTableName = sqlTableName;
+            bulkCopy.BatchSize = dt.Rows.Count;
+            try
+            {
+                if (dt != null && dt.Rows.Count != 0)
+                {
+                    bulkCopy.WriteToServer(dt);
+                    sqlBulkTransaction.Commit();
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+            }
+            catch (Exception ex)
+            {
+                if (sqlBulkTransaction != null)
+                    sqlBulkTransaction.Rollback();
+                throw ex;
+            }
+            finally
+            {
+                if (sqlBulkTransaction != null)
+                    sqlBulkTransaction = null;
+                if (bulkCopy != null)
+                    bulkCopy.Close();
+                conn.Close();
+            }
+        }
 
         #region 获取服务器时间
         /// <summary>

@@ -57,17 +57,17 @@ namespace DAL
 
         #region 调用存储过程保存数据
 
-        public string SaveAttrecord(int MachineId, int ClockId, int VerifyMode, int InOutMode, string ClockRecord)
-        {
-            string proc = "ToOriginalLog";
+        //public string SaveAttrecord(int MachineId, int ClockId, int VerifyMode, int InOutMode, string ClockRecord)
+        //{
+        //    string proc = "ToOriginalLog";
 
-            string sql = "insert into  OriginalLog (MachineId,ClockId,VerifyMode,InOutMode,ClockRecord) values ({0},{1},{2},{3},'{4}')";
-            sql = string.Format(sql, MachineId, ClockId, VerifyMode, InOutMode, ClockRecord);
+        //    string sql = "insert into  OriginalLog (MachineId,ClockId,VerifyMode,InOutMode,ClockRecord) values ({0},{1},{2},{3},'{4}')";
+        //    sql = string.Format(sql, MachineId, ClockId, VerifyMode, InOutMode, ClockRecord);
 
-            SQLHelper.ProcUpdate(proc,sql);
+        //    SQLHelper.ProcUpdate(proc,sql);
 
-            return sql;
-        }
+        //    return sql;
+        //}
 
         #endregion
 
