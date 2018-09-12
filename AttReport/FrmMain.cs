@@ -106,25 +106,23 @@ namespace AttReport
                 dt.Columns.Add("InOutMode", typeof(int));
                 dt.Columns.Add("ClockRecord", typeof(DateTime));
 
-
                 while (axCZKEM1.GetGeneralLogDataStr(iMachineNumber, ref idwEnrollNumber, ref idwVerifyMode, ref idwInOutMode, ref sTime))//get the records from memory
                 {
                     //为AttLogTable创建新行
                     DataRow dr = dt.NewRow();
-
                     //通过索引为列赋值
-                    dr[0] = iMachineNumber; 
+                    dr[0] = iMachineNumber;
                     dr[1] = idwEnrollNumber;
                     dr[2] = idwVerifyMode;
                     dr[3] = idwInOutMode;
                     dr[4] = sTime;
                     dt.Rows.Add(dr);
 
-                    //保存数据到SQL数据库(为存储过程赋值）
-                    objAttRecordService.SaveAttrecord(iMachineNumber, idwEnrollNumber, idwVerifyMode, idwInOutMode, sTime);
+                    ////保存数据到SQL数据库(为存储过程赋值）
+                    //objAttRecordService.SaveAttrecord(iMachineNumber, idwEnrollNumber, idwVerifyMode, idwInOutMode, sTime);
 
                 }
-                }
+            }
             else
             {
                 Cursor = Cursors.Default;
@@ -145,6 +143,8 @@ namespace AttReport
         }
         #endregion
 
+
+        //测试数据保存
         private void btnSave_Click(object sender, EventArgs e)
         {
             if (bIsConnected == false)
@@ -167,6 +167,7 @@ namespace AttReport
             {
                 while (axCZKEM1.GetGeneralLogDataStr(iMachineNumber, ref idwEnrollNumber, ref idwVerifyMode, ref idwInOutMode, ref sTime))//get the records from memory
                 {
+                    //保存数据到数据库
                     objAttRecordService.AddAttrecord(iMachineNumber, idwEnrollNumber, idwVerifyMode, idwInOutMode, sTime);
                 }
             }
