@@ -15,16 +15,20 @@ namespace DAL
     /// </summary>
     class SQLHelper
     {
+        #region 连接字符串
+
+        
 
         // private static readonly string connString = "Server=.;DataBase=StudentManageDB;Uid=sa;Pwd=password01!";
 
+        private static readonly string connString =
+            ConfigurationManager.ConnectionStrings["connString"].ToString();
 
         //private static readonly string connString =
-        //    ConfigurationManager.ConnectionStrings["connString"].ToString();
+        //    Common.StringSecurity.DESDecrypt(ConfigurationManager.ConnectionStrings["connString"].ToString());
+        #endregion
 
-        private static readonly string connString =
-            Common.StringSecurity.DESDecrypt(ConfigurationManager.ConnectionStrings["connString"].ToString());
-
+        #region 执行增、删、改（insert/update/delete）
         /// <summary>
         /// 执行增、删、改（insert/update/delete）
         /// </summary>
@@ -49,6 +53,24 @@ namespace DAL
                 conn.Close();
             }
         }
+        #endregion
+
+        #region 复制表内容
+        public static string bulkCopy(string sql)
+        {
+
+            SqlConnection conn = new SqlConnection(connString);
+            conn.Open();
+            SqlBulkCopy bc = new SqlBulkCopy(conn);
+
+
+            return sql;
+        }
+
+        #endregion
+
+        #region 执行单一结果查询（select）        
+
         /// <summary>
         /// 执行单一结果查询（select）
         /// </summary>
@@ -73,6 +95,9 @@ namespace DAL
                 conn.Close();
             }
         }
+        #endregion
+
+        #region 执行多结果查询（select） 
         /// <summary>
         /// 执行多结果查询（select）
         /// </summary>
@@ -95,6 +120,9 @@ namespace DAL
                 throw ex;
             }
         }
+        #endregion
+
+        #region 执行返回数据集的查询
         /// <summary>
         /// 执行返回数据集的查询
         /// </summary>
@@ -121,6 +149,93 @@ namespace DAL
                 conn.Close();
             }
         }
+        #endregion
+
+        #region 带参数的SQL语句
+
+        public static int Update(string sql, SqlParameter[] parameter)
+        {
+            SqlConnection conn = new SqlConnection(connString);
+            SqlCommand cmd = new SqlCommand(sql, conn);
+            try
+            {
+                conn.Open();
+                cmd.Parameters.AddRange(parameter);//为Command对象添加参数
+                //foreach (SqlParameter  item in parameter)
+                //{
+                //    cmd.Parameters.Add(item);
+                //}
+                int result = cmd.ExecuteNonQuery();
+                return result;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                conn.Close();
+            }
+        }
+
+        #endregion
+
+        #region 调用存储过程
+
+        public static int UpdateByProcedure(string procedureName, SqlParameter[] param)
+        {
+            SqlConnection conn = new SqlConnection(connString);
+            SqlCommand cmd = new SqlCommand();
+            cmd.Connection = conn;
+            try
+            {
+                conn.Open();
+                cmd.CommandType = CommandType.StoredProcedure;//声明当前要执行的是存储过程
+                cmd.CommandText = procedureName;//commandText只需要赋值存储过程名称即可
+                cmd.Parameters.AddRange(param);//添加存储过程的参数
+                int result = cmd.ExecuteNonQuery();
+                return result;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                conn.Close();
+            }
+        }
+
+        /// <summary>
+        /// 执行多结果查询（select）
+        /// </summary>
+        /// <param name="sql"></param>
+        /// <returns></returns>
+        public static SqlDataReader GetReaderByProcedure(string procedureName, SqlParameter[] param)
+        {
+            SqlConnection conn = new SqlConnection(connString);
+            SqlCommand cmd = new SqlCommand();
+            cmd.Connection = conn;
+            try
+            {
+                conn.Open();
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.CommandText = procedureName;
+                cmd.Parameters.AddRange(param);
+                SqlDataReader objReader =
+                    cmd.ExecuteReader(CommandBehavior.CloseConnection);
+                return objReader;
+            }
+            catch (Exception ex)
+            {
+                conn.Close();
+                throw ex;
+            }
+        }
+
+        #endregion
+
+        #region 启用事务执行多条SQL语句
         /// <summary>
         /// 启用事务执行多条SQL语句
         /// </summary>      
@@ -156,61 +271,17 @@ namespace DAL
                 conn.Close();
             }
         }
+        #endregion        
 
-        #region 使用Bulk插入的实现方式
-        public string SaveAttData(string sql)
+        #region 获取服务器时间
+        /// <summary>
+        /// 获取服务器的时间
+        /// </summary>
+        /// <returns></returns>
+        public static DateTime GetServerTime()
         {
-            SqlConnection conn = new SqlConnection(connString);
-            SqlCommand cmd = new SqlCommand(sql, conn);
-
-            Stopwatch sw = new Stopwatch();
-            DataTable dt = GetTableSchema();
-
-            SqlBulkCopy bulkCopy = new SqlBulkCopy(conn);
-            bulkCopy.DestinationTableName = "OriginalLog";
-            bulkCopy.BatchSize = dt.Rows.Count;
-            conn.Open();
-            sw.Start();
-
-
-            for (int i = 0; i < totalRow; i++)
-            {
-                DataRow dr = dt.NewRow();
-                dr[0] = Guid.NewGuid();
-                dr[1] = string.Format("商品", i);
-                dr[2] = (decimal)i;
-                dt.Rows.Add(dr);
-            }
-            if (dt != null && dt.Rows.Count != 0)
-            {
-                bulkCopy.WriteToServer(dt);
-                sw.Stop();
-            }
-            Console.WriteLine(string.Format("插入{0}条记录共花费{1}毫秒，{2}分钟", totalRow, sw.ElapsedMilliseconds, GetMinute(sw.ElapsedMilliseconds)));
-            return sql;
+            return Convert.ToDateTime(GetSingleResult("select getdate()"));
         }
-
-        public static DataTable GetTableSchema()
-        {
-            DataTable dt = new DataTable();
-            dt.Columns.AddRange(new DataColumn[] {
-                new DataColumn("Id",typeof(Guid)),
-                new DataColumn("Name",typeof(string)),
-                new DataColumn("Price",typeof(decimal))});
-            return dt;
-        }
-    }
-
-    #endregion
-
-
-
-    /// <summary>
-    /// 获取服务器的时间
-    /// </summary>
-    /// <returns></returns>
-    public static DateTime GetServerTime()
-    {
-        return Convert.ToDateTime(GetSingleResult("select getdate()"));
+        #endregion
     }
 }

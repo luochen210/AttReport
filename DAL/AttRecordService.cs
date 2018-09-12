@@ -12,9 +12,7 @@ namespace DAL
 {
     public class AttRecordService
     {
-        #region 普通查写方法
-
-
+        #region 查询数据库的考勤记录
         /// <summary>
         /// 查询数据库的考勤记录
         /// </summary>
@@ -33,17 +31,18 @@ namespace DAL
 
             return ClockRecord;
         }
+        #endregion
 
-
+        #region 普通方式写入数据
         /// <summary>
         /// 写入数据
         /// </summary>
-        /// <param name="MachineId"></param>
-        /// <param name="ClockId"></param>
-        /// <param name="VerifyMode"></param>
-        /// <param name="InOutMode"></param>
-        /// <param name="ClockRecord"></param>
-        /// <returns></returns>
+        /// <param name="MachineId">机器号码</param>
+        /// <param name="ClockId">考勤ID</param>
+        /// <param name="VerifyMode">验证方式</param>
+        /// <param name="InOutMode">考勤状态</param>
+        /// <param name="ClockRecord">打卡时间</param>
+        /// <returns>打卡时间</returns>
         public string AddAttrecord(int MachineId, int ClockId, int VerifyMode, int InOutMode, string ClockRecord)
         {
             string sql = "insert into  OriginalLog (MachineId,ClockId,VerifyMode,InOutMode,ClockRecord) values ({0},{1},{2},{3},'{4}')";
@@ -56,69 +55,41 @@ namespace DAL
 
         #endregion
 
+        #region 调用存储过程保存数据
 
-
-        #region DataSet查写方法
-
-        //获取所有数据记录
-        public DataSet GetAttData()
+        public string SaveAttrecord(int MachineId, int ClockId, int VerifyMode, int InOutMode, string ClockRecord)
         {
-            string sql = "select * from OriginalLog";
+            string proc = "ToOriginalLog";
 
-            return SQLHelper.GetDataSet(sql);
+            string sql = "insert into  OriginalLog (MachineId,ClockId,VerifyMode,InOutMode,ClockRecord) values ({0},{1},{2},{3},'{4}')";
+            sql = string.Format(sql, MachineId, ClockId, VerifyMode, InOutMode, ClockRecord);
+
+            SQLHelper.ProcUpdate(proc,sql);
+
+            return sql;
         }
 
-        //public DataSet AddAttData(int MachineId, int ClockId, int VerifyMode, int InOutMode, string ClockRecord)
-        //{
-        //    string sql = "insert into  OriginalLog (MachineId,ClockId,VerifyMode,InOutMode,ClockRecord) values ({0},{1},{2},{3},'{4}')";
-        //    sql = string.Format(sql, MachineId, ClockId, VerifyMode, InOutMode, ClockRecord);
-
-        //    return SQLHelper.UpdateByTran(sql);
-        //}
         #endregion
 
-        #region 使用Bulk插入的实现方式
-        public string SaveAttData()
-        {
-            Stopwatch sw = new Stopwatch();
-            DataTable dt = GetTableSchema();
+        #region 复制表
+        //public string bulkCopy(int MachineId, int ClockId, int VerifyMode, int InOutMode, string ClockRecord)
+        //{
 
-            SqlConnection conn = new SqlConnection(SQLHelper.connString);
-            SqlCommand cmd = new SqlCommand(sql, conn);
-            bulkCopy.DestinationTableName = "OriginalLog";
-                bulkCopy.BatchSize = dt.Rows.Count;
-                conn.Open();
-                sw.Start();
+        //    SqlBulkCopy BulkCopy = new SqlBulkCopy();
+        //    BulkCopy.DestinationTableName = "OriginalLog";//要插入的表的表名
+        //    BulkCopy.BatchSize = dt.Rows.Count;
+        //    BulkCopy.ColumnMappings.Add("iMachineNumber", MachineId);//表中的字段名 第一个“id”是dt中的字段名，第二个“id”表中的字段名
+        //    BulkCopy.ColumnMappings.Add("idwEnrollNumber", ClockId);
+        //    BulkCopy.ColumnMappings.Add("idwVerifyMode", VerifyMode);
+        //    BulkCopy.ColumnMappings.Add("idwInOutMode", InOutMode);
+        //    BulkCopy.ColumnMappings.Add("sTime", ClockRecord);
+        //    BulkCopy.WriteToServer(dt);
+        //    MessageBox.Show("插入成功：" + dt.Rows.Count + "行");
+
+        //    return ClockRecord;
+        //}
 
 
-                for (int i = 0; i < totalRow; i++)
-                {
-                    DataRow dr = dt.NewRow();
-                    dr[0] = Guid.NewGuid();
-                    dr[1] = string.Format("商品", i);
-                    dr[2] = (decimal)i;
-                    dt.Rows.Add(dr);
-                }
-                if (dt != null && dt.Rows.Count != 0)
-                {
-                    bulkCopy.WriteToServer(dt);
-                    sw.Stop();
-                }
-                Console.WriteLine(string.Format("插入{0}条记录共花费{1}毫秒，{2}分钟", totalRow, sw.ElapsedMilliseconds, GetMinute(sw.ElapsedMilliseconds)));
-            }
-            return SaveAttData;
-        }
-
-        public static DataTable GetTableSchema()
-        {
-            DataTable dt = new DataTable();
-            dt.Columns.AddRange(new DataColumn[] {
-                    new DataColumn("Id",typeof(Guid)),
-                    new DataColumn("Name",typeof(string)),
-                    new DataColumn("Price",typeof(decimal))});
-            return dt;
-        }
+        #endregion
     }
-    #endregion
-}
 }

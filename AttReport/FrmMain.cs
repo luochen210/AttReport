@@ -9,6 +9,7 @@ using System.Windows.Forms;
 
 using Models;
 using DAL;
+using System.Data.SqlClient;
 
 namespace AttReport
 {
@@ -87,43 +88,43 @@ namespace AttReport
             int idwInOutMode = 0;
             string sTime ="";
 
-            int iGLCount = 0;
-            int iIndex = 0;
+            //int iGLCount = 0;
+            //int iIndex = 0;
 
             Cursor = Cursors.WaitCursor;
             lvLogs.Items.Clear();
             axCZKEM1.EnableDevice(iMachineNumber, false);//disable the device
 
             if (axCZKEM1.ReadGeneralLogData(iMachineNumber))//read the records to the memory
-            {                
+            {
+                //创建一个名为"AttLogTable"的DataTable空表
+                DataTable dt = new DataTable("AttLogTable");
+                //为AttLogTable表添加列
+                dt.Columns.Add("MachineId", typeof(int));
+                dt.Columns.Add("ClockId", typeof(int));
+                dt.Columns.Add("VerifyMode", typeof(int));
+                dt.Columns.Add("InOutMode", typeof(int));
+                dt.Columns.Add("ClockRecord", typeof(DateTime));
+
+
                 while (axCZKEM1.GetGeneralLogDataStr(iMachineNumber, ref idwEnrollNumber, ref idwVerifyMode, ref idwInOutMode, ref sTime))//get the records from memory
                 {
-                    //显示考勤数据到listView
-                    //this.lvLogs.BeginUpdate();//挂起UI
+                    //为AttLogTable创建新行
+                    DataRow dr = dt.NewRow();
 
-                    iGLCount++;
-                    lvLogs.Items.Add(iGLCount.ToString());
-                    lvLogs.Items[iIndex].SubItems.Add(iMachineNumber.ToString());
-                    lvLogs.Items[iIndex].SubItems.Add(idwEnrollNumber.ToString());
-                    lvLogs.Items[iIndex].SubItems.Add(idwVerifyMode.ToString());
-                    lvLogs.Items[iIndex].SubItems.Add(idwInOutMode.ToString());
-                    lvLogs.Items[iIndex].SubItems.Add(sTime);
-                    iIndex++;
+                    //通过索引为列赋值
+                    dr[0] = iMachineNumber; 
+                    dr[1] = idwEnrollNumber;
+                    dr[2] = idwVerifyMode;
+                    dr[3] = idwInOutMode;
+                    dr[4] = sTime;
+                    dt.Rows.Add(dr);
 
-                    //this.lvLogs.EndUpdate();//挂起结束
+                    //保存数据到SQL数据库(为存储过程赋值）
+                    objAttRecordService.SaveAttrecord(iMachineNumber, idwEnrollNumber, idwVerifyMode, idwInOutMode, sTime);
 
-                    //把考勤数据写入数据库
-                    //if (objAttRecordService.GetAttRecord(iMachineNumber, idwEnrollNumber, idwVerifyMode, idwInOutMode, sTime) != null)
-                    //{
-                    //    continue;
-                    //}
-                    //else
-                    //{
-                        objAttRecordService.AddAttrecord(iMachineNumber, idwEnrollNumber, idwVerifyMode, idwInOutMode, sTime);
-
-                    //}
                 }
-            }
+                }
             else
             {
                 Cursor = Cursors.Default;
