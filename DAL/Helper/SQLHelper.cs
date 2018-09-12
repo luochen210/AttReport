@@ -55,20 +55,6 @@ namespace DAL
         }
         #endregion
 
-        #region 复制表内容
-        public static string bulkCopy(string sql)
-        {
-
-            SqlConnection conn = new SqlConnection(connString);
-            conn.Open();
-            SqlBulkCopy bc = new SqlBulkCopy(conn);
-
-
-            return sql;
-        }
-
-        #endregion
-
         #region 执行单一结果查询（select）        
 
         /// <summary>
@@ -153,7 +139,7 @@ namespace DAL
 
         #region 带参数的SQL语句
 
-        public static int Update(string sql, SqlParameter[] parameter)
+        public static int PRUpdate(string sql, SqlParameter[] parameter)
         {
             SqlConnection conn = new SqlConnection(connString);
             SqlCommand cmd = new SqlCommand(sql, conn);
@@ -273,7 +259,8 @@ namespace DAL
         }
         #endregion
 
-        public static bool WriteToServerByBulk(DataTable dt, string sqlTableName)
+        #region 使用SQLByBulk批量写入数据
+        public static bool UpdataByBulk(DataTable dt, string sqlTableName)
         {
             SqlConnection conn = new SqlConnection(connString);
             conn.Open();
@@ -313,6 +300,7 @@ namespace DAL
                 conn.Close();
             }
         }
+        #endregion
 
         #region 获取服务器时间
         /// <summary>

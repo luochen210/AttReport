@@ -28,8 +28,7 @@ namespace DAL
             sql = string.Format(sql, MachineId, ClockId, VerifyMode, InOutMode, ClockRecord);
 
             SQLHelper.GetSingleResult(sql);
-
-            return ClockRecord;
+            return sql;
         }
         #endregion
 
@@ -55,41 +54,42 @@ namespace DAL
 
         #endregion
 
-        #region 调用存储过程保存数据
+        #region 查询OriginalLog表的ClockRecord
+        /// <summary>
+        /// 查询打卡时间
+        /// </summary>
+        /// <param name="ClockRecord">打卡时间</param>
+        /// <returns>打卡时间</returns>
+        public string GetClockRecord(string ClockRecord)
+        {
+            string sql = "select * from OriginalLog where ClockRecord='{0}'";
+            sql = string.Format(sql, ClockRecord);
 
-        //public string SaveAttrecord(int MachineId, int ClockId, int VerifyMode, int InOutMode, string ClockRecord)
+            SQLHelper.GetSingleResult(sql);
+            return ClockRecord;
+        }
+        #endregion
+
+        //public List<AttRecord> GetStuByDate(int MachineId, int ClockId, int VerifyMode, int InOutMode, string ClockRecord)
         //{
-        //    string proc = "ToOriginalLog";
-
         //    string sql = "insert into  OriginalLog (MachineId,ClockId,VerifyMode,InOutMode,ClockRecord) values ({0},{1},{2},{3},'{4}')";
         //    sql = string.Format(sql, MachineId, ClockId, VerifyMode, InOutMode, ClockRecord);
+        //    SqlDataReader objReader = SQLHelper.GetReader(sql);
+        //    List<AttRecord> list = new List<AttRecord>();
+        //    while (objReader.Read())
+        //    {
+        //        list.Add(new AttRecord()
+        //        {
+        //            MachineId = Convert.ToInt32(objReader["MachineId"]),
+        //            ClockId = Convert.ToInt32(objReader["ClockId"]),
+        //            VerifyMode = Convert.ToInt32(objReader["VerifyMode"]),
+        //            InOutMode = Convert.ToInt32(objReader[" InOutMode"]),
+        //            ClockRecord = objReader["ClockRecord"].ToString()
+        //            //DTime = Convert.ToDateTime(objReader["DTime"])
+        //        });
+        //    }
+        //    return list;
 
-        //    SQLHelper.ProcUpdate(proc,sql);
-
-        //    return sql;
         //}
-
-        #endregion
-
-        #region 复制表
-        //public string bulkCopy(int MachineId, int ClockId, int VerifyMode, int InOutMode, string ClockRecord)
-        //{
-
-        //    SqlBulkCopy BulkCopy = new SqlBulkCopy();
-        //    BulkCopy.DestinationTableName = "OriginalLog";//要插入的表的表名
-        //    BulkCopy.BatchSize = dt.Rows.Count;
-        //    BulkCopy.ColumnMappings.Add("iMachineNumber", MachineId);//表中的字段名 第一个“id”是dt中的字段名，第二个“id”表中的字段名
-        //    BulkCopy.ColumnMappings.Add("idwEnrollNumber", ClockId);
-        //    BulkCopy.ColumnMappings.Add("idwVerifyMode", VerifyMode);
-        //    BulkCopy.ColumnMappings.Add("idwInOutMode", InOutMode);
-        //    BulkCopy.ColumnMappings.Add("sTime", ClockRecord);
-        //    BulkCopy.WriteToServer(dt);
-        //    MessageBox.Show("插入成功：" + dt.Rows.Count + "行");
-
-        //    return ClockRecord;
-        //}
-
-
-        #endregion
     }
 }

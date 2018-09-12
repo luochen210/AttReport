@@ -10,15 +10,13 @@ using System.Windows.Forms;
 using Models;
 using DAL;
 using System.Data.SqlClient;
+using System.Threading;
 
 namespace AttReport
 {
     public partial class FrmMain : Form
     {
-
-        private AttRecord objAttRecord = new AttRecord();
         private AttRecordService objAttRecordService = new AttRecordService();
-        List<AttRecord> attList = new List<AttRecord>();
 
         public FrmMain()
         {
@@ -28,6 +26,14 @@ namespace AttReport
             //string connstring = DAL.SQLHelper.connString;
             //connstring = Common.StringSecurity.DESEncrypt(connstring);
         }
+
+        int idwErrorCode = 0;
+        int iValue = 0;
+
+        int idwEnrollNumber = 0;
+        int idwVerifyMode = 0;
+        int idwInOutMode = 0;
+        string sTime = "";
 
         public zkemkeeper.CZKEMClass axCZKEM1 = new zkemkeeper.CZKEMClass();
 
@@ -74,29 +80,20 @@ namespace AttReport
         #endregion
 
         #region 下载保存原始考勤记录
-        private void btnDown_Click(object sender, EventArgs e)
+        private void btnGetLog_Click(object sender, EventArgs e)
         {
+            #region 获取考勤记录并保存的代码
+
             if (bIsConnected == false)
             {
                 MessageBox.Show("Please connect the device first", "Error");
                 return;
             }
-            int idwErrorCode = 0;
 
-            int idwEnrollNumber = 0;
-            int idwVerifyMode = 0;
-            int idwInOutMode = 0;
-            string sTime ="";
+            Cursor = Cursors.WaitCursor;//鼠标状态
 
-            //int iGLCount = 0;
-            //int iIndex = 0;
-
-            Cursor = Cursors.WaitCursor;
-            lvLogs.Items.Clear();
-
-            //创建一个名为"AttLogTable"的DataTable空表
+            //创建一个名为"AttLogTable"的DataTable表
             DataTable dt = new DataTable("AttLogTable");
-            //为AttLogTable表添加列
             dt.Columns.Add("MachineId", typeof(int));
             dt.Columns.Add("ClockId", typeof(int));
             dt.Columns.Add("VerifyMode", typeof(int));
@@ -107,26 +104,29 @@ namespace AttReport
 
             if (axCZKEM1.ReadGeneralLogData(iMachineNumber))//read the records to the memory
             {
+                //获得设备记录数量
+                axCZKEM1.GetDeviceStatus(iMachineNumber, 6, ref iValue);
+                this.lblState.Text = iValue.ToString();
+
+                //循环取出记录，然后逐条写入DataTable表
                 while (axCZKEM1.GetGeneralLogDataStr(iMachineNumber, ref idwEnrollNumber, ref idwVerifyMode, ref idwInOutMode, ref sTime))//get the records from memory
                 {
-                    //为AttLogTable创建新行
                     DataRow dr = dt.NewRow();
-                    //通过索引为列赋值
-                    dr[0] = iMachineNumber;
-                    dr[1] = idwEnrollNumber;
-                    dr[2] = idwVerifyMode;
-                    dr[3] = idwInOutMode;
-                    dr[4] = sTime;
-                    dt.Rows.Add(dr);
-                    ////保存数据到SQL数据库(为存储过程赋值）
-                    //objAttRecordService.SaveAttrecord(iMachineNumber, idwEnrollNumber, idwVerifyMode, idwInOutMode, sTime);                
-                    
+                    //通过索引为DataTable列赋值
+                    if (objAttRecordService.GetClockRecord(sTime) == null)
+                    {
+                        dr[0] = iMachineNumber;
+                        dr[1] = idwEnrollNumber;
+                        dr[2] = idwVerifyMode;
+                        dr[3] = idwInOutMode;
+                        dr[4] = sTime;
+                        dt.Rows.Add(dr);
+                    }
+                    ////保存数据到SQL数据库
+                    //objAttRecordService.SaveAttrecord(iMachineNumber, idwEnrollNumber, idwVerifyMode, idwInOutMode, sTime);               
                 }
-                if (objAttRecordService.GetAttRecord())
-                {
-
-                }
-                SQLHelper.WriteToServerByBulk(dt, "OriginalLog");
+                //批量保存到数据库
+                SQLHelper.UpdataByBulk(dt, "OriginalLog");//dt代表DataTable表，OriginalLog代表SQL数据库表
             }
             else
             {
@@ -145,54 +145,8 @@ namespace AttReport
             }
             axCZKEM1.EnableDevice(iMachineNumber, true);//enable the device
             Cursor = Cursors.Default;
+            #endregion
         }
         #endregion
-
-
-        //测试数据保存
-        private void btnSave_Click(object sender, EventArgs e)
-        {
-            if (bIsConnected == false)
-            {
-                MessageBox.Show("Please connect the device first", "Error");
-                return;
-            }
-
-            int idwErrorCode = 0;
-            int idwEnrollNumber = 0;
-            int idwVerifyMode = 0;
-            int idwInOutMode = 0;
-            string sTime = "";
-
-            Cursor = Cursors.WaitCursor;
-            lvLogs.Items.Clear();
-            axCZKEM1.EnableDevice(iMachineNumber, false);//disable the device
-
-            if (axCZKEM1.ReadGeneralLogData(iMachineNumber))//read the records to the memory
-            {
-                while (axCZKEM1.GetGeneralLogDataStr(iMachineNumber, ref idwEnrollNumber, ref idwVerifyMode, ref idwInOutMode, ref sTime))//get the records from memory
-                {
-                    //保存数据到数据库
-                    objAttRecordService.AddAttrecord(iMachineNumber, idwEnrollNumber, idwVerifyMode, idwInOutMode, sTime);
-                }
-            }
-            else
-            {
-                Cursor = Cursors.Default;
-                axCZKEM1.GetLastError(ref idwErrorCode);
-
-                if (idwErrorCode != 0)
-                {
-                    MessageBox.Show("Reading data from terminal failed,ErrorCode: " + idwErrorCode.ToString(), "Error");
-                }
-                else
-                {
-                    axCZKEM1.GetLastError(ref idwErrorCode);
-                    MessageBox.Show("Operation failed,ErrorCode=" + idwErrorCode.ToString(), "Error");
-                }
-            }
-            axCZKEM1.EnableDevice(iMachineNumber, true);//enable the device
-            Cursor = Cursors.Default;
-        }
     }
 }
