@@ -59,60 +59,62 @@
             this.系统管理ToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Padding = new System.Windows.Forms.Padding(5, 2, 0, 2);
-            this.menuStrip1.Size = new System.Drawing.Size(900, 28);
+            this.menuStrip1.Padding = new System.Windows.Forms.Padding(4, 2, 0, 2);
+            this.menuStrip1.Size = new System.Drawing.Size(675, 25);
             this.menuStrip1.TabIndex = 0;
             this.menuStrip1.Text = "menuStrip1";
             // 
             // 系统管理ToolStripMenuItem
             // 
             this.系统管理ToolStripMenuItem.Name = "系统管理ToolStripMenuItem";
-            this.系统管理ToolStripMenuItem.Size = new System.Drawing.Size(81, 24);
+            this.系统管理ToolStripMenuItem.Size = new System.Drawing.Size(68, 21);
             this.系统管理ToolStripMenuItem.Text = "系统管理";
             // 
             // lblIP
             // 
             this.lblIP.AutoSize = true;
-            this.lblIP.Location = new System.Drawing.Point(15, 47);
+            this.lblIP.Location = new System.Drawing.Point(11, 38);
+            this.lblIP.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblIP.Name = "lblIP";
-            this.lblIP.Size = new System.Drawing.Size(23, 15);
+            this.lblIP.Size = new System.Drawing.Size(17, 12);
             this.lblIP.TabIndex = 1;
             this.lblIP.Text = "IP";
             // 
             // txtIP
             // 
-            this.txtIP.Location = new System.Drawing.Point(44, 42);
-            this.txtIP.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.txtIP.Location = new System.Drawing.Point(33, 34);
+            this.txtIP.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.txtIP.Name = "txtIP";
-            this.txtIP.Size = new System.Drawing.Size(127, 25);
+            this.txtIP.Size = new System.Drawing.Size(96, 21);
             this.txtIP.TabIndex = 2;
             this.txtIP.Text = "192.168.1.201";
             // 
             // lblPort
             // 
             this.lblPort.AutoSize = true;
-            this.lblPort.Location = new System.Drawing.Point(200, 47);
+            this.lblPort.Location = new System.Drawing.Point(150, 38);
+            this.lblPort.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblPort.Name = "lblPort";
-            this.lblPort.Size = new System.Drawing.Size(39, 15);
+            this.lblPort.Size = new System.Drawing.Size(29, 12);
             this.lblPort.TabIndex = 1;
             this.lblPort.Text = "Port";
             // 
             // txtPort
             // 
-            this.txtPort.Location = new System.Drawing.Point(245, 42);
-            this.txtPort.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.txtPort.Location = new System.Drawing.Point(184, 34);
+            this.txtPort.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.txtPort.Name = "txtPort";
-            this.txtPort.Size = new System.Drawing.Size(57, 25);
+            this.txtPort.Size = new System.Drawing.Size(44, 21);
             this.txtPort.TabIndex = 2;
             this.txtPort.Text = "4370";
             // 
             // btnConnect
             // 
             this.btnConnect.AutoSize = true;
-            this.btnConnect.Location = new System.Drawing.Point(334, 40);
-            this.btnConnect.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnConnect.Location = new System.Drawing.Point(250, 32);
+            this.btnConnect.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btnConnect.Name = "btnConnect";
-            this.btnConnect.Size = new System.Drawing.Size(75, 28);
+            this.btnConnect.Size = new System.Drawing.Size(56, 22);
             this.btnConnect.TabIndex = 3;
             this.btnConnect.Text = "连接";
             this.btnConnect.UseVisualStyleBackColor = true;
@@ -121,10 +123,10 @@
             // btnGetLog
             // 
             this.btnGetLog.AutoSize = true;
-            this.btnGetLog.Location = new System.Drawing.Point(441, 40);
-            this.btnGetLog.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnGetLog.Location = new System.Drawing.Point(331, 32);
+            this.btnGetLog.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btnGetLog.Name = "btnGetLog";
-            this.btnGetLog.Size = new System.Drawing.Size(77, 28);
+            this.btnGetLog.Size = new System.Drawing.Size(63, 22);
             this.btnGetLog.TabIndex = 3;
             this.btnGetLog.Text = "下载记录";
             this.btnGetLog.UseVisualStyleBackColor = true;
@@ -137,21 +139,21 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.tabControl1.Controls.Add(this.tabPage1);
             this.tabControl1.Controls.Add(this.tabPage2);
-            this.tabControl1.Location = new System.Drawing.Point(11, 113);
-            this.tabControl1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.tabControl1.Location = new System.Drawing.Point(8, 90);
+            this.tabControl1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(881, 425);
+            this.tabControl1.Size = new System.Drawing.Size(661, 340);
             this.tabControl1.TabIndex = 6;
             // 
             // tabPage1
             // 
             this.tabPage1.Controls.Add(this.lvLogs);
-            this.tabPage1.Location = new System.Drawing.Point(4, 25);
-            this.tabPage1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.tabPage1.Location = new System.Drawing.Point(4, 22);
+            this.tabPage1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.tabPage1.Name = "tabPage1";
-            this.tabPage1.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.tabPage1.Size = new System.Drawing.Size(873, 396);
+            this.tabPage1.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tabPage1.Size = new System.Drawing.Size(653, 314);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "tabPage1";
             this.tabPage1.UseVisualStyleBackColor = true;
@@ -166,10 +168,10 @@
             this.columnHeader5});
             this.lvLogs.Dock = System.Windows.Forms.DockStyle.Fill;
             this.lvLogs.GridLines = true;
-            this.lvLogs.Location = new System.Drawing.Point(3, 2);
-            this.lvLogs.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.lvLogs.Location = new System.Drawing.Point(2, 2);
+            this.lvLogs.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.lvLogs.Name = "lvLogs";
-            this.lvLogs.Size = new System.Drawing.Size(867, 392);
+            this.lvLogs.Size = new System.Drawing.Size(649, 310);
             this.lvLogs.TabIndex = 0;
             this.lvLogs.UseCompatibleStateImageBehavior = false;
             this.lvLogs.View = System.Windows.Forms.View.Details;
@@ -196,11 +198,11 @@
             // 
             // tabPage2
             // 
-            this.tabPage2.Location = new System.Drawing.Point(4, 25);
-            this.tabPage2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.tabPage2.Location = new System.Drawing.Point(4, 22);
+            this.tabPage2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.tabPage2.Name = "tabPage2";
-            this.tabPage2.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.tabPage2.Size = new System.Drawing.Size(873, 396);
+            this.tabPage2.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tabPage2.Size = new System.Drawing.Size(653, 314);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "tabPage2";
             this.tabPage2.UseVisualStyleBackColor = true;
@@ -209,24 +211,26 @@
             // 
             this.lblState.AutoSize = true;
             this.lblState.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.lblState.Location = new System.Drawing.Point(550, 47);
+            this.lblState.Location = new System.Drawing.Point(412, 38);
+            this.lblState.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblState.Name = "lblState";
-            this.lblState.Size = new System.Drawing.Size(202, 15);
+            this.lblState.Size = new System.Drawing.Size(161, 12);
             this.lblState.TabIndex = 8;
             this.lblState.Text = "设备状态：等待连接下载……";
             // 
             // progressBar1
             // 
-            this.progressBar1.Location = new System.Drawing.Point(335, 79);
+            this.progressBar1.Location = new System.Drawing.Point(251, 63);
+            this.progressBar1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.progressBar1.Name = "progressBar1";
-            this.progressBar1.Size = new System.Drawing.Size(500, 23);
+            this.progressBar1.Size = new System.Drawing.Size(375, 18);
             this.progressBar1.TabIndex = 9;
             // 
             // FrmMain
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(900, 548);
+            this.ClientSize = new System.Drawing.Size(675, 438);
             this.Controls.Add(this.progressBar1);
             this.Controls.Add(this.lblState);
             this.Controls.Add(this.tabControl1);
@@ -238,7 +242,7 @@
             this.Controls.Add(this.lblIP);
             this.Controls.Add(this.menuStrip1);
             this.MainMenuStrip = this.menuStrip1;
-            this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.Name = "FrmMain";
             this.Text = "Form1";
             this.menuStrip1.ResumeLayout(false);
