@@ -25,109 +25,16 @@ namespace AttReport
             //加密SQL连接字符串
             //string connstring = DAL.SQLHelper.connString;
             //connstring = Common.StringSecurity.DESEncrypt(connstring);
-
-            this.objGetAttLog += GetAttLogNumber;
-            //this.objGetAttLog += UpdateLblState;
-            //this.objGetAttLog += GetAttLog;
         }
 
         //int iValue;
         int idwErrorCode = 0;
-        
+
         int idwEnrollNumber = 0;
         int idwVerifyMode = 0;
         int idwInOutMode = 0;
         string sTime = "";
-
-        public zkemkeeper.CZKEMClass axCZKEM1 = new zkemkeeper.CZKEMClass();
-
-        //创建一个委托
-        public delegate string getLogDelegate(string getLog);
-
-        //创建一个委托变量
-        public getLogDelegate objGetAttLog = null;
-
-        //获得考勤记录数量的方法---通过委托传出
-        public string GetAttLogNumber(string mValue) //参数Valuen接收设备返回的记录数
-        {
-            int iValue = 0;
-            if (bIsConnected == false)
-            {
-                MessageBox.Show("Please connect the device first", "Error");
-            }            
-            axCZKEM1.EnableDevice(iMachineNumber, false);//开启设备
-            axCZKEM1.GetDeviceStatus(iMachineNumber, 6, ref iValue);//返回记录数量
-            objGetAttLog(mValue = iValue.ToString());
-            return mValue;
-        }
-
-        //lblState修改方法--通过委托接收GetAttLogNumber方法的mValue值
-        public string UpdateLblState(string mValue)
-        {            
-            this.lblState.Text = "设备记录数" + mValue + "条！";//修改lblState输出值
-            return mValue;
-        }
-
-
-        //下载记录的方法    
-        public string GetAttLog(string iTime)
-        {
-            #region 获取考勤记录并保存的代码
-
-            //创建一个名为"AttLogTable"的DataTable表
-            DataTable dt = new DataTable("AttLogTable");
-            dt.Columns.Add("MachineId", typeof(int));
-            dt.Columns.Add("ClockId", typeof(int));
-            dt.Columns.Add("VerifyMode", typeof(int));
-            dt.Columns.Add("InOutMode", typeof(int));
-            dt.Columns.Add("ClockRecord", typeof(DateTime));
-
-            if (bIsConnected == false)
-            {
-                MessageBox.Show("Please connect the device first", "Error");                
-            }
-            axCZKEM1.EnableDevice(iMachineNumber, false);//开启设备
-            if (axCZKEM1.ReadGeneralLogData(iMachineNumber))//将记录读入内存
-            {
-                //循环取出记录，然后逐条写入DataTable表
-                while (axCZKEM1.GetGeneralLogDataStr(iMachineNumber, ref idwEnrollNumber, ref idwVerifyMode, ref idwInOutMode, ref sTime))//从内存中获取记录
-                {
-                    DataRow dr = dt.NewRow();
-                    //通过索引为DataTable列赋值
-                    if (objAttRecordService.GetClockRecord(sTime) == null)
-                    {
-                        dr[0] = iMachineNumber;
-                        dr[1] = idwEnrollNumber;
-                        dr[2] = idwVerifyMode;
-                        dr[3] = idwInOutMode;
-                        dr[4] = sTime;
-                        dt.Rows.Add(dr);
-                    }
-                }
-                //批量保存到数据库
-                SQLHelper.UpdataByBulk(dt, "OriginalLog");//dt代表DataTable表，OriginalLog代表SQL数据库表
-            }
-            else
-            {
-                Cursor = Cursors.Default;
-                axCZKEM1.GetLastError(ref idwErrorCode);
-
-                if (idwErrorCode != 0)
-                {
-                    MessageBox.Show("Reading data from terminal failed,ErrorCode: " + idwErrorCode.ToString(), "Error");
-                }
-                else
-                {
-                    axCZKEM1.GetLastError(ref idwErrorCode);
-                    MessageBox.Show("Operation failed,ErrorCode=" + idwErrorCode.ToString(), "Error");
-                }
-            }
-            axCZKEM1.EnableDevice(iMachineNumber, true);//enable the device
-            Cursor = Cursors.Default;
-            return sTime;
-
-            #endregion
-        }
+        public zkemkeeper.CZKEMClass axCZKEM1 = new zkemkeeper.CZKEMClass();        
 
         #region 连接考勤机
         private bool bIsConnected = false;//the boolean value identifies whether the device is connected
@@ -168,15 +75,192 @@ namespace AttReport
             }
             Cursor = Cursors.Default;
         }
-        #endregion        
+        #endregion
 
-        //委托多线程执行任务
+        #region 下载并保存考勤记录
+
+
+        //下载考勤
         private void btnGetLog_Click(object sender, EventArgs e)
         {
-            objGetAttLog = new getLogDelegate(GetAttLogNumber);
-            objGetAttLog = new getLogDelegate(GetAttLog);
+            int iValue = 0;
+            if (bIsConnected == false)
+            {
+                MessageBox.Show("Please connect the device first", "Error");
+            }
 
-            objGetAttLog.BeginInvoke(GetAttLog, null, null);
+            //创建一个名为"AttLogTable"的DataTable表
+            DataTable dt = new DataTable("AttLogTable");
+            dt.Columns.Add("MachineId", typeof(int));
+            dt.Columns.Add("ClockId", typeof(int));
+            dt.Columns.Add("VerifyMode", typeof(int));
+            dt.Columns.Add("InOutMode", typeof(int));
+            dt.Columns.Add("ClockRecord", typeof(DateTime));
+
+            axCZKEM1.EnableDevice(iMachineNumber, false);//开启设备
+            axCZKEM1.GetDeviceStatus(iMachineNumber, 6, ref iValue);//返回记录数量
+
+            //显示考勤数量
+            this.lblState.Text = "记录数量："+ iValue;
+           
+            if (axCZKEM1.ReadGeneralLogData(iMachineNumber))//将记录读入内存
+            {
+                //循环取出记录，然后逐条写入DataTable表
+                while (axCZKEM1.GetGeneralLogDataStr(iMachineNumber, ref idwEnrollNumber, ref idwVerifyMode, ref idwInOutMode, ref sTime))//从内存中获取记录
+                {
+                    DataRow dr = dt.NewRow();
+                    //通过索引为DataTable列赋值
+                    if (objAttRecordService.GetClockRecord(sTime) == null)
+                    {
+                        dr[0] = iMachineNumber;
+                        dr[1] = idwEnrollNumber;
+                        dr[2] = idwVerifyMode;
+                        dr[3] = idwInOutMode;
+                        dr[4] = sTime;
+                        dt.Rows.Add(dr);
+                    }
+                }
+                //批量保存到数据库
+                SQLHelper.UpdataByBulk(dt, "OriginalLog");//dt代表DataTable表，OriginalLog代表SQL数据库表
+            }
+            else
+            {
+                Cursor = Cursors.Default;
+                axCZKEM1.GetLastError(ref idwErrorCode);
+
+                if (idwErrorCode != 0)
+                {
+                    MessageBox.Show("Reading data from terminal failed,ErrorCode: " + idwErrorCode.ToString(), "Error");
+                }
+                else
+                {
+                    axCZKEM1.GetLastError(ref idwErrorCode);
+                    MessageBox.Show("Operation failed,ErrorCode=" + idwErrorCode.ToString(), "Error");
+                }
+            }
+            axCZKEM1.EnableDevice(iMachineNumber, true);//enable the device
+            Cursor = Cursors.Default;
+
         }
+
+        #endregion
+
+
+
+        #region 异步试验
+
+        ////声明委托
+        //public delegate string GetLogDelegate(string getLog);
+
+        ////根据委托创建对象
+        //GetLogDelegate objgetLogDelegate;
+
+        ////获得考勤记录数量的方法---通过委托向UpdateLblState方法赋值
+        //public string GetAttLogNumber(string mValue) //参数Valuen接收设备返回的记录数
+        //{
+        //    //将委托变量与方法连接
+        //    objgetLogDelegate += UpdateLblState;
+
+        //    //方法体
+        //    int iValue = 0;
+        //    if (bIsConnected == false)
+        //    {
+        //        MessageBox.Show("Please connect the device first", "Error");
+        //    }
+        //    axCZKEM1.EnableDevice(iMachineNumber, false);//开启设备
+        //    axCZKEM1.GetDeviceStatus(iMachineNumber, 6, ref iValue);//返回记录数量
+        //    objgetLogDelegate += UpdateLblState;
+        //    mValue = iValue.ToString();
+
+        //    objgetLogDelegate(mValue);
+
+        //    return mValue;
+        //}
+
+        ////lblState修改方法--向委托传出UpdateLblState方法，等待赋值
+        //public string UpdateLblState(string mValue)
+        //{
+        //    this.lblState.Text = "设备记录数" + mValue + "条！";//修改lblState输出值
+        //    return mValue;
+        //}
+
+        ////下载记录的方法    
+        //public string GetAttLog(string mValue)
+        //{
+        //    #region 获取考勤记录并保存的代码
+
+        //    objgetLogDelegate += UpdateLblState;
+        //    //将委托变量与方法连接
+        //    objgetLogDelegate += UpdateLblState;
+
+        //    //方法体
+        //    int iValue = 0;
+        //    if (bIsConnected == false)
+        //    {
+        //        MessageBox.Show("Please connect the device first", "Error");
+        //    }
+        //    axCZKEM1.EnableDevice(iMachineNumber, false);//开启设备
+        //    axCZKEM1.GetDeviceStatus(iMachineNumber, 6, ref iValue);//返回记录数量
+        //    objgetLogDelegate += UpdateLblState;
+        //    mValue = iValue.ToString();
+
+        //    objgetLogDelegate(mValue);
+
+        //    //创建一个名为"AttLogTable"的DataTable表
+        //    DataTable dt = new DataTable("AttLogTable");
+        //    dt.Columns.Add("MachineId", typeof(int));
+        //    dt.Columns.Add("ClockId", typeof(int));
+        //    dt.Columns.Add("VerifyMode", typeof(int));
+        //    dt.Columns.Add("InOutMode", typeof(int));
+        //    dt.Columns.Add("ClockRecord", typeof(DateTime));
+
+        //    if (bIsConnected == false)
+        //    {
+        //        MessageBox.Show("Please connect the device first", "Error");
+        //    }
+        //    axCZKEM1.EnableDevice(iMachineNumber, false);//开启设备
+        //    if (axCZKEM1.ReadGeneralLogData(iMachineNumber))//将记录读入内存
+        //    {
+        //        //循环取出记录，然后逐条写入DataTable表
+        //        while (axCZKEM1.GetGeneralLogDataStr(iMachineNumber, ref idwEnrollNumber, ref idwVerifyMode, ref idwInOutMode, ref sTime))//从内存中获取记录
+        //        {
+        //            DataRow dr = dt.NewRow();
+        //            //通过索引为DataTable列赋值
+        //            if (objAttRecordService.GetClockRecord(sTime) == null)
+        //            {
+        //                dr[0] = iMachineNumber;
+        //                dr[1] = idwEnrollNumber;
+        //                dr[2] = idwVerifyMode;
+        //                dr[3] = idwInOutMode;
+        //                dr[4] = sTime;
+        //                dt.Rows.Add(dr);
+        //            }
+        //        }
+        //        //批量保存到数据库
+        //        SQLHelper.UpdataByBulk(dt, "OriginalLog");//dt代表DataTable表，OriginalLog代表SQL数据库表
+        //    }
+        //    else
+        //    {
+        //        Cursor = Cursors.Default;
+        //        axCZKEM1.GetLastError(ref idwErrorCode);
+
+        //        if (idwErrorCode != 0)
+        //        {
+        //            MessageBox.Show("Reading data from terminal failed,ErrorCode: " + idwErrorCode.ToString(), "Error");
+        //        }
+        //        else
+        //        {
+        //            axCZKEM1.GetLastError(ref idwErrorCode);
+        //            MessageBox.Show("Operation failed,ErrorCode=" + idwErrorCode.ToString(), "Error");
+        //        }
+        //    }
+        //    mValue = sTime;
+        //    axCZKEM1.EnableDevice(iMachineNumber, true);//enable the device
+        //    Cursor = Cursors.Default;
+        //    return sTime;
+
+        //    #endregion
+        //}
+        #endregion
     }
 }
