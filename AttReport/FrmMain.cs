@@ -39,6 +39,7 @@ namespace AttReport
         int idwVerifyMode = 0;
         int idwInOutMode = 0;
         string sTime = "";
+
         public zkemkeeper.CZKEMClass axCZKEM1 = new zkemkeeper.CZKEMClass();
 
         #region 连接考勤机
@@ -86,7 +87,7 @@ namespace AttReport
         #region 下载并保存考勤记录
 
 
-        //下载考勤
+        //保存打卡记录
         private void btnGetLog_Click(object sender, EventArgs e)
         {
             #region 原始代码
@@ -164,7 +165,7 @@ namespace AttReport
             }
             axCZKEM1.EnableDevice(iMachineNumber, false);//开启设备
             axCZKEM1.GetDeviceStatus(iMachineNumber, 6, ref iValue);//返回记录数量
-            this.lblState.Text = "打卡记录数量： " + iValue+"条！正在下载中……";
+            this.lblState.Text = "打卡记录数量： " + iValue + "条！正在下载中……";
 
             Thread objThread = new Thread(new ThreadStart(delegate
             {
@@ -174,8 +175,15 @@ namespace AttReport
 
             //实例委托对象
             objgetLogDelegate = LblState;
-            //修改LblState控件
-            this.BeginInvoke(objgetLogDelegate, "保存完毕！请查询报表！");
+
+            //线程完毕后改变lblState值
+            if (rState == false)
+            {
+                //修改LblState控件
+                this.BeginInvoke(objgetLogDelegate, "保存完毕！请查询报表！");
+            }
+
+
 
         }
 
@@ -232,8 +240,7 @@ namespace AttReport
                     MessageBox.Show("Operation failed,ErrorCode=" + idwErrorCode.ToString(), "Error");
                 }
             }
-            axCZKEM1.EnableDevice(iMachineNumber, true);//enable the device
-
+            axCZKEM1.EnableDevice(iMachineNumber, true);//关闭设备
             #endregion
         }
 
