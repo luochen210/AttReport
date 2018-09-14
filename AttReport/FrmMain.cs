@@ -35,8 +35,6 @@ namespace AttReport
 
         //int iValue;
         int idwErrorCode = 0;
-        int iGLCount = 0;
-        int iIndex = 0;
         int idwEnrollNumber = 0;
         int idwVerifyMode = 0;
         int idwInOutMode = 0;
@@ -80,6 +78,7 @@ namespace AttReport
                 axCZKEM1.GetLastError(ref idwErrorCode);
                 MessageBox.Show("Unable to connect the device,ErrorCode=" + idwErrorCode.ToString(), "Error");
             }
+            lblState.Text = "连接成功！等待下载……";
             Cursor = Cursors.Default;
         }
         #endregion
@@ -165,8 +164,7 @@ namespace AttReport
             }
             axCZKEM1.EnableDevice(iMachineNumber, false);//开启设备
             axCZKEM1.GetDeviceStatus(iMachineNumber, 6, ref iValue);//返回记录数量
-            this.lblState.Text = "记录数量：" + iValue;
-
+            this.lblState.Text = "打卡记录数量： " + iValue+"条！正在下载中……";
 
             Thread objThread = new Thread(new ThreadStart(delegate
             {
@@ -174,23 +172,18 @@ namespace AttReport
             }));
             objThread.Start();
 
+            //实例委托对象
+            objgetLogDelegate = LblState;
+            //修改LblState控件
+            this.BeginInvoke(objgetLogDelegate, "保存完毕！请查询报表！");
 
         }
 
-        //UI更新方法
-        public void UpdateUI (int iMachineNumber, int idwEnrollNumber,int idwVerifyMode,int idwInOutMode,string sTime)
+        public void LblState(string msg)
         {
-            iGLCount++;
-            lvLogs.Items.Add(iGLCount.ToString());
-            lvLogs.Items[iIndex].SubItems.Add(idwEnrollNumber.ToString());
-            lvLogs.Items[iIndex].SubItems.Add(idwVerifyMode.ToString());
-            lvLogs.Items[iIndex].SubItems.Add(idwInOutMode.ToString());
-            lvLogs.Items[iIndex].SubItems.Add(sTime);
-            iIndex++;
+            lblState.Text = msg;
         }
 
-
-        //下载记录的方法    
         public void GetAttLog()
         {
             //创建一个名为"AttLogTable"的DataTable表
@@ -243,5 +236,20 @@ namespace AttReport
 
             #endregion
         }
+
+        //ListView更新方法
+        //public void UpdateUI (int iMachineNumber, int idwEnrollNumber,int idwVerifyMode,int idwInOutMode,string sTime)
+        //{
+        //    iGLCount++;
+        //    lvLogs.Items.Add(iGLCount.ToString());
+        //    lvLogs.Items[iIndex].SubItems.Add(idwEnrollNumber.ToString());
+        //    lvLogs.Items[iIndex].SubItems.Add(idwVerifyMode.ToString());
+        //    lvLogs.Items[iIndex].SubItems.Add(idwInOutMode.ToString());
+        //    lvLogs.Items[iIndex].SubItems.Add(sTime);
+        //    iIndex++;
+        //}
+
+
+        //下载记录的方法    
     }
 }
