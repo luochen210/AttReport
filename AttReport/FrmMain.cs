@@ -176,14 +176,8 @@ namespace AttReport
             //实例委托对象
             objgetLogDelegate = LblState;
 
-            //线程完毕后改变lblState值
-            if (rState == false)
-            {
-                //修改LblState控件
-                this.BeginInvoke(objgetLogDelegate, "保存完毕！请查询报表！");
-            }
-
-
+            //修改LblState控件
+            this.BeginInvoke(objgetLogDelegate, "保存完毕！请查询报表！");
 
         }
 
