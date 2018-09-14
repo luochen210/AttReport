@@ -70,26 +70,10 @@ namespace DAL
         }
         #endregion
 
-        //public List<AttRecord> GetStuByDate(int MachineId, int ClockId, int VerifyMode, int InOutMode, string ClockRecord)
-        //{
-        //    string sql = "insert into  OriginalLog (MachineId,ClockId,VerifyMode,InOutMode,ClockRecord) values ({0},{1},{2},{3},'{4}')";
-        //    sql = string.Format(sql, MachineId, ClockId, VerifyMode, InOutMode, ClockRecord);
-        //    SqlDataReader objReader = SQLHelper.GetReader(sql);
-        //    List<AttRecord> list = new List<AttRecord>();
-        //    while (objReader.Read())
-        //    {
-        //        list.Add(new AttRecord()
-        //        {
-        //            MachineId = Convert.ToInt32(objReader["MachineId"]),
-        //            ClockId = Convert.ToInt32(objReader["ClockId"]),
-        //            VerifyMode = Convert.ToInt32(objReader["VerifyMode"]),
-        //            InOutMode = Convert.ToInt32(objReader[" InOutMode"]),
-        //            ClockRecord = objReader["ClockRecord"].ToString()
-        //            //DTime = Convert.ToDateTime(objReader["DTime"])
-        //        });
-        //    }
-        //    return list;
+        #region 下载考勤记录
 
-        //}
+
+        #endregion
+
     }
 }
