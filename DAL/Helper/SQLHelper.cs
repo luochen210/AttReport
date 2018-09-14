@@ -17,7 +17,7 @@ namespace DAL
     {
         #region 连接字符串
 
-        
+
 
         // private static readonly string connString = "Server=.;DataBase=StudentManageDB;Uid=sa;Pwd=password01!";
 
@@ -27,6 +27,17 @@ namespace DAL
         //private static readonly string connString =
         //    Common.StringSecurity.DESDecrypt(ConfigurationManager.ConnectionStrings["connString"].ToString());
         #endregion
+
+        public static bool Conlink(bool clink)
+        {
+            SqlConnection conn = new SqlConnection(connString);
+            if (clink != true)
+            {
+                conn.Close();
+                clink = false;
+            }
+            return clink;
+        }
 
         #region 执行增、删、改（insert/update/delete）
         /// <summary>
@@ -47,10 +58,6 @@ namespace DAL
             catch (Exception ex)
             {
                 throw ex;
-            }
-            finally
-            {
-                conn.Close();
             }
         }
         #endregion
@@ -297,7 +304,6 @@ namespace DAL
                     sqlBulkTransaction = null;
                 if (bulkCopy != null)
                     bulkCopy.Close();
-                conn.Close();
             }
         }
         #endregion

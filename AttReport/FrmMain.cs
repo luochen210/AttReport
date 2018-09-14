@@ -168,10 +168,27 @@ namespace AttReport
             this.lblState.Text = "记录数量：" + iValue;
 
 
-            objgetLogDelegate.BeginInvoke(GetAttLog,null,null);
+            Thread objThread = new Thread(new ThreadStart(delegate
+            {
+                GetAttLog();
+            }));
+            objThread.Start();
 
 
         }
+
+        //UI更新方法
+        public void UpdateUI (int iMachineNumber, int idwEnrollNumber,int idwVerifyMode,int idwInOutMode,string sTime)
+        {
+            iGLCount++;
+            lvLogs.Items.Add(iGLCount.ToString());
+            lvLogs.Items[iIndex].SubItems.Add(idwEnrollNumber.ToString());
+            lvLogs.Items[iIndex].SubItems.Add(idwVerifyMode.ToString());
+            lvLogs.Items[iIndex].SubItems.Add(idwInOutMode.ToString());
+            lvLogs.Items[iIndex].SubItems.Add(sTime);
+            iIndex++;
+        }
+
 
         //下载记录的方法    
         public void GetAttLog()
@@ -192,14 +209,6 @@ namespace AttReport
                 //循环取出记录，然后逐条写入DataTable表
                 while (axCZKEM1.GetGeneralLogDataStr(iMachineNumber, ref idwEnrollNumber, ref idwVerifyMode, ref idwInOutMode, ref sTime))//从内存中获取记录
                 {
-                    iGLCount++;
-                    lvLogs.Items.Add(iGLCount.ToString());
-                    lvLogs.Items[iIndex].SubItems.Add(idwEnrollNumber.ToString());
-                    lvLogs.Items[iIndex].SubItems.Add(idwVerifyMode.ToString());
-                    lvLogs.Items[iIndex].SubItems.Add(idwInOutMode.ToString());
-                    lvLogs.Items[iIndex].SubItems.Add(sTime);
-                    iIndex++;
-
                     //通过索引为DataTable列赋值
                     if (objAttRecordService.GetClockRecord(sTime) == null)
                     {
@@ -210,6 +219,7 @@ namespace AttReport
                         dr[4] = sTime;
                         dt.Rows.Add(dr);
                     }
+                    SQLHelper.Conlink(false);
                 }
                 //批量保存到数据库
                 SQLHelper.UpdataByBulk(dt, "OriginalLog");//dt代表DataTable表，OriginalLog代表SQL数据库表
@@ -217,7 +227,6 @@ namespace AttReport
             }
             else
             {
-                Cursor = Cursors.Default;
                 axCZKEM1.GetLastError(ref idwErrorCode);
 
                 if (idwErrorCode != 0)
@@ -231,7 +240,6 @@ namespace AttReport
                 }
             }
             axCZKEM1.EnableDevice(iMachineNumber, true);//enable the device
-            Cursor = Cursors.Default;
 
             #endregion
         }
