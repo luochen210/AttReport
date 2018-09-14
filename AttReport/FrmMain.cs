@@ -29,7 +29,8 @@ namespace AttReport
 
         //int iValue;
         int idwErrorCode = 0;
-
+        int iGLCount = 0;
+        int iIndex = 0;
         int idwEnrollNumber = 0;
         int idwVerifyMode = 0;
         int idwInOutMode = 0;
@@ -108,6 +109,14 @@ namespace AttReport
                 //循环取出记录，然后逐条写入DataTable表
                 while (axCZKEM1.GetGeneralLogDataStr(iMachineNumber, ref idwEnrollNumber, ref idwVerifyMode, ref idwInOutMode, ref sTime))//从内存中获取记录
                 {
+                    iGLCount++;
+                    lvLogs.Items.Add(iGLCount.ToString());
+                    lvLogs.Items[iIndex].SubItems.Add(idwEnrollNumber.ToString());
+                    lvLogs.Items[iIndex].SubItems.Add(idwVerifyMode.ToString());
+                    lvLogs.Items[iIndex].SubItems.Add(idwInOutMode.ToString());
+                    lvLogs.Items[iIndex].SubItems.Add(sTime);
+                    iIndex++;
+
                     DataRow dr = dt.NewRow();
                     //通过索引为DataTable列赋值
                     if (objAttRecordService.GetClockRecord(sTime) == null)

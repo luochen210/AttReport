@@ -38,15 +38,16 @@
             this.btnGetLog = new System.Windows.Forms.Button();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.lblState = new System.Windows.Forms.Label();
+            this.progressBar1 = new System.Windows.Forms.ProgressBar();
             this.lvLogs = new System.Windows.Forms.ListView();
             this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader3 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader4 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader5 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.tabPage2 = new System.Windows.Forms.TabPage();
-            this.lblState = new System.Windows.Forms.Label();
-            this.progressBar1 = new System.Windows.Forms.ProgressBar();
+            this.columnHeader6 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.menuStrip1.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
@@ -83,7 +84,7 @@
             // txtIP
             // 
             this.txtIP.Location = new System.Drawing.Point(33, 34);
-            this.txtIP.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtIP.Margin = new System.Windows.Forms.Padding(2);
             this.txtIP.Name = "txtIP";
             this.txtIP.Size = new System.Drawing.Size(96, 21);
             this.txtIP.TabIndex = 2;
@@ -102,7 +103,7 @@
             // txtPort
             // 
             this.txtPort.Location = new System.Drawing.Point(184, 34);
-            this.txtPort.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtPort.Margin = new System.Windows.Forms.Padding(2);
             this.txtPort.Name = "txtPort";
             this.txtPort.Size = new System.Drawing.Size(44, 21);
             this.txtPort.TabIndex = 2;
@@ -112,7 +113,7 @@
             // 
             this.btnConnect.AutoSize = true;
             this.btnConnect.Location = new System.Drawing.Point(250, 32);
-            this.btnConnect.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnConnect.Margin = new System.Windows.Forms.Padding(2);
             this.btnConnect.Name = "btnConnect";
             this.btnConnect.Size = new System.Drawing.Size(56, 22);
             this.btnConnect.TabIndex = 3;
@@ -124,7 +125,7 @@
             // 
             this.btnGetLog.AutoSize = true;
             this.btnGetLog.Location = new System.Drawing.Point(331, 32);
-            this.btnGetLog.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnGetLog.Margin = new System.Windows.Forms.Padding(2);
             this.btnGetLog.Name = "btnGetLog";
             this.btnGetLog.Size = new System.Drawing.Size(63, 22);
             this.btnGetLog.TabIndex = 3;
@@ -140,7 +141,7 @@
             this.tabControl1.Controls.Add(this.tabPage1);
             this.tabControl1.Controls.Add(this.tabPage2);
             this.tabControl1.Location = new System.Drawing.Point(8, 90);
-            this.tabControl1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tabControl1.Margin = new System.Windows.Forms.Padding(2);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
             this.tabControl1.Size = new System.Drawing.Size(661, 340);
@@ -150,58 +151,20 @@
             // 
             this.tabPage1.Controls.Add(this.lvLogs);
             this.tabPage1.Location = new System.Drawing.Point(4, 22);
-            this.tabPage1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tabPage1.Margin = new System.Windows.Forms.Padding(2);
             this.tabPage1.Name = "tabPage1";
-            this.tabPage1.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tabPage1.Padding = new System.Windows.Forms.Padding(2);
             this.tabPage1.Size = new System.Drawing.Size(653, 314);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "tabPage1";
             this.tabPage1.UseVisualStyleBackColor = true;
             // 
-            // lvLogs
-            // 
-            this.lvLogs.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
-            this.columnHeader1,
-            this.columnHeader2,
-            this.columnHeader3,
-            this.columnHeader4,
-            this.columnHeader5});
-            this.lvLogs.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.lvLogs.GridLines = true;
-            this.lvLogs.Location = new System.Drawing.Point(2, 2);
-            this.lvLogs.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.lvLogs.Name = "lvLogs";
-            this.lvLogs.Size = new System.Drawing.Size(649, 310);
-            this.lvLogs.TabIndex = 0;
-            this.lvLogs.UseCompatibleStateImageBehavior = false;
-            this.lvLogs.View = System.Windows.Forms.View.Details;
-            // 
-            // columnHeader1
-            // 
-            this.columnHeader1.Width = 150;
-            // 
-            // columnHeader2
-            // 
-            this.columnHeader2.Width = 150;
-            // 
-            // columnHeader3
-            // 
-            this.columnHeader3.Width = 150;
-            // 
-            // columnHeader4
-            // 
-            this.columnHeader4.Width = 150;
-            // 
-            // columnHeader5
-            // 
-            this.columnHeader5.Width = 294;
-            // 
             // tabPage2
             // 
             this.tabPage2.Location = new System.Drawing.Point(4, 22);
-            this.tabPage2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tabPage2.Margin = new System.Windows.Forms.Padding(2);
             this.tabPage2.Name = "tabPage2";
-            this.tabPage2.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tabPage2.Padding = new System.Windows.Forms.Padding(2);
             this.tabPage2.Size = new System.Drawing.Size(653, 314);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "tabPage2";
@@ -221,10 +184,51 @@
             // progressBar1
             // 
             this.progressBar1.Location = new System.Drawing.Point(251, 63);
-            this.progressBar1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.progressBar1.Margin = new System.Windows.Forms.Padding(2);
             this.progressBar1.Name = "progressBar1";
             this.progressBar1.Size = new System.Drawing.Size(375, 18);
             this.progressBar1.TabIndex = 9;
+            // 
+            // lvLogs
+            // 
+            this.lvLogs.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.columnHeader1,
+            this.columnHeader2,
+            this.columnHeader3,
+            this.columnHeader4,
+            this.columnHeader5,
+            this.columnHeader6});
+            this.lvLogs.GridLines = true;
+            this.lvLogs.Location = new System.Drawing.Point(5, 5);
+            this.lvLogs.Name = "lvLogs";
+            this.lvLogs.Size = new System.Drawing.Size(643, 306);
+            this.lvLogs.TabIndex = 0;
+            this.lvLogs.UseCompatibleStateImageBehavior = false;
+            this.lvLogs.View = System.Windows.Forms.View.Details;
+            // 
+            // columnHeader1
+            // 
+            this.columnHeader1.Width = 105;
+            // 
+            // columnHeader2
+            // 
+            this.columnHeader2.Width = 108;
+            // 
+            // columnHeader3
+            // 
+            this.columnHeader3.Width = 104;
+            // 
+            // columnHeader4
+            // 
+            this.columnHeader4.Width = 129;
+            // 
+            // columnHeader5
+            // 
+            this.columnHeader5.Width = 101;
+            // 
+            // columnHeader6
+            // 
+            this.columnHeader6.Width = 90;
             // 
             // FrmMain
             // 
@@ -242,7 +246,7 @@
             this.Controls.Add(this.lblIP);
             this.Controls.Add(this.menuStrip1);
             this.MainMenuStrip = this.menuStrip1;
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "FrmMain";
             this.Text = "Form1";
             this.menuStrip1.ResumeLayout(false);
@@ -266,15 +270,16 @@
         private System.Windows.Forms.Button btnGetLog;
         private System.Windows.Forms.TabControl tabControl1;
         private System.Windows.Forms.TabPage tabPage1;
+        private System.Windows.Forms.TabPage tabPage2;
+        private System.Windows.Forms.Label lblState;
+        private System.Windows.Forms.ProgressBar progressBar1;
         private System.Windows.Forms.ListView lvLogs;
         private System.Windows.Forms.ColumnHeader columnHeader1;
         private System.Windows.Forms.ColumnHeader columnHeader2;
         private System.Windows.Forms.ColumnHeader columnHeader3;
         private System.Windows.Forms.ColumnHeader columnHeader4;
         private System.Windows.Forms.ColumnHeader columnHeader5;
-        private System.Windows.Forms.TabPage tabPage2;
-        private System.Windows.Forms.Label lblState;
-        private System.Windows.Forms.ProgressBar progressBar1;
+        private System.Windows.Forms.ColumnHeader columnHeader6;
     }
 }
 
