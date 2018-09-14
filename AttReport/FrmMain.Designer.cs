@@ -60,7 +60,7 @@
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Padding = new System.Windows.Forms.Padding(5, 2, 0, 2);
-            this.menuStrip1.Size = new System.Drawing.Size(900, 28);
+            this.menuStrip1.Size = new System.Drawing.Size(1006, 28);
             this.menuStrip1.TabIndex = 0;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -137,11 +137,11 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.tabControl1.Controls.Add(this.tabPage1);
             this.tabControl1.Controls.Add(this.tabPage2);
-            this.tabControl1.Location = new System.Drawing.Point(11, 112);
+            this.tabControl1.Location = new System.Drawing.Point(11, 89);
             this.tabControl1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(881, 425);
+            this.tabControl1.Size = new System.Drawing.Size(987, 621);
             this.tabControl1.TabIndex = 6;
             // 
             // tabPage1
@@ -151,7 +151,7 @@
             this.tabPage1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.tabPage1.Size = new System.Drawing.Size(873, 396);
+            this.tabPage1.Size = new System.Drawing.Size(979, 592);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "tabPage1";
             this.tabPage1.UseVisualStyleBackColor = true;
@@ -165,11 +165,12 @@
             this.columnHeader4,
             this.columnHeader5,
             this.columnHeader6});
+            this.lvLogs.Dock = System.Windows.Forms.DockStyle.Fill;
             this.lvLogs.GridLines = true;
-            this.lvLogs.Location = new System.Drawing.Point(7, 6);
-            this.lvLogs.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.lvLogs.Location = new System.Drawing.Point(3, 2);
+            this.lvLogs.Margin = new System.Windows.Forms.Padding(4);
             this.lvLogs.Name = "lvLogs";
-            this.lvLogs.Size = new System.Drawing.Size(856, 382);
+            this.lvLogs.Size = new System.Drawing.Size(973, 588);
             this.lvLogs.TabIndex = 0;
             this.lvLogs.UseCompatibleStateImageBehavior = false;
             this.lvLogs.View = System.Windows.Forms.View.Details;
@@ -204,7 +205,7 @@
             this.tabPage2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.tabPage2.Size = new System.Drawing.Size(873, 396);
+            this.tabPage2.Size = new System.Drawing.Size(979, 592);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "tabPage2";
             this.tabPage2.UseVisualStyleBackColor = true;
@@ -212,7 +213,7 @@
             // lblState
             // 
             this.lblState.AutoSize = true;
-            this.lblState.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.lblState.ForeColor = System.Drawing.SystemColors.Highlight;
             this.lblState.Location = new System.Drawing.Point(549, 48);
             this.lblState.Name = "lblState";
             this.lblState.Size = new System.Drawing.Size(172, 15);
@@ -223,7 +224,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(900, 548);
+            this.ClientSize = new System.Drawing.Size(1006, 721);
             this.Controls.Add(this.lblState);
             this.Controls.Add(this.tabControl1);
             this.Controls.Add(this.btnGetLog);

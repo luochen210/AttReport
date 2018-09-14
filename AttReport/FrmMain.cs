@@ -172,13 +172,6 @@ namespace AttReport
                 GetAttLog();
             }));
             objThread.Start();
-
-            //实例委托对象
-            objgetLogDelegate = LblState;
-
-            //修改LblState控件
-            this.BeginInvoke(objgetLogDelegate, "保存完毕！请查询报表！");
-
         }
 
         public void LblState(string msg)
@@ -214,11 +207,16 @@ namespace AttReport
                         dr[4] = sTime;
                         dt.Rows.Add(dr);
                     }
-                    SQLHelper.Conlink(false);
                 }
+
                 //批量保存到数据库
                 SQLHelper.UpdataByBulk(dt, "OriginalLog");//dt代表DataTable表，OriginalLog代表SQL数据库表
 
+                //实例委托对象
+                objgetLogDelegate = LblState;
+
+                //修改LblState控件
+                this.BeginInvoke(objgetLogDelegate, "保存完毕！请查询报表！");
             }
             else
             {
