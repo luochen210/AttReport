@@ -299,6 +299,7 @@ namespace DAL
                     sqlBulkTransaction = null;
                 if (bulkCopy != null)
                     bulkCopy.Close();
+                conn.Close();
             }
         }
         #endregion

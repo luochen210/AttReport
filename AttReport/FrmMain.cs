@@ -25,15 +25,23 @@ namespace AttReport
             //加密SQL连接字符串
             //string connstring = DAL.SQLHelper.connString;
             //connstring = Common.StringSecurity.DESEncrypt(connstring);
+
         }
 
         //声明委托
         public delegate void GetLogDelegate(string getLog);
 
         //根据委托创建对象
-        GetLogDelegate objgetLogDelegate;
+        GetLogDelegate objLogDelegate;
 
-        //int iValue;
+        //public delegate void GetDataTable(DataTable tempTable);
+
+        //GetDataTable objGetDataTable;
+
+        int iGLCount = 0;
+        int iIndex = 0;
+        int iValue = 0;
+
         int idwErrorCode = 0;
         int idwEnrollNumber = 0;
         int idwVerifyMode = 0;
@@ -41,6 +49,15 @@ namespace AttReport
         string sTime = "";
 
         public zkemkeeper.CZKEMClass axCZKEM1 = new zkemkeeper.CZKEMClass();
+
+        #region lblState控件值的修改方法       
+
+        //lblState控件值的修改方法
+        public void LblState(string msg)
+        {
+            lblState.Text = msg;
+        }
+        #endregion
 
         #region 连接考勤机
         private bool bIsConnected = false;//the boolean value identifies whether the device is connected
@@ -90,72 +107,80 @@ namespace AttReport
         //异步执行，保存打卡记录
         private void btnGetLog_Click(object sender, EventArgs e)
         {
-            Thread objThread = new Thread(new ThreadStart(delegate
-            {
-                GetAttLog();
-            }));
-            objThread.Start();
-        }
+            #region 异步代码
 
 
-        // lblState控件值的修改方法
-        public void LblState(string msg)
-        {
-            lblState.Text = msg;
-        }
+            //if (bIsConnected == false)
+            //{
+            //    MessageBox.Show("Please connect the device first", "Error");
+            //    return;
+            //}
 
+            //Thread objThread = new Thread(new ThreadStart(delegate
+            //{
+            //    GetAttLog();
+            //}));
+            //objThread.Start();
 
-        //下载记录的方法
-        public void GetAttLog()
-        {
-            //实例委托对象
-            objgetLogDelegate = LblState;
-
-            //声明返回变量
-            int iValue = 0;
+            ////实例委托对象
+            //objLogDelegate = LblState;
+            ////objGetDataTable = iDateTable;
+            #endregion
 
             //判断设备是否为连接状态
             if (bIsConnected == false)
             {
                 MessageBox.Show("Please connect the device first", "Error");
+                return;
             }
+
+            //重置记数变量
+            iGLCount = 0;
+            iIndex = 0;
+            //设置鼠标状态
+            Cursor = Cursors.WaitCursor;
+            //清除dataGridView控件内容
+            dataGridView1.Rows.Clear();
+
+            //实例委托对象
+            objLogDelegate = LblState;
+
             axCZKEM1.EnableDevice(iMachineNumber, false);//开启设备
             axCZKEM1.GetDeviceStatus(iMachineNumber, 6, ref iValue);//返回记录数量
-            this.BeginInvoke(objgetLogDelegate, "打卡记录数量： " + iValue + "条！正在下载中……");
-
-            //创建一个名为"AttLogTable"的DataTable表
-            DataTable dt = new DataTable("AttLogTable");
-
-            //设定列数据
-            dt.Columns.Add("MachineId", typeof(int));
-            dt.Columns.Add("ClockId", typeof(int));
-            dt.Columns.Add("VerifyMode", typeof(int));
-            dt.Columns.Add("InOutMode", typeof(int));
-            dt.Columns.Add("ClockRecord", typeof(DateTime));
-            DataRow dr = dt.NewRow();
+            this.BeginInvoke(objLogDelegate, "打卡记录数量： " + iValue + "条！正在下载中……");
 
             if (axCZKEM1.ReadGeneralLogData(iMachineNumber))//将记录读入内存
             {
                 //循环取出记录，然后逐条写入DataTable表
                 while (axCZKEM1.GetGeneralLogDataStr(iMachineNumber, ref idwEnrollNumber, ref idwVerifyMode, ref idwInOutMode, ref sTime))//从内存中获取记录
                 {
-                    //通过索引为DataTable列赋值
-                    if (objAttRecordService.GetClockRecord(sTime) == null)
-                    {
-                        dr[0] = iMachineNumber;
-                        dr[1] = idwEnrollNumber;
-                        dr[2] = idwVerifyMode;
-                        dr[3] = idwInOutMode;
-                        dr[4] = sTime;
-                        dt.Rows.Add(dr);
-                    }
-                }
+                    iGLCount++;
+                    dataGridView1.Rows.Add();
+                    dataGridView1.Rows[iIndex].Cells[0].Value = iGLCount;
+                    dataGridView1.Rows[iIndex].Cells[1].Value = iMachineNumber;
+                    dataGridView1.Rows[iIndex].Cells[2].Value = idwEnrollNumber;
+                    dataGridView1.Rows[iIndex].Cells[3].Value = idwVerifyMode;
+                    dataGridView1.Rows[iIndex].Cells[4].Value = idwInOutMode;
+                    dataGridView1.Rows[iIndex].Cells[5].Value = sTime;
+                    iIndex++;
+                }//记录下载完毕！
 
-                //批量保存到数据库
-                SQLHelper.UpdataByBulk(dt, "OriginalLog");//dt代表DataTable表，OriginalLog代表SQL数据库表
+
+                #region 异步代码（已停用）
+
+                //跨线程
+                //dataGridView1.DataSource = dt;
+                //this.BeginInvoke(objGetDataTable, dt);//为委托表赋值
+                #endregion
 
                 //修改LblState控件
-                this.BeginInvoke(objgetLogDelegate, "保存完毕！请查询报表！");
+                this.BeginInvoke(objLogDelegate, "下载完毕！正在保存……");
+
+                ////批量保存到数据库
+                //SQLHelper.UpdataByBulk(dt, "OriginalLog");//dt代表DataTable表，OriginalLog代表SQL数据库表
+
+                //修改LblState控件
+                this.BeginInvoke(objLogDelegate, "保存完毕！请查询报表！");
             }
             else
             {
@@ -164,15 +189,123 @@ namespace AttReport
                 if (idwErrorCode != 0)
                 {
                     MessageBox.Show("Reading data from terminal failed,ErrorCode: " + idwErrorCode.ToString(), "Error");
+                    return;
                 }
                 else
                 {
                     axCZKEM1.GetLastError(ref idwErrorCode);
                     MessageBox.Show("Operation failed,ErrorCode=" + idwErrorCode.ToString(), "Error");
+                    return;
                 }
             }
-            axCZKEM1.EnableDevice(iMachineNumber, true);//关闭设备            
+            axCZKEM1.EnableDevice(iMachineNumber, true);//关闭设备 
+            Cursor = Cursors.Default;
         }
+        #endregion
+
+        #region 异步代码
+
+
+
+        //public void iDateTable(DataTable itempTable)
+        //{
+        //    //创建一个名为"AttLogTable"的DataTable表
+        //    DataTable dt = new DataTable("AttLogTable");
+
+        //    itempTable = dt;
+
+        //    //设定列数据
+        //    itempTable.Columns.Add("MachineId", typeof(int));
+        //    itempTable.Columns.Add("ClockId", typeof(int));
+        //    itempTable.Columns.Add("VerifyMode", typeof(int));
+        //    itempTable.Columns.Add("InOutMode", typeof(int));
+        //    itempTable.Columns.Add("ClockRecord", typeof(string));
+
+        //    dataGridView1.DataSource = itempTable;
+
+        //}
+
+
+        //下载记录的方法
+        //public void GetAttLog()
+        //{
+        //    //实例委托对象
+        //    objLogDelegate = LblState;
+        //    //objGetDataTable = iDateTable;
+
+        //    //判断设备是否为连接状态
+        //    if (bIsConnected == false)
+        //    {
+        //        MessageBox.Show("Please connect the device first", "Error");
+        //        return;
+        //    }
+        //    axCZKEM1.EnableDevice(iMachineNumber, false);//开启设备
+        //    axCZKEM1.GetDeviceStatus(iMachineNumber, 6, ref iValue);//返回记录数量
+        //    this.BeginInvoke(objLogDelegate, "打卡记录数量： " + iValue + "条！正在下载中……");
+
+        //    DataGridView dgv = new DataGridView();
+        //    DataTable dt = new DataTable("AttLogTable");
+
+        //    //设定列数据
+        //    dt.Columns.Add("MachineId", typeof(int));
+        //    dt.Columns.Add("ClockId", typeof(int));
+        //    dt.Columns.Add("VerifyMode", typeof(int));
+        //    dt.Columns.Add("InOutMode", typeof(int));
+        //    dt.Columns.Add("ClockRecord", typeof(string));
+
+        //    if (axCZKEM1.ReadGeneralLogData(iMachineNumber))//将记录读入内存
+        //    {
+
+
+        //        //循环取出记录，然后逐条写入DataTable表
+        //        while (axCZKEM1.GetGeneralLogDataStr(iMachineNumber, ref idwEnrollNumber, ref idwVerifyMode, ref idwInOutMode, ref sTime))//从内存中获取记录
+        //        {
+        //            iIndex++;
+        //            DataRow dr = dt.NewRow();
+        //            dr[0] = iMachineNumber;
+        //            dr[1] = idwEnrollNumber;
+        //            dr[2] = idwVerifyMode;
+        //            dr[3] = idwInOutMode;
+        //            dr[4] = sTime;
+        //            dt.Rows.Add(dr);
+
+        //            dgv.DataSource = dt;
+        //        }
+
+        //        //跨线程
+        //        //dataGridView1.DataSource = dt;
+
+        //        this.BeginInvoke(objGetDataTable,dt);//为委托表赋值
+
+
+        //        //修改LblState控件
+        //        this.BeginInvoke(objLogDelegate, "下载完毕！正在保存……");
+
+        //        //批量保存到数据库
+        //        SQLHelper.UpdataByBulk(dt, "OriginalLog");//dt代表DataTable表，OriginalLog代表SQL数据库表
+
+        //        //修改LblState控件
+        //        this.BeginInvoke(objLogDelegate, "保存完毕！请查询报表！");
+        //    }
+        //    else
+        //    {
+        //        axCZKEM1.GetLastError(ref idwErrorCode);
+
+        //        if (idwErrorCode != 0)
+        //        {
+        //            MessageBox.Show("Reading data from terminal failed,ErrorCode: " + idwErrorCode.ToString(), "Error");
+        //            return;
+        //        }
+        //        else
+        //        {
+        //            axCZKEM1.GetLastError(ref idwErrorCode);
+        //            MessageBox.Show("Operation failed,ErrorCode=" + idwErrorCode.ToString(), "Error");
+        //            return;
+        //        }
+        //    }
+        //    axCZKEM1.EnableDevice(iMachineNumber, true);//关闭设备            
+        //}
+
         #endregion
 
         //ListView更新方法
@@ -186,8 +319,5 @@ namespace AttReport
         //    lvLogs.Items[iIndex].SubItems.Add(sTime);
         //    iIndex++;
         //}
-
-
-        //下载记录的方法    
     }
 }
