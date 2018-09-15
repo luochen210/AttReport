@@ -163,17 +163,8 @@ namespace AttReport
                     dataGridView1.Rows[iIndex].Cells[4].Value = idwInOutMode;
                     dataGridView1.Rows[iIndex].Cells[5].Value = sTime;
                     iIndex++;
-                }//记录下载完毕！
-
-
-                #region 异步代码（已停用）
-
-                //跨线程
-                //dataGridView1.DataSource = dt;
-                //this.BeginInvoke(objGetDataTable, dt);//为委托表赋值
-                #endregion
-
-                //修改LblState控件
+                }
+                //记录下载完毕后输出LblState控件提示
                 this.BeginInvoke(objLogDelegate, "下载完毕！正在保存……");
 
                 ////批量保存到数据库
