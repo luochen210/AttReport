@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace AttReport.Properties {
+namespace Common.Properties {
     using System;
     
     

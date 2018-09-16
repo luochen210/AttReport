@@ -5,7 +5,7 @@ using System.Text;
 
 using System.Text.RegularExpressions;
 
-namespace AttReport.Common
+namespace Common
 {
     class DataValidate
     {
