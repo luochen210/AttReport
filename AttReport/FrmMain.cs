@@ -12,7 +12,7 @@ using DAL;
 using System.Data.SqlClient;
 using System.Threading;
 
-namespace Common
+namespace AttReport
 {
     public partial class FrmMain : Form
     {

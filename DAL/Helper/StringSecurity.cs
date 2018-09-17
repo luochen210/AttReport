@@ -6,7 +6,7 @@ using System.Text;
 using System.IO;
 using System.Security.Cryptography;
 
-namespace Common
+namespace AttReport
 {
     /// <summary>
     /// 字符串加密解密类

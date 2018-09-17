@@ -1,4 +1,4 @@
-﻿namespace Common
+﻿namespace AttReport
 {
     partial class FrmMain
     {
@@ -28,12 +28,12 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.系统管理ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.lblIP = new System.Windows.Forms.Label();
@@ -42,20 +42,25 @@
             this.txtPort = new System.Windows.Forms.TextBox();
             this.btnConnect = new System.Windows.Forms.Button();
             this.btnGetLog = new System.Windows.Forms.Button();
-            this.tabControl1 = new System.Windows.Forms.TabControl();
-            this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.tctlReport = new System.Windows.Forms.TabControl();
+            this.tabLog = new System.Windows.Forms.TabPage();
             this.dgvAttLog = new System.Windows.Forms.DataGridView();
-            this.tabPage2 = new System.Windows.Forms.TabPage();
-            this.lblState = new System.Windows.Forms.Label();
             this.ClockId = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.MachineId = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.VerifyMode = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.InOutMode = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ClockRecord = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.tabDaily = new System.Windows.Forms.TabPage();
+            this.lblState = new System.Windows.Forms.Label();
+            this.tabMonthly = new System.Windows.Forms.TabPage();
+            this.tabAnnual = new System.Windows.Forms.TabPage();
+            this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.menuStrip1.SuspendLayout();
-            this.tabControl1.SuspendLayout();
-            this.tabPage1.SuspendLayout();
+            this.tctlReport.SuspendLayout();
+            this.tabLog.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvAttLog)).BeginInit();
+            this.tabDaily.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
             // menuStrip1
@@ -138,44 +143,47 @@
             this.btnGetLog.UseVisualStyleBackColor = true;
             this.btnGetLog.Click += new System.EventHandler(this.btnGetLog_Click);
             // 
-            // tabControl1
+            // tctlReport
             // 
-            this.tabControl1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.tctlReport.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.tabControl1.Controls.Add(this.tabPage1);
-            this.tabControl1.Controls.Add(this.tabPage2);
-            this.tabControl1.Location = new System.Drawing.Point(8, 71);
-            this.tabControl1.Margin = new System.Windows.Forms.Padding(2);
-            this.tabControl1.Name = "tabControl1";
-            this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(740, 497);
-            this.tabControl1.TabIndex = 6;
+            this.tctlReport.Controls.Add(this.tabLog);
+            this.tctlReport.Controls.Add(this.tabDaily);
+            this.tctlReport.Controls.Add(this.tabMonthly);
+            this.tctlReport.Controls.Add(this.tabAnnual);
+            this.tctlReport.Location = new System.Drawing.Point(8, 71);
+            this.tctlReport.Margin = new System.Windows.Forms.Padding(2);
+            this.tctlReport.Name = "tctlReport";
+            this.tctlReport.SelectedIndex = 0;
+            this.tctlReport.Size = new System.Drawing.Size(740, 497);
+            this.tctlReport.TabIndex = 6;
             // 
-            // tabPage1
+            // tabLog
             // 
-            this.tabPage1.Controls.Add(this.dgvAttLog);
-            this.tabPage1.Location = new System.Drawing.Point(4, 22);
-            this.tabPage1.Margin = new System.Windows.Forms.Padding(2);
-            this.tabPage1.Name = "tabPage1";
-            this.tabPage1.Padding = new System.Windows.Forms.Padding(2);
-            this.tabPage1.Size = new System.Drawing.Size(732, 471);
-            this.tabPage1.TabIndex = 0;
-            this.tabPage1.Text = "tabPage1";
-            this.tabPage1.UseVisualStyleBackColor = true;
+            this.tabLog.Controls.Add(this.dgvAttLog);
+            this.tabLog.Location = new System.Drawing.Point(4, 22);
+            this.tabLog.Margin = new System.Windows.Forms.Padding(2);
+            this.tabLog.Name = "tabLog";
+            this.tabLog.Padding = new System.Windows.Forms.Padding(2);
+            this.tabLog.Size = new System.Drawing.Size(732, 471);
+            this.tabLog.TabIndex = 0;
+            this.tabLog.Text = "打卡记录";
+            this.tabLog.UseVisualStyleBackColor = true;
             // 
             // dgvAttLog
             // 
             this.dgvAttLog.AllowUserToAddRows = false;
             this.dgvAttLog.AllowUserToDeleteRows = false;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvAttLog.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            this.dgvAttLog.BackgroundColor = System.Drawing.SystemColors.ButtonFace;
+            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle7.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle7.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            dataGridViewCellStyle7.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle7.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvAttLog.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle7;
             this.dgvAttLog.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvAttLog.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.ClockId,
@@ -194,16 +202,71 @@
             this.dgvAttLog.TabIndex = 0;
             this.dgvAttLog.RowPostPaint += new System.Windows.Forms.DataGridViewRowPostPaintEventHandler(this.dgvStudentList_RowPostPaint);
             // 
-            // tabPage2
+            // ClockId
             // 
-            this.tabPage2.Location = new System.Drawing.Point(4, 22);
-            this.tabPage2.Margin = new System.Windows.Forms.Padding(2);
-            this.tabPage2.Name = "tabPage2";
-            this.tabPage2.Padding = new System.Windows.Forms.Padding(2);
-            this.tabPage2.Size = new System.Drawing.Size(732, 471);
-            this.tabPage2.TabIndex = 1;
-            this.tabPage2.Text = "tabPage2";
-            this.tabPage2.UseVisualStyleBackColor = true;
+            this.ClockId.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
+            this.ClockId.DataPropertyName = "ClockId";
+            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.ClockId.DefaultCellStyle = dataGridViewCellStyle8;
+            this.ClockId.HeaderText = "考勤号码";
+            this.ClockId.Name = "ClockId";
+            this.ClockId.ReadOnly = true;
+            this.ClockId.Width = 78;
+            // 
+            // MachineId
+            // 
+            this.MachineId.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
+            this.MachineId.DataPropertyName = "MachineId";
+            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.MachineId.DefaultCellStyle = dataGridViewCellStyle9;
+            this.MachineId.HeaderText = "机器号";
+            this.MachineId.Name = "MachineId";
+            this.MachineId.ReadOnly = true;
+            this.MachineId.Width = 66;
+            // 
+            // VerifyMode
+            // 
+            this.VerifyMode.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
+            this.VerifyMode.DataPropertyName = "VerifyMode";
+            dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.VerifyMode.DefaultCellStyle = dataGridViewCellStyle10;
+            this.VerifyMode.HeaderText = "验证方式";
+            this.VerifyMode.Name = "VerifyMode";
+            this.VerifyMode.ReadOnly = true;
+            this.VerifyMode.Width = 78;
+            // 
+            // InOutMode
+            // 
+            this.InOutMode.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
+            this.InOutMode.DataPropertyName = "InOutMode";
+            dataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.InOutMode.DefaultCellStyle = dataGridViewCellStyle11;
+            this.InOutMode.HeaderText = "考勤状态";
+            this.InOutMode.Name = "InOutMode";
+            this.InOutMode.ReadOnly = true;
+            this.InOutMode.Width = 78;
+            // 
+            // ClockRecord
+            // 
+            this.ClockRecord.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.ClockRecord.DataPropertyName = "ClockRecord";
+            dataGridViewCellStyle12.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.ClockRecord.DefaultCellStyle = dataGridViewCellStyle12;
+            this.ClockRecord.HeaderText = "打卡时间";
+            this.ClockRecord.Name = "ClockRecord";
+            this.ClockRecord.ReadOnly = true;
+            // 
+            // tabDaily
+            // 
+            this.tabDaily.Controls.Add(this.dataGridView1);
+            this.tabDaily.Location = new System.Drawing.Point(4, 22);
+            this.tabDaily.Margin = new System.Windows.Forms.Padding(2);
+            this.tabDaily.Name = "tabDaily";
+            this.tabDaily.Padding = new System.Windows.Forms.Padding(2);
+            this.tabDaily.Size = new System.Drawing.Size(732, 471);
+            this.tabDaily.TabIndex = 1;
+            this.tabDaily.Text = "日报表";
+            this.tabDaily.UseVisualStyleBackColor = true;
             // 
             // lblState
             // 
@@ -216,67 +279,44 @@
             this.lblState.TabIndex = 8;
             this.lblState.Text = "设备状态：等待连接……";
             // 
-            // ClockId
+            // tabMonthly
             // 
-            this.ClockId.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
-            this.ClockId.DataPropertyName = "ClockId";
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.ClockId.DefaultCellStyle = dataGridViewCellStyle2;
-            this.ClockId.HeaderText = "考勤号码";
-            this.ClockId.Name = "ClockId";
-            this.ClockId.ReadOnly = true;
-            this.ClockId.Width = 78;
+            this.tabMonthly.Location = new System.Drawing.Point(4, 22);
+            this.tabMonthly.Name = "tabMonthly";
+            this.tabMonthly.Padding = new System.Windows.Forms.Padding(3);
+            this.tabMonthly.Size = new System.Drawing.Size(732, 471);
+            this.tabMonthly.TabIndex = 2;
+            this.tabMonthly.Text = "月报表";
+            this.tabMonthly.UseVisualStyleBackColor = true;
             // 
-            // MachineId
+            // tabAnnual
             // 
-            this.MachineId.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
-            this.MachineId.DataPropertyName = "MachineId";
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.MachineId.DefaultCellStyle = dataGridViewCellStyle3;
-            this.MachineId.HeaderText = "机器号";
-            this.MachineId.Name = "MachineId";
-            this.MachineId.ReadOnly = true;
-            this.MachineId.Width = 66;
+            this.tabAnnual.Location = new System.Drawing.Point(4, 22);
+            this.tabAnnual.Name = "tabAnnual";
+            this.tabAnnual.Padding = new System.Windows.Forms.Padding(3);
+            this.tabAnnual.Size = new System.Drawing.Size(732, 471);
+            this.tabAnnual.TabIndex = 3;
+            this.tabAnnual.Text = "年报表";
+            this.tabAnnual.UseVisualStyleBackColor = true;
             // 
-            // VerifyMode
+            // dataGridView1
             // 
-            this.VerifyMode.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
-            this.VerifyMode.DataPropertyName = "VerifyMode";
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.VerifyMode.DefaultCellStyle = dataGridViewCellStyle4;
-            this.VerifyMode.HeaderText = "验证方式";
-            this.VerifyMode.Name = "VerifyMode";
-            this.VerifyMode.ReadOnly = true;
-            this.VerifyMode.Width = 78;
-            // 
-            // InOutMode
-            // 
-            this.InOutMode.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
-            this.InOutMode.DataPropertyName = "InOutMode";
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.InOutMode.DefaultCellStyle = dataGridViewCellStyle5;
-            this.InOutMode.HeaderText = "考勤状态";
-            this.InOutMode.Name = "InOutMode";
-            this.InOutMode.ReadOnly = true;
-            this.InOutMode.Width = 78;
-            // 
-            // ClockRecord
-            // 
-            this.ClockRecord.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.ClockRecord.DataPropertyName = "ClockRecord";
-            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.ClockRecord.DefaultCellStyle = dataGridViewCellStyle6;
-            this.ClockRecord.HeaderText = "打卡时间";
-            this.ClockRecord.Name = "ClockRecord";
-            this.ClockRecord.ReadOnly = true;
+            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dataGridView1.Location = new System.Drawing.Point(2, 2);
+            this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.RowTemplate.Height = 23;
+            this.dataGridView1.Size = new System.Drawing.Size(728, 467);
+            this.dataGridView1.TabIndex = 0;
             // 
             // FrmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.SystemColors.ButtonFace;
             this.ClientSize = new System.Drawing.Size(754, 577);
             this.Controls.Add(this.lblState);
-            this.Controls.Add(this.tabControl1);
+            this.Controls.Add(this.tctlReport);
             this.Controls.Add(this.btnGetLog);
             this.Controls.Add(this.btnConnect);
             this.Controls.Add(this.txtPort);
@@ -290,9 +330,11 @@
             this.Text = "Form1";
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
-            this.tabControl1.ResumeLayout(false);
-            this.tabPage1.ResumeLayout(false);
+            this.tctlReport.ResumeLayout(false);
+            this.tabLog.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgvAttLog)).EndInit();
+            this.tabDaily.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -308,9 +350,9 @@
         private System.Windows.Forms.TextBox txtPort;
         private System.Windows.Forms.Button btnConnect;
         private System.Windows.Forms.Button btnGetLog;
-        private System.Windows.Forms.TabControl tabControl1;
-        private System.Windows.Forms.TabPage tabPage1;
-        private System.Windows.Forms.TabPage tabPage2;
+        private System.Windows.Forms.TabControl tctlReport;
+        private System.Windows.Forms.TabPage tabLog;
+        private System.Windows.Forms.TabPage tabDaily;
         private System.Windows.Forms.Label lblState;
         private System.Windows.Forms.DataGridView dgvAttLog;
         private System.Windows.Forms.DataGridViewTextBoxColumn ClockId;
@@ -318,6 +360,9 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn VerifyMode;
         private System.Windows.Forms.DataGridViewTextBoxColumn InOutMode;
         private System.Windows.Forms.DataGridViewTextBoxColumn ClockRecord;
+        private System.Windows.Forms.TabPage tabMonthly;
+        private System.Windows.Forms.TabPage tabAnnual;
+        private System.Windows.Forms.DataGridView dataGridView1;
     }
 }
 

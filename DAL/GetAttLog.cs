@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 
 
-namespace Modes
+namespace DAL
 {
     class GetAttLog
     {
