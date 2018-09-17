@@ -38,8 +38,8 @@ namespace DAL
         /// <summary>
         /// 执行增、删、改（insert/update/delete）
         /// </summary>
-        /// <param name="sql"></param>
-        /// <returns></returns>
+        /// <param name="sql">SQL语句</param>
+        /// <returns>返回查询结果</returns>
         public static int Update(string sql)
         {
             SqlConnection conn = new SqlConnection(connString);
@@ -261,6 +261,13 @@ namespace DAL
         }
         #endregion
 
+
+        /// <summary>
+        /// 使用SQLByBulk批量写入数据
+        /// </summary>
+        /// <param name="dt">DataTable表</param>
+        /// <param name="sqlTableName">SQL数据表</param>
+        /// <returns>true</returns>
         #region 使用SQLByBulk批量写入数据
         public static bool UpdataByBulk(DataTable dt, string sqlTableName)
         {

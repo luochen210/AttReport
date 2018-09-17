@@ -44,6 +44,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AttRecordService.cs" />
+    <Compile Include="GetAttLog.cs" />
     <Compile Include="Helper\StringSecurity.cs" />
     <Compile Include="Helper\ImportDataFromExcel.cs" />
     <Compile Include="Helper\OleDbHelper.cs" />
