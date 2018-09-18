@@ -12,20 +12,16 @@ namespace DAL
 {
     public class AttRecordService
     {
-        #region 查询数据库的考勤记录
+        #region 查询打卡记录
         /// <summary>
         /// 查询数据库的考勤记录
         /// </summary>
-        /// <param name="MachineId"></param>
-        /// <param name="ClockId"></param>
-        /// <param name="VerifyMode"></param>
-        /// <param name="InOutMode"></param>
         /// <param name="ClockRecord"></param>
         /// <returns></returns>
-        public string GetAttRecord(int MachineId, int ClockId, int VerifyMode, int InOutMode, string ClockRecord)
+        public string GetAttRecord(string ClockRecord)
         {
-            string sql = "select * from OriginalLog where MachineId={0} and ClockId={1} and VerifyMode={2} and InOutMode={3} and ClockRecord='{4}'";
-            sql = string.Format(sql, MachineId, ClockId, VerifyMode, InOutMode, ClockRecord);
+            string sql = "select * from OriginalLog where ClockRecord='{0}'";
+            sql = string.Format(sql, ClockRecord);
 
             SQLHelper.GetSingleResult(sql);
             return sql;
@@ -52,22 +48,6 @@ namespace DAL
             return ClockRecord;
         }
 
-        #endregion
-
-        #region 查询OriginalLog表的ClockRecord
-        /// <summary>
-        /// 查询打卡时间
-        /// </summary>
-        /// <param name="ClockRecord">打卡时间</param>
-        /// <returns>打卡时间</returns>
-        public string GetClockRecord(string ClockRecord)
-        {
-            string sql = "select * from OriginalLog where ClockRecord='{0}'";
-            sql = string.Format(sql, ClockRecord);
-
-            SQLHelper.GetSingleResult(sql);
-            return ClockRecord;
-        }
         #endregion
 
         #region 下载考勤记录

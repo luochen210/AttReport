@@ -51,6 +51,18 @@
     <Compile Include="Common\DataValidate.cs" />
     <Compile Include="Common\StringSecurity.cs" />
     <Compile Include="Common\DataGridViewStyle.cs" />
+    <Compile Include="FrmAddStaff.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmAddStaff.Designer.cs">
+      <DependentUpon>FrmAddStaff.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmCorporate.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmCorporate.Designer.cs">
+      <DependentUpon>FrmCorporate.cs</DependentUpon>
+    </Compile>
     <Compile Include="FrmMain.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -59,6 +71,12 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="FrmAddStaff.resx">
+      <DependentUpon>FrmAddStaff.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmCorporate.resx">
+      <DependentUpon>FrmCorporate.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FrmMain.resx">
       <DependentUpon>FrmMain.cs</DependentUpon>
     </EmbeddedResource>

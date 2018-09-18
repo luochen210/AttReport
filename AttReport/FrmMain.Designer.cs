@@ -36,6 +36,9 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.系统管理ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.人事管理ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.员工入职ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.人事录入ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.lblIP = new System.Windows.Forms.Label();
             this.txtIP = new System.Windows.Forms.TextBox();
             this.lblPort = new System.Windows.Forms.Label();
@@ -51,10 +54,10 @@
             this.InOutMode = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ClockRecord = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tabDaily = new System.Windows.Forms.TabPage();
-            this.lblState = new System.Windows.Forms.Label();
+            this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.tabMonthly = new System.Windows.Forms.TabPage();
             this.tabAnnual = new System.Windows.Forms.TabPage();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.lblState = new System.Windows.Forms.Label();
             this.menuStrip1.SuspendLayout();
             this.tctlReport.SuspendLayout();
             this.tabLog.SuspendLayout();
@@ -67,7 +70,8 @@
             // 
             this.menuStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.系统管理ToolStripMenuItem});
+            this.系统管理ToolStripMenuItem,
+            this.人事管理ToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Padding = new System.Windows.Forms.Padding(4, 2, 0, 2);
@@ -80,6 +84,28 @@
             this.系统管理ToolStripMenuItem.Name = "系统管理ToolStripMenuItem";
             this.系统管理ToolStripMenuItem.Size = new System.Drawing.Size(68, 21);
             this.系统管理ToolStripMenuItem.Text = "系统管理";
+            // 
+            // 人事管理ToolStripMenuItem
+            // 
+            this.人事管理ToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.员工入职ToolStripMenuItem,
+            this.人事录入ToolStripMenuItem});
+            this.人事管理ToolStripMenuItem.Name = "人事管理ToolStripMenuItem";
+            this.人事管理ToolStripMenuItem.Size = new System.Drawing.Size(68, 21);
+            this.人事管理ToolStripMenuItem.Text = "人事管理";
+            // 
+            // 员工入职ToolStripMenuItem
+            // 
+            this.员工入职ToolStripMenuItem.Name = "员工入职ToolStripMenuItem";
+            this.员工入职ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.员工入职ToolStripMenuItem.Text = "员工入职";
+            this.员工入职ToolStripMenuItem.Click += new System.EventHandler(this.员工入职ToolStripMenuItem_Click);
+            // 
+            // 人事录入ToolStripMenuItem
+            // 
+            this.人事录入ToolStripMenuItem.Name = "人事录入ToolStripMenuItem";
+            this.人事录入ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.人事录入ToolStripMenuItem.Text = "员工信息";
             // 
             // lblIP
             // 
@@ -268,16 +294,15 @@
             this.tabDaily.Text = "日报表";
             this.tabDaily.UseVisualStyleBackColor = true;
             // 
-            // lblState
+            // dataGridView1
             // 
-            this.lblState.AutoSize = true;
-            this.lblState.ForeColor = System.Drawing.SystemColors.Highlight;
-            this.lblState.Location = new System.Drawing.Point(412, 38);
-            this.lblState.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.lblState.Name = "lblState";
-            this.lblState.Size = new System.Drawing.Size(137, 12);
-            this.lblState.TabIndex = 8;
-            this.lblState.Text = "设备状态：等待连接……";
+            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dataGridView1.Location = new System.Drawing.Point(2, 2);
+            this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.RowTemplate.Height = 23;
+            this.dataGridView1.Size = new System.Drawing.Size(728, 467);
+            this.dataGridView1.TabIndex = 0;
             // 
             // tabMonthly
             // 
@@ -299,15 +324,16 @@
             this.tabAnnual.Text = "年报表";
             this.tabAnnual.UseVisualStyleBackColor = true;
             // 
-            // dataGridView1
+            // lblState
             // 
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dataGridView1.Location = new System.Drawing.Point(2, 2);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.RowTemplate.Height = 23;
-            this.dataGridView1.Size = new System.Drawing.Size(728, 467);
-            this.dataGridView1.TabIndex = 0;
+            this.lblState.AutoSize = true;
+            this.lblState.ForeColor = System.Drawing.SystemColors.Highlight;
+            this.lblState.Location = new System.Drawing.Point(412, 38);
+            this.lblState.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblState.Name = "lblState";
+            this.lblState.Size = new System.Drawing.Size(137, 12);
+            this.lblState.TabIndex = 8;
+            this.lblState.Text = "设备状态：等待连接……";
             // 
             // FrmMain
             // 
@@ -327,7 +353,8 @@
             this.MainMenuStrip = this.menuStrip1;
             this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "FrmMain";
-            this.Text = "Form1";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.Text = "考勤系统";
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             this.tctlReport.ResumeLayout(false);
@@ -363,6 +390,9 @@
         private System.Windows.Forms.TabPage tabMonthly;
         private System.Windows.Forms.TabPage tabAnnual;
         private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.ToolStripMenuItem 人事管理ToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem 员工入职ToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem 人事录入ToolStripMenuItem;
     }
 }
 

@@ -29,27 +29,16 @@ namespace AttReport
 
         }
 
-        //声明委托
-        public delegate void GetLogDelegate(string getLog);
+        int idwErrorCode = 0;
 
+        //声明委托
         public delegate void GetDataTable();
 
         //根据委托创建对象
-        GetLogDelegate objLogDelegate;
         GetDataTable objGetDataTable;
 
         private bool bIsConnected = false;//声明一个布尔变量，用于设备连接
         private int iMachineNumber = 1;//设备的序列号。在连接设备之后，这个值将被改变
-
-        int iGLCount = 0;
-        int iIndex = 0;
-        int iValue = 0;
-
-        int idwErrorCode = 0;
-        int idwEnrollNumber = 0;
-        int idwVerifyMode = 0;
-        int idwInOutMode = 0;
-        string sTime = "";
 
         public zkemkeeper.CZKEMClass axCZKEM1 = new zkemkeeper.CZKEMClass();
 
@@ -163,7 +152,7 @@ namespace AttReport
 
             //设定列数据
             dt.Columns.Add("ClockId", typeof(int));
-            dt.Columns.Add("MachineId", typeof(int));            
+            dt.Columns.Add("MachineId", typeof(int));
             dt.Columns.Add("VerifyMode", typeof(int));
             dt.Columns.Add("InOutMode", typeof(int));
             dt.Columns.Add("ClockRecord", typeof(string));
@@ -188,12 +177,28 @@ namespace AttReport
                 dr[4] = sTime;
                 dt.Rows.Add(dr);
             }
-            
+
             //更新dgvAttLog
             dgvAttLog.DataSource = dt;
-
-            SQLHelper.UpdataByBulk(dt, "OriginalLog");
+            //批量写入数据库
+            SQLHelper.UpdataByBulk(dt, "OriginalLogTemp");
         }
         #endregion
+
+        public static FrmAddStaff objFrmAddStaff = null;
+
+        private void 员工入职ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (objFrmAddStaff == null)
+            {
+                objFrmAddStaff = new FrmAddStaff();
+                objFrmAddStaff.Show();
+            }
+            else
+            {
+                objFrmAddStaff.Activate();//激活只能在最小化的时候起作用
+                objFrmAddStaff.WindowState = FormWindowState.Normal;
+            }
+        }
     }
 }
