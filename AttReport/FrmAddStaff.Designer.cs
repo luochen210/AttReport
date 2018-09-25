@@ -32,53 +32,53 @@
             this.txtName = new System.Windows.Forms.TextBox();
             this.lblIDCard = new System.Windows.Forms.Label();
             this.txtIDCard = new System.Windows.Forms.TextBox();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label6 = new System.Windows.Forms.Label();
-            this.txtUrgentPhone = new System.Windows.Forms.TextBox();
-            this.label8 = new System.Windows.Forms.Label();
-            this.label10 = new System.Windows.Forms.Label();
-            this.label11 = new System.Windows.Forms.Label();
+            this.lblDepartment = new System.Windows.Forms.Label();
+            this.lblBirthDate = new System.Windows.Forms.Label();
+            this.lblAddress1 = new System.Windows.Forms.Label();
+            this.txtLiaison = new System.Windows.Forms.TextBox();
+            this.lblNation = new System.Windows.Forms.Label();
+            this.lblEntryDate = new System.Windows.Forms.Label();
+            this.lblMobilePhone = new System.Windows.Forms.Label();
             this.txtMobilePhone = new System.Windows.Forms.TextBox();
             this.dtpEntryDate = new System.Windows.Forms.DateTimePicker();
-            this.label12 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
+            this.lblNativePlace = new System.Windows.Forms.Label();
+            this.lblEducation = new System.Windows.Forms.Label();
             this.cboEducation = new System.Windows.Forms.ComboBox();
-            this.label14 = new System.Windows.Forms.Label();
-            this.label9 = new System.Windows.Forms.Label();
-            this.label13 = new System.Windows.Forms.Label();
+            this.lblMarriage = new System.Windows.Forms.Label();
+            this.lblGender = new System.Windows.Forms.Label();
+            this.lblJob = new System.Windows.Forms.Label();
             this.dtpBirthDate = new System.Windows.Forms.DateTimePicker();
             this.cboMarriage = new System.Windows.Forms.ComboBox();
             this.cboJob = new System.Windows.Forms.ComboBox();
             this.cboNation = new System.Windows.Forms.ComboBox();
-            this.label17 = new System.Windows.Forms.Label();
-            this.cboMajor = new System.Windows.Forms.ComboBox();
-            this.label19 = new System.Windows.Forms.Label();
+            this.lblMajor = new System.Windows.Forms.Label();
+            this.lblAge = new System.Windows.Forms.Label();
             this.txtAge = new System.Windows.Forms.TextBox();
-            this.label20 = new System.Windows.Forms.Label();
+            this.lblAddress2 = new System.Windows.Forms.Label();
             this.txtAddress2 = new System.Windows.Forms.TextBox();
             this.btnSaveStaff = new System.Windows.Forms.Button();
             this.cboGender = new System.Windows.Forms.ComboBox();
             this.cboDepartment = new System.Windows.Forms.ComboBox();
-            this.label15 = new System.Windows.Forms.Label();
+            this.lblJobNo = new System.Windows.Forms.Label();
             this.txtJobNo = new System.Windows.Forms.TextBox();
-            this.label16 = new System.Windows.Forms.Label();
+            this.lblCardId = new System.Windows.Forms.Label();
             this.txtCardId = new System.Windows.Forms.TextBox();
             this.txtAddress1 = new System.Windows.Forms.TextBox();
-            this.label21 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.label7 = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
-            this.txtFriend = new System.Windows.Forms.TextBox();
-            this.label18 = new System.Windows.Forms.Label();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.label22 = new System.Windows.Forms.Label();
-            this.textBox3 = new System.Windows.Forms.TextBox();
+            this.lblIntroducer = new System.Windows.Forms.Label();
+            this.txtIntroducer = new System.Windows.Forms.TextBox();
+            this.lblLiaison = new System.Windows.Forms.Label();
+            this.lblFriendsPhone = new System.Windows.Forms.Label();
+            this.txtFriendsPhone = new System.Windows.Forms.TextBox();
+            this.lblRelation = new System.Windows.Forms.Label();
+            this.textRelation = new System.Windows.Forms.TextBox();
+            this.lblSeniority = new System.Windows.Forms.Label();
+            this.txtSeniority = new System.Windows.Forms.TextBox();
             this.txtNativePlace = new System.Windows.Forms.TextBox();
             this.lblBirthDateExplain = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.btnExamine = new System.Windows.Forms.Button();
             this.lblExamineState = new System.Windows.Forms.Label();
+            this.txtMajor = new System.Windows.Forms.TextBox();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -116,66 +116,66 @@
             this.txtIDCard.Size = new System.Drawing.Size(172, 21);
             this.txtIDCard.TabIndex = 0;
             // 
-            // label2
+            // lblDepartment
             // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(44, 194);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(29, 12);
-            this.label2.TabIndex = 0;
-            this.label2.Text = "部门";
+            this.lblDepartment.AutoSize = true;
+            this.lblDepartment.Location = new System.Drawing.Point(44, 194);
+            this.lblDepartment.Name = "lblDepartment";
+            this.lblDepartment.Size = new System.Drawing.Size(29, 12);
+            this.lblDepartment.TabIndex = 0;
+            this.lblDepartment.Text = "部门";
             // 
-            // label3
+            // lblBirthDate
             // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(20, 362);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(53, 12);
-            this.label3.TabIndex = 0;
-            this.label3.Text = "出生日期";
+            this.lblBirthDate.AutoSize = true;
+            this.lblBirthDate.Location = new System.Drawing.Point(20, 362);
+            this.lblBirthDate.Name = "lblBirthDate";
+            this.lblBirthDate.Size = new System.Drawing.Size(53, 12);
+            this.lblBirthDate.TabIndex = 0;
+            this.lblBirthDate.Text = "出生日期";
             // 
-            // label6
+            // lblAddress1
             // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(20, 397);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(53, 12);
-            this.label6.TabIndex = 0;
-            this.label6.Text = "户籍地址";
+            this.lblAddress1.AutoSize = true;
+            this.lblAddress1.Location = new System.Drawing.Point(20, 397);
+            this.lblAddress1.Name = "lblAddress1";
+            this.lblAddress1.Size = new System.Drawing.Size(53, 12);
+            this.lblAddress1.TabIndex = 0;
+            this.lblAddress1.Text = "户籍地址";
             // 
-            // txtUrgentPhone
+            // txtLiaison
             // 
-            this.txtUrgentPhone.Location = new System.Drawing.Point(79, 506);
-            this.txtUrgentPhone.Name = "txtUrgentPhone";
-            this.txtUrgentPhone.Size = new System.Drawing.Size(79, 21);
-            this.txtUrgentPhone.TabIndex = 18;
+            this.txtLiaison.Location = new System.Drawing.Point(79, 506);
+            this.txtLiaison.Name = "txtLiaison";
+            this.txtLiaison.Size = new System.Drawing.Size(79, 21);
+            this.txtLiaison.TabIndex = 18;
             // 
-            // label8
+            // lblNation
             // 
-            this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(257, 261);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(29, 12);
-            this.label8.TabIndex = 0;
-            this.label8.Text = "民族";
+            this.lblNation.AutoSize = true;
+            this.lblNation.Location = new System.Drawing.Point(257, 261);
+            this.lblNation.Name = "lblNation";
+            this.lblNation.Size = new System.Drawing.Size(29, 12);
+            this.lblNation.TabIndex = 0;
+            this.lblNation.Text = "民族";
             // 
-            // label10
+            // lblEntryDate
             // 
-            this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(233, 328);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(53, 12);
-            this.label10.TabIndex = 0;
-            this.label10.Text = "入职日期";
+            this.lblEntryDate.AutoSize = true;
+            this.lblEntryDate.Location = new System.Drawing.Point(233, 328);
+            this.lblEntryDate.Name = "lblEntryDate";
+            this.lblEntryDate.Size = new System.Drawing.Size(53, 12);
+            this.lblEntryDate.TabIndex = 0;
+            this.lblEntryDate.Text = "入职日期";
             // 
-            // label11
+            // lblMobilePhone
             // 
-            this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(257, 293);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(29, 12);
-            this.label11.TabIndex = 0;
-            this.label11.Text = "手机";
+            this.lblMobilePhone.AutoSize = true;
+            this.lblMobilePhone.Location = new System.Drawing.Point(257, 293);
+            this.lblMobilePhone.Name = "lblMobilePhone";
+            this.lblMobilePhone.Size = new System.Drawing.Size(29, 12);
+            this.lblMobilePhone.TabIndex = 0;
+            this.lblMobilePhone.Text = "手机";
             // 
             // txtMobilePhone
             // 
@@ -191,23 +191,23 @@
             this.dtpEntryDate.Size = new System.Drawing.Size(125, 21);
             this.dtpEntryDate.TabIndex = 14;
             // 
-            // label12
+            // lblNativePlace
             // 
-            this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(44, 260);
-            this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(29, 12);
-            this.label12.TabIndex = 0;
-            this.label12.Text = "籍贯";
+            this.lblNativePlace.AutoSize = true;
+            this.lblNativePlace.Location = new System.Drawing.Point(44, 260);
+            this.lblNativePlace.Name = "lblNativePlace";
+            this.lblNativePlace.Size = new System.Drawing.Size(29, 12);
+            this.lblNativePlace.TabIndex = 0;
+            this.lblNativePlace.Text = "籍贯";
             // 
-            // label4
+            // lblEducation
             // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(44, 226);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(29, 12);
-            this.label4.TabIndex = 0;
-            this.label4.Text = "学历";
+            this.lblEducation.AutoSize = true;
+            this.lblEducation.Location = new System.Drawing.Point(44, 226);
+            this.lblEducation.Name = "lblEducation";
+            this.lblEducation.Size = new System.Drawing.Size(29, 12);
+            this.lblEducation.TabIndex = 0;
+            this.lblEducation.Text = "学历";
             // 
             // cboEducation
             // 
@@ -224,32 +224,32 @@
             this.cboEducation.Size = new System.Drawing.Size(125, 20);
             this.cboEducation.TabIndex = 7;
             // 
-            // label14
+            // lblMarriage
             // 
-            this.label14.AutoSize = true;
-            this.label14.Location = new System.Drawing.Point(44, 161);
-            this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(29, 12);
-            this.label14.TabIndex = 0;
-            this.label14.Text = "婚姻";
+            this.lblMarriage.AutoSize = true;
+            this.lblMarriage.Location = new System.Drawing.Point(44, 161);
+            this.lblMarriage.Name = "lblMarriage";
+            this.lblMarriage.Size = new System.Drawing.Size(29, 12);
+            this.lblMarriage.TabIndex = 0;
+            this.lblMarriage.Text = "婚姻";
             // 
-            // label9
+            // lblGender
             // 
-            this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(44, 127);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(29, 12);
-            this.label9.TabIndex = 0;
-            this.label9.Text = "性别";
+            this.lblGender.AutoSize = true;
+            this.lblGender.Location = new System.Drawing.Point(44, 127);
+            this.lblGender.Name = "lblGender";
+            this.lblGender.Size = new System.Drawing.Size(29, 12);
+            this.lblGender.TabIndex = 0;
+            this.lblGender.Text = "性别";
             // 
-            // label13
+            // lblJob
             // 
-            this.label13.AutoSize = true;
-            this.label13.Location = new System.Drawing.Point(257, 196);
-            this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(29, 12);
-            this.label13.TabIndex = 0;
-            this.label13.Text = "职位";
+            this.lblJob.AutoSize = true;
+            this.lblJob.Location = new System.Drawing.Point(257, 196);
+            this.lblJob.Name = "lblJob";
+            this.lblJob.Size = new System.Drawing.Size(29, 12);
+            this.lblJob.TabIndex = 0;
+            this.lblJob.Text = "职位";
             // 
             // dtpBirthDate
             // 
@@ -285,38 +285,23 @@
             this.cboNation.Size = new System.Drawing.Size(125, 20);
             this.cboNation.TabIndex = 10;
             // 
-            // label17
+            // lblMajor
             // 
-            this.label17.AutoSize = true;
-            this.label17.Location = new System.Drawing.Point(257, 227);
-            this.label17.Name = "label17";
-            this.label17.Size = new System.Drawing.Size(29, 12);
-            this.label17.TabIndex = 0;
-            this.label17.Text = "专业";
+            this.lblMajor.AutoSize = true;
+            this.lblMajor.Location = new System.Drawing.Point(257, 227);
+            this.lblMajor.Name = "lblMajor";
+            this.lblMajor.Size = new System.Drawing.Size(29, 12);
+            this.lblMajor.TabIndex = 0;
+            this.lblMajor.Text = "专业";
             // 
-            // cboMajor
+            // lblAge
             // 
-            this.cboMajor.FormattingEnabled = true;
-            this.cboMajor.Items.AddRange(new object[] {
-            "初中",
-            "高中",
-            "中专",
-            "大专",
-            "本科",
-            "研究生"});
-            this.cboMajor.Location = new System.Drawing.Point(292, 223);
-            this.cboMajor.Name = "cboMajor";
-            this.cboMajor.Size = new System.Drawing.Size(125, 20);
-            this.cboMajor.TabIndex = 8;
-            // 
-            // label19
-            // 
-            this.label19.AutoSize = true;
-            this.label19.Location = new System.Drawing.Point(257, 161);
-            this.label19.Name = "label19";
-            this.label19.Size = new System.Drawing.Size(29, 12);
-            this.label19.TabIndex = 0;
-            this.label19.Text = "年龄";
+            this.lblAge.AutoSize = true;
+            this.lblAge.Location = new System.Drawing.Point(257, 161);
+            this.lblAge.Name = "lblAge";
+            this.lblAge.Size = new System.Drawing.Size(29, 12);
+            this.lblAge.TabIndex = 0;
+            this.lblAge.Text = "年龄";
             // 
             // txtAge
             // 
@@ -327,14 +312,14 @@
             this.txtAge.TabIndex = 0;
             this.txtAge.TabStop = false;
             // 
-            // label20
+            // lblAddress2
             // 
-            this.label20.AutoSize = true;
-            this.label20.Location = new System.Drawing.Point(20, 453);
-            this.label20.Name = "label20";
-            this.label20.Size = new System.Drawing.Size(53, 12);
-            this.label20.TabIndex = 0;
-            this.label20.Text = "现居地址";
+            this.lblAddress2.AutoSize = true;
+            this.lblAddress2.Location = new System.Drawing.Point(20, 453);
+            this.lblAddress2.Name = "lblAddress2";
+            this.lblAddress2.Size = new System.Drawing.Size(53, 12);
+            this.lblAddress2.TabIndex = 0;
+            this.lblAddress2.Text = "现居地址";
             // 
             // txtAddress2
             // 
@@ -372,14 +357,14 @@
             this.cboDepartment.Size = new System.Drawing.Size(125, 20);
             this.cboDepartment.TabIndex = 5;
             // 
-            // label15
+            // lblJobNo
             // 
-            this.label15.AutoSize = true;
-            this.label15.Location = new System.Drawing.Point(257, 96);
-            this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(29, 12);
-            this.label15.TabIndex = 0;
-            this.label15.Text = "工号";
+            this.lblJobNo.AutoSize = true;
+            this.lblJobNo.Location = new System.Drawing.Point(257, 96);
+            this.lblJobNo.Name = "lblJobNo";
+            this.lblJobNo.Size = new System.Drawing.Size(29, 12);
+            this.lblJobNo.TabIndex = 0;
+            this.lblJobNo.Text = "工号";
             // 
             // txtJobNo
             // 
@@ -389,14 +374,14 @@
             this.txtJobNo.Size = new System.Drawing.Size(125, 21);
             this.txtJobNo.TabIndex = 4;
             // 
-            // label16
+            // lblCardId
             // 
-            this.label16.AutoSize = true;
-            this.label16.Location = new System.Drawing.Point(44, 293);
-            this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(29, 12);
-            this.label16.TabIndex = 0;
-            this.label16.Text = "卡号";
+            this.lblCardId.AutoSize = true;
+            this.lblCardId.Location = new System.Drawing.Point(44, 293);
+            this.lblCardId.Name = "lblCardId";
+            this.lblCardId.Size = new System.Drawing.Size(29, 12);
+            this.lblCardId.TabIndex = 0;
+            this.lblCardId.Text = "卡号";
             // 
             // txtCardId
             // 
@@ -413,80 +398,80 @@
             this.txtAddress1.Size = new System.Drawing.Size(338, 40);
             this.txtAddress1.TabIndex = 16;
             // 
-            // label21
+            // lblIntroducer
             // 
-            this.label21.AutoSize = true;
-            this.label21.Location = new System.Drawing.Point(32, 327);
-            this.label21.Name = "label21";
-            this.label21.Size = new System.Drawing.Size(41, 12);
-            this.label21.TabIndex = 0;
-            this.label21.Text = "介绍人";
+            this.lblIntroducer.AutoSize = true;
+            this.lblIntroducer.Location = new System.Drawing.Point(32, 327);
+            this.lblIntroducer.Name = "lblIntroducer";
+            this.lblIntroducer.Size = new System.Drawing.Size(41, 12);
+            this.lblIntroducer.TabIndex = 0;
+            this.lblIntroducer.Text = "介绍人";
             // 
-            // textBox1
+            // txtIntroducer
             // 
-            this.textBox1.Location = new System.Drawing.Point(79, 323);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(125, 21);
-            this.textBox1.TabIndex = 13;
+            this.txtIntroducer.Location = new System.Drawing.Point(79, 323);
+            this.txtIntroducer.Name = "txtIntroducer";
+            this.txtIntroducer.Size = new System.Drawing.Size(125, 21);
+            this.txtIntroducer.TabIndex = 13;
             // 
-            // label7
+            // lblLiaison
             // 
-            this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(32, 510);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(41, 12);
-            this.label7.TabIndex = 0;
-            this.label7.Text = "联络人";
+            this.lblLiaison.AutoSize = true;
+            this.lblLiaison.Location = new System.Drawing.Point(32, 510);
+            this.lblLiaison.Name = "lblLiaison";
+            this.lblLiaison.Size = new System.Drawing.Size(41, 12);
+            this.lblLiaison.TabIndex = 0;
+            this.lblLiaison.Text = "联络人";
             // 
-            // label5
+            // lblFriendsPhone
             // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(274, 510);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(29, 12);
-            this.label5.TabIndex = 0;
-            this.label5.Text = "电话";
+            this.lblFriendsPhone.AutoSize = true;
+            this.lblFriendsPhone.Location = new System.Drawing.Point(274, 510);
+            this.lblFriendsPhone.Name = "lblFriendsPhone";
+            this.lblFriendsPhone.Size = new System.Drawing.Size(29, 12);
+            this.lblFriendsPhone.TabIndex = 0;
+            this.lblFriendsPhone.Text = "电话";
             // 
-            // txtFriend
+            // txtFriendsPhone
             // 
-            this.txtFriend.Location = new System.Drawing.Point(306, 506);
-            this.txtFriend.Name = "txtFriend";
-            this.txtFriend.Size = new System.Drawing.Size(112, 21);
-            this.txtFriend.TabIndex = 20;
+            this.txtFriendsPhone.Location = new System.Drawing.Point(306, 506);
+            this.txtFriendsPhone.Name = "txtFriendsPhone";
+            this.txtFriendsPhone.Size = new System.Drawing.Size(112, 21);
+            this.txtFriendsPhone.TabIndex = 20;
             // 
-            // label18
+            // lblRelation
             // 
-            this.label18.AutoSize = true;
-            this.label18.Location = new System.Drawing.Point(171, 510);
-            this.label18.Name = "label18";
-            this.label18.Size = new System.Drawing.Size(29, 12);
-            this.label18.TabIndex = 0;
-            this.label18.Text = "关系";
+            this.lblRelation.AutoSize = true;
+            this.lblRelation.Location = new System.Drawing.Point(171, 510);
+            this.lblRelation.Name = "lblRelation";
+            this.lblRelation.Size = new System.Drawing.Size(29, 12);
+            this.lblRelation.TabIndex = 0;
+            this.lblRelation.Text = "关系";
             // 
-            // textBox2
+            // textRelation
             // 
-            this.textBox2.Location = new System.Drawing.Point(203, 506);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(61, 21);
-            this.textBox2.TabIndex = 19;
+            this.textRelation.Location = new System.Drawing.Point(203, 506);
+            this.textRelation.Name = "textRelation";
+            this.textRelation.Size = new System.Drawing.Size(61, 21);
+            this.textRelation.TabIndex = 19;
             // 
-            // label22
+            // lblSeniority
             // 
-            this.label22.AutoSize = true;
-            this.label22.Location = new System.Drawing.Point(257, 129);
-            this.label22.Name = "label22";
-            this.label22.Size = new System.Drawing.Size(29, 12);
-            this.label22.TabIndex = 0;
-            this.label22.Text = "工龄";
+            this.lblSeniority.AutoSize = true;
+            this.lblSeniority.Location = new System.Drawing.Point(257, 129);
+            this.lblSeniority.Name = "lblSeniority";
+            this.lblSeniority.Size = new System.Drawing.Size(29, 12);
+            this.lblSeniority.TabIndex = 0;
+            this.lblSeniority.Text = "工龄";
             // 
-            // textBox3
+            // txtSeniority
             // 
-            this.textBox3.Location = new System.Drawing.Point(292, 125);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.ReadOnly = true;
-            this.textBox3.Size = new System.Drawing.Size(125, 21);
-            this.textBox3.TabIndex = 0;
-            this.textBox3.TabStop = false;
+            this.txtSeniority.Location = new System.Drawing.Point(292, 125);
+            this.txtSeniority.Name = "txtSeniority";
+            this.txtSeniority.ReadOnly = true;
+            this.txtSeniority.Size = new System.Drawing.Size(125, 21);
+            this.txtSeniority.TabIndex = 0;
+            this.txtSeniority.TabStop = false;
             // 
             // txtNativePlace
             // 
@@ -518,7 +503,6 @@
             this.groupBox1.Size = new System.Drawing.Size(395, 64);
             this.groupBox1.TabIndex = 21;
             this.groupBox1.TabStop = false;
-            this.groupBox1.Enter += new System.EventHandler(this.groupBox1_Enter);
             // 
             // btnExamine
             // 
@@ -541,6 +525,13 @@
             this.lblExamineState.TabIndex = 7;
             this.lblExamineState.Text = "请验证！";
             // 
+            // txtMajor
+            // 
+            this.txtMajor.Location = new System.Drawing.Point(292, 224);
+            this.txtMajor.Name = "txtMajor";
+            this.txtMajor.Size = new System.Drawing.Size(125, 21);
+            this.txtMajor.TabIndex = 8;
+            // 
             // FrmAddStaff
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -555,49 +546,48 @@
             this.Controls.Add(this.cboDepartment);
             this.Controls.Add(this.cboGender);
             this.Controls.Add(this.cboJob);
-            this.Controls.Add(this.cboMajor);
             this.Controls.Add(this.cboEducation);
             this.Controls.Add(this.dtpBirthDate);
             this.Controls.Add(this.dtpEntryDate);
-            this.Controls.Add(this.label3);
+            this.Controls.Add(this.lblBirthDate);
             this.Controls.Add(this.txtAddress2);
-            this.Controls.Add(this.label20);
+            this.Controls.Add(this.lblAddress2);
             this.Controls.Add(this.txtAddress1);
-            this.Controls.Add(this.label6);
-            this.Controls.Add(this.label10);
-            this.Controls.Add(this.label17);
-            this.Controls.Add(this.label12);
-            this.Controls.Add(this.label4);
-            this.Controls.Add(this.label14);
-            this.Controls.Add(this.textBox1);
-            this.Controls.Add(this.label21);
-            this.Controls.Add(this.textBox2);
-            this.Controls.Add(this.txtFriend);
-            this.Controls.Add(this.label18);
-            this.Controls.Add(this.label8);
-            this.Controls.Add(this.label5);
+            this.Controls.Add(this.lblAddress1);
+            this.Controls.Add(this.lblEntryDate);
+            this.Controls.Add(this.lblMajor);
+            this.Controls.Add(this.lblNativePlace);
+            this.Controls.Add(this.lblEducation);
+            this.Controls.Add(this.lblMarriage);
+            this.Controls.Add(this.txtIntroducer);
+            this.Controls.Add(this.lblIntroducer);
+            this.Controls.Add(this.textRelation);
+            this.Controls.Add(this.txtFriendsPhone);
+            this.Controls.Add(this.lblRelation);
+            this.Controls.Add(this.lblNation);
+            this.Controls.Add(this.lblFriendsPhone);
             this.Controls.Add(this.txtMobilePhone);
-            this.Controls.Add(this.label11);
-            this.Controls.Add(this.txtUrgentPhone);
-            this.Controls.Add(this.label7);
-            this.Controls.Add(this.textBox3);
-            this.Controls.Add(this.label22);
+            this.Controls.Add(this.lblMobilePhone);
+            this.Controls.Add(this.txtLiaison);
+            this.Controls.Add(this.lblLiaison);
+            this.Controls.Add(this.txtSeniority);
+            this.Controls.Add(this.lblSeniority);
             this.Controls.Add(this.txtAge);
-            this.Controls.Add(this.label19);
-            this.Controls.Add(this.label2);
-            this.Controls.Add(this.label13);
-            this.Controls.Add(this.label9);
+            this.Controls.Add(this.lblAge);
+            this.Controls.Add(this.lblDepartment);
+            this.Controls.Add(this.lblJob);
+            this.Controls.Add(this.lblGender);
+            this.Controls.Add(this.txtMajor);
             this.Controls.Add(this.txtNativePlace);
             this.Controls.Add(this.txtCardId);
-            this.Controls.Add(this.label16);
+            this.Controls.Add(this.lblCardId);
             this.Controls.Add(this.txtJobNo);
-            this.Controls.Add(this.label15);
+            this.Controls.Add(this.lblJobNo);
             this.Controls.Add(this.txtName);
             this.Controls.Add(this.lblName);
             this.Name = "FrmAddStaff";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "员工入职";
-            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.FrmAddStaff_FormClosed);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.ResumeLayout(false);
@@ -611,52 +601,52 @@
         private System.Windows.Forms.TextBox txtName;
         private System.Windows.Forms.Label lblIDCard;
         private System.Windows.Forms.TextBox txtIDCard;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.TextBox txtUrgentPhone;
-        private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.Label label10;
-        private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.Label lblDepartment;
+        private System.Windows.Forms.Label lblBirthDate;
+        private System.Windows.Forms.Label lblAddress1;
+        private System.Windows.Forms.TextBox txtLiaison;
+        private System.Windows.Forms.Label lblNation;
+        private System.Windows.Forms.Label lblEntryDate;
+        private System.Windows.Forms.Label lblMobilePhone;
         private System.Windows.Forms.TextBox txtMobilePhone;
         private System.Windows.Forms.DateTimePicker dtpEntryDate;
-        private System.Windows.Forms.Label label12;
-        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label lblNativePlace;
+        private System.Windows.Forms.Label lblEducation;
         private System.Windows.Forms.ComboBox cboEducation;
-        private System.Windows.Forms.Label label14;
-        private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.Label label13;
+        private System.Windows.Forms.Label lblMarriage;
+        private System.Windows.Forms.Label lblGender;
+        private System.Windows.Forms.Label lblJob;
         private System.Windows.Forms.DateTimePicker dtpBirthDate;
         private System.Windows.Forms.ComboBox cboMarriage;
         private System.Windows.Forms.ComboBox cboJob;
         private System.Windows.Forms.ComboBox cboNation;
-        private System.Windows.Forms.Label label17;
-        private System.Windows.Forms.ComboBox cboMajor;
-        private System.Windows.Forms.Label label19;
+        private System.Windows.Forms.Label lblMajor;
+        private System.Windows.Forms.Label lblAge;
         private System.Windows.Forms.TextBox txtAge;
-        private System.Windows.Forms.Label label20;
+        private System.Windows.Forms.Label lblAddress2;
         private System.Windows.Forms.TextBox txtAddress2;
         private System.Windows.Forms.Button btnSaveStaff;
         private System.Windows.Forms.ComboBox cboGender;
         private System.Windows.Forms.ComboBox cboDepartment;
-        private System.Windows.Forms.Label label15;
+        private System.Windows.Forms.Label lblJobNo;
         private System.Windows.Forms.TextBox txtJobNo;
-        private System.Windows.Forms.Label label16;
+        private System.Windows.Forms.Label lblCardId;
         private System.Windows.Forms.TextBox txtCardId;
         private System.Windows.Forms.TextBox txtAddress1;
-        private System.Windows.Forms.Label label21;
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.TextBox txtFriend;
-        private System.Windows.Forms.Label label18;
-        private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.Label label22;
-        private System.Windows.Forms.TextBox textBox3;
+        private System.Windows.Forms.Label lblIntroducer;
+        private System.Windows.Forms.TextBox txtIntroducer;
+        private System.Windows.Forms.Label lblLiaison;
+        private System.Windows.Forms.Label lblFriendsPhone;
+        private System.Windows.Forms.TextBox txtFriendsPhone;
+        private System.Windows.Forms.Label lblRelation;
+        private System.Windows.Forms.TextBox textRelation;
+        private System.Windows.Forms.Label lblSeniority;
+        private System.Windows.Forms.TextBox txtSeniority;
         private System.Windows.Forms.TextBox txtNativePlace;
         private System.Windows.Forms.Label lblBirthDateExplain;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.Button btnExamine;
         private System.Windows.Forms.Label lblExamineState;
+        private System.Windows.Forms.TextBox txtMajor;
     }
 }
