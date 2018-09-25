@@ -76,8 +76,8 @@
             this.txtNativePlace = new System.Windows.Forms.TextBox();
             this.lblBirthDateExplain = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.btnExamine = new System.Windows.Forms.Button();
             this.lblExamineState = new System.Windows.Forms.Label();
+            this.btnExamine = new System.Windows.Forms.Button();
             this.txtMajor = new System.Windows.Forms.TextBox();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
@@ -351,6 +351,8 @@
             // 
             // cboDepartment
             // 
+            this.cboDepartment.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cboDepartment.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.cboDepartment.FormattingEnabled = true;
             this.cboDepartment.Location = new System.Drawing.Point(79, 191);
             this.cboDepartment.Name = "cboDepartment";
@@ -504,16 +506,6 @@
             this.groupBox1.TabIndex = 21;
             this.groupBox1.TabStop = false;
             // 
-            // btnExamine
-            // 
-            this.btnExamine.AutoSize = true;
-            this.btnExamine.Location = new System.Drawing.Point(246, 23);
-            this.btnExamine.Name = "btnExamine";
-            this.btnExamine.Size = new System.Drawing.Size(75, 23);
-            this.btnExamine.TabIndex = 1;
-            this.btnExamine.Text = "验证";
-            this.btnExamine.UseVisualStyleBackColor = true;
-            // 
             // lblExamineState
             // 
             this.lblExamineState.AutoSize = true;
@@ -524,6 +516,16 @@
             this.lblExamineState.Size = new System.Drawing.Size(53, 12);
             this.lblExamineState.TabIndex = 7;
             this.lblExamineState.Text = "请验证！";
+            // 
+            // btnExamine
+            // 
+            this.btnExamine.AutoSize = true;
+            this.btnExamine.Location = new System.Drawing.Point(246, 23);
+            this.btnExamine.Name = "btnExamine";
+            this.btnExamine.Size = new System.Drawing.Size(75, 23);
+            this.btnExamine.TabIndex = 1;
+            this.btnExamine.Text = "验证";
+            this.btnExamine.UseVisualStyleBackColor = true;
             // 
             // txtMajor
             // 

@@ -261,14 +261,13 @@ namespace DAL
         }
         #endregion
 
-
+        #region 使用SQLByBulk批量写入数据
         /// <summary>
         /// 使用SQLByBulk批量写入数据
         /// </summary>
         /// <param name="dt">DataTable表</param>
         /// <param name="sqlTableName">SQL数据表</param>
         /// <returns>true</returns>
-        #region 使用SQLByBulk批量写入数据
         public static bool UpdataByBulk(DataTable dt, string sqlTableName)
         {
             SqlConnection conn = new SqlConnection(connString);

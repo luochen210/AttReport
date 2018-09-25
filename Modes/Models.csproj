@@ -7,8 +7,8 @@
     <ProjectGuid>{8EBB0237-A7A7-4FAC-99EE-07F8960AACAD}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Modes</RootNamespace>
-    <AssemblyName>Modes</AssemblyName>
+    <RootNamespace>Models</RootNamespace>
+    <AssemblyName>Models</AssemblyName>
     <TargetFrameworkVersion>v4.6</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <TargetFrameworkProfile />
@@ -43,7 +43,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AttRecord.cs" />
+    <Compile Include="JobList.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Staff.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Ext\" />
