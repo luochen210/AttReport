@@ -76,7 +76,7 @@
             this.txtNativePlace = new System.Windows.Forms.TextBox();
             this.lblBirthDateExplain = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.lblExamineState = new System.Windows.Forms.Label();
+            this.lblExamineResult = new System.Windows.Forms.Label();
             this.btnExamine = new System.Windows.Forms.Button();
             this.txtMajor = new System.Windows.Forms.TextBox();
             this.groupBox1.SuspendLayout();
@@ -115,6 +115,7 @@
             this.txtIDCard.Name = "txtIDCard";
             this.txtIDCard.Size = new System.Drawing.Size(172, 21);
             this.txtIDCard.TabIndex = 0;
+            this.txtIDCard.KeyDown += new System.Windows.Forms.KeyEventHandler(this.btnExamine_KeyDown);
             // 
             // lblDepartment
             // 
@@ -356,6 +357,7 @@
             this.cboDepartment.Name = "cboDepartment";
             this.cboDepartment.Size = new System.Drawing.Size(125, 20);
             this.cboDepartment.TabIndex = 5;
+            this.cboDepartment.SelectedIndexChanged += new System.EventHandler(this.JobList_SelectedIndexChanged);
             // 
             // lblJobNo
             // 
@@ -493,7 +495,7 @@
             // groupBox1
             // 
             this.groupBox1.BackColor = System.Drawing.SystemColors.Control;
-            this.groupBox1.Controls.Add(this.lblExamineState);
+            this.groupBox1.Controls.Add(this.lblExamineResult);
             this.groupBox1.Controls.Add(this.btnExamine);
             this.groupBox1.Controls.Add(this.txtIDCard);
             this.groupBox1.Controls.Add(this.lblIDCard);
@@ -504,16 +506,16 @@
             this.groupBox1.TabIndex = 21;
             this.groupBox1.TabStop = false;
             // 
-            // lblExamineState
+            // lblExamineResult
             // 
-            this.lblExamineState.AutoSize = true;
-            this.lblExamineState.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.lblExamineState.ForeColor = System.Drawing.Color.Red;
-            this.lblExamineState.Location = new System.Drawing.Point(327, 28);
-            this.lblExamineState.Name = "lblExamineState";
-            this.lblExamineState.Size = new System.Drawing.Size(53, 12);
-            this.lblExamineState.TabIndex = 7;
-            this.lblExamineState.Text = "请验证！";
+            this.lblExamineResult.AutoSize = true;
+            this.lblExamineResult.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.lblExamineResult.ForeColor = System.Drawing.Color.Red;
+            this.lblExamineResult.Location = new System.Drawing.Point(327, 28);
+            this.lblExamineResult.Name = "lblExamineResult";
+            this.lblExamineResult.Size = new System.Drawing.Size(53, 12);
+            this.lblExamineResult.TabIndex = 7;
+            this.lblExamineResult.Text = "请验证！";
             // 
             // btnExamine
             // 
@@ -524,6 +526,7 @@
             this.btnExamine.TabIndex = 1;
             this.btnExamine.Text = "验证";
             this.btnExamine.UseVisualStyleBackColor = true;
+            this.btnExamine.Click += new System.EventHandler(this.btnExamine_Click);
             // 
             // txtMajor
             // 
@@ -646,7 +649,7 @@
         private System.Windows.Forms.Label lblBirthDateExplain;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.Button btnExamine;
-        private System.Windows.Forms.Label lblExamineState;
+        private System.Windows.Forms.Label lblExamineResult;
         private System.Windows.Forms.TextBox txtMajor;
     }
 }

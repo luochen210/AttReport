@@ -6,6 +6,9 @@ using System.Threading.Tasks;
 
 namespace Models
 {
+    /// <summary>
+    /// 部门实体类
+    /// </summary>
     public class JobList
     {
         public int DepartmentID { get; set; }//部门ID
