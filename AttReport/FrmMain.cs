@@ -28,14 +28,16 @@ namespace AttReport
             //connstring = Common.StringSecurity.DESEncrypt(connstring);
 
         }
-
+        
         int idwErrorCode = 0;
 
         //声明委托
         public delegate void GetDataTable();
+        public delegate void UpdataLbl(string msg);
 
         //根据委托创建对象
         GetDataTable objGetDataTable;
+        UpdataLbl objUpdataLbl;
 
         private bool bIsConnected = false;//声明一个布尔变量，用于设备连接
         private int iMachineNumber = 1;//设备的序列号。在连接设备之后，这个值将被改变
@@ -47,18 +49,18 @@ namespace AttReport
         {
             if (txtIP.Text.Trim() == "" || txtPort.Text.Trim() == "")
             {
-                MessageBox.Show("IP and Port cannot be null", "Error");
+                MessageBox.Show("IP或端口不能为空！", "Error");
                 return;
             }
             int idwErrorCode = 0;
 
             Cursor = Cursors.WaitCursor;
-            if (btnConnect.Text == "DisConnect")
+            if (btnConnect.Text == "断开")
             {
                 axCZKEM1.Disconnect();
                 bIsConnected = false;
                 btnConnect.Text = "Connect";
-                lblState.Text = "Current State:DisConnected";
+                lblState.Text = "设备状态：等待连接";
                 Cursor = Cursors.Default;
                 return;
             }
@@ -66,18 +68,18 @@ namespace AttReport
             bIsConnected = axCZKEM1.Connect_Net(txtIP.Text, Convert.ToInt32(txtPort.Text));
             if (bIsConnected == true)
             {
-                btnConnect.Text = "DisConnect";
+                btnConnect.Text = "断开";
                 btnConnect.Refresh();
-                lblState.Text = "Current State:Connected";
+                lblState.Text = "设备状态：等待连接！";
                 iMachineNumber = 1;//In fact,when you are using the tcp/ip communication,this parameter will be ignored,that is any integer will all right.Here we use 1.
                 axCZKEM1.RegEvent(iMachineNumber, 65535);//Here you can register the realtime events that you want to be triggered(the parameters 65535 means registering all)
             }
             else
             {
                 axCZKEM1.GetLastError(ref idwErrorCode);
-                MessageBox.Show("Unable to connect the device,ErrorCode=" + idwErrorCode.ToString(), "Error");
+                MessageBox.Show("无法连接设备，错误代码=" + idwErrorCode.ToString(), "Error");
             }
-            lblState.Text = "连接成功！等待下载……";
+            lblState.Text = "设备状态：连接成功！请下载记录……";
             Cursor = Cursors.Default;
         }
         #endregion
@@ -87,7 +89,7 @@ namespace AttReport
         {
             if (bIsConnected == false)
             {
-                MessageBox.Show("Please connect the device first", "Error");
+                MessageBox.Show("请连接设备！", "Error");
                 return;
             }
 
@@ -182,11 +184,23 @@ namespace AttReport
             dgvAttLog.DataSource = dt;
             //批量写入数据库
             SQLHelper.UpdataByBulk(dt, "OriginalLogTemp");
+
+            //清空dt对象
+            dt=null;
+
+            //实例化委托
+            objUpdataLbl = new UpdataLbl(LblState);
+
+            //异步修改lbl值
+            BeginInvoke(objUpdataLbl,"数据保存成功！");
+
         }
         #endregion
 
+        //员工入职窗口对象
         public static FrmAddStaff objFrmAddStaff = null;
 
+        //员工入职菜单事件
         private void 员工入职ToolStripMenuItem_Click(object sender, EventArgs e)
         {
             if (objFrmAddStaff == null)
