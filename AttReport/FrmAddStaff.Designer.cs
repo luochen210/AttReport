@@ -351,8 +351,6 @@
             // 
             // cboDepartment
             // 
-            this.cboDepartment.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cboDepartment.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.cboDepartment.FormattingEnabled = true;
             this.cboDepartment.Location = new System.Drawing.Point(79, 191);
             this.cboDepartment.Name = "cboDepartment";

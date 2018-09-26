@@ -18,7 +18,7 @@ namespace AttReport
         {
             InitializeComponent();
 
-            this.cboDepartment.DataSource = objJobListService.GetAllDepartment();
+            this.cboDepartment.DataSource = objJobListService.GetDepartmentList();
             this.cboDepartment.DisplayMember = "DepartmentName";
             this.cboDepartment.ValueMember = "DepartmentID";
             this.cboDepartment.SelectedIndex = -1;//默认不选中
