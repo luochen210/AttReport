@@ -42,6 +42,7 @@ namespace AttReport
         private bool bIsConnected = false;//声明一个布尔变量，用于设备连接
         private int iMachineNumber = 1;//设备的序列号。在连接设备之后，这个值将被改变
 
+        //实例化API
         public zkemkeeper.CZKEMClass axCZKEM1 = new zkemkeeper.CZKEMClass();
 
         #region 连接考勤机的事件

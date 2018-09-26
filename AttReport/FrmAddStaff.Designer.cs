@@ -50,7 +50,6 @@
             this.dtpBirthDate = new System.Windows.Forms.DateTimePicker();
             this.cboMarriage = new System.Windows.Forms.ComboBox();
             this.cboJob = new System.Windows.Forms.ComboBox();
-            this.cboNation = new System.Windows.Forms.ComboBox();
             this.lblMajor = new System.Windows.Forms.Label();
             this.lblAge = new System.Windows.Forms.Label();
             this.txtAge = new System.Windows.Forms.TextBox();
@@ -61,8 +60,8 @@
             this.cboDepartment = new System.Windows.Forms.ComboBox();
             this.lblJobNo = new System.Windows.Forms.Label();
             this.txtJobNo = new System.Windows.Forms.TextBox();
-            this.lblCardId = new System.Windows.Forms.Label();
-            this.txtCardId = new System.Windows.Forms.TextBox();
+            this.lblCardNo = new System.Windows.Forms.Label();
+            this.txtCardNo = new System.Windows.Forms.TextBox();
             this.txtAddress1 = new System.Windows.Forms.TextBox();
             this.lblIntroducer = new System.Windows.Forms.Label();
             this.txtIntroducer = new System.Windows.Forms.TextBox();
@@ -79,6 +78,7 @@
             this.lblExamineResult = new System.Windows.Forms.Label();
             this.btnExamine = new System.Windows.Forms.Button();
             this.txtMajor = new System.Windows.Forms.TextBox();
+            this.txtNation = new System.Windows.Forms.TextBox();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -97,6 +97,7 @@
             this.txtName.Name = "txtName";
             this.txtName.Size = new System.Drawing.Size(125, 21);
             this.txtName.TabIndex = 2;
+            this.txtName.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Txt_KeyDown);
             // 
             // lblIDCard
             // 
@@ -150,6 +151,7 @@
             this.txtLiaison.Name = "txtLiaison";
             this.txtLiaison.Size = new System.Drawing.Size(79, 21);
             this.txtLiaison.TabIndex = 18;
+            this.txtLiaison.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Txt_KeyDown);
             // 
             // lblNation
             // 
@@ -184,6 +186,7 @@
             this.txtMobilePhone.Name = "txtMobilePhone";
             this.txtMobilePhone.Size = new System.Drawing.Size(125, 21);
             this.txtMobilePhone.TabIndex = 12;
+            this.txtMobilePhone.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Txt_KeyDown);
             // 
             // dtpEntryDate
             // 
@@ -191,6 +194,7 @@
             this.dtpEntryDate.Name = "dtpEntryDate";
             this.dtpEntryDate.Size = new System.Drawing.Size(125, 21);
             this.dtpEntryDate.TabIndex = 14;
+            this.dtpEntryDate.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Txt_KeyDown);
             // 
             // lblNativePlace
             // 
@@ -224,6 +228,7 @@
             this.cboEducation.Name = "cboEducation";
             this.cboEducation.Size = new System.Drawing.Size(125, 20);
             this.cboEducation.TabIndex = 7;
+            this.cboEducation.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Txt_KeyDown);
             // 
             // lblMarriage
             // 
@@ -258,6 +263,7 @@
             this.dtpBirthDate.Name = "dtpBirthDate";
             this.dtpBirthDate.Size = new System.Drawing.Size(125, 21);
             this.dtpBirthDate.TabIndex = 15;
+            this.dtpBirthDate.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Txt_KeyDown);
             // 
             // cboMarriage
             // 
@@ -269,6 +275,7 @@
             this.cboMarriage.Name = "cboMarriage";
             this.cboMarriage.Size = new System.Drawing.Size(125, 20);
             this.cboMarriage.TabIndex = 4;
+            this.cboMarriage.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Txt_KeyDown);
             // 
             // cboJob
             // 
@@ -277,14 +284,7 @@
             this.cboJob.Name = "cboJob";
             this.cboJob.Size = new System.Drawing.Size(125, 20);
             this.cboJob.TabIndex = 6;
-            // 
-            // cboNation
-            // 
-            this.cboNation.FormattingEnabled = true;
-            this.cboNation.Location = new System.Drawing.Point(292, 257);
-            this.cboNation.Name = "cboNation";
-            this.cboNation.Size = new System.Drawing.Size(125, 20);
-            this.cboNation.TabIndex = 10;
+            this.cboJob.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Txt_KeyDown);
             // 
             // lblMajor
             // 
@@ -329,6 +329,7 @@
             this.txtAddress2.Name = "txtAddress2";
             this.txtAddress2.Size = new System.Drawing.Size(338, 40);
             this.txtAddress2.TabIndex = 17;
+            this.txtAddress2.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Txt_KeyDown);
             // 
             // btnSaveStaff
             // 
@@ -349,6 +350,7 @@
             this.cboGender.Name = "cboGender";
             this.cboGender.Size = new System.Drawing.Size(125, 20);
             this.cboGender.TabIndex = 3;
+            this.cboGender.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Txt_KeyDown);
             // 
             // cboDepartment
             // 
@@ -358,6 +360,7 @@
             this.cboDepartment.Size = new System.Drawing.Size(125, 20);
             this.cboDepartment.TabIndex = 5;
             this.cboDepartment.SelectedIndexChanged += new System.EventHandler(this.JobList_SelectedIndexChanged);
+            this.cboDepartment.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Txt_KeyDown);
             // 
             // lblJobNo
             // 
@@ -374,23 +377,25 @@
             this.txtJobNo.Name = "txtJobNo";
             this.txtJobNo.ReadOnly = true;
             this.txtJobNo.Size = new System.Drawing.Size(125, 21);
-            this.txtJobNo.TabIndex = 4;
+            this.txtJobNo.TabIndex = 0;
+            this.txtJobNo.TabStop = false;
             // 
-            // lblCardId
+            // lblCardNo
             // 
-            this.lblCardId.AutoSize = true;
-            this.lblCardId.Location = new System.Drawing.Point(44, 293);
-            this.lblCardId.Name = "lblCardId";
-            this.lblCardId.Size = new System.Drawing.Size(29, 12);
-            this.lblCardId.TabIndex = 0;
-            this.lblCardId.Text = "卡号";
+            this.lblCardNo.AutoSize = true;
+            this.lblCardNo.Location = new System.Drawing.Point(44, 293);
+            this.lblCardNo.Name = "lblCardNo";
+            this.lblCardNo.Size = new System.Drawing.Size(29, 12);
+            this.lblCardNo.TabIndex = 0;
+            this.lblCardNo.Text = "卡号";
             // 
-            // txtCardId
+            // txtCardNo
             // 
-            this.txtCardId.Location = new System.Drawing.Point(79, 289);
-            this.txtCardId.Name = "txtCardId";
-            this.txtCardId.Size = new System.Drawing.Size(125, 21);
-            this.txtCardId.TabIndex = 11;
+            this.txtCardNo.Location = new System.Drawing.Point(79, 289);
+            this.txtCardNo.Name = "txtCardNo";
+            this.txtCardNo.Size = new System.Drawing.Size(125, 21);
+            this.txtCardNo.TabIndex = 11;
+            this.txtCardNo.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Txt_KeyDown);
             // 
             // txtAddress1
             // 
@@ -399,6 +404,7 @@
             this.txtAddress1.Name = "txtAddress1";
             this.txtAddress1.Size = new System.Drawing.Size(338, 40);
             this.txtAddress1.TabIndex = 16;
+            this.txtAddress1.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Txt_KeyDown);
             // 
             // lblIntroducer
             // 
@@ -415,6 +421,7 @@
             this.txtIntroducer.Name = "txtIntroducer";
             this.txtIntroducer.Size = new System.Drawing.Size(125, 21);
             this.txtIntroducer.TabIndex = 13;
+            this.txtIntroducer.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Txt_KeyDown);
             // 
             // lblLiaison
             // 
@@ -440,6 +447,7 @@
             this.txtFriendsPhone.Name = "txtFriendsPhone";
             this.txtFriendsPhone.Size = new System.Drawing.Size(112, 21);
             this.txtFriendsPhone.TabIndex = 20;
+            this.txtFriendsPhone.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Txt_KeyDown);
             // 
             // lblRelation
             // 
@@ -456,6 +464,7 @@
             this.textRelation.Name = "textRelation";
             this.textRelation.Size = new System.Drawing.Size(61, 21);
             this.textRelation.TabIndex = 19;
+            this.textRelation.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Txt_KeyDown);
             // 
             // lblSeniority
             // 
@@ -481,6 +490,7 @@
             this.txtNativePlace.Name = "txtNativePlace";
             this.txtNativePlace.Size = new System.Drawing.Size(125, 21);
             this.txtNativePlace.TabIndex = 9;
+            this.txtNativePlace.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Txt_KeyDown);
             // 
             // lblBirthDateExplain
             // 
@@ -534,6 +544,15 @@
             this.txtMajor.Name = "txtMajor";
             this.txtMajor.Size = new System.Drawing.Size(125, 21);
             this.txtMajor.TabIndex = 8;
+            this.txtMajor.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Txt_KeyDown);
+            // 
+            // txtNation
+            // 
+            this.txtNation.Location = new System.Drawing.Point(292, 257);
+            this.txtNation.Name = "txtNation";
+            this.txtNation.Size = new System.Drawing.Size(125, 21);
+            this.txtNation.TabIndex = 10;
+            this.txtNation.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Txt_KeyDown);
             // 
             // FrmAddStaff
             // 
@@ -544,7 +563,6 @@
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.lblBirthDateExplain);
             this.Controls.Add(this.btnSaveStaff);
-            this.Controls.Add(this.cboNation);
             this.Controls.Add(this.cboMarriage);
             this.Controls.Add(this.cboDepartment);
             this.Controls.Add(this.cboGender);
@@ -580,10 +598,11 @@
             this.Controls.Add(this.lblDepartment);
             this.Controls.Add(this.lblJob);
             this.Controls.Add(this.lblGender);
+            this.Controls.Add(this.txtNation);
             this.Controls.Add(this.txtMajor);
             this.Controls.Add(this.txtNativePlace);
-            this.Controls.Add(this.txtCardId);
-            this.Controls.Add(this.lblCardId);
+            this.Controls.Add(this.txtCardNo);
+            this.Controls.Add(this.lblCardNo);
             this.Controls.Add(this.txtJobNo);
             this.Controls.Add(this.lblJobNo);
             this.Controls.Add(this.txtName);
@@ -622,7 +641,6 @@
         private System.Windows.Forms.DateTimePicker dtpBirthDate;
         private System.Windows.Forms.ComboBox cboMarriage;
         private System.Windows.Forms.ComboBox cboJob;
-        private System.Windows.Forms.ComboBox cboNation;
         private System.Windows.Forms.Label lblMajor;
         private System.Windows.Forms.Label lblAge;
         private System.Windows.Forms.TextBox txtAge;
@@ -633,8 +651,8 @@
         private System.Windows.Forms.ComboBox cboDepartment;
         private System.Windows.Forms.Label lblJobNo;
         private System.Windows.Forms.TextBox txtJobNo;
-        private System.Windows.Forms.Label lblCardId;
-        private System.Windows.Forms.TextBox txtCardId;
+        private System.Windows.Forms.Label lblCardNo;
+        private System.Windows.Forms.TextBox txtCardNo;
         private System.Windows.Forms.TextBox txtAddress1;
         private System.Windows.Forms.Label lblIntroducer;
         private System.Windows.Forms.TextBox txtIntroducer;
@@ -651,5 +669,6 @@
         private System.Windows.Forms.Button btnExamine;
         private System.Windows.Forms.Label lblExamineResult;
         private System.Windows.Forms.TextBox txtMajor;
+        private System.Windows.Forms.TextBox txtNation;
     }
 }
