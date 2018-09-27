@@ -24,6 +24,9 @@ namespace AttReport
             this.cboDepartment.ValueMember = "DepartmentID";
             this.cboDepartment.SelectedIndex = -1;//默认不选中
 
+            //启动时设置焦点为身份证输入框
+            this.txtIDCard.Focus();
+
         }
 
         //根据部门获取职位列表的事件
@@ -190,6 +193,36 @@ namespace AttReport
             if (Common.DataValidate.CheckIDCard(txtIDCard.Text.Trim()))
             {
                 this.lblExamineResult.Text = "号码正确！";
+                #region 根据身份证号获取生日和性别信息
+                string Birthday = "";
+                string Gender = "";
+
+                //获取出生日期
+                if (txtIDCard.Text.Length == 18)//处理18位的身份证号码从号码中得到生日和性别代码
+                {
+                    Birthday = txtIDCard.Text.Substring(6, 4) + "-" + txtIDCard.Text.Substring(10, 2) + "-" + txtIDCard.Text.Substring(12, 2);
+                    Gender = txtIDCard.Text.Substring(14, 3);
+                }
+                if (txtIDCard.Text.Length == 15)
+                {
+                    Birthday = "19" + txtIDCard.Text.Substring(6, 2) + "-" + txtIDCard.Text.Substring(8, 2) + "-" + txtIDCard.Text.Substring(10, 2);
+                    Gender = txtIDCard.Text.Substring(12, 3);
+                }
+                dtpBirthDate.Text = Birthday;
+
+                //获取性别
+                if (int.Parse(Gender) % 2 == 0)//性别代码为偶数是女性奇数为男性
+                {
+                    this.cboGender.Text = "女";
+                }
+                else
+                {
+                    this.cboGender.Text = "男";
+                }
+
+                #endregion
+
+                //如果身份证件合法，则设置焦点为姓名输入框
                 this.txtName.Focus();
             }
             else

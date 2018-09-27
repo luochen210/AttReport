@@ -28,12 +28,12 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.系统管理ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.人事管理ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -97,14 +97,14 @@
             // 员工入职ToolStripMenuItem
             // 
             this.员工入职ToolStripMenuItem.Name = "员工入职ToolStripMenuItem";
-            this.员工入职ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.员工入职ToolStripMenuItem.Size = new System.Drawing.Size(124, 22);
             this.员工入职ToolStripMenuItem.Text = "员工入职";
             this.员工入职ToolStripMenuItem.Click += new System.EventHandler(this.员工入职ToolStripMenuItem_Click);
             // 
             // 人事录入ToolStripMenuItem
             // 
             this.人事录入ToolStripMenuItem.Name = "人事录入ToolStripMenuItem";
-            this.人事录入ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.人事录入ToolStripMenuItem.Size = new System.Drawing.Size(124, 22);
             this.人事录入ToolStripMenuItem.Text = "员工信息";
             // 
             // lblIP
@@ -123,7 +123,7 @@
             this.txtIP.Margin = new System.Windows.Forms.Padding(2);
             this.txtIP.Name = "txtIP";
             this.txtIP.Size = new System.Drawing.Size(96, 21);
-            this.txtIP.TabIndex = 2;
+            this.txtIP.TabIndex = 0;
             this.txtIP.Text = "192.168.1.201";
             // 
             // lblPort
@@ -142,7 +142,7 @@
             this.txtPort.Margin = new System.Windows.Forms.Padding(2);
             this.txtPort.Name = "txtPort";
             this.txtPort.Size = new System.Drawing.Size(44, 21);
-            this.txtPort.TabIndex = 2;
+            this.txtPort.TabIndex = 1;
             this.txtPort.Text = "4370";
             // 
             // btnConnect
@@ -152,7 +152,7 @@
             this.btnConnect.Margin = new System.Windows.Forms.Padding(2);
             this.btnConnect.Name = "btnConnect";
             this.btnConnect.Size = new System.Drawing.Size(56, 22);
-            this.btnConnect.TabIndex = 3;
+            this.btnConnect.TabIndex = 2;
             this.btnConnect.Text = "连接";
             this.btnConnect.UseVisualStyleBackColor = true;
             this.btnConnect.Click += new System.EventHandler(this.btnConnect_Click);
@@ -202,14 +202,14 @@
             this.dgvAttLog.AllowUserToAddRows = false;
             this.dgvAttLog.AllowUserToDeleteRows = false;
             this.dgvAttLog.BackgroundColor = System.Drawing.SystemColors.ButtonFace;
-            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle7.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle7.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            dataGridViewCellStyle7.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle7.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvAttLog.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle7;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvAttLog.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dgvAttLog.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvAttLog.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.ClockId,
@@ -232,8 +232,8 @@
             // 
             this.ClockId.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
             this.ClockId.DataPropertyName = "ClockId";
-            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.ClockId.DefaultCellStyle = dataGridViewCellStyle8;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.ClockId.DefaultCellStyle = dataGridViewCellStyle2;
             this.ClockId.HeaderText = "考勤号码";
             this.ClockId.Name = "ClockId";
             this.ClockId.ReadOnly = true;
@@ -243,8 +243,8 @@
             // 
             this.MachineId.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
             this.MachineId.DataPropertyName = "MachineId";
-            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.MachineId.DefaultCellStyle = dataGridViewCellStyle9;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.MachineId.DefaultCellStyle = dataGridViewCellStyle3;
             this.MachineId.HeaderText = "机器号";
             this.MachineId.Name = "MachineId";
             this.MachineId.ReadOnly = true;
@@ -254,8 +254,8 @@
             // 
             this.VerifyMode.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
             this.VerifyMode.DataPropertyName = "VerifyMode";
-            dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.VerifyMode.DefaultCellStyle = dataGridViewCellStyle10;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.VerifyMode.DefaultCellStyle = dataGridViewCellStyle4;
             this.VerifyMode.HeaderText = "验证方式";
             this.VerifyMode.Name = "VerifyMode";
             this.VerifyMode.ReadOnly = true;
@@ -265,8 +265,8 @@
             // 
             this.InOutMode.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
             this.InOutMode.DataPropertyName = "InOutMode";
-            dataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.InOutMode.DefaultCellStyle = dataGridViewCellStyle11;
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.InOutMode.DefaultCellStyle = dataGridViewCellStyle5;
             this.InOutMode.HeaderText = "考勤状态";
             this.InOutMode.Name = "InOutMode";
             this.InOutMode.ReadOnly = true;
@@ -276,8 +276,8 @@
             // 
             this.ClockRecord.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
             this.ClockRecord.DataPropertyName = "ClockRecord";
-            dataGridViewCellStyle12.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.ClockRecord.DefaultCellStyle = dataGridViewCellStyle12;
+            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.ClockRecord.DefaultCellStyle = dataGridViewCellStyle6;
             this.ClockRecord.HeaderText = "打卡时间";
             this.ClockRecord.Name = "ClockRecord";
             this.ClockRecord.ReadOnly = true;

@@ -96,7 +96,7 @@
             this.txtName.Location = new System.Drawing.Point(79, 93);
             this.txtName.Name = "txtName";
             this.txtName.Size = new System.Drawing.Size(125, 21);
-            this.txtName.TabIndex = 2;
+            this.txtName.TabIndex = 3;
             this.txtName.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Txt_KeyDown);
             // 
             // lblIDCard
@@ -115,7 +115,7 @@
             this.txtIDCard.Location = new System.Drawing.Point(68, 24);
             this.txtIDCard.Name = "txtIDCard";
             this.txtIDCard.Size = new System.Drawing.Size(172, 21);
-            this.txtIDCard.TabIndex = 0;
+            this.txtIDCard.TabIndex = 1;
             this.txtIDCard.KeyDown += new System.Windows.Forms.KeyEventHandler(this.btnExamine_KeyDown);
             // 
             // lblDepartment
@@ -150,7 +150,7 @@
             this.txtLiaison.Location = new System.Drawing.Point(79, 506);
             this.txtLiaison.Name = "txtLiaison";
             this.txtLiaison.Size = new System.Drawing.Size(79, 21);
-            this.txtLiaison.TabIndex = 18;
+            this.txtLiaison.TabIndex = 19;
             this.txtLiaison.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Txt_KeyDown);
             // 
             // lblNation
@@ -185,7 +185,7 @@
             this.txtMobilePhone.Location = new System.Drawing.Point(292, 290);
             this.txtMobilePhone.Name = "txtMobilePhone";
             this.txtMobilePhone.Size = new System.Drawing.Size(125, 21);
-            this.txtMobilePhone.TabIndex = 12;
+            this.txtMobilePhone.TabIndex = 13;
             this.txtMobilePhone.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Txt_KeyDown);
             // 
             // dtpEntryDate
@@ -193,7 +193,7 @@
             this.dtpEntryDate.Location = new System.Drawing.Point(292, 323);
             this.dtpEntryDate.Name = "dtpEntryDate";
             this.dtpEntryDate.Size = new System.Drawing.Size(125, 21);
-            this.dtpEntryDate.TabIndex = 14;
+            this.dtpEntryDate.TabIndex = 15;
             this.dtpEntryDate.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Txt_KeyDown);
             // 
             // lblNativePlace
@@ -227,7 +227,7 @@
             this.cboEducation.Location = new System.Drawing.Point(79, 223);
             this.cboEducation.Name = "cboEducation";
             this.cboEducation.Size = new System.Drawing.Size(125, 20);
-            this.cboEducation.TabIndex = 7;
+            this.cboEducation.TabIndex = 8;
             this.cboEducation.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Txt_KeyDown);
             // 
             // lblMarriage
@@ -262,7 +262,7 @@
             this.dtpBirthDate.Location = new System.Drawing.Point(79, 357);
             this.dtpBirthDate.Name = "dtpBirthDate";
             this.dtpBirthDate.Size = new System.Drawing.Size(125, 21);
-            this.dtpBirthDate.TabIndex = 15;
+            this.dtpBirthDate.TabIndex = 16;
             this.dtpBirthDate.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Txt_KeyDown);
             // 
             // cboMarriage
@@ -274,7 +274,7 @@
             this.cboMarriage.Location = new System.Drawing.Point(79, 157);
             this.cboMarriage.Name = "cboMarriage";
             this.cboMarriage.Size = new System.Drawing.Size(125, 20);
-            this.cboMarriage.TabIndex = 4;
+            this.cboMarriage.TabIndex = 5;
             this.cboMarriage.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Txt_KeyDown);
             // 
             // cboJob
@@ -283,7 +283,7 @@
             this.cboJob.Location = new System.Drawing.Point(292, 191);
             this.cboJob.Name = "cboJob";
             this.cboJob.Size = new System.Drawing.Size(125, 20);
-            this.cboJob.TabIndex = 6;
+            this.cboJob.TabIndex = 7;
             this.cboJob.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Txt_KeyDown);
             // 
             // lblMajor
@@ -328,7 +328,7 @@
             this.txtAddress2.Multiline = true;
             this.txtAddress2.Name = "txtAddress2";
             this.txtAddress2.Size = new System.Drawing.Size(338, 40);
-            this.txtAddress2.TabIndex = 17;
+            this.txtAddress2.TabIndex = 18;
             this.txtAddress2.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Txt_KeyDown);
             // 
             // btnSaveStaff
@@ -338,7 +338,7 @@
             this.btnSaveStaff.Location = new System.Drawing.Point(186, 546);
             this.btnSaveStaff.Name = "btnSaveStaff";
             this.btnSaveStaff.Size = new System.Drawing.Size(75, 23);
-            this.btnSaveStaff.TabIndex = 21;
+            this.btnSaveStaff.TabIndex = 22;
             this.btnSaveStaff.Text = "保存";
             this.btnSaveStaff.UseVisualStyleBackColor = false;
             this.btnSaveStaff.Click += new System.EventHandler(this.btnSaveStaff_Click);
@@ -349,7 +349,7 @@
             this.cboGender.Location = new System.Drawing.Point(79, 125);
             this.cboGender.Name = "cboGender";
             this.cboGender.Size = new System.Drawing.Size(125, 20);
-            this.cboGender.TabIndex = 3;
+            this.cboGender.TabIndex = 4;
             this.cboGender.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Txt_KeyDown);
             // 
             // cboDepartment
@@ -358,7 +358,7 @@
             this.cboDepartment.Location = new System.Drawing.Point(79, 191);
             this.cboDepartment.Name = "cboDepartment";
             this.cboDepartment.Size = new System.Drawing.Size(125, 20);
-            this.cboDepartment.TabIndex = 5;
+            this.cboDepartment.TabIndex = 6;
             this.cboDepartment.SelectedIndexChanged += new System.EventHandler(this.JobList_SelectedIndexChanged);
             this.cboDepartment.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Txt_KeyDown);
             // 
@@ -394,7 +394,7 @@
             this.txtCardNo.Location = new System.Drawing.Point(79, 289);
             this.txtCardNo.Name = "txtCardNo";
             this.txtCardNo.Size = new System.Drawing.Size(125, 21);
-            this.txtCardNo.TabIndex = 11;
+            this.txtCardNo.TabIndex = 12;
             this.txtCardNo.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Txt_KeyDown);
             // 
             // txtAddress1
@@ -403,7 +403,7 @@
             this.txtAddress1.Multiline = true;
             this.txtAddress1.Name = "txtAddress1";
             this.txtAddress1.Size = new System.Drawing.Size(338, 40);
-            this.txtAddress1.TabIndex = 16;
+            this.txtAddress1.TabIndex = 17;
             this.txtAddress1.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Txt_KeyDown);
             // 
             // lblIntroducer
@@ -420,7 +420,7 @@
             this.txtIntroducer.Location = new System.Drawing.Point(79, 323);
             this.txtIntroducer.Name = "txtIntroducer";
             this.txtIntroducer.Size = new System.Drawing.Size(125, 21);
-            this.txtIntroducer.TabIndex = 13;
+            this.txtIntroducer.TabIndex = 14;
             this.txtIntroducer.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Txt_KeyDown);
             // 
             // lblLiaison
@@ -446,7 +446,7 @@
             this.txtFriendsPhone.Location = new System.Drawing.Point(306, 506);
             this.txtFriendsPhone.Name = "txtFriendsPhone";
             this.txtFriendsPhone.Size = new System.Drawing.Size(112, 21);
-            this.txtFriendsPhone.TabIndex = 20;
+            this.txtFriendsPhone.TabIndex = 21;
             this.txtFriendsPhone.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Txt_KeyDown);
             // 
             // lblRelation
@@ -463,7 +463,7 @@
             this.textRelation.Location = new System.Drawing.Point(203, 506);
             this.textRelation.Name = "textRelation";
             this.textRelation.Size = new System.Drawing.Size(61, 21);
-            this.textRelation.TabIndex = 19;
+            this.textRelation.TabIndex = 20;
             this.textRelation.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Txt_KeyDown);
             // 
             // lblSeniority
@@ -489,7 +489,7 @@
             this.txtNativePlace.Location = new System.Drawing.Point(79, 257);
             this.txtNativePlace.Name = "txtNativePlace";
             this.txtNativePlace.Size = new System.Drawing.Size(125, 21);
-            this.txtNativePlace.TabIndex = 9;
+            this.txtNativePlace.TabIndex = 10;
             this.txtNativePlace.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Txt_KeyDown);
             // 
             // lblBirthDateExplain
@@ -513,7 +513,7 @@
             this.groupBox1.Location = new System.Drawing.Point(22, 13);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(395, 64);
-            this.groupBox1.TabIndex = 21;
+            this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             // 
             // lblExamineResult
@@ -533,7 +533,7 @@
             this.btnExamine.Location = new System.Drawing.Point(246, 23);
             this.btnExamine.Name = "btnExamine";
             this.btnExamine.Size = new System.Drawing.Size(75, 23);
-            this.btnExamine.TabIndex = 1;
+            this.btnExamine.TabIndex = 2;
             this.btnExamine.Text = "验证";
             this.btnExamine.UseVisualStyleBackColor = true;
             this.btnExamine.Click += new System.EventHandler(this.btnExamine_Click);
@@ -543,7 +543,7 @@
             this.txtMajor.Location = new System.Drawing.Point(292, 224);
             this.txtMajor.Name = "txtMajor";
             this.txtMajor.Size = new System.Drawing.Size(125, 21);
-            this.txtMajor.TabIndex = 8;
+            this.txtMajor.TabIndex = 9;
             this.txtMajor.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Txt_KeyDown);
             // 
             // txtNation
@@ -551,7 +551,7 @@
             this.txtNation.Location = new System.Drawing.Point(292, 257);
             this.txtNation.Name = "txtNation";
             this.txtNation.Size = new System.Drawing.Size(125, 21);
-            this.txtNation.TabIndex = 10;
+            this.txtNation.TabIndex = 11;
             this.txtNation.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Txt_KeyDown);
             // 
             // FrmAddStaff
