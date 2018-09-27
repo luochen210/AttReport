@@ -33,17 +33,21 @@ namespace AttReport
 
         }
 
-        //根据部门获取组别和职位列表的事件
+        //根据部门获取组别的事件
+        private void GroupList_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            //获取组别
+            this.cboGroup.DataSource = objJobListService.GetAllGroupList(this.cboDepartment.Text.Trim());
+            this.cboGroup.DisplayMember = "WorkGroupName";
+            this.cboGroup.ValueMember = "WorkGroupId";
+            this.cboGroup.SelectedIndex = -1;//默认不选中
+        }
+
+        //根据组别获取职位列表的事件
         private void JobList_SelectedIndexChanged(object sender, EventArgs e)
         {
-            ////获取组别
-            //this.cboJob.DataSource = objJobListService.GetAllJobList(this.cboDepartment.Text.Trim());
-            //this.cboJob.DisplayMember = "JobName";
-            //this.cboJob.ValueMember = "JobID";
-            //this.cboJob.SelectedIndex = -1;//默认不选中
-
             //获取职位
-            this.cboJob.DataSource = objJobListService.GetAllJobList(this.cboDepartment.Text.Trim());
+            this.cboJob.DataSource = objJobListService.GetAllJobList(this.cboGroup.Text.Trim());
             this.cboJob.DisplayMember = "JobName";
             this.cboJob.ValueMember = "JobID";
             this.cboJob.SelectedIndex = -1;//默认不选中
