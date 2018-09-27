@@ -35,7 +35,7 @@
             this.lblDepartment = new System.Windows.Forms.Label();
             this.lblBirthDate = new System.Windows.Forms.Label();
             this.lblAddress1 = new System.Windows.Forms.Label();
-            this.txtLiaison = new System.Windows.Forms.TextBox();
+            this.txtFriend = new System.Windows.Forms.TextBox();
             this.lblNation = new System.Windows.Forms.Label();
             this.lblEntryDate = new System.Windows.Forms.Label();
             this.lblMobilePhone = new System.Windows.Forms.Label();
@@ -54,7 +54,7 @@
             this.lblAge = new System.Windows.Forms.Label();
             this.txtAge = new System.Windows.Forms.TextBox();
             this.lblAddress2 = new System.Windows.Forms.Label();
-            this.txtAddress2 = new System.Windows.Forms.TextBox();
+            this.txtResidence = new System.Windows.Forms.TextBox();
             this.btnSaveStaff = new System.Windows.Forms.Button();
             this.cboGender = new System.Windows.Forms.ComboBox();
             this.cboDepartment = new System.Windows.Forms.ComboBox();
@@ -62,12 +62,12 @@
             this.txtJobNo = new System.Windows.Forms.TextBox();
             this.lblCardNo = new System.Windows.Forms.Label();
             this.txtCardNo = new System.Windows.Forms.TextBox();
-            this.txtAddress1 = new System.Windows.Forms.TextBox();
+            this.txtDomicile = new System.Windows.Forms.TextBox();
             this.lblLiaison = new System.Windows.Forms.Label();
             this.lblFriendsPhone = new System.Windows.Forms.Label();
-            this.txtFriendsPhone = new System.Windows.Forms.TextBox();
+            this.txtFriendPhone = new System.Windows.Forms.TextBox();
             this.lblRelation = new System.Windows.Forms.Label();
-            this.textRelation = new System.Windows.Forms.TextBox();
+            this.txtRelation = new System.Windows.Forms.TextBox();
             this.lblSeniority = new System.Windows.Forms.Label();
             this.txtSeniority = new System.Windows.Forms.TextBox();
             this.txtNativePlace = new System.Windows.Forms.TextBox();
@@ -77,7 +77,7 @@
             this.txtMajor = new System.Windows.Forms.TextBox();
             this.txtNation = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.txtIntroducer = new System.Windows.Forms.TextBox();
             this.lblGroup = new System.Windows.Forms.Label();
             this.cboGroup = new System.Windows.Forms.ComboBox();
             this.groupBox1.SuspendLayout();
@@ -146,13 +146,13 @@
             this.lblAddress1.TabIndex = 0;
             this.lblAddress1.Text = "户籍地址";
             // 
-            // txtLiaison
+            // txtFriend
             // 
-            this.txtLiaison.Location = new System.Drawing.Point(79, 506);
-            this.txtLiaison.Name = "txtLiaison";
-            this.txtLiaison.Size = new System.Drawing.Size(79, 21);
-            this.txtLiaison.TabIndex = 20;
-            this.txtLiaison.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Txt_KeyDown);
+            this.txtFriend.Location = new System.Drawing.Point(79, 506);
+            this.txtFriend.Name = "txtFriend";
+            this.txtFriend.Size = new System.Drawing.Size(79, 21);
+            this.txtFriend.TabIndex = 20;
+            this.txtFriend.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Txt_KeyDown);
             // 
             // lblNation
             // 
@@ -323,14 +323,14 @@
             this.lblAddress2.TabIndex = 0;
             this.lblAddress2.Text = "现居地址";
             // 
-            // txtAddress2
+            // txtResidence
             // 
-            this.txtAddress2.Location = new System.Drawing.Point(79, 450);
-            this.txtAddress2.Multiline = true;
-            this.txtAddress2.Name = "txtAddress2";
-            this.txtAddress2.Size = new System.Drawing.Size(338, 40);
-            this.txtAddress2.TabIndex = 19;
-            this.txtAddress2.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Txt_KeyDown);
+            this.txtResidence.Location = new System.Drawing.Point(79, 450);
+            this.txtResidence.Multiline = true;
+            this.txtResidence.Name = "txtResidence";
+            this.txtResidence.Size = new System.Drawing.Size(338, 40);
+            this.txtResidence.TabIndex = 19;
+            this.txtResidence.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Txt_KeyDown);
             // 
             // btnSaveStaff
             // 
@@ -401,14 +401,14 @@
             this.txtCardNo.TabIndex = 9;
             this.txtCardNo.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Txt_KeyDown);
             // 
-            // txtAddress1
+            // txtDomicile
             // 
-            this.txtAddress1.Location = new System.Drawing.Point(79, 394);
-            this.txtAddress1.Multiline = true;
-            this.txtAddress1.Name = "txtAddress1";
-            this.txtAddress1.Size = new System.Drawing.Size(338, 40);
-            this.txtAddress1.TabIndex = 18;
-            this.txtAddress1.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Txt_KeyDown);
+            this.txtDomicile.Location = new System.Drawing.Point(79, 394);
+            this.txtDomicile.Multiline = true;
+            this.txtDomicile.Name = "txtDomicile";
+            this.txtDomicile.Size = new System.Drawing.Size(338, 40);
+            this.txtDomicile.TabIndex = 18;
+            this.txtDomicile.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Txt_KeyDown);
             // 
             // lblLiaison
             // 
@@ -428,13 +428,13 @@
             this.lblFriendsPhone.TabIndex = 0;
             this.lblFriendsPhone.Text = "电话";
             // 
-            // txtFriendsPhone
+            // txtFriendPhone
             // 
-            this.txtFriendsPhone.Location = new System.Drawing.Point(306, 506);
-            this.txtFriendsPhone.Name = "txtFriendsPhone";
-            this.txtFriendsPhone.Size = new System.Drawing.Size(112, 21);
-            this.txtFriendsPhone.TabIndex = 22;
-            this.txtFriendsPhone.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Txt_KeyDown);
+            this.txtFriendPhone.Location = new System.Drawing.Point(306, 506);
+            this.txtFriendPhone.Name = "txtFriendPhone";
+            this.txtFriendPhone.Size = new System.Drawing.Size(112, 21);
+            this.txtFriendPhone.TabIndex = 22;
+            this.txtFriendPhone.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Txt_KeyDown);
             // 
             // lblRelation
             // 
@@ -445,13 +445,13 @@
             this.lblRelation.TabIndex = 0;
             this.lblRelation.Text = "关系";
             // 
-            // textRelation
+            // txtRelation
             // 
-            this.textRelation.Location = new System.Drawing.Point(203, 506);
-            this.textRelation.Name = "textRelation";
-            this.textRelation.Size = new System.Drawing.Size(61, 21);
-            this.textRelation.TabIndex = 21;
-            this.textRelation.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Txt_KeyDown);
+            this.txtRelation.Location = new System.Drawing.Point(203, 506);
+            this.txtRelation.Name = "txtRelation";
+            this.txtRelation.Size = new System.Drawing.Size(61, 21);
+            this.txtRelation.TabIndex = 21;
+            this.txtRelation.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Txt_KeyDown);
             // 
             // lblSeniority
             // 
@@ -540,13 +540,13 @@
             this.label1.TabIndex = 0;
             this.label1.Text = "介绍人";
             // 
-            // textBox1
+            // txtIntroducer
             // 
-            this.textBox1.Location = new System.Drawing.Point(292, 359);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(125, 21);
-            this.textBox1.TabIndex = 17;
-            this.textBox1.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Txt_KeyDown);
+            this.txtIntroducer.Location = new System.Drawing.Point(292, 359);
+            this.txtIntroducer.Name = "txtIntroducer";
+            this.txtIntroducer.Size = new System.Drawing.Size(125, 21);
+            this.txtIntroducer.TabIndex = 17;
+            this.txtIntroducer.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Txt_KeyDown);
             // 
             // lblGroup
             // 
@@ -583,25 +583,25 @@
             this.Controls.Add(this.dtpBirthDate);
             this.Controls.Add(this.dtpEntryDate);
             this.Controls.Add(this.lblBirthDate);
-            this.Controls.Add(this.txtAddress2);
+            this.Controls.Add(this.txtResidence);
             this.Controls.Add(this.lblAddress2);
-            this.Controls.Add(this.txtAddress1);
+            this.Controls.Add(this.txtDomicile);
             this.Controls.Add(this.lblAddress1);
             this.Controls.Add(this.lblEntryDate);
             this.Controls.Add(this.lblMajor);
             this.Controls.Add(this.lblNativePlace);
             this.Controls.Add(this.lblEducation);
             this.Controls.Add(this.lblMarriage);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.txtIntroducer);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.textRelation);
-            this.Controls.Add(this.txtFriendsPhone);
+            this.Controls.Add(this.txtRelation);
+            this.Controls.Add(this.txtFriendPhone);
             this.Controls.Add(this.lblRelation);
             this.Controls.Add(this.lblNation);
             this.Controls.Add(this.lblFriendsPhone);
             this.Controls.Add(this.txtMobilePhone);
             this.Controls.Add(this.lblMobilePhone);
-            this.Controls.Add(this.txtLiaison);
+            this.Controls.Add(this.txtFriend);
             this.Controls.Add(this.lblLiaison);
             this.Controls.Add(this.txtSeniority);
             this.Controls.Add(this.lblSeniority);
@@ -639,7 +639,7 @@
         private System.Windows.Forms.Label lblDepartment;
         private System.Windows.Forms.Label lblBirthDate;
         private System.Windows.Forms.Label lblAddress1;
-        private System.Windows.Forms.TextBox txtLiaison;
+        private System.Windows.Forms.TextBox txtFriend;
         private System.Windows.Forms.Label lblNation;
         private System.Windows.Forms.Label lblEntryDate;
         private System.Windows.Forms.Label lblMobilePhone;
@@ -658,7 +658,7 @@
         private System.Windows.Forms.Label lblAge;
         private System.Windows.Forms.TextBox txtAge;
         private System.Windows.Forms.Label lblAddress2;
-        private System.Windows.Forms.TextBox txtAddress2;
+        private System.Windows.Forms.TextBox txtResidence;
         private System.Windows.Forms.Button btnSaveStaff;
         private System.Windows.Forms.ComboBox cboGender;
         private System.Windows.Forms.ComboBox cboDepartment;
@@ -666,12 +666,12 @@
         private System.Windows.Forms.TextBox txtJobNo;
         private System.Windows.Forms.Label lblCardNo;
         private System.Windows.Forms.TextBox txtCardNo;
-        private System.Windows.Forms.TextBox txtAddress1;
+        private System.Windows.Forms.TextBox txtDomicile;
         private System.Windows.Forms.Label lblLiaison;
         private System.Windows.Forms.Label lblFriendsPhone;
-        private System.Windows.Forms.TextBox txtFriendsPhone;
+        private System.Windows.Forms.TextBox txtFriendPhone;
         private System.Windows.Forms.Label lblRelation;
-        private System.Windows.Forms.TextBox textRelation;
+        private System.Windows.Forms.TextBox txtRelation;
         private System.Windows.Forms.Label lblSeniority;
         private System.Windows.Forms.TextBox txtSeniority;
         private System.Windows.Forms.TextBox txtNativePlace;
@@ -681,7 +681,7 @@
         private System.Windows.Forms.TextBox txtMajor;
         private System.Windows.Forms.TextBox txtNation;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox txtIntroducer;
         private System.Windows.Forms.Label lblGroup;
         private System.Windows.Forms.ComboBox cboGroup;
     }

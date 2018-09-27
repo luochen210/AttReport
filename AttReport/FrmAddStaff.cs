@@ -14,6 +14,7 @@ namespace AttReport
     public partial class FrmAddStaff : Form
     {
         JobListService objJobListService = new JobListService();
+        StaffService objStaffService = new StaffService();
         public FrmAddStaff()
         {
             InitializeComponent();
@@ -24,14 +25,24 @@ namespace AttReport
             this.cboDepartment.ValueMember = "DepartmentID";
             this.cboDepartment.SelectedIndex = -1;//默认不选中
 
+            //获得新增员工的工号,D字开头
+            txtJobNo.Text = "D"+objStaffService.GetStaffId();
+
             //启动时设置焦点为身份证输入框
             //this.txtIDCard.Focus();
 
         }
 
-        //根据部门获取职位列表的事件
+        //根据部门获取组别和职位列表的事件
         private void JobList_SelectedIndexChanged(object sender, EventArgs e)
         {
+            ////获取组别
+            //this.cboJob.DataSource = objJobListService.GetAllJobList(this.cboDepartment.Text.Trim());
+            //this.cboJob.DisplayMember = "JobName";
+            //this.cboJob.ValueMember = "JobID";
+            //this.cboJob.SelectedIndex = -1;//默认不选中
+
+            //获取职位
             this.cboJob.DataSource = objJobListService.GetAllJobList(this.cboDepartment.Text.Trim());
             this.cboJob.DisplayMember = "JobName";
             this.cboJob.ValueMember = "JobID";
@@ -51,7 +62,7 @@ namespace AttReport
         //回车键模拟TAB键并验证输入的数据
         private void Txt_KeyDown(object sender, KeyEventArgs e)
         {
-            if (e.KeyValue == 13||e.KeyValue==9)
+            if (e.KeyValue == 13 || e.KeyValue == 9)
             {
                 #region  验证数据
 
@@ -147,38 +158,38 @@ namespace AttReport
                     return;
                 }
                 //验证户籍地址
-                if (this.txtAddress1.Text.Trim().Length == 0)
+                if (this.txtDomicile.Text.Trim().Length == 0)
                 {
                     MessageBox.Show("户籍地址不能为空！", "提示信息");
-                    this.txtAddress1.Focus();
+                    this.txtDomicile.Focus();
                     return;
                 }
                 //验证现居地址
-                if (this.txtAddress2.Text.Trim().Length == 0)
+                if (this.txtResidence.Text.Trim().Length == 0)
                 {
                     MessageBox.Show("现居地址不能为空！", "提示信息");
-                    this.txtAddress2.Focus();
+                    this.txtResidence.Focus();
                     return;
                 }
                 //联络人
-                if (this.txtLiaison.Text.Trim().Length == 0)
+                if (this.txtFriend.Text.Trim().Length == 0)
                 {
                     MessageBox.Show("联络人不能为空！", "提示信息");
-                    this.txtLiaison.Focus();
+                    this.txtFriend.Focus();
                     return;
                 }
                 //关系
-                if (this.txtLiaison.Text.Trim().Length == 0)
+                if (this.txtFriend.Text.Trim().Length == 0)
                 {
                     MessageBox.Show("关系不能为空！", "提示信息");
-                    this.txtLiaison.Focus();
+                    this.txtFriend.Focus();
                     return;
                 }
                 //亲友电话
-                if (this.txtFriendsPhone.Text.Trim().Length == 0)
+                if (this.txtFriendPhone.Text.Trim().Length == 0)
                 {
                     MessageBox.Show("亲友电话为空！", "提示信息");
-                    this.txtFriendsPhone.Focus();
+                    this.txtFriendPhone.Focus();
                     return;
                 }
                 #endregion
@@ -234,7 +245,7 @@ namespace AttReport
                 }
 
                 //获取年龄
-                int age=DateTime.Now.Year- Convert.ToDateTime(this.dtpBirthDate.Text).Year;
+                int age = DateTime.Now.Year - Convert.ToDateTime(this.dtpBirthDate.Text).Year;
                 this.txtAge.Text = age.ToString();
 
                 #endregion //获取结束！
