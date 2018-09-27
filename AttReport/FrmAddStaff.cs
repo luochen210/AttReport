@@ -25,7 +25,7 @@ namespace AttReport
             this.cboDepartment.SelectedIndex = -1;//默认不选中
 
             //启动时设置焦点为身份证输入框
-            this.txtIDCard.Focus();
+            //this.txtIDCard.Focus();
 
         }
 
@@ -48,13 +48,19 @@ namespace AttReport
             }
         }
 
-        //回车键模拟TAB键
+        //回车键模拟TAB键并验证输入的数据
         private void Txt_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyValue == 13||e.KeyValue==9)
             {
                 #region  验证数据
 
+                if (this.txtIDCard.Text.Trim().Length == 0)
+                {
+                    MessageBox.Show("身份证号码不能为空！", "提示信息");
+                    this.txtIDCard.Focus();
+                    return;
+                }
                 if (this.txtName.Text.Trim().Length == 0)
                 {
                     MessageBox.Show("姓名不能为空！", "提示信息");
@@ -70,13 +76,19 @@ namespace AttReport
                 //验证部门
                 if (this.cboDepartment.SelectedIndex == -1)
                 {
-                    MessageBox.Show("请选择班级！", "提示信息");
+                    MessageBox.Show("请选择部门！", "提示信息");
+                    return;
+                }
+                //验证部门
+                if (this.cboGroup.SelectedIndex == -1)
+                {
+                    MessageBox.Show("请选择组别！", "提示信息");
                     return;
                 }
                 //验证职位
                 if (this.cboJob.SelectedIndex == -1)
                 {
-                    MessageBox.Show("请选择班级！", "提示信息");
+                    MessageBox.Show("请选择职位！", "提示信息");
                     return;
                 }
                 //验证学历
@@ -130,7 +142,7 @@ namespace AttReport
                 //验证出生日期
                 if (this.dtpBirthDate.Text.Trim().Length == 0)
                 {
-                    MessageBox.Show("出生不能为空！", "提示信息");
+                    MessageBox.Show("出生日期不能为空！", "提示信息");
                     this.dtpBirthDate.Focus();
                     return;
                 }
@@ -165,7 +177,7 @@ namespace AttReport
                 //亲友电话
                 if (this.txtFriendsPhone.Text.Trim().Length == 0)
                 {
-                    MessageBox.Show("关系不能为空！", "提示信息");
+                    MessageBox.Show("亲友电话为空！", "提示信息");
                     this.txtFriendsPhone.Focus();
                     return;
                 }
@@ -187,13 +199,14 @@ namespace AttReport
 
         }
 
-        //身份证验证
+        //验证事件
         private void btnExamine_Click(object sender, EventArgs e)
         {
             if (Common.DataValidate.CheckIDCard(txtIDCard.Text.Trim()))
             {
                 this.lblExamineResult.Text = "号码正确！";
-                #region 根据身份证号获取生日和性别信息
+
+                #region 根据身份证号获取生日、性别、籍贯等信息
                 string Birthday = "";
                 string Gender = "";
 
@@ -220,7 +233,17 @@ namespace AttReport
                     this.cboGender.Text = "男";
                 }
 
-                #endregion
+                //获取年龄
+                int age=DateTime.Now.Year- Convert.ToDateTime(this.dtpBirthDate.Text).Year;
+                this.txtAge.Text = age.ToString();
+
+                #endregion //获取结束！
+
+                //获取工龄
+                int seniority = DateTime.Now.Year - Convert.ToDateTime(this.dtpEntryDate.Text).Year;
+                this.txtSeniority.Text = seniority.ToString();
+
+
 
                 //如果身份证件合法，则设置焦点为姓名输入框
                 this.txtName.Focus();

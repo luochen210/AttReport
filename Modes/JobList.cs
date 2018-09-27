@@ -15,6 +15,7 @@ namespace Models
         public string DepartmentName { get; set; }//部门名
         public int JobID { get; set; }//职位ID
         public string JobName { get; set; }//职位名称
+        public string WorkingGroup { get; set; }//工作组
 
     }
 }

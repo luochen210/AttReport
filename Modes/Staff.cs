@@ -50,6 +50,8 @@ namespace Models
 
         public string Department { get; set; }//部门
 
+        public string WorkGroup { get; set; }//组别
+
         public string Job { get; set; }//职位
 
     }

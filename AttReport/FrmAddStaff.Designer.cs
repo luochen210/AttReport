@@ -63,8 +63,6 @@
             this.lblCardNo = new System.Windows.Forms.Label();
             this.txtCardNo = new System.Windows.Forms.TextBox();
             this.txtAddress1 = new System.Windows.Forms.TextBox();
-            this.lblIntroducer = new System.Windows.Forms.Label();
-            this.txtIntroducer = new System.Windows.Forms.TextBox();
             this.lblLiaison = new System.Windows.Forms.Label();
             this.lblFriendsPhone = new System.Windows.Forms.Label();
             this.txtFriendsPhone = new System.Windows.Forms.TextBox();
@@ -73,12 +71,15 @@
             this.lblSeniority = new System.Windows.Forms.Label();
             this.txtSeniority = new System.Windows.Forms.TextBox();
             this.txtNativePlace = new System.Windows.Forms.TextBox();
-            this.lblBirthDateExplain = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.lblExamineResult = new System.Windows.Forms.Label();
             this.btnExamine = new System.Windows.Forms.Button();
             this.txtMajor = new System.Windows.Forms.TextBox();
             this.txtNation = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.lblGroup = new System.Windows.Forms.Label();
+            this.cboGroup = new System.Windows.Forms.ComboBox();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -130,7 +131,7 @@
             // lblBirthDate
             // 
             this.lblBirthDate.AutoSize = true;
-            this.lblBirthDate.Location = new System.Drawing.Point(20, 362);
+            this.lblBirthDate.Location = new System.Drawing.Point(20, 363);
             this.lblBirthDate.Name = "lblBirthDate";
             this.lblBirthDate.Size = new System.Drawing.Size(53, 12);
             this.lblBirthDate.TabIndex = 0;
@@ -150,13 +151,13 @@
             this.txtLiaison.Location = new System.Drawing.Point(79, 506);
             this.txtLiaison.Name = "txtLiaison";
             this.txtLiaison.Size = new System.Drawing.Size(79, 21);
-            this.txtLiaison.TabIndex = 19;
+            this.txtLiaison.TabIndex = 20;
             this.txtLiaison.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Txt_KeyDown);
             // 
             // lblNation
             // 
             this.lblNation.AutoSize = true;
-            this.lblNation.Location = new System.Drawing.Point(257, 261);
+            this.lblNation.Location = new System.Drawing.Point(257, 296);
             this.lblNation.Name = "lblNation";
             this.lblNation.Size = new System.Drawing.Size(29, 12);
             this.lblNation.TabIndex = 0;
@@ -165,7 +166,7 @@
             // lblEntryDate
             // 
             this.lblEntryDate.AutoSize = true;
-            this.lblEntryDate.Location = new System.Drawing.Point(233, 328);
+            this.lblEntryDate.Location = new System.Drawing.Point(20, 330);
             this.lblEntryDate.Name = "lblEntryDate";
             this.lblEntryDate.Size = new System.Drawing.Size(53, 12);
             this.lblEntryDate.TabIndex = 0;
@@ -174,7 +175,7 @@
             // lblMobilePhone
             // 
             this.lblMobilePhone.AutoSize = true;
-            this.lblMobilePhone.Location = new System.Drawing.Point(257, 293);
+            this.lblMobilePhone.Location = new System.Drawing.Point(257, 329);
             this.lblMobilePhone.Name = "lblMobilePhone";
             this.lblMobilePhone.Size = new System.Drawing.Size(29, 12);
             this.lblMobilePhone.TabIndex = 0;
@@ -182,24 +183,24 @@
             // 
             // txtMobilePhone
             // 
-            this.txtMobilePhone.Location = new System.Drawing.Point(292, 290);
+            this.txtMobilePhone.Location = new System.Drawing.Point(292, 325);
             this.txtMobilePhone.Name = "txtMobilePhone";
             this.txtMobilePhone.Size = new System.Drawing.Size(125, 21);
-            this.txtMobilePhone.TabIndex = 13;
+            this.txtMobilePhone.TabIndex = 15;
             this.txtMobilePhone.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Txt_KeyDown);
             // 
             // dtpEntryDate
             // 
-            this.dtpEntryDate.Location = new System.Drawing.Point(292, 323);
+            this.dtpEntryDate.Location = new System.Drawing.Point(79, 325);
             this.dtpEntryDate.Name = "dtpEntryDate";
             this.dtpEntryDate.Size = new System.Drawing.Size(125, 21);
-            this.dtpEntryDate.TabIndex = 15;
+            this.dtpEntryDate.TabIndex = 14;
             this.dtpEntryDate.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Txt_KeyDown);
             // 
             // lblNativePlace
             // 
             this.lblNativePlace.AutoSize = true;
-            this.lblNativePlace.Location = new System.Drawing.Point(44, 260);
+            this.lblNativePlace.Location = new System.Drawing.Point(44, 296);
             this.lblNativePlace.Name = "lblNativePlace";
             this.lblNativePlace.Size = new System.Drawing.Size(29, 12);
             this.lblNativePlace.TabIndex = 0;
@@ -208,7 +209,7 @@
             // lblEducation
             // 
             this.lblEducation.AutoSize = true;
-            this.lblEducation.Location = new System.Drawing.Point(44, 226);
+            this.lblEducation.Location = new System.Drawing.Point(44, 262);
             this.lblEducation.Name = "lblEducation";
             this.lblEducation.Size = new System.Drawing.Size(29, 12);
             this.lblEducation.TabIndex = 0;
@@ -224,10 +225,10 @@
             "大专",
             "本科",
             "研究生"});
-            this.cboEducation.Location = new System.Drawing.Point(79, 223);
+            this.cboEducation.Location = new System.Drawing.Point(79, 258);
             this.cboEducation.Name = "cboEducation";
             this.cboEducation.Size = new System.Drawing.Size(125, 20);
-            this.cboEducation.TabIndex = 8;
+            this.cboEducation.TabIndex = 10;
             this.cboEducation.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Txt_KeyDown);
             // 
             // lblMarriage
@@ -251,7 +252,7 @@
             // lblJob
             // 
             this.lblJob.AutoSize = true;
-            this.lblJob.Location = new System.Drawing.Point(257, 196);
+            this.lblJob.Location = new System.Drawing.Point(44, 229);
             this.lblJob.Name = "lblJob";
             this.lblJob.Size = new System.Drawing.Size(29, 12);
             this.lblJob.TabIndex = 0;
@@ -259,7 +260,7 @@
             // 
             // dtpBirthDate
             // 
-            this.dtpBirthDate.Location = new System.Drawing.Point(79, 357);
+            this.dtpBirthDate.Location = new System.Drawing.Point(79, 359);
             this.dtpBirthDate.Name = "dtpBirthDate";
             this.dtpBirthDate.Size = new System.Drawing.Size(125, 21);
             this.dtpBirthDate.TabIndex = 16;
@@ -280,16 +281,16 @@
             // cboJob
             // 
             this.cboJob.FormattingEnabled = true;
-            this.cboJob.Location = new System.Drawing.Point(292, 191);
+            this.cboJob.Location = new System.Drawing.Point(79, 225);
             this.cboJob.Name = "cboJob";
             this.cboJob.Size = new System.Drawing.Size(125, 20);
-            this.cboJob.TabIndex = 7;
+            this.cboJob.TabIndex = 8;
             this.cboJob.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Txt_KeyDown);
             // 
             // lblMajor
             // 
             this.lblMajor.AutoSize = true;
-            this.lblMajor.Location = new System.Drawing.Point(257, 227);
+            this.lblMajor.Location = new System.Drawing.Point(257, 262);
             this.lblMajor.Name = "lblMajor";
             this.lblMajor.Size = new System.Drawing.Size(29, 12);
             this.lblMajor.TabIndex = 0;
@@ -328,7 +329,7 @@
             this.txtAddress2.Multiline = true;
             this.txtAddress2.Name = "txtAddress2";
             this.txtAddress2.Size = new System.Drawing.Size(338, 40);
-            this.txtAddress2.TabIndex = 18;
+            this.txtAddress2.TabIndex = 19;
             this.txtAddress2.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Txt_KeyDown);
             // 
             // btnSaveStaff
@@ -338,7 +339,7 @@
             this.btnSaveStaff.Location = new System.Drawing.Point(186, 546);
             this.btnSaveStaff.Name = "btnSaveStaff";
             this.btnSaveStaff.Size = new System.Drawing.Size(75, 23);
-            this.btnSaveStaff.TabIndex = 22;
+            this.btnSaveStaff.TabIndex = 23;
             this.btnSaveStaff.Text = "保存";
             this.btnSaveStaff.UseVisualStyleBackColor = false;
             this.btnSaveStaff.Click += new System.EventHandler(this.btnSaveStaff_Click);
@@ -346,6 +347,9 @@
             // cboGender
             // 
             this.cboGender.FormattingEnabled = true;
+            this.cboGender.Items.AddRange(new object[] {
+            "男",
+            "女"});
             this.cboGender.Location = new System.Drawing.Point(79, 125);
             this.cboGender.Name = "cboGender";
             this.cboGender.Size = new System.Drawing.Size(125, 20);
@@ -383,7 +387,7 @@
             // lblCardNo
             // 
             this.lblCardNo.AutoSize = true;
-            this.lblCardNo.Location = new System.Drawing.Point(44, 293);
+            this.lblCardNo.Location = new System.Drawing.Point(257, 229);
             this.lblCardNo.Name = "lblCardNo";
             this.lblCardNo.Size = new System.Drawing.Size(29, 12);
             this.lblCardNo.TabIndex = 0;
@@ -391,10 +395,10 @@
             // 
             // txtCardNo
             // 
-            this.txtCardNo.Location = new System.Drawing.Point(79, 289);
+            this.txtCardNo.Location = new System.Drawing.Point(292, 225);
             this.txtCardNo.Name = "txtCardNo";
             this.txtCardNo.Size = new System.Drawing.Size(125, 21);
-            this.txtCardNo.TabIndex = 12;
+            this.txtCardNo.TabIndex = 9;
             this.txtCardNo.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Txt_KeyDown);
             // 
             // txtAddress1
@@ -403,25 +407,8 @@
             this.txtAddress1.Multiline = true;
             this.txtAddress1.Name = "txtAddress1";
             this.txtAddress1.Size = new System.Drawing.Size(338, 40);
-            this.txtAddress1.TabIndex = 17;
+            this.txtAddress1.TabIndex = 18;
             this.txtAddress1.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Txt_KeyDown);
-            // 
-            // lblIntroducer
-            // 
-            this.lblIntroducer.AutoSize = true;
-            this.lblIntroducer.Location = new System.Drawing.Point(32, 327);
-            this.lblIntroducer.Name = "lblIntroducer";
-            this.lblIntroducer.Size = new System.Drawing.Size(41, 12);
-            this.lblIntroducer.TabIndex = 0;
-            this.lblIntroducer.Text = "介绍人";
-            // 
-            // txtIntroducer
-            // 
-            this.txtIntroducer.Location = new System.Drawing.Point(79, 323);
-            this.txtIntroducer.Name = "txtIntroducer";
-            this.txtIntroducer.Size = new System.Drawing.Size(125, 21);
-            this.txtIntroducer.TabIndex = 14;
-            this.txtIntroducer.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Txt_KeyDown);
             // 
             // lblLiaison
             // 
@@ -446,7 +433,7 @@
             this.txtFriendsPhone.Location = new System.Drawing.Point(306, 506);
             this.txtFriendsPhone.Name = "txtFriendsPhone";
             this.txtFriendsPhone.Size = new System.Drawing.Size(112, 21);
-            this.txtFriendsPhone.TabIndex = 21;
+            this.txtFriendsPhone.TabIndex = 22;
             this.txtFriendsPhone.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Txt_KeyDown);
             // 
             // lblRelation
@@ -463,7 +450,7 @@
             this.textRelation.Location = new System.Drawing.Point(203, 506);
             this.textRelation.Name = "textRelation";
             this.textRelation.Size = new System.Drawing.Size(61, 21);
-            this.textRelation.TabIndex = 20;
+            this.textRelation.TabIndex = 21;
             this.textRelation.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Txt_KeyDown);
             // 
             // lblSeniority
@@ -486,21 +473,11 @@
             // 
             // txtNativePlace
             // 
-            this.txtNativePlace.Location = new System.Drawing.Point(79, 257);
+            this.txtNativePlace.Location = new System.Drawing.Point(79, 292);
             this.txtNativePlace.Name = "txtNativePlace";
             this.txtNativePlace.Size = new System.Drawing.Size(125, 21);
-            this.txtNativePlace.TabIndex = 10;
+            this.txtNativePlace.TabIndex = 12;
             this.txtNativePlace.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Txt_KeyDown);
-            // 
-            // lblBirthDateExplain
-            // 
-            this.lblBirthDateExplain.AutoSize = true;
-            this.lblBirthDateExplain.ForeColor = System.Drawing.SystemColors.ControlDark;
-            this.lblBirthDateExplain.Location = new System.Drawing.Point(210, 362);
-            this.lblBirthDateExplain.Name = "lblBirthDateExplain";
-            this.lblBirthDateExplain.Size = new System.Drawing.Size(215, 12);
-            this.lblBirthDateExplain.TabIndex = 20;
-            this.lblBirthDateExplain.Text = "《=更改出生日期可以修正错误的年龄！";
             // 
             // groupBox1
             // 
@@ -540,32 +517,67 @@
             // 
             // txtMajor
             // 
-            this.txtMajor.Location = new System.Drawing.Point(292, 224);
+            this.txtMajor.Location = new System.Drawing.Point(292, 258);
             this.txtMajor.Name = "txtMajor";
             this.txtMajor.Size = new System.Drawing.Size(125, 21);
-            this.txtMajor.TabIndex = 9;
+            this.txtMajor.TabIndex = 11;
             this.txtMajor.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Txt_KeyDown);
             // 
             // txtNation
             // 
-            this.txtNation.Location = new System.Drawing.Point(292, 257);
+            this.txtNation.Location = new System.Drawing.Point(292, 292);
             this.txtNation.Name = "txtNation";
             this.txtNation.Size = new System.Drawing.Size(125, 21);
-            this.txtNation.TabIndex = 11;
+            this.txtNation.TabIndex = 13;
             this.txtNation.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Txt_KeyDown);
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(245, 363);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(41, 12);
+            this.label1.TabIndex = 0;
+            this.label1.Text = "介绍人";
+            // 
+            // textBox1
+            // 
+            this.textBox1.Location = new System.Drawing.Point(292, 359);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(125, 21);
+            this.textBox1.TabIndex = 17;
+            this.textBox1.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Txt_KeyDown);
+            // 
+            // lblGroup
+            // 
+            this.lblGroup.AutoSize = true;
+            this.lblGroup.Location = new System.Drawing.Point(257, 196);
+            this.lblGroup.Name = "lblGroup";
+            this.lblGroup.Size = new System.Drawing.Size(29, 12);
+            this.lblGroup.TabIndex = 0;
+            this.lblGroup.Text = "组别";
+            // 
+            // cboGroup
+            // 
+            this.cboGroup.FormattingEnabled = true;
+            this.cboGroup.Location = new System.Drawing.Point(292, 191);
+            this.cboGroup.Name = "cboGroup";
+            this.cboGroup.Size = new System.Drawing.Size(125, 20);
+            this.cboGroup.TabIndex = 7;
+            this.cboGroup.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Txt_KeyDown);
             // 
             // FrmAddStaff
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
-            this.ClientSize = new System.Drawing.Size(440, 582);
+            this.ClientSize = new System.Drawing.Size(445, 582);
             this.Controls.Add(this.groupBox1);
-            this.Controls.Add(this.lblBirthDateExplain);
             this.Controls.Add(this.btnSaveStaff);
             this.Controls.Add(this.cboMarriage);
             this.Controls.Add(this.cboDepartment);
             this.Controls.Add(this.cboGender);
+            this.Controls.Add(this.cboGroup);
             this.Controls.Add(this.cboJob);
             this.Controls.Add(this.cboEducation);
             this.Controls.Add(this.dtpBirthDate);
@@ -580,8 +592,8 @@
             this.Controls.Add(this.lblNativePlace);
             this.Controls.Add(this.lblEducation);
             this.Controls.Add(this.lblMarriage);
-            this.Controls.Add(this.txtIntroducer);
-            this.Controls.Add(this.lblIntroducer);
+            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.textRelation);
             this.Controls.Add(this.txtFriendsPhone);
             this.Controls.Add(this.lblRelation);
@@ -595,6 +607,7 @@
             this.Controls.Add(this.lblSeniority);
             this.Controls.Add(this.txtAge);
             this.Controls.Add(this.lblAge);
+            this.Controls.Add(this.lblGroup);
             this.Controls.Add(this.lblDepartment);
             this.Controls.Add(this.lblJob);
             this.Controls.Add(this.lblGender);
@@ -654,8 +667,6 @@
         private System.Windows.Forms.Label lblCardNo;
         private System.Windows.Forms.TextBox txtCardNo;
         private System.Windows.Forms.TextBox txtAddress1;
-        private System.Windows.Forms.Label lblIntroducer;
-        private System.Windows.Forms.TextBox txtIntroducer;
         private System.Windows.Forms.Label lblLiaison;
         private System.Windows.Forms.Label lblFriendsPhone;
         private System.Windows.Forms.TextBox txtFriendsPhone;
@@ -664,11 +675,14 @@
         private System.Windows.Forms.Label lblSeniority;
         private System.Windows.Forms.TextBox txtSeniority;
         private System.Windows.Forms.TextBox txtNativePlace;
-        private System.Windows.Forms.Label lblBirthDateExplain;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.Button btnExamine;
         private System.Windows.Forms.Label lblExamineResult;
         private System.Windows.Forms.TextBox txtMajor;
         private System.Windows.Forms.TextBox txtNation;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.Label lblGroup;
+        private System.Windows.Forms.ComboBox cboGroup;
     }
 }

@@ -13,7 +13,7 @@ namespace DAL
 
         //public Staff SaveStaff(Staff objStaff)
         //{
-        //    string sql="insert into "
+        //    string sql = "insert into ";
         //}
 
         #endregion
