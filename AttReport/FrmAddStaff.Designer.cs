@@ -61,7 +61,7 @@
             this.lblJobNo = new System.Windows.Forms.Label();
             this.txtJobNo = new System.Windows.Forms.TextBox();
             this.lblCardNo = new System.Windows.Forms.Label();
-            this.txtCardNo = new System.Windows.Forms.TextBox();
+            this.txtAttCardNo = new System.Windows.Forms.TextBox();
             this.txtDomicile = new System.Windows.Forms.TextBox();
             this.lblLiaison = new System.Windows.Forms.Label();
             this.lblFriendsPhone = new System.Windows.Forms.Label();
@@ -96,7 +96,7 @@
             // txtName
             // 
             this.txtName.Location = new System.Drawing.Point(105, 116);
-            this.txtName.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtName.Margin = new System.Windows.Forms.Padding(4);
             this.txtName.Name = "txtName";
             this.txtName.Size = new System.Drawing.Size(165, 25);
             this.txtName.TabIndex = 3;
@@ -117,7 +117,7 @@
             // 
             this.txtIDCard.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.txtIDCard.Location = new System.Drawing.Point(91, 30);
-            this.txtIDCard.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtIDCard.Margin = new System.Windows.Forms.Padding(4);
             this.txtIDCard.Name = "txtIDCard";
             this.txtIDCard.Size = new System.Drawing.Size(228, 25);
             this.txtIDCard.TabIndex = 1;
@@ -156,7 +156,7 @@
             // txtFriend
             // 
             this.txtFriend.Location = new System.Drawing.Point(105, 632);
-            this.txtFriend.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtFriend.Margin = new System.Windows.Forms.Padding(4);
             this.txtFriend.Name = "txtFriend";
             this.txtFriend.Size = new System.Drawing.Size(104, 25);
             this.txtFriend.TabIndex = 20;
@@ -195,7 +195,7 @@
             // txtMobilePhone
             // 
             this.txtMobilePhone.Location = new System.Drawing.Point(389, 406);
-            this.txtMobilePhone.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtMobilePhone.Margin = new System.Windows.Forms.Padding(4);
             this.txtMobilePhone.Name = "txtMobilePhone";
             this.txtMobilePhone.Size = new System.Drawing.Size(165, 25);
             this.txtMobilePhone.TabIndex = 15;
@@ -204,10 +204,11 @@
             // dtpEntryDate
             // 
             this.dtpEntryDate.Location = new System.Drawing.Point(105, 406);
-            this.dtpEntryDate.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.dtpEntryDate.Margin = new System.Windows.Forms.Padding(4);
             this.dtpEntryDate.Name = "dtpEntryDate";
             this.dtpEntryDate.Size = new System.Drawing.Size(165, 25);
             this.dtpEntryDate.TabIndex = 14;
+            this.dtpEntryDate.CloseUp += new System.EventHandler(this.GetSeniority_CloseUp);
             this.dtpEntryDate.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Txt_KeyDown);
             // 
             // lblNativePlace
@@ -241,7 +242,7 @@
             "本科",
             "研究生"});
             this.cboEducation.Location = new System.Drawing.Point(105, 322);
-            this.cboEducation.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.cboEducation.Margin = new System.Windows.Forms.Padding(4);
             this.cboEducation.Name = "cboEducation";
             this.cboEducation.Size = new System.Drawing.Size(165, 23);
             this.cboEducation.TabIndex = 10;
@@ -280,7 +281,7 @@
             // dtpBirthDate
             // 
             this.dtpBirthDate.Location = new System.Drawing.Point(105, 449);
-            this.dtpBirthDate.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.dtpBirthDate.Margin = new System.Windows.Forms.Padding(4);
             this.dtpBirthDate.Name = "dtpBirthDate";
             this.dtpBirthDate.Size = new System.Drawing.Size(165, 25);
             this.dtpBirthDate.TabIndex = 16;
@@ -291,9 +292,10 @@
             this.cboMarriage.FormattingEnabled = true;
             this.cboMarriage.Items.AddRange(new object[] {
             "未婚",
-            "已婚"});
+            "已婚",
+            "离异"});
             this.cboMarriage.Location = new System.Drawing.Point(105, 196);
-            this.cboMarriage.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.cboMarriage.Margin = new System.Windows.Forms.Padding(4);
             this.cboMarriage.Name = "cboMarriage";
             this.cboMarriage.Size = new System.Drawing.Size(165, 23);
             this.cboMarriage.TabIndex = 5;
@@ -303,7 +305,7 @@
             // 
             this.cboJob.FormattingEnabled = true;
             this.cboJob.Location = new System.Drawing.Point(105, 281);
-            this.cboJob.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.cboJob.Margin = new System.Windows.Forms.Padding(4);
             this.cboJob.Name = "cboJob";
             this.cboJob.Size = new System.Drawing.Size(165, 23);
             this.cboJob.TabIndex = 8;
@@ -332,7 +334,7 @@
             // txtAge
             // 
             this.txtAge.Location = new System.Drawing.Point(389, 196);
-            this.txtAge.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtAge.Margin = new System.Windows.Forms.Padding(4);
             this.txtAge.Name = "txtAge";
             this.txtAge.ReadOnly = true;
             this.txtAge.Size = new System.Drawing.Size(165, 25);
@@ -352,7 +354,7 @@
             // txtResidence
             // 
             this.txtResidence.Location = new System.Drawing.Point(105, 562);
-            this.txtResidence.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtResidence.Margin = new System.Windows.Forms.Padding(4);
             this.txtResidence.Multiline = true;
             this.txtResidence.Name = "txtResidence";
             this.txtResidence.Size = new System.Drawing.Size(449, 49);
@@ -364,7 +366,7 @@
             this.btnSaveStaff.AutoSize = true;
             this.btnSaveStaff.BackColor = System.Drawing.SystemColors.Highlight;
             this.btnSaveStaff.Location = new System.Drawing.Point(248, 682);
-            this.btnSaveStaff.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnSaveStaff.Margin = new System.Windows.Forms.Padding(4);
             this.btnSaveStaff.Name = "btnSaveStaff";
             this.btnSaveStaff.Size = new System.Drawing.Size(100, 29);
             this.btnSaveStaff.TabIndex = 23;
@@ -379,7 +381,7 @@
             "男",
             "女"});
             this.cboGender.Location = new System.Drawing.Point(105, 156);
-            this.cboGender.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.cboGender.Margin = new System.Windows.Forms.Padding(4);
             this.cboGender.Name = "cboGender";
             this.cboGender.Size = new System.Drawing.Size(165, 23);
             this.cboGender.TabIndex = 4;
@@ -389,7 +391,7 @@
             // 
             this.cboDepartment.FormattingEnabled = true;
             this.cboDepartment.Location = new System.Drawing.Point(105, 239);
-            this.cboDepartment.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.cboDepartment.Margin = new System.Windows.Forms.Padding(4);
             this.cboDepartment.Name = "cboDepartment";
             this.cboDepartment.Size = new System.Drawing.Size(165, 23);
             this.cboDepartment.TabIndex = 6;
@@ -409,7 +411,7 @@
             // txtJobNo
             // 
             this.txtJobNo.Location = new System.Drawing.Point(389, 115);
-            this.txtJobNo.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtJobNo.Margin = new System.Windows.Forms.Padding(4);
             this.txtJobNo.Name = "txtJobNo";
             this.txtJobNo.ReadOnly = true;
             this.txtJobNo.Size = new System.Drawing.Size(165, 25);
@@ -426,19 +428,19 @@
             this.lblCardNo.TabIndex = 0;
             this.lblCardNo.Text = "卡号";
             // 
-            // txtCardNo
+            // txtAttCardNo
             // 
-            this.txtCardNo.Location = new System.Drawing.Point(389, 281);
-            this.txtCardNo.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.txtCardNo.Name = "txtCardNo";
-            this.txtCardNo.Size = new System.Drawing.Size(165, 25);
-            this.txtCardNo.TabIndex = 9;
-            this.txtCardNo.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Txt_KeyDown);
+            this.txtAttCardNo.Location = new System.Drawing.Point(389, 281);
+            this.txtAttCardNo.Margin = new System.Windows.Forms.Padding(4);
+            this.txtAttCardNo.Name = "txtAttCardNo";
+            this.txtAttCardNo.Size = new System.Drawing.Size(165, 25);
+            this.txtAttCardNo.TabIndex = 9;
+            this.txtAttCardNo.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Txt_KeyDown);
             // 
             // txtDomicile
             // 
             this.txtDomicile.Location = new System.Drawing.Point(105, 492);
-            this.txtDomicile.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtDomicile.Margin = new System.Windows.Forms.Padding(4);
             this.txtDomicile.Multiline = true;
             this.txtDomicile.Name = "txtDomicile";
             this.txtDomicile.Size = new System.Drawing.Size(449, 49);
@@ -468,7 +470,7 @@
             // txtFriendPhone
             // 
             this.txtFriendPhone.Location = new System.Drawing.Point(408, 632);
-            this.txtFriendPhone.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtFriendPhone.Margin = new System.Windows.Forms.Padding(4);
             this.txtFriendPhone.Name = "txtFriendPhone";
             this.txtFriendPhone.Size = new System.Drawing.Size(148, 25);
             this.txtFriendPhone.TabIndex = 22;
@@ -487,7 +489,7 @@
             // txtRelation
             // 
             this.txtRelation.Location = new System.Drawing.Point(271, 632);
-            this.txtRelation.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtRelation.Margin = new System.Windows.Forms.Padding(4);
             this.txtRelation.Name = "txtRelation";
             this.txtRelation.Size = new System.Drawing.Size(80, 25);
             this.txtRelation.TabIndex = 21;
@@ -506,7 +508,7 @@
             // txtSeniority
             // 
             this.txtSeniority.Location = new System.Drawing.Point(389, 156);
-            this.txtSeniority.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtSeniority.Margin = new System.Windows.Forms.Padding(4);
             this.txtSeniority.Name = "txtSeniority";
             this.txtSeniority.ReadOnly = true;
             this.txtSeniority.Size = new System.Drawing.Size(165, 25);
@@ -516,7 +518,7 @@
             // txtNativePlace
             // 
             this.txtNativePlace.Location = new System.Drawing.Point(105, 365);
-            this.txtNativePlace.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtNativePlace.Margin = new System.Windows.Forms.Padding(4);
             this.txtNativePlace.Name = "txtNativePlace";
             this.txtNativePlace.Size = new System.Drawing.Size(165, 25);
             this.txtNativePlace.TabIndex = 12;
@@ -531,9 +533,9 @@
             this.groupBox1.Controls.Add(this.lblIDCard);
             this.groupBox1.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.groupBox1.Location = new System.Drawing.Point(29, 16);
-            this.groupBox1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.groupBox1.Margin = new System.Windows.Forms.Padding(4);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.groupBox1.Padding = new System.Windows.Forms.Padding(4);
             this.groupBox1.Size = new System.Drawing.Size(527, 80);
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
@@ -554,7 +556,7 @@
             // 
             this.btnExamine.AutoSize = true;
             this.btnExamine.Location = new System.Drawing.Point(328, 29);
-            this.btnExamine.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnExamine.Margin = new System.Windows.Forms.Padding(4);
             this.btnExamine.Name = "btnExamine";
             this.btnExamine.Size = new System.Drawing.Size(100, 31);
             this.btnExamine.TabIndex = 2;
@@ -565,7 +567,7 @@
             // txtMajor
             // 
             this.txtMajor.Location = new System.Drawing.Point(389, 322);
-            this.txtMajor.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtMajor.Margin = new System.Windows.Forms.Padding(4);
             this.txtMajor.Name = "txtMajor";
             this.txtMajor.Size = new System.Drawing.Size(165, 25);
             this.txtMajor.TabIndex = 11;
@@ -574,7 +576,7 @@
             // txtNation
             // 
             this.txtNation.Location = new System.Drawing.Point(389, 365);
-            this.txtNation.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtNation.Margin = new System.Windows.Forms.Padding(4);
             this.txtNation.Name = "txtNation";
             this.txtNation.Size = new System.Drawing.Size(165, 25);
             this.txtNation.TabIndex = 13;
@@ -593,7 +595,7 @@
             // txtIntroducer
             // 
             this.txtIntroducer.Location = new System.Drawing.Point(389, 449);
-            this.txtIntroducer.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtIntroducer.Margin = new System.Windows.Forms.Padding(4);
             this.txtIntroducer.Name = "txtIntroducer";
             this.txtIntroducer.Size = new System.Drawing.Size(165, 25);
             this.txtIntroducer.TabIndex = 17;
@@ -613,7 +615,7 @@
             // 
             this.cboGroup.FormattingEnabled = true;
             this.cboGroup.Location = new System.Drawing.Point(389, 239);
-            this.cboGroup.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.cboGroup.Margin = new System.Windows.Forms.Padding(4);
             this.cboGroup.Name = "cboGroup";
             this.cboGroup.Size = new System.Drawing.Size(165, 23);
             this.cboGroup.TabIndex = 7;
@@ -668,16 +670,19 @@
             this.Controls.Add(this.txtNation);
             this.Controls.Add(this.txtMajor);
             this.Controls.Add(this.txtNativePlace);
-            this.Controls.Add(this.txtCardNo);
+            this.Controls.Add(this.txtAttCardNo);
             this.Controls.Add(this.lblCardNo);
             this.Controls.Add(this.txtJobNo);
             this.Controls.Add(this.lblJobNo);
             this.Controls.Add(this.txtName);
             this.Controls.Add(this.lblName);
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.Margin = new System.Windows.Forms.Padding(4);
+            this.MaximizeBox = false;
             this.Name = "FrmAddStaff";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "员工入职";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.FrmAddStaff_FormClosed);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.ResumeLayout(false);
@@ -720,7 +725,7 @@
         private System.Windows.Forms.Label lblJobNo;
         private System.Windows.Forms.TextBox txtJobNo;
         private System.Windows.Forms.Label lblCardNo;
-        private System.Windows.Forms.TextBox txtCardNo;
+        private System.Windows.Forms.TextBox txtAttCardNo;
         private System.Windows.Forms.TextBox txtDomicile;
         private System.Windows.Forms.Label lblLiaison;
         private System.Windows.Forms.Label lblFriendsPhone;
