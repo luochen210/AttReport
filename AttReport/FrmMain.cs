@@ -215,5 +215,23 @@ namespace AttReport
                 objFrmAddStaff.WindowState = FormWindowState.Normal;
             }
         }
+
+        //员工信息窗口对象
+        public static FrmCorporate objFrmCorporate = null;
+
+        //员工信息菜单事件
+        private void 员工信息ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (objFrmCorporate == null)
+            {
+                objFrmCorporate = new FrmCorporate();
+                objFrmCorporate.Show();
+            }
+            else
+            {
+                objFrmCorporate.Activate();//激活只能在最小化的时候起作用
+                objFrmCorporate.WindowState = FormWindowState.Normal;
+            }
+        }
     }
 }

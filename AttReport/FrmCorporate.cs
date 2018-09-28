@@ -17,11 +17,6 @@ namespace AttReport
             InitializeComponent();
         }
 
-        private void FrmCorporate_Load(object sender, EventArgs e)
-        {
-
-        }
-
         private void 员工入职ToolStripMenuItem_Click(object sender, EventArgs e)
         {
 
@@ -31,5 +26,14 @@ namespace AttReport
         {
 
         }
+
+        #region 窗体激活与关闭
+
+        private void FrmCorporate_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            FrmMain.objFrmCorporate = null;//当窗体关闭时，将窗体对象清理掉
+        }
+
+        #endregion
     }
 }

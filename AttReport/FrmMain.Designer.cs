@@ -38,7 +38,7 @@
             this.系统管理ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.人事管理ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.员工入职ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.人事录入ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.员工信息ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.lblIP = new System.Windows.Forms.Label();
             this.txtIP = new System.Windows.Forms.TextBox();
             this.lblPort = new System.Windows.Forms.Label();
@@ -89,7 +89,7 @@
             // 
             this.人事管理ToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.员工入职ToolStripMenuItem,
-            this.人事录入ToolStripMenuItem});
+            this.员工信息ToolStripMenuItem});
             this.人事管理ToolStripMenuItem.Name = "人事管理ToolStripMenuItem";
             this.人事管理ToolStripMenuItem.Size = new System.Drawing.Size(68, 21);
             this.人事管理ToolStripMenuItem.Text = "人事管理";
@@ -97,15 +97,16 @@
             // 员工入职ToolStripMenuItem
             // 
             this.员工入职ToolStripMenuItem.Name = "员工入职ToolStripMenuItem";
-            this.员工入职ToolStripMenuItem.Size = new System.Drawing.Size(124, 22);
+            this.员工入职ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.员工入职ToolStripMenuItem.Text = "员工入职";
             this.员工入职ToolStripMenuItem.Click += new System.EventHandler(this.员工入职ToolStripMenuItem_Click);
             // 
-            // 人事录入ToolStripMenuItem
+            // 员工信息ToolStripMenuItem
             // 
-            this.人事录入ToolStripMenuItem.Name = "人事录入ToolStripMenuItem";
-            this.人事录入ToolStripMenuItem.Size = new System.Drawing.Size(124, 22);
-            this.人事录入ToolStripMenuItem.Text = "员工信息";
+            this.员工信息ToolStripMenuItem.Name = "员工信息ToolStripMenuItem";
+            this.员工信息ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.员工信息ToolStripMenuItem.Text = "员工信息";
+            this.员工信息ToolStripMenuItem.Click += new System.EventHandler(this.员工信息ToolStripMenuItem_Click);
             // 
             // lblIP
             // 
@@ -392,7 +393,7 @@
         private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.ToolStripMenuItem 人事管理ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem 员工入职ToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem 人事录入ToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem 员工信息ToolStripMenuItem;
     }
 }
 

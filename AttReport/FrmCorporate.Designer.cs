@@ -28,47 +28,45 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.TreeNode treeNode18 = new System.Windows.Forms.TreeNode("总经办");
-            System.Windows.Forms.TreeNode treeNode19 = new System.Windows.Forms.TreeNode("管理部");
-            System.Windows.Forms.TreeNode treeNode20 = new System.Windows.Forms.TreeNode("财务部");
-            System.Windows.Forms.TreeNode treeNode21 = new System.Windows.Forms.TreeNode("采购部");
-            System.Windows.Forms.TreeNode treeNode22 = new System.Windows.Forms.TreeNode("客服部");
-            System.Windows.Forms.TreeNode treeNode23 = new System.Windows.Forms.TreeNode("销售部");
-            System.Windows.Forms.TreeNode treeNode24 = new System.Windows.Forms.TreeNode("模房车间");
-            System.Windows.Forms.TreeNode treeNode25 = new System.Windows.Forms.TreeNode("工程部", new System.Windows.Forms.TreeNode[] {
-            treeNode24});
-            System.Windows.Forms.TreeNode treeNode26 = new System.Windows.Forms.TreeNode("仓库");
-            System.Windows.Forms.TreeNode treeNode27 = new System.Windows.Forms.TreeNode("物控部", new System.Windows.Forms.TreeNode[] {
-            treeNode26});
-            System.Windows.Forms.TreeNode treeNode28 = new System.Windows.Forms.TreeNode("测量组");
-            System.Windows.Forms.TreeNode treeNode29 = new System.Windows.Forms.TreeNode("全检组");
-            System.Windows.Forms.TreeNode treeNode30 = new System.Windows.Forms.TreeNode("品保部", new System.Windows.Forms.TreeNode[] {
-            treeNode28,
-            treeNode29});
-            System.Windows.Forms.TreeNode treeNode31 = new System.Windows.Forms.TreeNode("组装车间");
-            System.Windows.Forms.TreeNode treeNode32 = new System.Windows.Forms.TreeNode("冲压车间");
-            System.Windows.Forms.TreeNode treeNode33 = new System.Windows.Forms.TreeNode("生产部", new System.Windows.Forms.TreeNode[] {
-            treeNode31,
-            treeNode32});
-            System.Windows.Forms.TreeNode treeNode34 = new System.Windows.Forms.TreeNode("东莞市东讯五金电气有限公司", new System.Windows.Forms.TreeNode[] {
-            treeNode18,
-            treeNode19,
-            treeNode20,
-            treeNode21,
-            treeNode22,
-            treeNode23,
-            treeNode25,
-            treeNode27,
-            treeNode30,
-            treeNode33});
+            System.Windows.Forms.TreeNode treeNode1 = new System.Windows.Forms.TreeNode("总经办");
+            System.Windows.Forms.TreeNode treeNode2 = new System.Windows.Forms.TreeNode("管理部");
+            System.Windows.Forms.TreeNode treeNode3 = new System.Windows.Forms.TreeNode("财务部");
+            System.Windows.Forms.TreeNode treeNode4 = new System.Windows.Forms.TreeNode("采购部");
+            System.Windows.Forms.TreeNode treeNode5 = new System.Windows.Forms.TreeNode("客服部");
+            System.Windows.Forms.TreeNode treeNode6 = new System.Windows.Forms.TreeNode("销售部");
+            System.Windows.Forms.TreeNode treeNode7 = new System.Windows.Forms.TreeNode("模房车间");
+            System.Windows.Forms.TreeNode treeNode8 = new System.Windows.Forms.TreeNode("工程部", new System.Windows.Forms.TreeNode[] {
+            treeNode7});
+            System.Windows.Forms.TreeNode treeNode9 = new System.Windows.Forms.TreeNode("仓库");
+            System.Windows.Forms.TreeNode treeNode10 = new System.Windows.Forms.TreeNode("物控部", new System.Windows.Forms.TreeNode[] {
+            treeNode9});
+            System.Windows.Forms.TreeNode treeNode11 = new System.Windows.Forms.TreeNode("测量组");
+            System.Windows.Forms.TreeNode treeNode12 = new System.Windows.Forms.TreeNode("全检组");
+            System.Windows.Forms.TreeNode treeNode13 = new System.Windows.Forms.TreeNode("品保部", new System.Windows.Forms.TreeNode[] {
+            treeNode11,
+            treeNode12});
+            System.Windows.Forms.TreeNode treeNode14 = new System.Windows.Forms.TreeNode("组装车间");
+            System.Windows.Forms.TreeNode treeNode15 = new System.Windows.Forms.TreeNode("冲压车间");
+            System.Windows.Forms.TreeNode treeNode16 = new System.Windows.Forms.TreeNode("生产部", new System.Windows.Forms.TreeNode[] {
+            treeNode14,
+            treeNode15});
+            System.Windows.Forms.TreeNode treeNode17 = new System.Windows.Forms.TreeNode("东莞市东讯五金电气有限公司", new System.Windows.Forms.TreeNode[] {
+            treeNode1,
+            treeNode2,
+            treeNode3,
+            treeNode4,
+            treeNode5,
+            treeNode6,
+            treeNode8,
+            treeNode10,
+            treeNode13,
+            treeNode16});
             this.treeView1 = new System.Windows.Forms.TreeView();
             this.btnAdd = new System.Windows.Forms.Button();
             this.btnDelete = new System.Windows.Forms.Button();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
-            this.menuStrip1 = new System.Windows.Forms.MenuStrip();
-            this.员工入职ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.异动记录ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.button1 = new System.Windows.Forms.Button();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -80,73 +78,58 @@
             this.Column10 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column8 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.button1 = new System.Windows.Forms.Button();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.添加公司ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.添加部门ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.添加组别ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.menuStrip1 = new System.Windows.Forms.MenuStrip();
+            this.员工入职ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.异动记录ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
             this.splitContainer1.SuspendLayout();
-            this.menuStrip1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.groupBox1.SuspendLayout();
-            this.contextMenuStrip1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // treeView1
             // 
             this.treeView1.Location = new System.Drawing.Point(4, 44);
             this.treeView1.Name = "treeView1";
-            treeNode18.ContextMenuStrip = this.contextMenuStrip1;
-            treeNode18.Name = "总经办";
-            treeNode18.Text = "总经办";
-            treeNode19.ContextMenuStrip = this.contextMenuStrip1;
-            treeNode19.Name = "管理部";
-            treeNode19.Text = "管理部";
-            treeNode20.ContextMenuStrip = this.contextMenuStrip1;
-            treeNode20.Name = "财务部";
-            treeNode20.Text = "财务部";
-            treeNode21.ContextMenuStrip = this.contextMenuStrip1;
-            treeNode21.Name = "采购部";
-            treeNode21.Text = "采购部";
-            treeNode22.ContextMenuStrip = this.contextMenuStrip1;
-            treeNode22.Name = "客服部";
-            treeNode22.Text = "客服部";
-            treeNode23.ContextMenuStrip = this.contextMenuStrip1;
-            treeNode23.Name = "销售部";
-            treeNode23.Text = "销售部";
-            treeNode24.Name = "模房车间";
-            treeNode24.Text = "模房车间";
-            treeNode25.ContextMenuStrip = this.contextMenuStrip1;
-            treeNode25.Name = "工程部";
-            treeNode25.Text = "工程部";
-            treeNode26.Name = "仓库";
-            treeNode26.Text = "仓库";
-            treeNode27.ContextMenuStrip = this.contextMenuStrip1;
-            treeNode27.Name = "物控部";
-            treeNode27.Text = "物控部";
-            treeNode28.Name = "测量组";
-            treeNode28.Text = "测量组";
-            treeNode29.Name = "全检组";
-            treeNode29.Text = "全检组";
-            treeNode30.ContextMenuStrip = this.contextMenuStrip1;
-            treeNode30.Name = "品保部";
-            treeNode30.Text = "品保部";
-            treeNode31.Name = "组装车间";
-            treeNode31.Text = "组装车间";
-            treeNode32.Name = "冲压车间";
-            treeNode32.Text = "冲压车间";
-            treeNode33.ContextMenuStrip = this.contextMenuStrip1;
-            treeNode33.Name = "生产部";
-            treeNode33.Text = "生产部";
-            treeNode34.ContextMenuStrip = this.contextMenuStrip1;
-            treeNode34.Name = "东莞市东讯五金电气有限公司";
-            treeNode34.Text = "东莞市东讯五金电气有限公司";
+            treeNode1.Name = "总经办";
+            treeNode1.Text = "总经办";
+            treeNode2.Name = "管理部";
+            treeNode2.Text = "管理部";
+            treeNode3.Name = "财务部";
+            treeNode3.Text = "财务部";
+            treeNode4.Name = "采购部";
+            treeNode4.Text = "采购部";
+            treeNode5.Name = "客服部";
+            treeNode5.Text = "客服部";
+            treeNode6.Name = "销售部";
+            treeNode6.Text = "销售部";
+            treeNode7.Name = "模房车间";
+            treeNode7.Text = "模房车间";
+            treeNode8.Name = "工程部";
+            treeNode8.Text = "工程部";
+            treeNode9.Name = "仓库";
+            treeNode9.Text = "仓库";
+            treeNode10.Name = "物控部";
+            treeNode10.Text = "物控部";
+            treeNode11.Name = "测量组";
+            treeNode11.Text = "测量组";
+            treeNode12.Name = "全检组";
+            treeNode12.Text = "全检组";
+            treeNode13.Name = "品保部";
+            treeNode13.Text = "品保部";
+            treeNode14.Name = "组装车间";
+            treeNode14.Text = "组装车间";
+            treeNode15.Name = "冲压车间";
+            treeNode15.Text = "冲压车间";
+            treeNode16.Name = "生产部";
+            treeNode16.Text = "生产部";
+            treeNode17.Name = "东莞市东讯五金电气有限公司";
+            treeNode17.Text = "东莞市东讯五金电气有限公司";
             this.treeView1.Nodes.AddRange(new System.Windows.Forms.TreeNode[] {
-            treeNode34});
+            treeNode17});
             this.treeView1.Size = new System.Drawing.Size(199, 665);
             this.treeView1.TabIndex = 0;
             // 
@@ -187,30 +170,28 @@
             this.splitContainer1.SplitterDistance = 208;
             this.splitContainer1.TabIndex = 2;
             // 
-            // menuStrip1
+            // groupBox1
             // 
-            this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.员工入职ToolStripMenuItem,
-            this.异动记录ToolStripMenuItem});
-            this.menuStrip1.Location = new System.Drawing.Point(0, 0);
-            this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(1008, 25);
-            this.menuStrip1.TabIndex = 3;
-            this.menuStrip1.Text = "menuStrip1";
+            this.groupBox1.Controls.Add(this.treeView1);
+            this.groupBox1.Controls.Add(this.button1);
+            this.groupBox1.Controls.Add(this.btnAdd);
+            this.groupBox1.Controls.Add(this.btnDelete);
+            this.groupBox1.Location = new System.Drawing.Point(4, 12);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(200, 686);
+            this.groupBox1.TabIndex = 0;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "组织架构";
             // 
-            // 员工入职ToolStripMenuItem
+            // button1
             // 
-            this.员工入职ToolStripMenuItem.Name = "员工入职ToolStripMenuItem";
-            this.员工入职ToolStripMenuItem.Size = new System.Drawing.Size(68, 21);
-            this.员工入职ToolStripMenuItem.Text = "员工入职";
-            this.员工入职ToolStripMenuItem.Click += new System.EventHandler(this.员工入职ToolStripMenuItem_Click);
-            // 
-            // 异动记录ToolStripMenuItem
-            // 
-            this.异动记录ToolStripMenuItem.Name = "异动记录ToolStripMenuItem";
-            this.异动记录ToolStripMenuItem.Size = new System.Drawing.Size(68, 21);
-            this.异动记录ToolStripMenuItem.Text = "异动记录";
-            this.异动记录ToolStripMenuItem.Click += new System.EventHandler(this.异动记录ToolStripMenuItem_Click);
+            this.button1.AutoSize = true;
+            this.button1.Location = new System.Drawing.Point(144, 16);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(51, 22);
+            this.button1.TabIndex = 1;
+            this.button1.Text = "保存";
+            this.button1.UseVisualStyleBackColor = true;
             // 
             // dataGridView1
             // 
@@ -294,55 +275,30 @@
             this.Column8.Name = "Column8";
             this.Column8.Width = 54;
             // 
-            // button1
+            // menuStrip1
             // 
-            this.button1.AutoSize = true;
-            this.button1.Location = new System.Drawing.Point(144, 16);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(51, 22);
-            this.button1.TabIndex = 1;
-            this.button1.Text = "保存";
-            this.button1.UseVisualStyleBackColor = true;
+            this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.员工入职ToolStripMenuItem,
+            this.异动记录ToolStripMenuItem});
+            this.menuStrip1.Location = new System.Drawing.Point(0, 0);
+            this.menuStrip1.Name = "menuStrip1";
+            this.menuStrip1.Size = new System.Drawing.Size(1008, 25);
+            this.menuStrip1.TabIndex = 3;
+            this.menuStrip1.Text = "menuStrip1";
             // 
-            // groupBox1
+            // 员工入职ToolStripMenuItem
             // 
-            this.groupBox1.Controls.Add(this.treeView1);
-            this.groupBox1.Controls.Add(this.button1);
-            this.groupBox1.Controls.Add(this.btnAdd);
-            this.groupBox1.Controls.Add(this.btnDelete);
-            this.groupBox1.Location = new System.Drawing.Point(4, 12);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(200, 686);
-            this.groupBox1.TabIndex = 0;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "组织架构";
+            this.员工入职ToolStripMenuItem.Name = "员工入职ToolStripMenuItem";
+            this.员工入职ToolStripMenuItem.Size = new System.Drawing.Size(68, 21);
+            this.员工入职ToolStripMenuItem.Text = "员工入职";
+            this.员工入职ToolStripMenuItem.Click += new System.EventHandler(this.员工入职ToolStripMenuItem_Click);
             // 
-            // contextMenuStrip1
+            // 异动记录ToolStripMenuItem
             // 
-            this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.添加公司ToolStripMenuItem,
-            this.添加部门ToolStripMenuItem,
-            this.添加组别ToolStripMenuItem});
-            this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(125, 70);
-            // 
-            // 添加公司ToolStripMenuItem
-            // 
-            this.添加公司ToolStripMenuItem.Name = "添加公司ToolStripMenuItem";
-            this.添加公司ToolStripMenuItem.Size = new System.Drawing.Size(124, 22);
-            this.添加公司ToolStripMenuItem.Text = "添加公司";
-            // 
-            // 添加部门ToolStripMenuItem
-            // 
-            this.添加部门ToolStripMenuItem.Name = "添加部门ToolStripMenuItem";
-            this.添加部门ToolStripMenuItem.Size = new System.Drawing.Size(124, 22);
-            this.添加部门ToolStripMenuItem.Text = "添加部门";
-            // 
-            // 添加组别ToolStripMenuItem
-            // 
-            this.添加组别ToolStripMenuItem.Name = "添加组别ToolStripMenuItem";
-            this.添加组别ToolStripMenuItem.Size = new System.Drawing.Size(124, 22);
-            this.添加组别ToolStripMenuItem.Text = "添加组别";
+            this.异动记录ToolStripMenuItem.Name = "异动记录ToolStripMenuItem";
+            this.异动记录ToolStripMenuItem.Size = new System.Drawing.Size(68, 21);
+            this.异动记录ToolStripMenuItem.Text = "异动记录";
+            this.异动记录ToolStripMenuItem.Click += new System.EventHandler(this.异动记录ToolStripMenuItem_Click);
             // 
             // FrmCorporate
             // 
@@ -354,17 +310,16 @@
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "FrmCorporate";
             this.Text = "员工信息";
-            this.Load += new System.EventHandler(this.FrmCorporate_Load);
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.FrmCorporate_FormClosed);
             this.splitContainer1.Panel1.ResumeLayout(false);
             this.splitContainer1.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
             this.splitContainer1.ResumeLayout(false);
-            this.menuStrip1.ResumeLayout(false);
-            this.menuStrip1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
-            this.contextMenuStrip1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            this.menuStrip1.ResumeLayout(false);
+            this.menuStrip1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -392,9 +347,5 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Column8;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
-        private System.Windows.Forms.ToolStripMenuItem 添加公司ToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem 添加部门ToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem 添加组别ToolStripMenuItem;
     }
 }

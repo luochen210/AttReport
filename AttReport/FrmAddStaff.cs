@@ -35,7 +35,7 @@ namespace AttReport
             this.cboGroup.DataSource = objJobListService.GetAllGroupList(this.cboDepartment.Text.Trim());
             this.cboGroup.DisplayMember = "WorkGroupName";
             this.cboGroup.ValueMember = "WorkGroupId";
-            this.cboGroup.SelectedIndex = -1;//默认不选中
+            //this.cboGroup.SelectedIndex = -1;//默认不选中
         }
 
         //根据组别获取职位列表的事件
@@ -418,7 +418,7 @@ namespace AttReport
             #region 封装员工对象
 
             //删除工号中的D
-            string strJobNo = txtJobNo.Text.Replace("D", "");
+            //string strJobNo = txtJobNo.Text.Substring(1);//截取第1个字符起的字符，
 
             Staff objStaff = new Staff()
             {
