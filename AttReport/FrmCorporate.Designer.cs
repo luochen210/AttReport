@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.Windows.Forms.TreeNode treeNode1 = new System.Windows.Forms.TreeNode("总经办");
             System.Windows.Forms.TreeNode treeNode2 = new System.Windows.Forms.TreeNode("管理部");
             System.Windows.Forms.TreeNode treeNode3 = new System.Windows.Forms.TreeNode("财务部");
@@ -61,7 +62,7 @@
             treeNode10,
             treeNode13,
             treeNode16});
-            this.treeView1 = new System.Windows.Forms.TreeView();
+            this.trvwCompany = new System.Windows.Forms.TreeView();
             this.btnAdd = new System.Windows.Forms.Button();
             this.btnDelete = new System.Windows.Forms.Button();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
@@ -81,6 +82,11 @@
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.员工入职ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.异动记录ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.cmsTreeView1 = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.添加节点ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.修改节点ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.删除节点ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.cmsTreeView2 = new System.Windows.Forms.ContextMenuStrip(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -88,12 +94,13 @@
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.menuStrip1.SuspendLayout();
+            this.cmsTreeView1.SuspendLayout();
             this.SuspendLayout();
             // 
-            // treeView1
+            // trvwCompany
             // 
-            this.treeView1.Location = new System.Drawing.Point(4, 44);
-            this.treeView1.Name = "treeView1";
+            this.trvwCompany.Location = new System.Drawing.Point(4, 44);
+            this.trvwCompany.Name = "trvwCompany";
             treeNode1.Name = "总经办";
             treeNode1.Text = "总经办";
             treeNode2.Name = "管理部";
@@ -128,10 +135,10 @@
             treeNode16.Text = "生产部";
             treeNode17.Name = "东莞市东讯五金电气有限公司";
             treeNode17.Text = "东莞市东讯五金电气有限公司";
-            this.treeView1.Nodes.AddRange(new System.Windows.Forms.TreeNode[] {
+            this.trvwCompany.Nodes.AddRange(new System.Windows.Forms.TreeNode[] {
             treeNode17});
-            this.treeView1.Size = new System.Drawing.Size(199, 665);
-            this.treeView1.TabIndex = 0;
+            this.trvwCompany.Size = new System.Drawing.Size(199, 665);
+            this.trvwCompany.TabIndex = 0;
             // 
             // btnAdd
             // 
@@ -172,7 +179,7 @@
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.treeView1);
+            this.groupBox1.Controls.Add(this.trvwCompany);
             this.groupBox1.Controls.Add(this.button1);
             this.groupBox1.Controls.Add(this.btnAdd);
             this.groupBox1.Controls.Add(this.btnDelete);
@@ -300,6 +307,38 @@
             this.异动记录ToolStripMenuItem.Text = "异动记录";
             this.异动记录ToolStripMenuItem.Click += new System.EventHandler(this.异动记录ToolStripMenuItem_Click);
             // 
+            // cmsTreeView1
+            // 
+            this.cmsTreeView1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.添加节点ToolStripMenuItem,
+            this.修改节点ToolStripMenuItem,
+            this.删除节点ToolStripMenuItem});
+            this.cmsTreeView1.Name = "cmsTreeView1";
+            this.cmsTreeView1.Size = new System.Drawing.Size(125, 70);
+            // 
+            // 添加节点ToolStripMenuItem
+            // 
+            this.添加节点ToolStripMenuItem.Name = "添加节点ToolStripMenuItem";
+            this.添加节点ToolStripMenuItem.Size = new System.Drawing.Size(124, 22);
+            this.添加节点ToolStripMenuItem.Text = "添加节点";
+            // 
+            // 修改节点ToolStripMenuItem
+            // 
+            this.修改节点ToolStripMenuItem.Name = "修改节点ToolStripMenuItem";
+            this.修改节点ToolStripMenuItem.Size = new System.Drawing.Size(124, 22);
+            this.修改节点ToolStripMenuItem.Text = "修改节点";
+            // 
+            // 删除节点ToolStripMenuItem
+            // 
+            this.删除节点ToolStripMenuItem.Name = "删除节点ToolStripMenuItem";
+            this.删除节点ToolStripMenuItem.Size = new System.Drawing.Size(124, 22);
+            this.删除节点ToolStripMenuItem.Text = "删除节点";
+            // 
+            // cmsTreeView2
+            // 
+            this.cmsTreeView2.Name = "cmsTreeView2";
+            this.cmsTreeView2.Size = new System.Drawing.Size(61, 4);
+            // 
             // FrmCorporate
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -320,6 +359,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
+            this.cmsTreeView1.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -327,7 +367,7 @@
 
         #endregion
 
-        private System.Windows.Forms.TreeView treeView1;
+        private System.Windows.Forms.TreeView trvwCompany;
         private System.Windows.Forms.Button btnAdd;
         private System.Windows.Forms.Button btnDelete;
         private System.Windows.Forms.SplitContainer splitContainer1;
@@ -347,5 +387,10 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Column8;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.ContextMenuStrip cmsTreeView1;
+        private System.Windows.Forms.ToolStripMenuItem 添加节点ToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem 修改节点ToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem 删除节点ToolStripMenuItem;
+        private System.Windows.Forms.ContextMenuStrip cmsTreeView2;
     }
 }
