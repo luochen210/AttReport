@@ -11,6 +11,8 @@ namespace Models
     /// </summary>
     public class JobList
     {
+        public int CompanyId { get; set; }//公司ID
+        public string CompanyName { get; set; }//公司名称
         public int DepartmentId { get; set; }//部门ID
         public string DepartmentName { get; set; }//部门名称
         public int WorkGroupId { get; set; }//工作组ID

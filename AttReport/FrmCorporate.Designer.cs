@@ -29,45 +29,10 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.TreeNode treeNode1 = new System.Windows.Forms.TreeNode("总经办");
-            System.Windows.Forms.TreeNode treeNode2 = new System.Windows.Forms.TreeNode("管理部");
-            System.Windows.Forms.TreeNode treeNode3 = new System.Windows.Forms.TreeNode("财务部");
-            System.Windows.Forms.TreeNode treeNode4 = new System.Windows.Forms.TreeNode("采购部");
-            System.Windows.Forms.TreeNode treeNode5 = new System.Windows.Forms.TreeNode("客服部");
-            System.Windows.Forms.TreeNode treeNode6 = new System.Windows.Forms.TreeNode("销售部");
-            System.Windows.Forms.TreeNode treeNode7 = new System.Windows.Forms.TreeNode("模房车间");
-            System.Windows.Forms.TreeNode treeNode8 = new System.Windows.Forms.TreeNode("工程部", new System.Windows.Forms.TreeNode[] {
-            treeNode7});
-            System.Windows.Forms.TreeNode treeNode9 = new System.Windows.Forms.TreeNode("仓库");
-            System.Windows.Forms.TreeNode treeNode10 = new System.Windows.Forms.TreeNode("物控部", new System.Windows.Forms.TreeNode[] {
-            treeNode9});
-            System.Windows.Forms.TreeNode treeNode11 = new System.Windows.Forms.TreeNode("测量组");
-            System.Windows.Forms.TreeNode treeNode12 = new System.Windows.Forms.TreeNode("全检组");
-            System.Windows.Forms.TreeNode treeNode13 = new System.Windows.Forms.TreeNode("品保部", new System.Windows.Forms.TreeNode[] {
-            treeNode11,
-            treeNode12});
-            System.Windows.Forms.TreeNode treeNode14 = new System.Windows.Forms.TreeNode("组装车间");
-            System.Windows.Forms.TreeNode treeNode15 = new System.Windows.Forms.TreeNode("冲压车间");
-            System.Windows.Forms.TreeNode treeNode16 = new System.Windows.Forms.TreeNode("生产部", new System.Windows.Forms.TreeNode[] {
-            treeNode14,
-            treeNode15});
-            System.Windows.Forms.TreeNode treeNode17 = new System.Windows.Forms.TreeNode("XXXXXXXXXXX有限公司", new System.Windows.Forms.TreeNode[] {
-            treeNode1,
-            treeNode2,
-            treeNode3,
-            treeNode4,
-            treeNode5,
-            treeNode6,
-            treeNode8,
-            treeNode10,
-            treeNode13,
-            treeNode16});
             this.trvwCompany = new System.Windows.Forms.TreeView();
-            this.btnAdd = new System.Windows.Forms.Button();
-            this.btnDelete = new System.Windows.Forms.Button();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.button1 = new System.Windows.Forms.Button();
+            this.lblTest = new System.Windows.Forms.Label();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -100,65 +65,9 @@
             // 
             this.trvwCompany.Location = new System.Drawing.Point(4, 44);
             this.trvwCompany.Name = "trvwCompany";
-            treeNode1.Name = "总经办";
-            treeNode1.Text = "总经办";
-            treeNode2.Name = "管理部";
-            treeNode2.Text = "管理部";
-            treeNode3.Name = "财务部";
-            treeNode3.Text = "财务部";
-            treeNode4.Name = "采购部";
-            treeNode4.Text = "采购部";
-            treeNode5.Name = "客服部";
-            treeNode5.Text = "客服部";
-            treeNode6.Name = "销售部";
-            treeNode6.Text = "销售部";
-            treeNode7.Name = "模房车间";
-            treeNode7.Text = "模房车间";
-            treeNode8.Name = "工程部";
-            treeNode8.Text = "工程部";
-            treeNode9.Name = "仓库";
-            treeNode9.Text = "仓库";
-            treeNode10.Name = "物控部";
-            treeNode10.Text = "物控部";
-            treeNode11.Name = "测量组";
-            treeNode11.Text = "测量组";
-            treeNode12.Name = "全检组";
-            treeNode12.Text = "全检组";
-            treeNode13.Name = "品保部";
-            treeNode13.Text = "品保部";
-            treeNode14.Name = "组装车间";
-            treeNode14.Text = "组装车间";
-            treeNode15.Name = "冲压车间";
-            treeNode15.Text = "冲压车间";
-            treeNode16.Name = "生产部";
-            treeNode16.Text = "生产部";
-            treeNode17.Name = "nodeCompany";
-            treeNode17.Text = "XXXXXXXXXXX有限公司";
-            this.trvwCompany.Nodes.AddRange(new System.Windows.Forms.TreeNode[] {
-            treeNode17});
             this.trvwCompany.Size = new System.Drawing.Size(199, 665);
             this.trvwCompany.TabIndex = 0;
             this.trvwCompany.NodeMouseClick += new System.Windows.Forms.TreeNodeMouseClickEventHandler(this.trvwCompany_NodeMouseClick);
-            // 
-            // btnAdd
-            // 
-            this.btnAdd.AutoSize = true;
-            this.btnAdd.Location = new System.Drawing.Point(5, 16);
-            this.btnAdd.Name = "btnAdd";
-            this.btnAdd.Size = new System.Drawing.Size(51, 22);
-            this.btnAdd.TabIndex = 1;
-            this.btnAdd.Text = "增加";
-            this.btnAdd.UseVisualStyleBackColor = true;
-            // 
-            // btnDelete
-            // 
-            this.btnDelete.AutoSize = true;
-            this.btnDelete.Location = new System.Drawing.Point(75, 16);
-            this.btnDelete.Name = "btnDelete";
-            this.btnDelete.Size = new System.Drawing.Size(51, 22);
-            this.btnDelete.TabIndex = 1;
-            this.btnDelete.Text = "删除";
-            this.btnDelete.UseVisualStyleBackColor = true;
             // 
             // splitContainer1
             // 
@@ -179,10 +88,8 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.lblTest);
             this.groupBox1.Controls.Add(this.trvwCompany);
-            this.groupBox1.Controls.Add(this.button1);
-            this.groupBox1.Controls.Add(this.btnAdd);
-            this.groupBox1.Controls.Add(this.btnDelete);
             this.groupBox1.Location = new System.Drawing.Point(4, 12);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(200, 686);
@@ -190,15 +97,14 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "组织架构";
             // 
-            // button1
+            // lblTest
             // 
-            this.button1.AutoSize = true;
-            this.button1.Location = new System.Drawing.Point(144, 16);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(51, 22);
-            this.button1.TabIndex = 1;
-            this.button1.Text = "保存";
-            this.button1.UseVisualStyleBackColor = true;
+            this.lblTest.AutoSize = true;
+            this.lblTest.Location = new System.Drawing.Point(9, 21);
+            this.lblTest.Name = "lblTest";
+            this.lblTest.Size = new System.Drawing.Size(65, 12);
+            this.lblTest.TabIndex = 1;
+            this.lblTest.Text = "待输出……";
             // 
             // dataGridView1
             // 
@@ -348,6 +254,7 @@
             this.Name = "FrmCorporate";
             this.Text = "员工信息";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.FrmCorporate_FormClosed);
+            this.Load += new System.EventHandler(this.FrmCorporate_Load);
             this.splitContainer1.Panel1.ResumeLayout(false);
             this.splitContainer1.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
@@ -366,8 +273,6 @@
         #endregion
 
         private System.Windows.Forms.TreeView trvwCompany;
-        private System.Windows.Forms.Button btnAdd;
-        private System.Windows.Forms.Button btnDelete;
         private System.Windows.Forms.SplitContainer splitContainer1;
         private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.MenuStrip menuStrip1;
@@ -384,10 +289,10 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Column7;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column8;
         private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.Button button1;
         private System.Windows.Forms.ContextMenuStrip cmsCompany;
         private System.Windows.Forms.ToolStripMenuItem 修改公司ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem 增加公司ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem 删除公司ToolStripMenuItem;
+        private System.Windows.Forms.Label lblTest;
     }
 }

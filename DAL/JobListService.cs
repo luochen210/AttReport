@@ -8,7 +8,6 @@ using System.Data;
 using System.Data.SqlClient;
 using Models;
 
-
 namespace DAL
 {
     /// <summary>
@@ -94,5 +93,8 @@ namespace DAL
             objReader.Close();
             return list;
         }
+
+       
+
     }
 }
