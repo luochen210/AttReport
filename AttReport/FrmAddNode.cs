@@ -30,7 +30,7 @@ namespace AttReport
         {
             if (string.IsNullOrEmpty(txtNodeName.Text.Trim()))
             {
-                MessageBox.Show("请填写节点名称！");
+                MessageBox.Show("请填写名称！");
                 return;
             }
             DialogResult = DialogResult.OK;

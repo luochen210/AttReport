@@ -51,7 +51,7 @@
             System.Windows.Forms.TreeNode treeNode16 = new System.Windows.Forms.TreeNode("生产部", new System.Windows.Forms.TreeNode[] {
             treeNode14,
             treeNode15});
-            System.Windows.Forms.TreeNode treeNode17 = new System.Windows.Forms.TreeNode("东莞市东讯五金电气有限公司", new System.Windows.Forms.TreeNode[] {
+            System.Windows.Forms.TreeNode treeNode17 = new System.Windows.Forms.TreeNode("XXXXXXXXXXX有限公司", new System.Windows.Forms.TreeNode[] {
             treeNode1,
             treeNode2,
             treeNode3,
@@ -82,11 +82,10 @@
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.员工入职ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.异动记录ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.cmsTreeView1 = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.添加节点ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.修改节点ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.删除节点ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.cmsTreeView2 = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.cmsCompany = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.修改公司ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.增加公司ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.删除公司ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -94,7 +93,7 @@
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.menuStrip1.SuspendLayout();
-            this.cmsTreeView1.SuspendLayout();
+            this.cmsCompany.SuspendLayout();
             this.SuspendLayout();
             // 
             // trvwCompany
@@ -133,12 +132,13 @@
             treeNode15.Text = "冲压车间";
             treeNode16.Name = "生产部";
             treeNode16.Text = "生产部";
-            treeNode17.Name = "东莞市东讯五金电气有限公司";
-            treeNode17.Text = "东莞市东讯五金电气有限公司";
+            treeNode17.Name = "nodeCompany";
+            treeNode17.Text = "XXXXXXXXXXX有限公司";
             this.trvwCompany.Nodes.AddRange(new System.Windows.Forms.TreeNode[] {
             treeNode17});
             this.trvwCompany.Size = new System.Drawing.Size(199, 665);
             this.trvwCompany.TabIndex = 0;
+            this.trvwCompany.NodeMouseClick += new System.Windows.Forms.TreeNodeMouseClickEventHandler(this.trvwCompany_NodeMouseClick);
             // 
             // btnAdd
             // 
@@ -307,37 +307,35 @@
             this.异动记录ToolStripMenuItem.Text = "异动记录";
             this.异动记录ToolStripMenuItem.Click += new System.EventHandler(this.异动记录ToolStripMenuItem_Click);
             // 
-            // cmsTreeView1
+            // cmsCompany
             // 
-            this.cmsTreeView1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.添加节点ToolStripMenuItem,
-            this.修改节点ToolStripMenuItem,
-            this.删除节点ToolStripMenuItem});
-            this.cmsTreeView1.Name = "cmsTreeView1";
-            this.cmsTreeView1.Size = new System.Drawing.Size(125, 70);
+            this.cmsCompany.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.修改公司ToolStripMenuItem,
+            this.增加公司ToolStripMenuItem,
+            this.删除公司ToolStripMenuItem});
+            this.cmsCompany.Name = "cmsTreeView1";
+            this.cmsCompany.Size = new System.Drawing.Size(125, 70);
             // 
-            // 添加节点ToolStripMenuItem
+            // 修改公司ToolStripMenuItem
             // 
-            this.添加节点ToolStripMenuItem.Name = "添加节点ToolStripMenuItem";
-            this.添加节点ToolStripMenuItem.Size = new System.Drawing.Size(124, 22);
-            this.添加节点ToolStripMenuItem.Text = "添加节点";
+            this.修改公司ToolStripMenuItem.Name = "修改公司ToolStripMenuItem";
+            this.修改公司ToolStripMenuItem.Size = new System.Drawing.Size(124, 22);
+            this.修改公司ToolStripMenuItem.Text = "修改公司";
+            this.修改公司ToolStripMenuItem.Click += new System.EventHandler(this.修改公司ToolStripMenuItem_Click);
             // 
-            // 修改节点ToolStripMenuItem
+            // 增加公司ToolStripMenuItem
             // 
-            this.修改节点ToolStripMenuItem.Name = "修改节点ToolStripMenuItem";
-            this.修改节点ToolStripMenuItem.Size = new System.Drawing.Size(124, 22);
-            this.修改节点ToolStripMenuItem.Text = "修改节点";
+            this.增加公司ToolStripMenuItem.Name = "增加公司ToolStripMenuItem";
+            this.增加公司ToolStripMenuItem.Size = new System.Drawing.Size(124, 22);
+            this.增加公司ToolStripMenuItem.Text = "增加公司";
+            this.增加公司ToolStripMenuItem.Click += new System.EventHandler(this.增加公司ToolStripMenuItem_Click);
             // 
-            // 删除节点ToolStripMenuItem
+            // 删除公司ToolStripMenuItem
             // 
-            this.删除节点ToolStripMenuItem.Name = "删除节点ToolStripMenuItem";
-            this.删除节点ToolStripMenuItem.Size = new System.Drawing.Size(124, 22);
-            this.删除节点ToolStripMenuItem.Text = "删除节点";
-            // 
-            // cmsTreeView2
-            // 
-            this.cmsTreeView2.Name = "cmsTreeView2";
-            this.cmsTreeView2.Size = new System.Drawing.Size(61, 4);
+            this.删除公司ToolStripMenuItem.Name = "删除公司ToolStripMenuItem";
+            this.删除公司ToolStripMenuItem.Size = new System.Drawing.Size(124, 22);
+            this.删除公司ToolStripMenuItem.Text = "删除公司";
+            this.删除公司ToolStripMenuItem.Click += new System.EventHandler(this.删除公司ToolStripMenuItem_Click);
             // 
             // FrmCorporate
             // 
@@ -359,7 +357,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
-            this.cmsTreeView1.ResumeLayout(false);
+            this.cmsCompany.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -387,10 +385,9 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Column8;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.ContextMenuStrip cmsTreeView1;
-        private System.Windows.Forms.ToolStripMenuItem 添加节点ToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem 修改节点ToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem 删除节点ToolStripMenuItem;
-        private System.Windows.Forms.ContextMenuStrip cmsTreeView2;
+        private System.Windows.Forms.ContextMenuStrip cmsCompany;
+        private System.Windows.Forms.ToolStripMenuItem 修改公司ToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem 增加公司ToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem 删除公司ToolStripMenuItem;
     }
 }
