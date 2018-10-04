@@ -21,10 +21,13 @@ namespace AttReport
         {
             InitializeComponent();
 
+            //获取公司名
+            string CompanyName = objJobListService.GetCompany();
+
             //UI启动时获取部门列表
-            this.cboDepartment.DataSource = objJobListService.GetDepartmentList();
+            this.cboDepartment.DataSource = objJobListService.GetDepartmentList(CompanyName);
             this.cboDepartment.DisplayMember = "DepartmentName";
-            this.cboDepartment.ValueMember = "DepartmentID";
+            this.cboDepartment.ValueMember = "DepartmentId";
             this.cboDepartment.SelectedIndex = -1;//默认不选中
         }
 
@@ -33,9 +36,9 @@ namespace AttReport
         {
             //获取组别
             this.cboGroup.DataSource = objJobListService.GetAllGroupList(this.cboDepartment.Text.Trim());
-            this.cboGroup.DisplayMember = "WorkGroupName";
-            this.cboGroup.ValueMember = "WorkGroupId";
-            //this.cboGroup.SelectedIndex = -1;//默认不选中
+            this.cboGroup.DisplayMember = "DtGroupName";
+            this.cboGroup.ValueMember = "DtGroupId";
+            this.cboGroup.SelectedIndex = -1;//默认不选中
         }
 
         //根据组别获取职位列表的事件
@@ -44,7 +47,7 @@ namespace AttReport
             //获取职位
             this.cboJob.DataSource = objJobListService.GetAllJobList(this.cboGroup.Text.Trim());
             this.cboJob.DisplayMember = "JobName";
-            this.cboJob.ValueMember = "JobID";
+            this.cboJob.ValueMember = "JobId";
             this.cboJob.SelectedIndex = -1;//默认不选中
         }
 
@@ -424,9 +427,9 @@ namespace AttReport
             {
                 //JobNo = Convert.ToInt32(strJobNo),//工号和员工ID
                 AttCardNo = txtAttCardNo.Text.Trim(),
-                Department = cboDepartment.Text.Trim(),
-                WorkGroup = cboGroup.Text.Trim(),
-                Job = cboJob.Text.Trim(),
+                DepartmentName = cboDepartment.Text.Trim(),
+                DtGroupName = cboGroup.Text.Trim(),
+                JobName = cboJob.Text.Trim(),
                 StaffName = this.txtName.Text.Trim(),
                 Gender = this.cboGender.Text.Trim(),
                 Age = Convert.ToInt32(this.txtAge.Text.Trim()),

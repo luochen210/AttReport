@@ -28,12 +28,6 @@ namespace DAL
         //    Common.StringSecurity.DESDecrypt(ConfigurationManager.ConnectionStrings["connString"].ToString());
         #endregion
 
-        public static void Conlink()
-        {
-            SqlConnection conn = new SqlConnection(connString);
-            conn.Close();
-        }
-
         #region 执行增、删、改（insert/update/delete）
         /// <summary>
         /// 执行增、删、改（insert/update/delete）

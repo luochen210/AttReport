@@ -45,7 +45,7 @@ namespace DAL
 
             SQLHelper.Update(sql);
 
-            return ClockRecord;
+            return sql;
         }
 
         #endregion
