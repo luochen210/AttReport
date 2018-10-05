@@ -29,10 +29,10 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmCorporate));
             this.trvwCompany = new System.Windows.Forms.TreeView();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.lblTest = new System.Windows.Forms.Label();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -48,9 +48,10 @@
             this.员工入职ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.异动记录ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.cmsCompany = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.修改公司ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.增加公司ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.删除公司ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.修改节点ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.增加节点ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.删除节点ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -59,13 +60,14 @@
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.menuStrip1.SuspendLayout();
             this.cmsCompany.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // trvwCompany
             // 
-            this.trvwCompany.Location = new System.Drawing.Point(4, 44);
+            this.trvwCompany.Location = new System.Drawing.Point(5, 47);
             this.trvwCompany.Name = "trvwCompany";
-            this.trvwCompany.Size = new System.Drawing.Size(199, 665);
+            this.trvwCompany.Size = new System.Drawing.Size(190, 662);
             this.trvwCompany.TabIndex = 0;
             this.trvwCompany.NodeMouseClick += new System.Windows.Forms.TreeNodeMouseClickEventHandler(this.trvwCompany_NodeMouseClick);
             // 
@@ -88,7 +90,7 @@
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.lblTest);
+            this.groupBox1.Controls.Add(this.pictureBox1);
             this.groupBox1.Controls.Add(this.trvwCompany);
             this.groupBox1.Location = new System.Drawing.Point(4, 12);
             this.groupBox1.Name = "groupBox1";
@@ -96,15 +98,6 @@
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "组织架构";
-            // 
-            // lblTest
-            // 
-            this.lblTest.AutoSize = true;
-            this.lblTest.Location = new System.Drawing.Point(9, 21);
-            this.lblTest.Name = "lblTest";
-            this.lblTest.Size = new System.Drawing.Size(65, 12);
-            this.lblTest.TabIndex = 1;
-            this.lblTest.Text = "待输出……";
             // 
             // dataGridView1
             // 
@@ -216,32 +209,41 @@
             // cmsCompany
             // 
             this.cmsCompany.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.修改公司ToolStripMenuItem,
-            this.增加公司ToolStripMenuItem,
-            this.删除公司ToolStripMenuItem});
+            this.修改节点ToolStripMenuItem,
+            this.增加节点ToolStripMenuItem,
+            this.删除节点ToolStripMenuItem});
             this.cmsCompany.Name = "cmsTreeView1";
-            this.cmsCompany.Size = new System.Drawing.Size(125, 70);
+            this.cmsCompany.Size = new System.Drawing.Size(153, 92);
             // 
-            // 修改公司ToolStripMenuItem
+            // 修改节点ToolStripMenuItem
             // 
-            this.修改公司ToolStripMenuItem.Name = "修改公司ToolStripMenuItem";
-            this.修改公司ToolStripMenuItem.Size = new System.Drawing.Size(124, 22);
-            this.修改公司ToolStripMenuItem.Text = "修改公司";
-            this.修改公司ToolStripMenuItem.Click += new System.EventHandler(this.修改公司ToolStripMenuItem_Click);
+            this.修改节点ToolStripMenuItem.Name = "修改节点ToolStripMenuItem";
+            this.修改节点ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.修改节点ToolStripMenuItem.Text = "修改节点";
+            this.修改节点ToolStripMenuItem.Click += new System.EventHandler(this.修改节点ToolStripMenuItem_Click);
             // 
-            // 增加公司ToolStripMenuItem
+            // 增加节点ToolStripMenuItem
             // 
-            this.增加公司ToolStripMenuItem.Name = "增加公司ToolStripMenuItem";
-            this.增加公司ToolStripMenuItem.Size = new System.Drawing.Size(124, 22);
-            this.增加公司ToolStripMenuItem.Text = "增加公司";
-            this.增加公司ToolStripMenuItem.Click += new System.EventHandler(this.增加公司ToolStripMenuItem_Click);
+            this.增加节点ToolStripMenuItem.Name = "增加节点ToolStripMenuItem";
+            this.增加节点ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.增加节点ToolStripMenuItem.Text = "增加节点";
+            this.增加节点ToolStripMenuItem.Click += new System.EventHandler(this.增加节点ToolStripMenuItem_Click);
             // 
-            // 删除公司ToolStripMenuItem
+            // 删除节点ToolStripMenuItem
             // 
-            this.删除公司ToolStripMenuItem.Name = "删除公司ToolStripMenuItem";
-            this.删除公司ToolStripMenuItem.Size = new System.Drawing.Size(124, 22);
-            this.删除公司ToolStripMenuItem.Text = "删除公司";
-            this.删除公司ToolStripMenuItem.Click += new System.EventHandler(this.删除公司ToolStripMenuItem_Click);
+            this.删除节点ToolStripMenuItem.Name = "删除节点ToolStripMenuItem";
+            this.删除节点ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.删除节点ToolStripMenuItem.Text = "删除节点";
+            this.删除节点ToolStripMenuItem.Click += new System.EventHandler(this.删除节点ToolStripMenuItem_Click);
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
+            this.pictureBox1.Location = new System.Drawing.Point(5, 15);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(190, 27);
+            this.pictureBox1.TabIndex = 2;
+            this.pictureBox1.TabStop = false;
             // 
             // FrmCorporate
             // 
@@ -260,11 +262,11 @@
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
             this.splitContainer1.ResumeLayout(false);
             this.groupBox1.ResumeLayout(false);
-            this.groupBox1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             this.cmsCompany.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -290,9 +292,9 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Column8;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.ContextMenuStrip cmsCompany;
-        private System.Windows.Forms.ToolStripMenuItem 修改公司ToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem 增加公司ToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem 删除公司ToolStripMenuItem;
-        private System.Windows.Forms.Label lblTest;
+        private System.Windows.Forms.ToolStripMenuItem 修改节点ToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem 增加节点ToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem 删除节点ToolStripMenuItem;
+        private System.Windows.Forms.PictureBox pictureBox1;
     }
 }

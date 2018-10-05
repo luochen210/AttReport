@@ -51,7 +51,7 @@ namespace DAL
         }
 
         //获取公司数据集
-        public DataSet GetCompanyDS()
+        public DataSet GetCompanyDs()
         {
             string sql = "select * from Company";
             return SQLHelper.GetDataSet(sql);
@@ -86,7 +86,6 @@ namespace DAL
             sql = string.Format(sql, CompanyName);
             return SQLHelper.GetDataSet(sql);
         }
-
 
 
         /// <summary>
@@ -146,22 +145,20 @@ namespace DAL
         /// <summary>
         /// 修改公司名
         /// </summary>
-        /// <param name="objJobList">公司对象</param>
+        /// <param name="CompanyName">公司名</param>
         /// <returns>返回公司对象</returns>
-        public int UpdateCompany(JobList objJobList)
+        public int UpdateCompany(string CompanyName)
         {
             StringBuilder sqlBuilder = new StringBuilder();
 
-            sqlBuilder.Append("Update Company Set CompanyId={0},CompanyName='{1}'");
-            string sql =string.Format(sqlBuilder.ToString(), 
-                objJobList.CompanyId, objJobList.CompanyName);
+            sqlBuilder.Append("Update Company Set CompanyName='{0}' where CompanyName='{1}'");
+            string sql =string.Format(sqlBuilder.ToString(), CompanyName, CompanyName);
             try
             {
                 return SQLHelper.Update(sql);
             }
             catch (Exception ex)
             {
-
                 throw ex;
             }
             
@@ -175,10 +172,10 @@ namespace DAL
         public int InsertCompany(JobList objJobList)
         {
             StringBuilder sqlBuilder = new StringBuilder();
-            sqlBuilder.Append("insert into Company(CompanyId,CompanyName)");
-            sqlBuilder.Append(" values({0},'{1}')");
+            sqlBuilder.Append("insert into Company(CompanyName)");
+            sqlBuilder.Append(" values('{0}')");
             string sql = string.Format(sqlBuilder.ToString(),
-                objJobList.CompanyId, objJobList.CompanyName);
+                objJobList.CompanyName);
             try
             {
                 return SQLHelper.Update(sql);
@@ -193,13 +190,13 @@ namespace DAL
         /// <summary>
         /// 修改部门
         /// </summary>
-        /// <param name="objJobList">部门对象</param>
+        /// <param name="DepartmentName">部门对象</param>
         /// <returns>修改结果</returns>
-        public int UpdateDepartment(JobList objJobList)
+        public int UpdateDepartment(string DepartmentName)
         {
             StringBuilder objBuilder = new StringBuilder();
-            objBuilder.Append("Update Department Set DepartmentId={0},DepartmentName='{1}',CyId={2}");
-            string sql = string.Format(objBuilder.ToString(),objJobList.DepartmentId,objJobList.DepartmentName,objJobList.CyId);
+            objBuilder.Append("Update Department Set DepartmentName='{0}' where DepartmentName={1}");
+            string sql = string.Format(objBuilder.ToString(), DepartmentName, DepartmentName);
             try
             {
                 return SQLHelper.Update(sql);
@@ -216,7 +213,7 @@ namespace DAL
         /// </summary>
         /// <param name="objJobList">部门对象</param>
         /// <returns>插入结果</returns>
-        public int insertDepartment(JobList objJobList)
+        public int InsertDepartment(JobList objJobList)
         {
             StringBuilder objBuilder = new StringBuilder();
             objBuilder.Append("insert into Department(DepartmentId,DepartmentName,CyId)");
@@ -236,14 +233,13 @@ namespace DAL
         /// <summary>
         /// 修改部门
         /// </summary>
-        /// <param name="objJobList">部门对象</param>
+        /// <param name="DtGroupName">部门对象</param>
         /// <returns>返回执行结果</returns>
-        public int UpdateDtGroup(JobList objJobList)
+        public int UpdateDtGroup(string DtGroupName)
         {
             StringBuilder objBuilder = new StringBuilder();
-            objBuilder.Append("insert into Department(DtGroupId,DtGroupName,DtId)");
-            objBuilder.Append(" vlues({0},'{1}',{2})");
-            string sql = string.Format(objBuilder.ToString(), objJobList.DtGroupId, objJobList.DtGroupName,objJobList.DtId);
+            objBuilder.Append("update Department set DtGroupName='{0}' where DtGroupName='{1}'");
+            string sql = string.Format(objBuilder.ToString(), DtGroupName, DtGroupName);
             try
             {
                 return SQLHelper.Update(sql);
@@ -260,7 +256,7 @@ namespace DAL
         /// </summary>
         /// <param name="objJobList">组别对象</param>
         /// <returns>执行结果</returns>
-        public int insertDtGroup(JobList objJobList)
+        public int InsertDtGroup(JobList objJobList)
         {
             StringBuilder objBuilder = new StringBuilder();
             objBuilder.Append("insert into Department(DtGroupId,DtGroupName,DtId)");
@@ -275,6 +271,18 @@ namespace DAL
 
                 throw ex;
             }
+        }
+
+        /// <summary>
+        /// 获得自增列的新索引数
+        /// </summary>
+        /// <param name="tableName">表名</param>
+        /// <returns>新索引数</returns>
+        public int GetIncNumber(string tableName)
+        {
+            string sql = "select IDENT_CURRENT('{0}') + 1";
+            sql = string.Format(sql, tableName);
+            return Convert.ToInt32(SQLHelper.GetSingleResult(sql));
         }
 
     }

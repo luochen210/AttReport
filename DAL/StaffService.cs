@@ -19,7 +19,8 @@ namespace DAL
         /// <returns></returns>
         public string GetStaffId()
         {
-            string sql = "select IDENT_CURRENT('Staffs')+1";
+            string sql = "select IDENT_CURRENT('{0}')+1";
+            sql = string.Format(sql, "Staffs");
             
             return SQLHelper.GetSingleResult(sql).ToString();
         }
