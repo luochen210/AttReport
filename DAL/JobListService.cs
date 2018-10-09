@@ -82,7 +82,7 @@ namespace DAL
 
         public DataSet GetDepartmentDs(String CompanyName)
         {
-            string sql = "select DepartmentName,DepartmentId from Department where CyId=(select DepartmentId from Company where CompanyName='{0}')";
+            string sql = "select DepartmentName,DepartmentId from Department where CyId=(select CompanyId from Company where CompanyName='{0}')";
             sql = string.Format(sql, CompanyName);
             return SQLHelper.GetDataSet(sql);
         }
@@ -145,14 +145,14 @@ namespace DAL
         /// <summary>
         /// 修改公司名
         /// </summary>
-        /// <param name="CompanyName">公司名</param>
+        /// <param name="newCompanyName">公司名</param>
         /// <returns>返回公司对象</returns>
-        public int UpdateCompany(string CompanyName)
+        public int UpdateCompany(string newCompanyName,string agoCompanyName)
         {
             StringBuilder sqlBuilder = new StringBuilder();
 
             sqlBuilder.Append("Update Company Set CompanyName='{0}' where CompanyName='{1}'");
-            string sql =string.Format(sqlBuilder.ToString(), CompanyName, CompanyName);
+            string sql =string.Format(sqlBuilder.ToString(), newCompanyName, agoCompanyName);
             try
             {
                 return SQLHelper.Update(sql);
@@ -190,13 +190,13 @@ namespace DAL
         /// <summary>
         /// 修改部门
         /// </summary>
-        /// <param name="DepartmentName">部门对象</param>
+        /// <param name="newDepartmentName">部门对象</param>
         /// <returns>修改结果</returns>
-        public int UpdateDepartment(string DepartmentName)
+        public int UpdateDepartment(string newDepartmentName,string agoDepartmentName)
         {
             StringBuilder objBuilder = new StringBuilder();
             objBuilder.Append("Update Department Set DepartmentName='{0}' where DepartmentName={1}");
-            string sql = string.Format(objBuilder.ToString(), DepartmentName, DepartmentName);
+            string sql = string.Format(objBuilder.ToString(), newDepartmentName, agoDepartmentName);
             try
             {
                 return SQLHelper.Update(sql);
@@ -233,13 +233,13 @@ namespace DAL
         /// <summary>
         /// 修改部门
         /// </summary>
-        /// <param name="DtGroupName">部门对象</param>
+        /// <param name="newDtGroupName">部门对象</param>
         /// <returns>返回执行结果</returns>
-        public int UpdateDtGroup(string DtGroupName)
+        public int UpdateDtGroup(string newDtGroupName,string agoDtGroupName)
         {
             StringBuilder objBuilder = new StringBuilder();
             objBuilder.Append("update Department set DtGroupName='{0}' where DtGroupName='{1}'");
-            string sql = string.Format(objBuilder.ToString(), DtGroupName, DtGroupName);
+            string sql = string.Format(objBuilder.ToString(), newDtGroupName, agoDtGroupName);
             try
             {
                 return SQLHelper.Update(sql);

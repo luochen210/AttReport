@@ -100,21 +100,22 @@ namespace AttReport
         private void trvwCompany_AfterLabelEdit(object sender, NodeLabelEditEventArgs e)
         {
             JobListService objService = new JobListService();
-            e.Node.EndEdit(false);
 
-            if (trvwCompany.SelectedNode == e.Node.Parent)
-            {
-                objService.UpdateCompany(e.Label);
-            }
-            else if (trvwCompany.SelectedNode.Level == 1)
-            {
-                objService.UpdateDepartment(e.Label);
-            }
-            else if (trvwCompany.SelectedNode.Level == 2)
-            {
-                objService.UpdateDtGroup(e.Label);
-            }
+            //e.Node.EndEdit(false);
 
+            if (trvwCompany.SelectedNode.Level == 0 && e.Label != null) 
+            {
+                objService.UpdateCompany(e.Label, e.Node.Text);
+            }
+            else if (trvwCompany.SelectedNode.Level == 1 && e.Label != null)
+            {
+                objService.UpdateDepartment(e.Label, e.Node.Text);
+            }
+            else if (trvwCompany.SelectedNode.Level == 2 && e.Label != null)
+            {
+                objService.UpdateDtGroup(e.Label, e.Node.Text);
+            }
+            trvwCompany.EndUpdate();
         }
         #endregion
 
@@ -131,33 +132,20 @@ namespace AttReport
             JobListService objService = new JobListService();
             if (trvwCompany.SelectedNode.Level == 0)
             {
-                ////添加节点
-                //trvwCompany.Nodes.Add("请修改节点名称");
                 //选定节点
                 trvwCompany.SelectedNode = trvwCompany.Nodes.Add("请修改节点名称");
+
+                JobList objJobList = new JobList()
+                {
+                    CompanyName = trvwCompany.SelectedNode.Text
+                };
+
+                objService.InsertCompany(objJobList);
+
                 //修改节点
                 trvwCompany.LabelEdit = true;
                 trvwCompany.SelectedNode.BeginEdit();
-
-                int incNumber = objService.GetIncNumber("Company");
-                JobList objJobList = new JobList()
-                {
-                    CompanyName = trvwCompany.SelectedNode.Name
-                };
-                objService.InsertCompany(objJobList);
             }
-
-
-            //else if (trvwCompany.SelectedNode.Level == 1)
-            //{
-            //    objService.UpdateDepartment(e.Label);
-            //}
-            //else if (trvwCompany.SelectedNode.Level == 2)
-            //{
-            //    objService.UpdateDtGroup(e.Label);
-            //}
-            //trvwCompany.LabelEdit = true;
-            //trvwCompany.SelectedNode.BeginEdit();
         }
 
         private void 删除节点ToolStripMenuItem_Click(object sender, EventArgs e)
