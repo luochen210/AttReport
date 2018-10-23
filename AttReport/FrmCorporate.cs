@@ -33,7 +33,7 @@ namespace AttReport
             }
         }
 
-
+        int nodeNumber = 0;
 
         #region 创建TreeNode  
 
@@ -74,7 +74,11 @@ namespace AttReport
             }
             if (trvwCompany.Nodes.Count <= 0)
             {
-                trvwCompany.Nodes.Add("请修改此节点为你的公司名");
+                trvwCompany.Nodes.Add("请修改为公司名");
+                TreeNode TnDepartment = trvwCompany.SelectedNode;
+                TnDepartment.Nodes.Add("请修改为部门名");
+                TreeNode TnDtGroup = trvwCompany.SelectedNode;
+                TnDtGroup.Nodes.Add("请修改为组别名");
             }
         }
 
@@ -129,11 +133,13 @@ namespace AttReport
 
         private void 增加节点ToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            nodeNumber++;
+
             JobListService objService = new JobListService();
             if (trvwCompany.SelectedNode.Level == 0)
             {
                 //选定节点
-                trvwCompany.SelectedNode = trvwCompany.Nodes.Add("请修改节点名称");
+                trvwCompany.SelectedNode = trvwCompany.Nodes.Add("请修改节点名称"+ nodeNumber);
 
                 JobList objJobList = new JobList()
                 {
@@ -141,16 +147,64 @@ namespace AttReport
                 };
 
                 objService.InsertCompany(objJobList);
-
-                //修改节点
-                trvwCompany.LabelEdit = true;
-                trvwCompany.SelectedNode.BeginEdit();
             }
+            else if (trvwCompany.SelectedNode.Level == 1)
+            {
+                //选定节点
+                trvwCompany.SelectedNode = trvwCompany.Nodes.Add("请修改节点名称"+ nodeNumber);
+
+                JobList objJobList = new JobList()
+                {
+                    DepartmentName = trvwCompany.SelectedNode.Text
+                };
+
+                objService.InsertDepartment(objJobList);
+            }
+            else if (trvwCompany.SelectedNode.Level == 2)
+            {
+                //选定节点
+                trvwCompany.SelectedNode = trvwCompany.Nodes.Add("请修改节点名称"+ nodeNumber);
+
+                JobList objJobList = new JobList()
+                {
+                    DtGroupName = trvwCompany.SelectedNode.Text
+                };
+
+                objService.InsertDtGroup(objJobList);
+            }
+
+            //修改节点
+            trvwCompany.LabelEdit = true;
+            trvwCompany.SelectedNode.BeginEdit();
         }
 
         private void 删除节点ToolStripMenuItem_Click(object sender, EventArgs e)
         {
-
+            JobListService objService = new JobListService();
+            if (trvwCompany.SelectedNode == null)
+            {
+                MessageBox.Show("请选择要删除的节点！");
+                return;
+            }
+            else
+            {
+                trvwCompany.SelectedNode.Remove();//删除节点
+            }
+            
+            //删除数据表            
+            if (trvwCompany.SelectedNode.Level == 0)
+            {
+                
+                objService.DeleteNode("Company", "CompanyName",trvwCompany.SelectedNode.Text.Trim());
+            }
+            else if (trvwCompany.SelectedNode.Level == 1)
+            {
+                objService.DeleteNode("Department", "DepartmentName", trvwCompany.SelectedNode.Text.Trim());
+            }
+            else if (trvwCompany.SelectedNode.Level == 2)
+            {
+                objService.DeleteNode("DtGroup", "DtGroupName", trvwCompany.SelectedNode.Text.Trim());
+            }
         }
 
         #endregion

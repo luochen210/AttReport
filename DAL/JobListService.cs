@@ -274,6 +274,21 @@ namespace DAL
         }
 
         /// <summary>
+        /// 删除数据
+        /// </summary>
+        /// <param name="fromName">表名</param>
+        /// <param name="columnName">列名</param>
+        /// <param name="nodeName">节点名</param>
+        /// <returns>执行结果</returns>
+        public int DeleteNode(string fromName, string columnName, string nodeName)
+        {
+            string sql = "delete from {0} where {1}='{2}'";
+            sql = string.Format(sql, fromName, columnName, nodeName);
+
+            return SQLHelper.Update(sql);
+        }
+
+        /// <summary>
         /// 获得自增列的新索引数
         /// </summary>
         /// <param name="tableName">表名</param>
