@@ -129,9 +129,8 @@
             this.lblCompanyTips.ForeColor = System.Drawing.Color.Red;
             this.lblCompanyTips.Location = new System.Drawing.Point(551, 35);
             this.lblCompanyTips.Name = "lblCompanyTips";
-            this.lblCompanyTips.Size = new System.Drawing.Size(77, 12);
+            this.lblCompanyTips.Size = new System.Drawing.Size(0, 12);
             this.lblCompanyTips.TabIndex = 5;
-            this.lblCompanyTips.Text = "请选择公司！";
             // 
             // lblDepartmentTips
             // 
@@ -139,9 +138,8 @@
             this.lblDepartmentTips.ForeColor = System.Drawing.Color.Red;
             this.lblDepartmentTips.Location = new System.Drawing.Point(551, 79);
             this.lblDepartmentTips.Name = "lblDepartmentTips";
-            this.lblDepartmentTips.Size = new System.Drawing.Size(77, 12);
+            this.lblDepartmentTips.Size = new System.Drawing.Size(0, 12);
             this.lblDepartmentTips.TabIndex = 5;
-            this.lblDepartmentTips.Text = "请选择部门！";
             // 
             // lblDtGroupTips
             // 
@@ -149,9 +147,8 @@
             this.lblDtGroupTips.ForeColor = System.Drawing.Color.Red;
             this.lblDtGroupTips.Location = new System.Drawing.Point(551, 123);
             this.lblDtGroupTips.Name = "lblDtGroupTips";
-            this.lblDtGroupTips.Size = new System.Drawing.Size(77, 12);
+            this.lblDtGroupTips.Size = new System.Drawing.Size(0, 12);
             this.lblDtGroupTips.TabIndex = 5;
-            this.lblDtGroupTips.Text = "请选择组别！";
             // 
             // label5
             // 
@@ -167,7 +164,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(662, 604);
+            this.ClientSize = new System.Drawing.Size(669, 604);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.lblDtGroupTips);
             this.Controls.Add(this.lblDepartmentTips);

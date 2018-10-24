@@ -21,7 +21,7 @@ namespace DAL
             string sql = "select CompanyName from Company";
             try
             {
-                string result= SQLHelper.GetSingleResult(sql).ToString();
+                string result = SQLHelper.GetSingleResult(sql).ToString();
                 return result;
             }
             catch (Exception ex)
@@ -144,11 +144,16 @@ namespace DAL
         //查询公司是否存在
         public string CompanyNumber(string CompanyName)
         {
+            string result = string.Empty;
             string sql = "select CompanyName from Company where CompanyName='{0}'";
             sql = string.Format(sql, CompanyName);
             try
             {
-                string result = SQLHelper.GetSingleResult(sql).ToString();
+                var objSqlStr = SQLHelper.GetSingleResult(sql);
+                if (objSqlStr!=null)
+                {
+                    result = objSqlStr.ToString();
+                }
                 return result;
             }
             catch (Exception ex)
@@ -159,19 +164,19 @@ namespace DAL
         }
 
         //查询部门是否存在
-        public string DepartmentNumber(string  DepartmentName)
+        public string DepartmentNumber(string DepartmentName)
         {
             string result = string.Empty;
             string sql = "select DepartmentName from Department where DepartmentName='{0}'";
             sql = string.Format(sql, DepartmentName);
             try
             {
-                 var obj = SQLHelper.GetSingleResult(sql);
-                if (obj!=null)
+                var objSqlStr = SQLHelper.GetSingleResult(sql);
+                if (objSqlStr != null)
                 {
-                    result = obj.ToString();
+                    result = objSqlStr.ToString();
                 }
-                
+
                 return result;
             }
             catch (Exception ex)
@@ -184,12 +189,17 @@ namespace DAL
         //查询组别是否存在
         public string DtGroupNumber(string DtGroupName)
         {
+            string result = string.Empty;
             string sql = "select DtGroupName from DtGroup where DtGroupName='{0}'";
             sql = string.Format(sql, DtGroupName);
             try
             {
                 //这里的结果为null，这里报错的原因是null.ToString()
-                string result = SQLHelper.GetSingleResult(sql);
+                var objSqlStr = SQLHelper.GetSingleResult(sql);
+                if (objSqlStr!=null)
+                {
+                    result = objSqlStr.ToString();
+                }
                 return result;
             }
             catch (Exception ex)
@@ -205,12 +215,12 @@ namespace DAL
         /// </summary>
         /// <param name="newCompanyName">公司名</param>
         /// <returns>返回公司对象</returns>
-        public int UpdateCompany(string newCompanyName,string agoCompanyName)
+        public int UpdateCompany(string newCompanyName, string agoCompanyName)
         {
             StringBuilder sqlBuilder = new StringBuilder();
 
             sqlBuilder.Append("Update Company Set CompanyName='{0}' where CompanyName='{1}'");
-            string sql =string.Format(sqlBuilder.ToString(), newCompanyName, agoCompanyName);
+            string sql = string.Format(sqlBuilder.ToString(), newCompanyName, agoCompanyName);
             try
             {
                 return SQLHelper.Update(sql);
@@ -219,7 +229,7 @@ namespace DAL
             {
                 throw ex;
             }
-            
+
         }
 
         /// <summary>
@@ -250,7 +260,7 @@ namespace DAL
         /// </summary>
         /// <param name="newDepartmentName">部门对象</param>
         /// <returns>修改结果</returns>
-        public int UpdateDepartment(string newDepartmentName,string agoDepartmentName)
+        public int UpdateDepartment(string newDepartmentName, string agoDepartmentName)
         {
             StringBuilder objBuilder = new StringBuilder();
             objBuilder.Append("Update Department Set DepartmentName='{0}' where DepartmentName={1}");
@@ -276,7 +286,7 @@ namespace DAL
             StringBuilder objBuilder = new StringBuilder();
             objBuilder.Append("insert into Department(DepartmentId,DepartmentName,CyId)");
             objBuilder.Append(" vlues({0},'{1}',{2})");
-            string sql = string.Format(objBuilder.ToString(), objJobList.DepartmentId, objJobList.DepartmentName,objJobList.CyId);
+            string sql = string.Format(objBuilder.ToString(), objJobList.DepartmentId, objJobList.DepartmentName, objJobList.CyId);
             try
             {
                 return SQLHelper.Update(sql);
@@ -293,7 +303,7 @@ namespace DAL
         /// </summary>
         /// <param name="newDtGroupName">部门对象</param>
         /// <returns>返回执行结果</returns>
-        public int UpdateDtGroup(string newDtGroupName,string agoDtGroupName)
+        public int UpdateDtGroup(string newDtGroupName, string agoDtGroupName)
         {
             StringBuilder objBuilder = new StringBuilder();
             objBuilder.Append("update Department set DtGroupName='{0}' where DtGroupName='{1}'");
