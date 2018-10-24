@@ -141,6 +141,64 @@ namespace DAL
             return list;
         }
 
+        //查询公司是否存在
+        public string CompanyNumber(string CompanyName)
+        {
+            string sql = "select CompanyName from Company where CompanyName='{0}'";
+            sql = string.Format(sql, CompanyName);
+            try
+            {
+                string result = SQLHelper.GetSingleResult(sql).ToString();
+                return result;
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+        }
+
+        //查询部门是否存在
+        public string DepartmentNumber(string  DepartmentName)
+        {
+            string result = string.Empty;
+            string sql = "select DepartmentName from Department where DepartmentName='{0}'";
+            sql = string.Format(sql, DepartmentName);
+            try
+            {
+                 var obj = SQLHelper.GetSingleResult(sql);
+                if (obj!=null)
+                {
+                    result = obj.ToString();
+                }
+                
+                return result;
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+        }
+
+        //查询组别是否存在
+        public string DtGroupNumber(string DtGroupName)
+        {
+            string sql = "select DtGroupName from DtGroup where DtGroupName='{0}'";
+            sql = string.Format(sql, DtGroupName);
+            try
+            {
+                //这里的结果为null，这里报错的原因是null.ToString()
+                string result = SQLHelper.GetSingleResult(sql);
+                return result;
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+        }
+
 
         /// <summary>
         /// 修改公司名

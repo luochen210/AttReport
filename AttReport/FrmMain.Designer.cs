@@ -58,6 +58,7 @@
             this.tabMonthly = new System.Windows.Forms.TabPage();
             this.tabAnnual = new System.Windows.Forms.TabPage();
             this.lblState = new System.Windows.Forms.Label();
+            this.部门信息ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.tctlReport.SuspendLayout();
             this.tabLog.SuspendLayout();
@@ -89,7 +90,8 @@
             // 
             this.人事管理ToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.员工入职ToolStripMenuItem,
-            this.员工信息ToolStripMenuItem});
+            this.员工信息ToolStripMenuItem,
+            this.部门信息ToolStripMenuItem});
             this.人事管理ToolStripMenuItem.Name = "人事管理ToolStripMenuItem";
             this.人事管理ToolStripMenuItem.Size = new System.Drawing.Size(68, 21);
             this.人事管理ToolStripMenuItem.Text = "人事管理";
@@ -336,6 +338,13 @@
             this.lblState.TabIndex = 8;
             this.lblState.Text = "设备状态：等待连接……";
             // 
+            // 部门信息ToolStripMenuItem
+            // 
+            this.部门信息ToolStripMenuItem.Name = "部门信息ToolStripMenuItem";
+            this.部门信息ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.部门信息ToolStripMenuItem.Text = "部门信息";
+            this.部门信息ToolStripMenuItem.Click += new System.EventHandler(this.部门信息ToolStripMenuItem_Click);
+            // 
             // FrmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -394,6 +403,7 @@
         private System.Windows.Forms.ToolStripMenuItem 人事管理ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem 员工入职ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem 员工信息ToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem 部门信息ToolStripMenuItem;
     }
 }
 

@@ -233,5 +233,23 @@ namespace AttReport
                 objFrmCorporate.WindowState = FormWindowState.Normal;
             }
         }
+
+        //部门信息窗口对象
+        public static FrmAddNode objFrmAddNode = null;
+
+        //部门信息菜单事件
+        private void 部门信息ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (objFrmAddNode == null)
+            {
+                objFrmAddNode = new FrmAddNode();
+                objFrmAddNode.Show();
+            }
+            else
+            {
+                objFrmCorporate.Activate();//激活只能在最小化的时候起作用
+                objFrmCorporate.WindowState = FormWindowState.Normal;
+            }
+        }
     }
 }
