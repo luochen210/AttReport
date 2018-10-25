@@ -33,8 +33,6 @@ namespace AttReport
             }
         }
 
-        int nodeNumber = 0;//记数变量
-
         #region 创建TreeNode  
 
         private void BindTreeView()
@@ -191,15 +189,15 @@ namespace AttReport
             if (trvwCompany.SelectedNode.Level == 0)
             {
                 
-                objService.DeleteNode("Company", "CompanyName",trvwCompany.SelectedNode.Text.Trim());
+                objService.DeleteData("Company", "CompanyName",trvwCompany.SelectedNode.Text.Trim());
             }
             else if (trvwCompany.SelectedNode.Level == 1)
             {
-                objService.DeleteNode("Department", "DepartmentName", trvwCompany.SelectedNode.Text.Trim());
+                objService.DeleteData("Department", "DepartmentName", trvwCompany.SelectedNode.Text.Trim());
             }
             else if (trvwCompany.SelectedNode.Level == 2)
             {
-                objService.DeleteNode("DtGroup", "DtGroupName", trvwCompany.SelectedNode.Text.Trim());
+                objService.DeleteData("DtGroup", "DtGroupName", trvwCompany.SelectedNode.Text.Trim());
             }
         }
 

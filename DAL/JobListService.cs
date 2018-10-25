@@ -64,7 +64,7 @@ namespace DAL
         /// <returns></returns>
         public List<JobList> GetDepartmentList(String CompanyName)
         {
-            string sql = "select DepartmentName,DepartmentId from Department where CyId=(select DepartmentId from Company where CompanyName='{0}')";
+            string sql = "select DepartmentName,DepartmentId from Department where CyId=(select CompanyId from Company where CompanyName='{0}')";
             sql = string.Format(sql, CompanyName);
             SqlDataReader objReader = SQLHelper.GetReader(sql);
             List<JobList> list = new List<JobList>();
@@ -194,7 +194,6 @@ namespace DAL
             sql = string.Format(sql, DtGroupName);
             try
             {
-                //这里的结果为null，这里报错的原因是null.ToString()
                 var objSqlStr = SQLHelper.GetSingleResult(sql);
                 if (objSqlStr!=null)
                 {
@@ -209,6 +208,58 @@ namespace DAL
             }
         }
 
+        /// <summary>
+        /// 获得公司ID
+        /// </summary>
+        /// <param name="CompanyName">公司名</param>
+        /// <returns>返回公司ID</returns>
+        public string GetCompanyId(string CompanyName)
+        {
+            string result = string.Empty;
+            string sql = "select CompanyID from Company where CompanyName='{0}'";
+            sql = string.Format(sql, CompanyName);
+            try
+            {
+                var objSqlStr = SQLHelper.GetSingleResult(sql);
+                if (objSqlStr != null)
+                {
+                    result = objSqlStr.ToString();
+                }
+                return result;
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+        }
+
+        /// <summary>
+        /// 获得部门ID
+        /// </summary>
+        /// <param name="DepartmentName">部门名称</param>
+        /// <returns>返回部门ID</returns>
+        public string GetDepartmentId(string DepartmentName)
+        {
+            string result = string.Empty;
+            string sql = "select DepartmentId from Department where DepartmentName='{0}'";
+            sql = string.Format(sql, DepartmentName);
+            try
+            {
+                var objSqlStr = SQLHelper.GetSingleResult(sql);
+                if (objSqlStr != null)
+                {
+                    result = objSqlStr.ToString();
+                }
+
+                return result;
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+        }
 
         /// <summary>
         /// 修改公司名
@@ -284,9 +335,9 @@ namespace DAL
         public int InsertDepartment(JobList objJobList)
         {
             StringBuilder objBuilder = new StringBuilder();
-            objBuilder.Append("insert into Department(DepartmentId,DepartmentName,CyId)");
-            objBuilder.Append(" vlues({0},'{1}',{2})");
-            string sql = string.Format(objBuilder.ToString(), objJobList.DepartmentId, objJobList.DepartmentName, objJobList.CyId);
+            objBuilder.Append("insert into Department(DepartmentName,CyId)");
+            objBuilder.Append(" values('{0}',{1})");
+            string sql = string.Format(objBuilder.ToString(), objJobList.DepartmentName, objJobList.CyId);
             try
             {
                 return SQLHelper.Update(sql);
@@ -327,9 +378,9 @@ namespace DAL
         public int InsertDtGroup(JobList objJobList)
         {
             StringBuilder objBuilder = new StringBuilder();
-            objBuilder.Append("insert into Department(DtGroupId,DtGroupName,DtId)");
-            objBuilder.Append(" vlues({0},'{1}',{2})");
-            string sql = string.Format(objBuilder.ToString(), objJobList.DtGroupId, objJobList.DtGroupName, objJobList.DtId);
+            objBuilder.Append("insert into DtGroup (DtGroupName,DtId)");
+            objBuilder.Append(" values('{0}',{1})");
+            string sql = string.Format(objBuilder.ToString(), objJobList.DtGroupName, objJobList.DtId);
             try
             {
                 return SQLHelper.Update(sql);
@@ -348,7 +399,7 @@ namespace DAL
         /// <param name="columnName">列名</param>
         /// <param name="nodeName">节点名</param>
         /// <returns>执行结果</returns>
-        public int DeleteNode(string fromName, string columnName, string nodeName)
+        public int DeleteData(string fromName, string columnName, string nodeName)
         {
             string sql = "delete from {0} where {1}='{2}'";
             sql = string.Format(sql, fromName, columnName, nodeName);
