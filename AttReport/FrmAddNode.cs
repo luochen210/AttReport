@@ -22,21 +22,28 @@ namespace AttReport
         {
             InitializeComponent();
 
-            //获取公司名
-            string CompanyName = objJobList.GetCompany();
+            //获取公司列表
+            this.cboCompany.DataSource = objJobList.GetAllCompany();
+            this.cboCompany.DisplayMember = "CompanyName";
+            this.cboCompany.ValueMember = "CompanyId";
+            this.cboCompany.SelectedIndex = -1;//默认不选中
 
-            //UI启动时获取部门列表
-            this.cboDepartment.DataSource = objJobList.GetDepartmentList(CompanyName);
-            this.cboDepartment.DisplayMember = "DepartmentName";
-            this.cboDepartment.ValueMember = "DepartmentId";
-            this.cboDepartment.SelectedIndex = -1;//默认不选中
+            //显示创建公司提示
+            this.cboCompany.Text = CBOSTR;//默认显示提示
 
             //显示创建部门提示
             this.cboDepartment.Text = CBOSTR;//默认显示提示
 
             //显示创建组别提示
-            this.cboDtGroup.Text = CBOSTR;
+            this.cboDtGroup.Text = CBOSTR;//默认显示提示
         }
+
+        //旧公司名称存储变量
+        string agoCompanyName = null;//用于修改公司名
+        //旧部门名称存储变量
+        string agoDepartmentName = null;//用于修改部门名
+        //旧组别名称存储变量
+        string agoDtGroupName = null;//用于修改组别名
 
         //根据公司获取部门列表的事件
         private void DepartmentList_SelectedIndexChanged(object sender, EventArgs e)
@@ -131,6 +138,9 @@ namespace AttReport
         //保存数据
         private void btnAdd_Click(object sender, EventArgs e)
         {
+            //清除删除提示
+            this.lblRemoveTips.Text = "";
+
             //如果公司名为空，则用lbl输出提示
             if (cboCompany.Text == null)
             {
@@ -292,9 +302,14 @@ namespace AttReport
 
         }
 
-        //删除数据
-        private void btnRemove_Click(object sender, EventArgs e)
+        //修改数据
+        private void btnAlter_Click(object sender, EventArgs e)
         {
+            //清空添加提示
+            this.lblCompanyTips.Text = "";
+            this.lblDepartmentTips.Text = "";
+            this.lblDtGroupTips.Text = "";
+
             //获取公司数据
             string CpNumber = objJobList.CompanyNumber(this.cboCompany.Text.Trim());//用于数据写入时判断数据是否重复
             //获取部门数据
@@ -302,16 +317,60 @@ namespace AttReport
             //获取组别数据
             string DpNumber = objJobList.DtGroupNumber(this.cboDtGroup.Text.Trim()); //用于数据删除时判断是否存在数据
 
-            //验证数据
+
+            //验证数据,先存储旧名称，再改新名称
             if (this.cboCompany.Text.Trim() == CpNumber)
             {
+                //存储部门名
+                agoCompanyName = cboCompany.Text.Trim();
+                //输出lbl提示
+                this.lblCompanyTips.Text = "公司名称保存成功！";
+
+                this.lblRemoveTips.ForeColor = Color.Red;//设置字体颜色为红色
+                this.lblRemoveTips.Text = "请输入新的公司名称！";
+
+                //如果组别名称为默认，则设置焦点为部门
+                if (cboDepartment.Text.Trim() == CBOSTR)
+                {
+                    this.cboCompany.Focus();//设置焦点为部门
+                }
+
+                //如果cbo在数据库存在，则把部门名称存储进agoDepartmentName变量
                 if (this.cboDepartment.Text.Trim() == DtNumber)
                 {
-                    //如果cbo在数据库存在，则删除组别
+                    //存储部门名
+                    agoDepartmentName = cboDepartment.Text.Trim();
+                    //输出lbl提示
+                    this.lblDepartmentTips.Text = "部门名称保存成功！";
+
+                    this.lblRemoveTips.ForeColor = Color.Red;//设置字体颜色为红色
+                    this.lblRemoveTips.Text = "请输入新的部门名称！";
+
+                    //如果组别名称为默认，则设置焦点为部门
+                    if (cboDtGroup.Text.Trim() == CBOSTR)
+                    {
+                        this.cboDepartment.Focus();//设置焦点为部门
+                    }
+
+                    //如果cbo在数据库存在，则把组别名称存储进agoDtGroupName变量
                     if (this.cboDtGroup.Text.Trim() == DpNumber)
                     {
-                        //删除组别信息
-                        objJobList.DeleteData("DtGroup", "DtGroupName", this.cboDtGroup.Text.Trim());
+                        //存储组别名
+                        agoDtGroupName = cboDtGroup.Text.Trim();
+                        //输出lbl提示
+                        this.lblDtGroupTips.ForeColor = Color.Green;//设置字体为绿色
+                        this.lblDtGroupTips.Text = "组别名称保存成功！";
+
+                        this.lblRemoveTips.ForeColor = Color.Red;//设置字体颜色为红色
+                        this.lblRemoveTips.Text = "请输入新的组别名称！";
+
+                        this.cboDtGroup.Focus();//设置焦点为组别
+
+                    }
+                    //如果agoDtGroupName变量不为null,则修改组别
+                    else if (agoDtGroupName != null)
+                    {
+                        objJobList.UpdateDtGroup(this.cboDtGroup.Text.Trim(), agoDtGroupName);
 
                         //重新加载cbo
                         //获取组别
@@ -335,7 +394,139 @@ namespace AttReport
                         trvwDepartment.EndUpdate();
 
                         //输出lbl提示
-                        this.lblRemoveTips.Text = "组别删除成功！";
+                        this.lblRemoveTips.ForeColor = Color.Green;//设置字体颜色为绿色
+                        this.lblRemoveTips.Text = "组别名修改成功！";
+                    }
+                }
+                //如果agoDepartmentName变量不为null,则修改组别
+                else if (agoDepartmentName != null)
+                {
+                    objJobList.UpdateDepartment(this.cboDepartment.Text.Trim(), agoDepartmentName);
+
+                    //重新加载cbo
+                    //获取组别
+                    this.cboDepartment.DataSource = objJobList.GetDepartmentList(this.cboCompany.Text.Trim());
+                    this.cboDepartment.DisplayMember = "DepartmentName";
+                    this.cboDepartment.ValueMember = "DepartmentId";
+                    this.cboDepartment.SelectedIndex = -1;//默认不选中
+
+                    //显示创建组别提示
+                    this.cboDepartment.Text = CBOSTR;
+
+                    //停止菜单重绘，防止菜单闪烁
+                    trvwDepartment.BeginUpdate();
+                    //刷新菜单
+                    trvwDepartment.Nodes.Clear();
+                    //创建菜单
+                    BindTreeView();
+                    //展开所有菜单
+                    this.trvwDepartment.ExpandAll();
+                    //启用菜单
+                    trvwDepartment.EndUpdate();
+
+                    //输出lbl提示
+                    this.lblRemoveTips.ForeColor = Color.Green;//设置字体颜色为绿色
+                    this.lblRemoveTips.Text = "部门名修改成功！";
+                }
+
+            }
+            //如果agoCompanyName变量不为null,则修改公司名
+            else if (agoCompanyName != null)
+            {
+                objJobList.UpdateCompany(this.cboCompany.Text.Trim(),agoCompanyName);
+
+                //重新加载cbo
+                //获取公司列表
+                this.cboCompany.DataSource = objJobList.GetAllCompany();
+                this.cboCompany.DisplayMember = "CompanyName";
+                this.cboCompany.ValueMember = "CompanyId";
+                this.cboCompany.SelectedIndex = -1;//默认不选中
+
+                //显示公司提示
+                this.cboCompany.Text = CBOSTR;
+
+                //停止菜单重绘，防止菜单闪烁
+                trvwDepartment.BeginUpdate();
+                //刷新菜单
+                trvwDepartment.Nodes.Clear();
+                //创建菜单
+                BindTreeView();
+                //展开所有菜单
+                this.trvwDepartment.ExpandAll();
+                //启用菜单
+                trvwDepartment.EndUpdate();
+
+                //输出lbl提示
+                this.lblRemoveTips.ForeColor = Color.Green;//设置字体颜色为绿色
+                this.lblRemoveTips.Text = "公司名修改成功！";
+            }
+        }
+
+        //删除数据
+        private void btnRemove_Click(object sender, EventArgs e)
+        {
+            //清空添加提示
+            this.lblCompanyTips.Text = "";
+            this.lblDepartmentTips.Text = "";
+            this.lblDtGroupTips.Text = "";
+
+            //获取公司数据
+            string CpNumber = objJobList.CompanyNumber(this.cboCompany.Text.Trim());//用于数据写入时判断数据是否重复
+                                                                                    //获取部门数据
+            string DtNumber = objJobList.DepartmentNumber(this.cboDepartment.Text.Trim());//用于数据删除时判断是否存在数据
+                                                                                          //获取组别数据
+            string DpNumber = objJobList.DtGroupNumber(this.cboDtGroup.Text.Trim()); //用于数据删除时判断是否存在数据
+
+
+            //验证数据
+            if (this.cboCompany.Text.Trim() == CpNumber)
+            {
+                if (this.cboDepartment.Text.Trim() == DtNumber)
+                {
+                    //如果cbo在数据库存在，则删除组别
+                    if (this.cboDtGroup.Text.Trim() == DpNumber)
+                    {
+                        //获取职位数据
+                        var JbNumber = objJobList.GetAllJobList(this.cboDtGroup.Text.Trim());
+
+                        //如果职位数据不为空则提醒备份职位列表
+                        if (JbNumber.Count != 0)
+                        {
+                            //输出lbl提示
+                            this.lblRemoveTips.ForeColor = Color.Red;//设置字体颜色为红色
+                            this.lblRemoveTips.Text = "删除失败！请备份职位列表数据！";
+                            return;
+                        }
+                        else
+                        {
+                            //删除组别信息
+                            objJobList.DeleteData("DtGroup", "DtGroupName", this.cboDtGroup.Text.Trim());
+
+                            //重新加载cbo
+                            //获取组别
+                            this.cboDtGroup.DataSource = objJobList.GetAllGroupList(this.cboDepartment.Text.Trim());
+                            this.cboDtGroup.DisplayMember = "DtGroupName";
+                            this.cboDtGroup.ValueMember = "DtGroupId";
+                            this.cboDtGroup.SelectedIndex = -1;//默认不选中
+
+                            //显示创建组别提示
+                            this.cboDtGroup.Text = CBOSTR;
+
+                            //停止菜单重绘，防止菜单闪烁
+                            trvwDepartment.BeginUpdate();
+                            //刷新菜单
+                            trvwDepartment.Nodes.Clear();
+                            //创建菜单
+                            BindTreeView();
+                            //展开所有菜单
+                            this.trvwDepartment.ExpandAll();
+                            //启用菜单
+                            trvwDepartment.EndUpdate();
+
+                            //输出lbl提示
+                            this.lblRemoveTips.ForeColor = Color.Green;//设置字体颜色为绿色
+                            this.lblRemoveTips.Text = "组别删除成功！";
+                        }
                     }
                 }
             }
@@ -349,20 +540,20 @@ namespace AttReport
                 if (this.cboDepartment.Text.Trim() == DtNumber)
                 {
                     //如果部门下无组别信息，则删除部门
-                    if (iGroupList == null && this.cboDtGroup.Text.Trim() == CBOSTR)
+                    if (iGroupList.Count == 0 && this.cboDtGroup.Text.Trim() == CBOSTR)
                     {
                         //删除部门信息
                         objJobList.DeleteData("Department", "DepartmentName", this.cboDepartment.Text.Trim());
 
                         //cbo重新加载部门列表
-                        this.cboDepartment.DataSource = objJobList.GetDepartmentList(CompanyName);
+                        this.cboDepartment.DataSource = objJobList.GetDepartmentList(this.cboCompany.Text.Trim());
                         this.cboDepartment.DisplayMember = "DepartmentName";
                         this.cboDepartment.ValueMember = "DepartmentId";
                         this.cboDepartment.SelectedIndex = -1;//默认不选中
 
                         //显示创建部门提示
                         this.cboDepartment.Text = CBOSTR;//默认显示提示
-                        //显示创建组别提示
+                                                         //显示创建组别提示
                         this.cboDtGroup.Text = CBOSTR;
 
                         //停止菜单重绘，防止菜单闪烁
@@ -377,6 +568,7 @@ namespace AttReport
                         trvwDepartment.EndUpdate();
 
                         //输出lbl提示
+                        this.lblRemoveTips.ForeColor = Color.Green;//设置字体颜色为绿色
                         this.lblRemoveTips.Text = "部门删除成功！";
                     }
                 }
@@ -386,14 +578,14 @@ namespace AttReport
             if (this.cboCompany.Text.Trim() == CpNumber)
             {
                 //验证公司下是否有部门信息
-                var iCompanyList = objJobList.GetDepartmentList(cboCompany.Text.Trim());
+                var iDepartmentList = objJobList.GetDepartmentList(cboCompany.Text.Trim());
 
-                if (iCompanyList == null && this.cboDepartment.Text.Trim() == CBOSTR)
+                if (iDepartmentList.Count == 0 && this.cboDepartment.Text.Trim() == CBOSTR)
                 {
                     //删除公司信息
                     objJobList.DeleteData("Company", "CompanyName", this.cboCompany.Text.Trim());
 
-                    //获取组别
+                    //获取
                     this.cboCompany.DataSource = objJobList.GetAllCompany();
                     this.cboCompany.DisplayMember = "DtGroupName";
                     this.cboCompany.ValueMember = "DtGroupId";
@@ -403,7 +595,7 @@ namespace AttReport
                     this.cboCompany.Text = CBOSTR;
                     //显示创建部门提示
                     this.cboDepartment.Text = CBOSTR;//默认显示提示
-                    //显示创建组别提示
+                                                     //显示创建组别提示
                     this.cboDtGroup.Text = CBOSTR;
 
                     //停止菜单重绘，防止菜单闪烁
@@ -418,11 +610,11 @@ namespace AttReport
                     trvwDepartment.EndUpdate();
 
                     //输出lbl提示
+                    this.lblRemoveTips.ForeColor = Color.Green;//设置字体颜色为绿色
                     this.lblRemoveTips.Text = "公司删除成功！";
                 }
             }
         }
-
 
 
         #region 窗体激活与关闭
@@ -432,8 +624,8 @@ namespace AttReport
             FrmMain.objFrmAddNode = null;//当窗体关闭时，将窗体对象清理掉
         }
 
+
+
         #endregion
-
-
     }
 }

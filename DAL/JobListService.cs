@@ -264,8 +264,9 @@ namespace DAL
         /// <summary>
         /// 修改公司名
         /// </summary>
-        /// <param name="newCompanyName">公司名</param>
-        /// <returns>返回公司对象</returns>
+        /// <param name="newCompanyName">新公司名</param>
+        /// <param name="agoCompanyName">旧公司名</param>
+        /// <returns>修改结果</returns>
         public int UpdateCompany(string newCompanyName, string agoCompanyName)
         {
             StringBuilder sqlBuilder = new StringBuilder();
@@ -309,12 +310,13 @@ namespace DAL
         /// <summary>
         /// 修改部门
         /// </summary>
-        /// <param name="newDepartmentName">部门对象</param>
+        /// <param name="newDepartmentName">新部门名称</param>
+        /// <param name="agoDepartmentName">旧部门名称</param>
         /// <returns>修改结果</returns>
         public int UpdateDepartment(string newDepartmentName, string agoDepartmentName)
         {
             StringBuilder objBuilder = new StringBuilder();
-            objBuilder.Append("Update Department Set DepartmentName='{0}' where DepartmentName={1}");
+            objBuilder.Append("Update Department Set DepartmentName='{0}' where DepartmentName='{1}'");
             string sql = string.Format(objBuilder.ToString(), newDepartmentName, agoDepartmentName);
             try
             {
@@ -350,14 +352,15 @@ namespace DAL
         }
 
         /// <summary>
-        /// 修改部门
+        /// 修改组别名称
         /// </summary>
-        /// <param name="newDtGroupName">部门对象</param>
-        /// <returns>返回执行结果</returns>
+        /// <param name="newDtGroupName">新组别名称</param>
+        /// <param name="agoDtGroupName">旧组别名称</param>
+        /// <returns>修改结果</returns>
         public int UpdateDtGroup(string newDtGroupName, string agoDtGroupName)
         {
             StringBuilder objBuilder = new StringBuilder();
-            objBuilder.Append("update Department set DtGroupName='{0}' where DtGroupName='{1}'");
+            objBuilder.Append("update DtGroup set DtGroupName='{0}' where DtGroupName='{1}'");
             string sql = string.Format(objBuilder.ToString(), newDtGroupName, agoDtGroupName);
             try
             {

@@ -42,6 +42,7 @@
             this.lblDtGroupTips = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.lblRemoveTips = new System.Windows.Forms.Label();
+            this.btnAlter = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // lblCompany
@@ -119,7 +120,7 @@
             // btnAdd
             // 
             this.btnAdd.AutoSize = true;
-            this.btnAdd.Location = new System.Drawing.Point(315, 182);
+            this.btnAdd.Location = new System.Drawing.Point(258, 182);
             this.btnAdd.Name = "btnAdd";
             this.btnAdd.Size = new System.Drawing.Size(75, 23);
             this.btnAdd.TabIndex = 2;
@@ -131,7 +132,7 @@
             // 
             this.lblCompanyTips.AutoSize = true;
             this.lblCompanyTips.ForeColor = System.Drawing.Color.Red;
-            this.lblCompanyTips.Location = new System.Drawing.Point(663, 31);
+            this.lblCompanyTips.Location = new System.Drawing.Point(561, 31);
             this.lblCompanyTips.Name = "lblCompanyTips";
             this.lblCompanyTips.Size = new System.Drawing.Size(0, 12);
             this.lblCompanyTips.TabIndex = 5;
@@ -140,7 +141,7 @@
             // 
             this.lblDepartmentTips.AutoSize = true;
             this.lblDepartmentTips.ForeColor = System.Drawing.Color.Red;
-            this.lblDepartmentTips.Location = new System.Drawing.Point(663, 75);
+            this.lblDepartmentTips.Location = new System.Drawing.Point(561, 75);
             this.lblDepartmentTips.Name = "lblDepartmentTips";
             this.lblDepartmentTips.Size = new System.Drawing.Size(0, 12);
             this.lblDepartmentTips.TabIndex = 5;
@@ -149,7 +150,7 @@
             // 
             this.lblDtGroupTips.AutoSize = true;
             this.lblDtGroupTips.ForeColor = System.Drawing.Color.Red;
-            this.lblDtGroupTips.Location = new System.Drawing.Point(663, 119);
+            this.lblDtGroupTips.Location = new System.Drawing.Point(561, 119);
             this.lblDtGroupTips.Name = "lblDtGroupTips";
             this.lblDtGroupTips.Size = new System.Drawing.Size(0, 12);
             this.lblDtGroupTips.TabIndex = 5;
@@ -166,19 +167,29 @@
             // 
             // lblRemoveTips
             // 
-            this.lblRemoveTips.AutoSize = true;
             this.lblRemoveTips.ForeColor = System.Drawing.Color.Green;
-            this.lblRemoveTips.Location = new System.Drawing.Point(402, 152);
+            this.lblRemoveTips.Location = new System.Drawing.Point(315, 151);
             this.lblRemoveTips.Name = "lblRemoveTips";
-            this.lblRemoveTips.Size = new System.Drawing.Size(65, 12);
+            this.lblRemoveTips.Size = new System.Drawing.Size(242, 19);
             this.lblRemoveTips.TabIndex = 7;
-            this.lblRemoveTips.Text = "删除成功！";
+            this.lblRemoveTips.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // btnAlter
+            // 
+            this.btnAlter.AutoSize = true;
+            this.btnAlter.Location = new System.Drawing.Point(370, 182);
+            this.btnAlter.Name = "btnAlter";
+            this.btnAlter.Size = new System.Drawing.Size(75, 23);
+            this.btnAlter.TabIndex = 2;
+            this.btnAlter.Text = "修改";
+            this.btnAlter.UseVisualStyleBackColor = true;
+            this.btnAlter.Click += new System.EventHandler(this.btnAlter_Click);
             // 
             // FrmAddNode
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(582, 604);
+            this.ClientSize = new System.Drawing.Size(684, 604);
             this.Controls.Add(this.lblRemoveTips);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.lblDtGroupTips);
@@ -190,6 +201,7 @@
             this.Controls.Add(this.cboCompany);
             this.Controls.Add(this.btnRemove);
             this.Controls.Add(this.label2);
+            this.Controls.Add(this.btnAlter);
             this.Controls.Add(this.btnAdd);
             this.Controls.Add(this.lblDepartment);
             this.Controls.Add(this.lblCompany);
@@ -220,5 +232,6 @@
         private System.Windows.Forms.Label lblDtGroupTips;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label lblRemoveTips;
+        private System.Windows.Forms.Button btnAlter;
     }
 }
