@@ -217,14 +217,14 @@ namespace AttReport
         }
 
         //员工信息窗口对象
-        public static FrmCorporate objFrmCorporate = null;
+        public static FrmSfManage objFrmCorporate = null;
 
         //员工信息菜单事件
         private void 员工信息ToolStripMenuItem_Click(object sender, EventArgs e)
         {
             if (objFrmCorporate == null)
             {
-                objFrmCorporate = new FrmCorporate();
+                objFrmCorporate = new FrmSfManage();
                 objFrmCorporate.Show();
             }
             else
@@ -234,16 +234,18 @@ namespace AttReport
             }
         }
 
+
+
         //部门信息窗口对象
-        public static FrmAddNode objFrmAddNode = null;
+        public static FrmDtManage objFrmDtManage = null;
 
         //部门信息菜单事件
         private void 部门信息ToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            if (objFrmAddNode == null)
+            if (objFrmDtManage == null)
             {
-                objFrmAddNode = new FrmAddNode();
-                objFrmAddNode.Show();
+                objFrmDtManage = new FrmDtManage();
+                objFrmDtManage.Show();
             }
             else
             {

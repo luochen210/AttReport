@@ -9,7 +9,7 @@ namespace Models
     /// <summary>
     /// 组织架构实体类
     /// </summary>
-    public class JobList
+    public class Organization
     {
         //公司
         public int CompanyId { get; set; }//公司ID

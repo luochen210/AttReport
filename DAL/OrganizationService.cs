@@ -13,7 +13,7 @@ namespace DAL
     /// <summary>
     /// 职位访问类
     /// </summary>
-    public class JobListService
+    public class OrganizationService
     {
         //获取公司名
         public string GetCompany()
@@ -32,15 +32,15 @@ namespace DAL
         }
 
         //获取所有公司集合
-        public List<JobList> GetAllCompany()
+        public List<Organization> GetAllCompany()
         {
             string sql = "select * from Company";
 
             SqlDataReader objReader = SQLHelper.GetReader(sql);
-            List<JobList> list = new List<JobList>();
+            List<Organization> list = new List<Organization>();
             while (objReader.Read())
             {
-                list.Add(new JobList()
+                list.Add(new Organization()
                 {
                     CompanyName = objReader["CompanyName"].ToString(),
                     CompanyId = Convert.ToInt32(objReader["CompanyId"]),
@@ -62,15 +62,15 @@ namespace DAL
         /// </summary>
         /// <param name="CompanyName"></param>
         /// <returns></returns>
-        public List<JobList> GetDepartmentList(String CompanyName)
+        public List<Organization> GetDepartmentList(String CompanyName)
         {
             string sql = "select DepartmentName,DepartmentId from Department where CyId=(select CompanyId from Company where CompanyName='{0}')";
             sql = string.Format(sql, CompanyName);
             SqlDataReader objReader = SQLHelper.GetReader(sql);
-            List<JobList> list = new List<JobList>();
+            List<Organization> list = new List<Organization>();
             while (objReader.Read())
             {
-                list.Add(new JobList()
+                list.Add(new Organization()
                 {
                     DepartmentName = objReader["DepartmentName"].ToString(),
                     DepartmentId = Convert.ToInt32(objReader["DepartmentId"]),
@@ -93,15 +93,15 @@ namespace DAL
         /// </summary>
         /// <param name="DepartmentName">部门名称</param>
         /// <returns>返回属于部门的组别名称集合</returns>
-        public List<JobList> GetAllGroupList(string DepartmentName)
+        public List<Organization> GetAllGroupList(string DepartmentName)
         {
             string sql = "select DtGroupId,DtGroupName from DtGroup where DtId = (select DepartmentId from Department where DepartmentName = '{0}')";
             sql = string.Format(sql, DepartmentName);
             SqlDataReader objReader = SQLHelper.GetReader(sql);
-            List<JobList> list = new List<JobList>();
+            List<Organization> list = new List<Organization>();
             while (objReader.Read())
             {
-                list.Add(new JobList()
+                list.Add(new Organization()
                 {
                     DtGroupName = objReader["DtGroupName"].ToString(),
                     DtGroupId = Convert.ToInt32(objReader["DtGroupId"])
@@ -123,15 +123,15 @@ namespace DAL
         /// </summary>
         /// <param name="DtGroupName">组别名称</param>
         /// <returns>返回属于组别的职位列表集合</returns>
-        public List<JobList> GetAllJobList(string DtGroupName)
+        public List<Organization> GetAllJobList(string DtGroupName)
         {
             string sql = "select JobId,JobName from JobList where DpId = (select DtGroupId from DtGroup where DtGroupName = '{0}')";
             sql = string.Format(sql, DtGroupName);
             SqlDataReader objReader = SQLHelper.GetReader(sql);
-            List<JobList> list = new List<JobList>();
+            List<Organization> list = new List<Organization>();
             while (objReader.Read())
             {
-                list.Add(new JobList()
+                list.Add(new Organization()
                 {
                     JobName = objReader["JobName"].ToString(),
                     JobId = Convert.ToInt32(objReader["JobId"])
@@ -287,15 +287,15 @@ namespace DAL
         /// <summary>
         /// 插入公司
         /// </summary>
-        /// <param name="objJobList">公司</param>
+        /// <param name="objOrganization">公司</param>
         /// <returns>执行结果</returns>
-        public int InsertCompany(JobList objJobList)
+        public int InsertCompany(Organization objOrganization)
         {
             StringBuilder sqlBuilder = new StringBuilder();
             sqlBuilder.Append("insert into Company(CompanyName)");
             sqlBuilder.Append(" values('{0}')");
             string sql = string.Format(sqlBuilder.ToString(),
-                objJobList.CompanyName);
+                objOrganization.CompanyName);
             try
             {
                 return SQLHelper.Update(sql);
@@ -332,14 +332,14 @@ namespace DAL
         /// <summary>
         /// 插入部门
         /// </summary>
-        /// <param name="objJobList">部门对象</param>
+        /// <param name="objOrganization">部门对象</param>
         /// <returns>插入结果</returns>
-        public int InsertDepartment(JobList objJobList)
+        public int InsertDepartment(Organization objOrganization)
         {
             StringBuilder objBuilder = new StringBuilder();
             objBuilder.Append("insert into Department(DepartmentName,CyId)");
             objBuilder.Append(" values('{0}',{1})");
-            string sql = string.Format(objBuilder.ToString(), objJobList.DepartmentName, objJobList.CyId);
+            string sql = string.Format(objBuilder.ToString(), objOrganization.DepartmentName, objOrganization.CyId);
             try
             {
                 return SQLHelper.Update(sql);
@@ -376,14 +376,14 @@ namespace DAL
         /// <summary>
         /// 插入组别
         /// </summary>
-        /// <param name="objJobList">组别对象</param>
+        /// <param name="objOrganization">组别对象</param>
         /// <returns>执行结果</returns>
-        public int InsertDtGroup(JobList objJobList)
+        public int InsertDtGroup(Organization objOrganization)
         {
             StringBuilder objBuilder = new StringBuilder();
             objBuilder.Append("insert into DtGroup (DtGroupName,DtId)");
             objBuilder.Append(" values('{0}',{1})");
-            string sql = string.Format(objBuilder.ToString(), objJobList.DtGroupName, objJobList.DtId);
+            string sql = string.Format(objBuilder.ToString(), objOrganization.DtGroupName, objOrganization.DtId);
             try
             {
                 return SQLHelper.Update(sql);

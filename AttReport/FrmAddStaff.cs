@@ -14,7 +14,7 @@ namespace AttReport
 {
     public partial class FrmAddStaff : Form
     {
-        JobListService objJobListService = new JobListService();
+        OrganizationService objJobListService = new OrganizationService();
         StaffService objStaffService = new StaffService();
 
         public FrmAddStaff()

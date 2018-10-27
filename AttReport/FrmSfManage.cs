@@ -13,9 +13,9 @@ using System.Data.SqlClient;
 
 namespace AttReport
 {
-    public partial class FrmCorporate : Form
+    public partial class FrmSfManage : Form
     {
-        public FrmCorporate()
+        public FrmSfManage()
         {
             InitializeComponent();
         }
@@ -41,7 +41,7 @@ namespace AttReport
             DataSet ds = new DataSet();
             DataTable dtTable = new DataTable();
             DataTable dpTable = new DataTable();
-            JobListService objService = new JobListService();
+            OrganizationService objService = new OrganizationService();
 
             ds = objService.GetCompanyDs();//获得公司数据集
 
@@ -97,7 +97,7 @@ namespace AttReport
         #region 重命节点
         private void trvwCompany_AfterLabelEdit(object sender, NodeLabelEditEventArgs e)
         {
-            JobListService objService = new JobListService();
+            OrganizationService objService = new OrganizationService();
 
             //e.Node.EndEdit(false);
 
@@ -174,7 +174,7 @@ namespace AttReport
 
         private void 删除节点ToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            JobListService objService = new JobListService();
+            OrganizationService objService = new OrganizationService();
             if (trvwCompany.SelectedNode == null)
             {
                 MessageBox.Show("请选择要删除的节点！");

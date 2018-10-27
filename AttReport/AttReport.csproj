@@ -51,11 +51,11 @@
     <Compile Include="Common\DataValidate.cs" />
     <Compile Include="Common\StringSecurity.cs" />
     <Compile Include="Common\DataGridViewStyle.cs" />
-    <Compile Include="FrmAddNode.cs">
+    <Compile Include="FrmDtManage.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FrmAddNode.Designer.cs">
-      <DependentUpon>FrmAddNode.cs</DependentUpon>
+    <Compile Include="FrmDtManage.Designer.cs">
+      <DependentUpon>FrmDtManage.cs</DependentUpon>
     </Compile>
     <Compile Include="FrmAddStaff.cs">
       <SubType>Form</SubType>
@@ -63,11 +63,11 @@
     <Compile Include="FrmAddStaff.Designer.cs">
       <DependentUpon>FrmAddStaff.cs</DependentUpon>
     </Compile>
-    <Compile Include="FrmCorporate.cs">
+    <Compile Include="FrmSfManage.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FrmCorporate.Designer.cs">
-      <DependentUpon>FrmCorporate.cs</DependentUpon>
+    <Compile Include="FrmSfManage.Designer.cs">
+      <DependentUpon>FrmSfManage.cs</DependentUpon>
     </Compile>
     <Compile Include="FrmMain.cs">
       <SubType>Form</SubType>
@@ -77,14 +77,14 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="FrmAddNode.resx">
-      <DependentUpon>FrmAddNode.cs</DependentUpon>
+    <EmbeddedResource Include="FrmDtManage.resx">
+      <DependentUpon>FrmDtManage.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FrmAddStaff.resx">
       <DependentUpon>FrmAddStaff.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FrmCorporate.resx">
-      <DependentUpon>FrmCorporate.cs</DependentUpon>
+    <EmbeddedResource Include="FrmSfManage.resx">
+      <DependentUpon>FrmSfManage.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FrmMain.resx">
       <DependentUpon>FrmMain.cs</DependentUpon>
