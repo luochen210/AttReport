@@ -142,7 +142,7 @@ namespace DAL
         }
 
         //查询公司是否存在
-        public string CompanyNumber(string CompanyName)
+        public string GetCompanyName(string CompanyName)
         {
             string result = string.Empty;
             string sql = "select CompanyName from Company where CompanyName='{0}'";
@@ -164,7 +164,7 @@ namespace DAL
         }
 
         //查询部门是否存在
-        public string DepartmentNumber(string DepartmentName)
+        public string GetDepartmentName(string DepartmentName)
         {
             string result = string.Empty;
             string sql = "select DepartmentName from Department where DepartmentName='{0}'";
@@ -187,7 +187,7 @@ namespace DAL
         }
 
         //查询组别是否存在
-        public string DtGroupNumber(string DtGroupName)
+        public string GetDtGroupName(string DtGroupName)
         {
             string result = string.Empty;
             string sql = "select DtGroupName from DtGroup where DtGroupName='{0}'";

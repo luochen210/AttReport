@@ -37,8 +37,9 @@ namespace AttReport
         {
             //创建菜单
             BindTreeView();
-            //this.trvwDepartment.SelectedNode = null;
-            //this.txtAgoNode.Text=this.trvwDepartment.SelectedNode.Text;
+
+            //设置焦点
+            this.txtNewNode.Focus();
         }
 
         #endregion
@@ -56,7 +57,12 @@ namespace AttReport
 
             ds = objService.GetCompanyDs();//获得公司数据集
 
-            trvwDepartment.BeginUpdate();//禁树型菜单重绘，防止闪烁            
+            trvwDepartment.BeginUpdate();//禁树型菜单重绘，防止闪烁
+
+            if (this.trvwDepartment.Nodes.Count != 0)
+            {
+                trvwDepartment.Nodes.Clear();
+            }
 
             for (int c = 0; c < ds.Tables[0].Rows.Count; c++)//for循环生成树形菜单
             {
@@ -91,6 +97,8 @@ namespace AttReport
             this.trvwDepartment.ExpandAll();
 
             trvwDepartment.EndUpdate();//开启重绘
+
+            trvwDepartment.SelectedNode = null;
         }
 
         #endregion
@@ -100,219 +108,211 @@ namespace AttReport
         private void trvwDepartment_NodeMouseClick(object sender, TreeNodeMouseClickEventArgs e)
         {
             trvwDepartment.SelectedNode = e.Node;//选中被单击的节点
-            this.txtAgoNode.Text = trvwDepartment.SelectedNode.Text;//把被选中节点的值显示在txtAgoNode
+            this.txtParentNode.Text = trvwDepartment.SelectedNode.Text;//把被选中节点的值显示在txtParentNode
+
+            //获取选择的节点深度
+            int stNodeLv = trvwDepartment.SelectedNode.Level;
+            switch (stNodeLv)
+            {
+                case -1:
+                    this.btnAddDepartment.Enabled = false;
+                    this.btnAddDtGroup.Enabled = false;
+                    break;
+                case 0:
+                    this.btnAddCompany.Enabled = false;
+                    this.btnAddDtGroup.Enabled = false;
+                    break;
+                case 1:
+                    this.btnAddCompany.Enabled = false;
+                    this.btnAddDepartment.Enabled = false;
+                    break;
+                default:
+                    this.btnAddCompany.Enabled = false;
+                    this.btnAddDepartment.Enabled = false;
+                    this.btnAddDtGroup.Enabled = false;
+                    this.lblInputTips.Text = "提示：创建组织时，必须先在左边选择组织节点！";
+                    break;
+            }
+
+
             this.txtNewNode.Focus();//设置焦点在txtNewNode控件
 
         }
 
         #endregion
 
-        //添加数据
-        private void btnAdd_Click(object sender, EventArgs e)
+        //添加公司
+        private void btnAddCompany_Click(object sender, EventArgs e)
         {
+            txtParentNode.Text = string.Empty;//清空默认内容
 
-            if (trvwDepartment.SelectedNode != null)//判断是否选中节点
+            if (txtNewNode.Text.Trim() == string.Empty)//判断内容是否为空
             {
-                if (txtNewNode.Text.Trim() != "")
+                lblInputTips.Focus();
+                lblInputTips.ForeColor = Color.Red;
+                lblInputTips.Text = "提示：请输入要添加的公司名称！";
+            }
+            else
+            {
+                //验证公司名称是否重复
+                string iCompanyName = objOnServiceList.GetCompanyName(txtNewNode.Text.Trim());
+                if (txtNewNode.Text.Trim() != iCompanyName)
                 {
-                    //获取所选择的节点层次
-                    int isNode = trvwDepartment.SelectedNode.Level;
-                    switch (isNode)
+                    //封装公司对象
+                    Organization objOrg = new Organization()
                     {
-                        case 0:
-                            //封装公司对象
-                            Organization objCompany = new Organization()
-                            {
-                                CompanyName = this.txtNewNode.Text
-                            };
+                        CompanyName = txtNewNode.Text.Trim()
+                    };
 
+                    //插入数据
+                    objOnServiceList.InsertCompany(objOrg);
 
-                            //添加公司
-                            objOnServiceList.InsertCompany(objCompany);
-                            //trvwDepartment.BeginUpdate();//禁树型菜单重绘，防止闪烁
+                    //清空树型菜单
+                    //trvwDepartment.Nodes.Clear();
 
-                            trvwDepartment.SelectedNode.Nodes.Clear();//清空所有节点
+                    //重新生成树型菜单
+                    BindTreeView();//重绘方法
 
-                            //重新加截树形菜单
-                            BindTreeView();
+                    //输出提示
+                    lblInputTips.ForeColor = Color.Green;
+                    lblInputTips.Text = "提示：公司名称添加成功！";
+                    txtNewNode.Text = string.Empty;//清空信息
+                    txtParentNode.Focus();
+                }
+                else
+                {
+                    //输出提示
+                    lblInputTips.ForeColor = Color.Red;
+                    lblInputTips.Text = "提示：公司名称重复！请重新输入！";
+                    txtNewNode.Text = string.Empty;//清空信息
+                    txtNewNode.Focus();
+                }
+            }
+        }
 
-                            //trvwDepartment.EndUpdate();//开启重绘
+        //添加部门
+        private void btnAddDepartment_Click(object sender, EventArgs e)
+        {
+            if (this.txtParentNode.Text.Trim() == string.Empty)
+            {
+                //设置文本颜色
+                this.lblInputTips.ForeColor = Color.Red;
+                this.lblInputTips.Text = "提示：添加部门时需要先在左边选择公司！";
+                this.txtParentNode.Focus();
+            }
+            else if (trvwDepartment.SelectedNode.Level == 0)//判断选择的节点是否为公司
+            {
+                if (this.txtParentNode.Text.Trim() == trvwDepartment.SelectedNode.Text.Trim())
+                {
+                    //验证新输入的部门名
+                    string iDepartmentName = objOnServiceList.GetDepartmentName(this.txtNewNode.Text.Trim());
 
-                            break;
+                    //根据选择的公司名获取公司ID
+                    string iCompanyId = objOnServiceList.GetCompanyId(txtParentNode.Text.Trim());
+
+                    if (txtNewNode.Text.Trim() != iDepartmentName)
+                    {
+                        //封装部门对象
+                        Organization objOrg = new Organization()
+                        {
+                            CyId = Convert.ToInt32(iCompanyId),
+                            DepartmentName = txtNewNode.Text.Trim()
+                        };
+
+                        //插入部门数据
+                        objOnServiceList.InsertDepartment(objOrg);
+
+                        //重新生成树型菜单
+                        BindTreeView();//重绘方法
+
+                        //输出提示
+                        lblInputTips.ForeColor = Color.Green;
+                        lblInputTips.Text = "提示：部门名称添加成功！";
+                        txtNewNode.Text = string.Empty;//清空信息
+                        txtParentNode.Focus();
                     }
-
-
-                        //case 1:
-                        //    Organization objDepartment = new Organization()
-                        //    {
-                        //        CyId = objOnServiceList.GetCompanyId();
-                        //    };
-                        //        break;
+                    else
+                    {
+                        //输出提示
+                        lblInputTips.ForeColor = Color.Red;
+                        lblInputTips.Text = "提示：部门名称重复！请重新输入！";
+                        txtNewNode.Text = string.Empty;//清空信息
+                        txtNewNode.Focus();
+                    }
                 }
 
             }
-
-            ////清除删除提示
-            //this.lblRemoveTips.Text = "";
-
-            ////如果公司名为空，则用lbl输出提示
-            //if (cboCompany.Text == null)
-            //{
-            //    this.lblCompanyTips.Text = "请输入或选择公司！";
-            //    return;
-            //}
-            ////如果部门名为空，则用lbl输出提示
-            //else if (cboDepartment.Text == CBOSTR && cboDepartment.Text == "")
-            //{
-            //    this.lblCompanyTips.Text = "";
-            //    this.lblDepartmentTips.Text = "请输入或选择部门！";
-            //    return;
-            //}
-            ////如果组别名为空，则用lbl输出提示
-            //else if (cboDtGroup.Text == CBOSTR && cboDtGroup.Text == "")
-            //{
-            //    this.lblCompanyTips.Text = "";
-            //    this.lblDepartmentTips.Text = "";
-            //    this.lblDtGroupTips.Text = "请输入或选择组别！";
-            //    return;
-            //}
+            else
+            {
+                //输出提示
+                lblInputTips.ForeColor = Color.Red;
+                lblInputTips.Text = "提示：你选择的不是公司节点！";
+                txtNewNode.Text = string.Empty;//清空信息
+                txtNewNode.Focus();
+            }
+        }
 
 
-            ////根据cbo查询数据库里的公司名
-            //string CpName = objJobList.CompanyNumber(this.cboCompany.Text.Trim());//用于数据写入时判断数据是否重复
-            ////根据cbo查询数据库里的部门名
-            //string DtName = objJobList.DepartmentNumber(this.cboDepartment.Text.Trim());//用于数据写入时判断数据是否重复
-            ////根据cbo查询数据库里的组别名
-            //string GpName = objJobList.DtGroupNumber(this.cboDtGroup.Text.Trim()); //用于数据写入时判断数据是否重复
+        //添加组别
+        private void btnAddDtGroup_Click(object sender, EventArgs e)
+        {
+            if (this.txtParentNode.Text.Trim() == string.Empty)
+            {
+                //设置文本颜色
+                this.lblInputTips.ForeColor = Color.Red;
+                this.lblInputTips.Text = "提示：添加组别时必须先在左边选择部门！";
+                this.txtParentNode.Focus();
+            }
+            else if (trvwDepartment.SelectedNode.Level == 1)//判断选择的节点是否为部门
+            {
+                if (this.txtParentNode.Text.Trim() == trvwDepartment.SelectedNode.Text.Trim())
+                {
+                    //验证新输入的组别名称
+                    string iDtGroupName = objOnServiceList.GetDtGroupName(this.txtNewNode.Text.Trim());
 
+                    //根据选择的公司名获取公司ID
+                    string iDepartmentId = objOnServiceList.GetDepartmentId(txtParentNode.Text.Trim());
 
-            ////如果cbo数据与数据库数据不重复，则写入公司名数据
-            //if (CpName == "")
-            //{
-            //    //封装公司对象
-            //    Organization objJobs = new Organization()
-            //    {
-            //        CompanyName = cboCompany.Text.Trim()
-            //    };
-            //    //执行数据插入
-            //    objJobList.InsertCompany(objJobs);
+                    if (txtNewNode.Text.Trim() != iDtGroupName)
+                    {
+                        //封装部门对象
+                        Organization objOrg = new Organization()
+                        {
+                            DtId = Convert.ToInt32(iDepartmentId),
+                            DtGroupName = txtNewNode.Text.Trim()
+                        };
 
-            //    //输出lbl提示
-            //    this.lblCompanyTips.Text = "公司添加成功！";
-            //    this.lblDepartmentTips.Text = "请添加部门！";
-            //    this.lblDtGroupTips.Text = "";
-            //    return;
-            //}
+                        //插入部门数据
+                        objOnServiceList.InsertDtGroup(objOrg);
 
-            ////如果cbo数据与数据库数据不重复，则写入部门名数据
-            //else if (DtName == "")
-            //{
-            //    if (cboDepartment.Text != CBOSTR)//判断部门是否为默认信息
-            //    {
-            //        if (CpName != "")
-            //        {
-            //            //获得公司ID
-            //            int CompanyId = Convert.ToInt32(objJobList.GetCompanyId(this.cboCompany.Text.Trim()));
-            //            //封装部门对象
-            //            Organization objJobs = new Organization()
-            //            {
-            //                CyId = CompanyId,//公司ID
-            //                DepartmentName = cboDepartment.Text.Trim()
-            //            };
+                        //重新生成树型菜单
+                        BindTreeView();//重绘方法
 
-            //            //插入部门数据
-            //            objJobList.InsertDepartment(objJobs);
+                        //输出提示
+                        lblInputTips.ForeColor = Color.Green;
+                        lblInputTips.Text = "提示：组别名称添加成功！";
+                        txtNewNode.Text = string.Empty;//清空信息
+                        txtParentNode.Focus();
+                    }
+                    else
+                    {
+                        //输出提示
+                        lblInputTips.ForeColor = Color.Red;
+                        lblInputTips.Text = "提示：组别名称重复！请重新输入！";
+                        txtNewNode.Text = string.Empty;//清空信息
+                        txtNewNode.Focus();
+                    }
+                }
 
-            //            //输出lbl提示
-            //            this.lblCompanyTips.Text = "";
-            //            this.lblDepartmentTips.Text = "部门添加成功！";
-            //            this.lblDtGroupTips.Text = "请添加组别！";
-
-            //        }
-            //        else
-            //        {
-            //            //输出lbl提示
-            //            this.lblCompanyTips.Text = "请选择或创建公司！";
-            //            this.lblDepartmentTips.Text = "";
-            //            this.lblDtGroupTips.Text = "";
-            //            return;
-            //        }
-
-            //    }
-            //    else
-            //    {
-            //        //输出lbl提示
-            //        this.lblCompanyTips.Text = "";
-            //        this.lblDepartmentTips.Text = "请选择或添加部门！";
-            //        this.lblDtGroupTips.Text = "";
-            //        return;
-            //    }
-
-            //}
-
-            ////如果cbo数据与数据库数据不重复，则写入组别名数据
-            //else if (GpName == "")
-            //{
-            //    if (cboDtGroup.Text != CBOSTR)//判断组别是否为默认信息
-            //    {
-            //        if (DtName != "")
-            //        {
-            //            //获得部门ID
-            //            int DepartmentId = Convert.ToInt32(objJobList.GetDepartmentId(this.cboDepartment.Text.Trim()));
-
-            //            //封装组别对象
-            //            Organization objJobs = new Organization()
-            //            {
-            //                DtId = DepartmentId,//部门ID
-            //                DtGroupName = this.cboDtGroup.Text.Trim()
-            //            };
-
-            //            //插入组别数据
-            //            objJobList.InsertDtGroup(objJobs);
-
-            //            //输出lbl提示
-            //            this.lblCompanyTips.Text = "";
-            //            this.lblDepartmentTips.Text = "";
-            //            this.lblDtGroupTips.Text = "组别添加成功！";
-            //        }
-            //        else
-            //        {
-            //            //输出lbl提示
-            //            this.lblCompanyTips.Text = "";
-            //            this.lblDepartmentTips.Text = "";
-            //            this.lblDtGroupTips.Text = "请创建组别！";
-            //            return;
-            //        }
-            //    }
-            //    else
-            //    {
-            //        //输出lbl提示
-            //        this.lblCompanyTips.Text = "";
-            //        this.lblDepartmentTips.Text = "";
-            //        this.lblDtGroupTips.Text = "请创建组别！";
-            //        return;
-            //    }
-
-            //}
-            //else
-            //{
-            //    //输出lbl提示
-            //    this.lblCompanyTips.Text = "";
-            //    this.lblDepartmentTips.Text = "";
-            //    this.lblDtGroupTips.Text = "组别名称已存在！";
-            //    return;
-            //}
-
-            ////停止菜单重绘，防止菜单闪烁
-            //trvwDepartment.BeginUpdate();
-            ////刷新菜单
-            //trvwDepartment.Nodes.Clear();
-            ////创建菜单
-            //BindTreeView();
-            ////展开所有菜单
-            //this.trvwDepartment.ExpandAll();
-            ////启用菜单
-            //trvwDepartment.EndUpdate();
+            }
+            else
+            {
+                //输出提示
+                lblInputTips.ForeColor = Color.Red;
+                lblInputTips.Text = "提示：你选择的不是部门节点！";
+                txtNewNode.Text = string.Empty;//清空信息
+                txtNewNode.Focus();
+            }
 
         }
 
