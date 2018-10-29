@@ -38,8 +38,7 @@ namespace AttReport
             //创建菜单
             BindTreeView();
 
-            //设置焦点
-            this.txtNewNode.Focus();
+            this.trvwDepartment.SelectedNode = null;
         }
 
         #endregion
@@ -97,12 +96,9 @@ namespace AttReport
             this.trvwDepartment.ExpandAll();
 
             trvwDepartment.EndUpdate();//开启重绘
-
-            trvwDepartment.SelectedNode = null;
         }
 
         #endregion
-
 
         #region 单击节点的事件        
         private void trvwDepartment_NodeMouseClick(object sender, TreeNodeMouseClickEventArgs e)
@@ -112,30 +108,32 @@ namespace AttReport
 
             //获取选择的节点深度
             int stNodeLv = trvwDepartment.SelectedNode.Level;
-            switch (stNodeLv)
+
+            //判断选择的节点
+            if (stNodeLv == 0)
             {
-                case -1:
-                    this.btnAddDepartment.Enabled = false;
-                    this.btnAddDtGroup.Enabled = false;
-                    break;
-                case 0:
-                    this.btnAddCompany.Enabled = false;
-                    this.btnAddDtGroup.Enabled = false;
-                    break;
-                case 1:
-                    this.btnAddCompany.Enabled = false;
-                    this.btnAddDepartment.Enabled = false;
-                    break;
-                default:
-                    this.btnAddCompany.Enabled = false;
-                    this.btnAddDepartment.Enabled = false;
-                    this.btnAddDtGroup.Enabled = false;
-                    this.lblInputTips.Text = "提示：创建组织时，必须先在左边选择组织节点！";
-                    break;
+                this.btnAddCompany.Enabled = true;
+                this.btnAddDepartment.Enabled = true;
+                this.btnAddDtGroup.Enabled = false;
+                this.lblInputTips.ForeColor = Color.Green;
+                this.lblInputTips.Text = "选择成功！请输入公司名或部门名！";
             }
-
-
-            this.txtNewNode.Focus();//设置焦点在txtNewNode控件
+            else if (stNodeLv == 1)
+            {
+                this.btnAddCompany.Enabled = false;
+                this.btnAddDepartment.Enabled = false;
+                this.btnAddDtGroup.Enabled = true;
+                this.lblInputTips.ForeColor = Color.Green;
+                this.lblInputTips.Text = "选择部门成功！请输入组别名！";
+            }
+            else
+            {
+                this.btnAddCompany.Enabled = false;
+                this.btnAddDepartment.Enabled = false;
+                this.btnAddDtGroup.Enabled = false;
+                this.lblInputTips.ForeColor = Color.Red;
+                this.lblInputTips.Text = "添加组织时，必须先选择左边的组织节点！";
+            }
 
         }
 
@@ -167,9 +165,6 @@ namespace AttReport
                     //插入数据
                     objOnServiceList.InsertCompany(objOrg);
 
-                    //清空树型菜单
-                    //trvwDepartment.Nodes.Clear();
-
                     //重新生成树型菜单
                     BindTreeView();//重绘方法
 
@@ -193,7 +188,7 @@ namespace AttReport
         //添加部门
         private void btnAddDepartment_Click(object sender, EventArgs e)
         {
-            if (this.txtParentNode.Text.Trim() == string.Empty)
+            if (this.txtParentNode.Text.Trim() == string.Empty || trvwDepartment.SelectedNode == null)
             {
                 //设置文本颜色
                 this.lblInputTips.ForeColor = Color.Red;
@@ -256,7 +251,7 @@ namespace AttReport
         //添加组别
         private void btnAddDtGroup_Click(object sender, EventArgs e)
         {
-            if (this.txtParentNode.Text.Trim() == string.Empty)
+            if (this.txtParentNode.Text.Trim() == string.Empty || trvwDepartment.SelectedNode == null)
             {
                 //设置文本颜色
                 this.lblInputTips.ForeColor = Color.Red;
@@ -319,13 +314,8 @@ namespace AttReport
         //修改数据
         private void btnAlter_Click(object sender, EventArgs e)
         {
-            ////清空添加提示
-            //this.lblCompanyTips.Text = "";
-            //this.lblDepartmentTips.Text = "";
-            //this.lblDtGroupTips.Text = "";
-
             ////获取公司数据
-            //string CpNumber = objJobList.CompanyNumber(this.cboCompany.Text.Trim());//用于数据写入时判断数据是否重复
+            //string CpNumber = objOnServiceList.CompanyNumber(this.cboCompany.Text.Trim());//用于数据写入时判断数据是否重复
             ////获取部门数据
             //string DtNumber = objJobList.DepartmentNumber(this.cboDepartment.Text.Trim());//用于数据删除时判断是否存在数据
             ////获取组别数据
@@ -447,7 +437,7 @@ namespace AttReport
             ////如果agoCompanyName变量不为null,则修改公司名
             //else if (agoCompanyName != null)
             //{
-            //    objJobList.UpdateCompany(this.cboCompany.Text.Trim(),agoCompanyName);
+            //    objJobList.UpdateCompany(this.cboCompany.Text.Trim(), agoCompanyName);
 
             //    //重新加载cbo
             //    //获取公司列表
