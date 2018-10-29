@@ -47,6 +47,7 @@
             this.label2 = new System.Windows.Forms.Label();
             this.button5 = new System.Windows.Forms.Button();
             this.textBox4 = new System.Windows.Forms.TextBox();
+            this.chkCompany = new System.Windows.Forms.CheckBox();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -82,6 +83,7 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.chkCompany);
             this.groupBox1.Controls.Add(this.txtParentNode);
             this.groupBox1.Controls.Add(this.lblInputTips);
             this.groupBox1.Controls.Add(this.btnAddDtGroup);
@@ -109,7 +111,7 @@
             // lblInputTips
             // 
             this.lblInputTips.AutoSize = true;
-            this.lblInputTips.Location = new System.Drawing.Point(17, 121);
+            this.lblInputTips.Location = new System.Drawing.Point(17, 119);
             this.lblInputTips.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblInputTips.Name = "lblInputTips";
             this.lblInputTips.Size = new System.Drawing.Size(202, 15);
@@ -255,6 +257,17 @@
             this.textBox4.Size = new System.Drawing.Size(325, 25);
             this.textBox4.TabIndex = 1;
             // 
+            // chkCompany
+            // 
+            this.chkCompany.AutoSize = true;
+            this.chkCompany.Location = new System.Drawing.Point(264, 117);
+            this.chkCompany.Name = "chkCompany";
+            this.chkCompany.Size = new System.Drawing.Size(89, 19);
+            this.chkCompany.TabIndex = 8;
+            this.chkCompany.Text = "添加公司";
+            this.chkCompany.UseVisualStyleBackColor = true;
+            this.chkCompany.CheckedChanged += new System.EventHandler(this.chkCompany_CheckedChanged);
+            // 
             // FrmDtManage
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
@@ -303,5 +316,6 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Button button5;
         private System.Windows.Forms.TextBox textBox4;
+        private System.Windows.Forms.CheckBox chkCompany;
     }
 }

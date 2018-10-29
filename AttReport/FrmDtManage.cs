@@ -112,11 +112,11 @@ namespace AttReport
             //判断选择的节点
             if (stNodeLv == 0)
             {
-                this.btnAddCompany.Enabled = true;
+                this.btnAddCompany.Enabled = false;
                 this.btnAddDepartment.Enabled = true;
                 this.btnAddDtGroup.Enabled = false;
                 this.lblInputTips.ForeColor = Color.Green;
-                this.lblInputTips.Text = "选择成功！请输入公司名或部门名！";
+                this.lblInputTips.Text = "选择公司成功！请输入部门名！";
             }
             else if (stNodeLv == 1)
             {
@@ -132,7 +132,7 @@ namespace AttReport
                 this.btnAddDepartment.Enabled = false;
                 this.btnAddDtGroup.Enabled = false;
                 this.lblInputTips.ForeColor = Color.Red;
-                this.lblInputTips.Text = "添加组织时，必须先选择左边的组织节点！";
+                this.lblInputTips.Text = "请选择公司或部门节点！";
             }
 
         }
@@ -150,7 +150,7 @@ namespace AttReport
                 lblInputTips.ForeColor = Color.Red;
                 lblInputTips.Text = "提示：请输入要添加的公司名称！";
             }
-            else
+            else if(this.chkCompany.Checked == true)
             {
                 //验证公司名称是否重复
                 string iCompanyName = objOnServiceList.GetCompanyName(txtNewNode.Text.Trim());
@@ -172,6 +172,7 @@ namespace AttReport
                     lblInputTips.ForeColor = Color.Green;
                     lblInputTips.Text = "提示：公司名称添加成功！";
                     txtNewNode.Text = string.Empty;//清空信息
+                    chkCompany.Checked = false;
                     txtParentNode.Focus();
                 }
                 else
@@ -183,6 +184,10 @@ namespace AttReport
                     txtNewNode.Focus();
                 }
             }
+            else
+            {
+                this.lblInputTips.Text = "请勾选【添加公司】";
+            }
         }
 
         //添加部门
@@ -192,7 +197,7 @@ namespace AttReport
             {
                 //设置文本颜色
                 this.lblInputTips.ForeColor = Color.Red;
-                this.lblInputTips.Text = "提示：添加部门时需要先在左边选择公司！";
+                this.lblInputTips.Text = "提示：请先在左边选择公司！";
                 this.txtParentNode.Focus();
             }
             else if (trvwDepartment.SelectedNode.Level == 0)//判断选择的节点是否为公司
@@ -632,5 +637,12 @@ namespace AttReport
 
         #endregion
 
+        private void chkCompany_CheckedChanged(object sender, EventArgs e)
+        {
+            this.trvwDepartment.SelectedNode = null;
+            this.btnAddCompany.Enabled = true;
+            this.lblInputTips.ForeColor = Color.Red;
+            this.lblInputTips.Text = "提示：请输入公司名！";
+        }
     }
 }
