@@ -47,7 +47,6 @@
             this.txtParentNode2 = new System.Windows.Forms.TextBox();
             this.lblInputTips2 = new System.Windows.Forms.Label();
             this.button5 = new System.Windows.Forms.Button();
-            this.txtNewNode2 = new System.Windows.Forms.TextBox();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -58,7 +57,8 @@
             this.trvwDepartment.Location = new System.Drawing.Point(12, 27);
             this.trvwDepartment.Name = "trvwDepartment";
             this.trvwDepartment.Size = new System.Drawing.Size(222, 565);
-            this.trvwDepartment.TabIndex = 4;
+            this.trvwDepartment.TabIndex = 0;
+            this.trvwDepartment.TabStop = false;
             this.trvwDepartment.NodeMouseClick += new System.Windows.Forms.TreeNodeMouseClickEventHandler(this.trvwDepartment_NodeMouseClick);
             // 
             // label5
@@ -101,7 +101,7 @@
             this.chkCompany.Margin = new System.Windows.Forms.Padding(2);
             this.chkCompany.Name = "chkCompany";
             this.chkCompany.Size = new System.Drawing.Size(72, 16);
-            this.chkCompany.TabIndex = 8;
+            this.chkCompany.TabIndex = 3;
             this.chkCompany.Text = "添加公司";
             this.chkCompany.UseVisualStyleBackColor = true;
             this.chkCompany.CheckedChanged += new System.EventHandler(this.chkCompany_CheckedChanged);
@@ -112,24 +112,22 @@
             this.txtParentNode.Name = "txtParentNode";
             this.txtParentNode.ReadOnly = true;
             this.txtParentNode.Size = new System.Drawing.Size(245, 21);
-            this.txtParentNode.TabIndex = 7;
+            this.txtParentNode.TabIndex = 0;
             // 
             // lblInputTips
             // 
             this.lblInputTips.AutoSize = true;
-            this.lblInputTips.ForeColor = System.Drawing.Color.DimGray;
             this.lblInputTips.Location = new System.Drawing.Point(13, 95);
             this.lblInputTips.Name = "lblInputTips";
-            this.lblInputTips.Size = new System.Drawing.Size(161, 12);
+            this.lblInputTips.Size = new System.Drawing.Size(0, 12);
             this.lblInputTips.TabIndex = 6;
-            this.lblInputTips.Text = "提示：请输入要添加的信息！";
             // 
             // btnAddDtGroup
             // 
             this.btnAddDtGroup.Location = new System.Drawing.Point(185, 121);
             this.btnAddDtGroup.Name = "btnAddDtGroup";
             this.btnAddDtGroup.Size = new System.Drawing.Size(75, 23);
-            this.btnAddDtGroup.TabIndex = 2;
+            this.btnAddDtGroup.TabIndex = 6;
             this.btnAddDtGroup.Text = "添加组别";
             this.btnAddDtGroup.UseVisualStyleBackColor = true;
             this.btnAddDtGroup.Click += new System.EventHandler(this.btnAddDtGroup_Click);
@@ -139,7 +137,7 @@
             this.btnAddDepartment.Location = new System.Drawing.Point(99, 121);
             this.btnAddDepartment.Name = "btnAddDepartment";
             this.btnAddDepartment.Size = new System.Drawing.Size(75, 23);
-            this.btnAddDepartment.TabIndex = 2;
+            this.btnAddDepartment.TabIndex = 5;
             this.btnAddDepartment.Text = "添加部门";
             this.btnAddDepartment.UseVisualStyleBackColor = true;
             this.btnAddDepartment.Click += new System.EventHandler(this.btnAddDepartment_Click);
@@ -149,7 +147,7 @@
             this.btnAddCompany.Location = new System.Drawing.Point(15, 121);
             this.btnAddCompany.Name = "btnAddCompany";
             this.btnAddCompany.Size = new System.Drawing.Size(75, 23);
-            this.btnAddCompany.TabIndex = 2;
+            this.btnAddCompany.TabIndex = 4;
             this.btnAddCompany.Text = "添加公司";
             this.btnAddCompany.UseVisualStyleBackColor = true;
             this.btnAddCompany.Click += new System.EventHandler(this.btnAddCompany_Click);
@@ -180,9 +178,8 @@
             this.lblInputTips1.AutoSize = true;
             this.lblInputTips1.Location = new System.Drawing.Point(13, 97);
             this.lblInputTips1.Name = "lblInputTips1";
-            this.lblInputTips1.Size = new System.Drawing.Size(161, 12);
+            this.lblInputTips1.Size = new System.Drawing.Size(0, 12);
             this.lblInputTips1.TabIndex = 6;
-            this.lblInputTips1.Text = "提示：请输入要添加的信息！";
             // 
             // button2
             // 
@@ -206,7 +203,6 @@
             this.groupBox3.Controls.Add(this.txtParentNode2);
             this.groupBox3.Controls.Add(this.lblInputTips2);
             this.groupBox3.Controls.Add(this.button5);
-            this.groupBox3.Controls.Add(this.txtNewNode2);
             this.groupBox3.Location = new System.Drawing.Point(250, 422);
             this.groupBox3.Name = "groupBox3";
             this.groupBox3.Size = new System.Drawing.Size(275, 169);
@@ -216,7 +212,7 @@
             // 
             // txtParentNode2
             // 
-            this.txtParentNode2.Location = new System.Drawing.Point(15, 29);
+            this.txtParentNode2.Location = new System.Drawing.Point(15, 43);
             this.txtParentNode2.Name = "txtParentNode2";
             this.txtParentNode2.ReadOnly = true;
             this.txtParentNode2.Size = new System.Drawing.Size(245, 21);
@@ -227,9 +223,8 @@
             this.lblInputTips2.AutoSize = true;
             this.lblInputTips2.Location = new System.Drawing.Point(13, 97);
             this.lblInputTips2.Name = "lblInputTips2";
-            this.lblInputTips2.Size = new System.Drawing.Size(161, 12);
+            this.lblInputTips2.Size = new System.Drawing.Size(0, 12);
             this.lblInputTips2.TabIndex = 6;
-            this.lblInputTips2.Text = "提示：请输入要添加的信息！";
             // 
             // button5
             // 
@@ -240,13 +235,6 @@
             this.button5.Text = "删除组织";
             this.button5.UseVisualStyleBackColor = true;
             this.button5.Click += new System.EventHandler(this.btnRemove_Click);
-            // 
-            // txtNewNode2
-            // 
-            this.txtNewNode2.Location = new System.Drawing.Point(15, 63);
-            this.txtNewNode2.Name = "txtNewNode2";
-            this.txtNewNode2.Size = new System.Drawing.Size(245, 21);
-            this.txtNewNode2.TabIndex = 1;
             // 
             // FrmDtManage
             // 
@@ -261,6 +249,7 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MaximizeBox = false;
             this.Name = "FrmDtManage";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "部门管理";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.FrmAddNode_FormClosed);
             this.Load += new System.EventHandler(this.FrmAddNode_Load);
@@ -294,7 +283,6 @@
         private System.Windows.Forms.TextBox txtParentNode2;
         private System.Windows.Forms.Label lblInputTips2;
         private System.Windows.Forms.Button button5;
-        private System.Windows.Forms.TextBox txtNewNode2;
         private System.Windows.Forms.CheckBox chkCompany;
     }
 }
