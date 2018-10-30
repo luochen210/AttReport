@@ -39,6 +39,7 @@
             this.人事管理ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.员工入职ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.员工信息ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.部门信息ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.lblIP = new System.Windows.Forms.Label();
             this.txtIP = new System.Windows.Forms.TextBox();
             this.lblPort = new System.Windows.Forms.Label();
@@ -58,13 +59,15 @@
             this.tabMonthly = new System.Windows.Forms.TabPage();
             this.tabAnnual = new System.Windows.Forms.TabPage();
             this.lblState = new System.Windows.Forms.Label();
-            this.部门信息ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.dataGridView2 = new System.Windows.Forms.DataGridView();
             this.menuStrip1.SuspendLayout();
             this.tctlReport.SuspendLayout();
             this.tabLog.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvAttLog)).BeginInit();
             this.tabDaily.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            this.tabMonthly.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
             this.SuspendLayout();
             // 
             // menuStrip1
@@ -99,16 +102,23 @@
             // 员工入职ToolStripMenuItem
             // 
             this.员工入职ToolStripMenuItem.Name = "员工入职ToolStripMenuItem";
-            this.员工入职ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.员工入职ToolStripMenuItem.Size = new System.Drawing.Size(124, 22);
             this.员工入职ToolStripMenuItem.Text = "员工入职";
             this.员工入职ToolStripMenuItem.Click += new System.EventHandler(this.员工入职ToolStripMenuItem_Click);
             // 
             // 员工信息ToolStripMenuItem
             // 
             this.员工信息ToolStripMenuItem.Name = "员工信息ToolStripMenuItem";
-            this.员工信息ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.员工信息ToolStripMenuItem.Size = new System.Drawing.Size(124, 22);
             this.员工信息ToolStripMenuItem.Text = "员工信息";
             this.员工信息ToolStripMenuItem.Click += new System.EventHandler(this.员工信息ToolStripMenuItem_Click);
+            // 
+            // 部门信息ToolStripMenuItem
+            // 
+            this.部门信息ToolStripMenuItem.Name = "部门信息ToolStripMenuItem";
+            this.部门信息ToolStripMenuItem.Size = new System.Drawing.Size(124, 22);
+            this.部门信息ToolStripMenuItem.Text = "部门信息";
+            this.部门信息ToolStripMenuItem.Click += new System.EventHandler(this.部门信息ToolStripMenuItem_Click);
             // 
             // lblIP
             // 
@@ -309,6 +319,7 @@
             // 
             // tabMonthly
             // 
+            this.tabMonthly.Controls.Add(this.dataGridView2);
             this.tabMonthly.Location = new System.Drawing.Point(4, 22);
             this.tabMonthly.Name = "tabMonthly";
             this.tabMonthly.Padding = new System.Windows.Forms.Padding(3);
@@ -338,12 +349,15 @@
             this.lblState.TabIndex = 8;
             this.lblState.Text = "设备状态：等待连接……";
             // 
-            // 部门信息ToolStripMenuItem
+            // dataGridView2
             // 
-            this.部门信息ToolStripMenuItem.Name = "部门信息ToolStripMenuItem";
-            this.部门信息ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-            this.部门信息ToolStripMenuItem.Text = "部门信息";
-            this.部门信息ToolStripMenuItem.Click += new System.EventHandler(this.部门信息ToolStripMenuItem_Click);
+            this.dataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dataGridView2.Location = new System.Drawing.Point(3, 3);
+            this.dataGridView2.Name = "dataGridView2";
+            this.dataGridView2.RowTemplate.Height = 23;
+            this.dataGridView2.Size = new System.Drawing.Size(726, 465);
+            this.dataGridView2.TabIndex = 0;
             // 
             // FrmMain
             // 
@@ -372,6 +386,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.dgvAttLog)).EndInit();
             this.tabDaily.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            this.tabMonthly.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -404,6 +420,7 @@
         private System.Windows.Forms.ToolStripMenuItem 员工入职ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem 员工信息ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem 部门信息ToolStripMenuItem;
+        private System.Windows.Forms.DataGridView dataGridView2;
     }
 }
 

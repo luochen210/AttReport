@@ -13,19 +13,20 @@ namespace DAL
     public class AttRecordService
     {
         #region 查询打卡记录
+
         /// <summary>
         /// 查询数据库的考勤记录
         /// </summary>
-        /// <param name="ClockRecord"></param>
-        /// <returns></returns>
-        public string GetAttRecord(string ClockRecord)
+        /// <param name="DatatableName">数据表名</param>
+        /// <returns>数据集</returns>
+        public DataSet GetALLAttRecord(string DatatableName)
         {
-            string sql = "select * from OriginalLog where ClockRecord='{0}'";
-            sql = string.Format(sql, ClockRecord);
+            string sql = "select * from '{0}'";
+            sql = string.Format(sql, DatatableName);
 
-            SQLHelper.GetSingleResult(sql);
-            return sql;
+            return SQLHelper.GetDataSet(sql);
         }
+
         #endregion
 
         #region 普通方式写入数据

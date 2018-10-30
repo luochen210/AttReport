@@ -150,44 +150,67 @@ namespace AttReport
         #region 记录下载的方法
         public void iDateTable()
         {
-            //创建一个名为"AttLogTable"的DataTable表
-            DataTable dt = new DataTable("AttLogTable");
-
-            //设定列数据
-            dt.Columns.Add("ClockId", typeof(int));
-            dt.Columns.Add("MachineId", typeof(int));
-            dt.Columns.Add("VerifyMode", typeof(int));
-            dt.Columns.Add("InOutMode", typeof(int));
-            dt.Columns.Add("ClockRecord", typeof(string));
-
             //初始化记录变量
             int idwEnrollNumber = 0;
             int idwVerifyMode = 0;
             int idwInOutMode = 0;
             string sTime = "";
 
+            //创建一个数据集
+            DataSet ds = new DataSet();
+            //创建一个名为"AttLogTable"的DataTable表
+            DataTable attDt = new DataTable("AttLogTable");
+
+            //设定列数据
+            attDt.Columns.Add("ClockId", typeof(int));
+            attDt.Columns.Add("MachineId", typeof(int));
+            attDt.Columns.Add("VerifyMode", typeof(int));
+            attDt.Columns.Add("InOutMode", typeof(int));
+            attDt.Columns.Add("ClockRecord", typeof(string));
+
             //清空DataTable行数据
-            dt.Rows.Clear();
+            attDt.Rows.Clear();
 
             while (axCZKEM1.GetGeneralLogDataStr(iMachineNumber, ref idwEnrollNumber, ref idwVerifyMode, ref idwInOutMode, ref sTime))//从内存取得记录
             {
                 //把记录循环写入DataTable表
-                DataRow dr = dt.NewRow();
+                DataRow dr = attDt.NewRow();
                 dr[0] = idwEnrollNumber;
                 dr[1] = iMachineNumber;
                 dr[2] = idwVerifyMode;
                 dr[3] = idwInOutMode;
                 dr[4] = sTime;
-                dt.Rows.Add(dr);
+                attDt.Rows.Add(dr);
             }
 
             //更新dgvAttLog
-            dgvAttLog.DataSource = dt;
+            dgvAttLog.DataSource = attDt;            
+
+            #region 新建两个表，对比数据
+
+            ////创建ResultTable表存放差集结果
+            //DataTable resultDt = new DataTable("ResultTable");
+
+            ////读取已有数据
+            //ds = objAttRecordService.GetALLAttRecord("OriginalLog");
+            //ds.Tables[0].TableName = "RecordTable";//设置表名称
+
+            ////添加进数据集
+            //ds.Tables.Add(attDt);//添加进数据集
+            ////ds.Tables.Add(dataDt);
+            //ds.Tables.Add(resultDt);
+
+            //attDt = ds.Tables["AttLogTable"];
+            //resultDt = ds.Tables["ResultTable"];
+
+            #endregion
+
+
             //批量写入数据库
-            SQLHelper.UpdataByBulk(dt, "OriginalLogTemp");
+            SQLHelper.UpdataByBulk(attDt, "OriginalLog");
 
             //清空dt对象
-            dt=null;
+            attDt=null;
 
             //实例化委托
             objUpdataLbl = new UpdataLbl(LblState);
