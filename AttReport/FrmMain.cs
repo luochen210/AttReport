@@ -276,5 +276,10 @@ namespace AttReport
                 objFrmCorporate.WindowState = FormWindowState.Normal;
             }
         }
+
+        private void 班次管理ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

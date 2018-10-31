@@ -57,9 +57,10 @@
             this.tabDaily = new System.Windows.Forms.TabPage();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.tabMonthly = new System.Windows.Forms.TabPage();
+            this.dataGridView2 = new System.Windows.Forms.DataGridView();
             this.tabAnnual = new System.Windows.Forms.TabPage();
             this.lblState = new System.Windows.Forms.Label();
-            this.dataGridView2 = new System.Windows.Forms.DataGridView();
+            this.班次管理ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.tctlReport.SuspendLayout();
             this.tabLog.SuspendLayout();
@@ -79,12 +80,14 @@
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Padding = new System.Windows.Forms.Padding(4, 2, 0, 2);
-            this.menuStrip1.Size = new System.Drawing.Size(754, 25);
+            this.menuStrip1.Size = new System.Drawing.Size(1008, 25);
             this.menuStrip1.TabIndex = 0;
             this.menuStrip1.Text = "menuStrip1";
             // 
             // 系统管理ToolStripMenuItem
             // 
+            this.系统管理ToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.班次管理ToolStripMenuItem});
             this.系统管理ToolStripMenuItem.Name = "系统管理ToolStripMenuItem";
             this.系统管理ToolStripMenuItem.Size = new System.Drawing.Size(68, 21);
             this.系统管理ToolStripMenuItem.Text = "系统管理";
@@ -102,21 +105,21 @@
             // 员工入职ToolStripMenuItem
             // 
             this.员工入职ToolStripMenuItem.Name = "员工入职ToolStripMenuItem";
-            this.员工入职ToolStripMenuItem.Size = new System.Drawing.Size(124, 22);
+            this.员工入职ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.员工入职ToolStripMenuItem.Text = "员工入职";
             this.员工入职ToolStripMenuItem.Click += new System.EventHandler(this.员工入职ToolStripMenuItem_Click);
             // 
             // 员工信息ToolStripMenuItem
             // 
             this.员工信息ToolStripMenuItem.Name = "员工信息ToolStripMenuItem";
-            this.员工信息ToolStripMenuItem.Size = new System.Drawing.Size(124, 22);
+            this.员工信息ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.员工信息ToolStripMenuItem.Text = "员工信息";
             this.员工信息ToolStripMenuItem.Click += new System.EventHandler(this.员工信息ToolStripMenuItem_Click);
             // 
             // 部门信息ToolStripMenuItem
             // 
             this.部门信息ToolStripMenuItem.Name = "部门信息ToolStripMenuItem";
-            this.部门信息ToolStripMenuItem.Size = new System.Drawing.Size(124, 22);
+            this.部门信息ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.部门信息ToolStripMenuItem.Text = "部门信息";
             this.部门信息ToolStripMenuItem.Click += new System.EventHandler(this.部门信息ToolStripMenuItem_Click);
             // 
@@ -195,7 +198,7 @@
             this.tctlReport.Margin = new System.Windows.Forms.Padding(2);
             this.tctlReport.Name = "tctlReport";
             this.tctlReport.SelectedIndex = 0;
-            this.tctlReport.Size = new System.Drawing.Size(740, 497);
+            this.tctlReport.Size = new System.Drawing.Size(994, 649);
             this.tctlReport.TabIndex = 6;
             // 
             // tabLog
@@ -205,7 +208,7 @@
             this.tabLog.Margin = new System.Windows.Forms.Padding(2);
             this.tabLog.Name = "tabLog";
             this.tabLog.Padding = new System.Windows.Forms.Padding(2);
-            this.tabLog.Size = new System.Drawing.Size(732, 471);
+            this.tabLog.Size = new System.Drawing.Size(986, 623);
             this.tabLog.TabIndex = 0;
             this.tabLog.Text = "打卡记录";
             this.tabLog.UseVisualStyleBackColor = true;
@@ -237,7 +240,7 @@
             this.dgvAttLog.ReadOnly = true;
             this.dgvAttLog.RowHeadersWidth = 70;
             this.dgvAttLog.RowTemplate.Height = 27;
-            this.dgvAttLog.Size = new System.Drawing.Size(728, 467);
+            this.dgvAttLog.Size = new System.Drawing.Size(982, 619);
             this.dgvAttLog.TabIndex = 0;
             this.dgvAttLog.RowPostPaint += new System.Windows.Forms.DataGridViewRowPostPaintEventHandler(this.dgvStudentList_RowPostPaint);
             // 
@@ -323,10 +326,20 @@
             this.tabMonthly.Location = new System.Drawing.Point(4, 22);
             this.tabMonthly.Name = "tabMonthly";
             this.tabMonthly.Padding = new System.Windows.Forms.Padding(3);
-            this.tabMonthly.Size = new System.Drawing.Size(732, 471);
+            this.tabMonthly.Size = new System.Drawing.Size(986, 623);
             this.tabMonthly.TabIndex = 2;
             this.tabMonthly.Text = "月报表";
             this.tabMonthly.UseVisualStyleBackColor = true;
+            // 
+            // dataGridView2
+            // 
+            this.dataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dataGridView2.Location = new System.Drawing.Point(3, 3);
+            this.dataGridView2.Name = "dataGridView2";
+            this.dataGridView2.RowTemplate.Height = 23;
+            this.dataGridView2.Size = new System.Drawing.Size(980, 617);
+            this.dataGridView2.TabIndex = 0;
             // 
             // tabAnnual
             // 
@@ -349,22 +362,19 @@
             this.lblState.TabIndex = 8;
             this.lblState.Text = "设备状态：等待连接……";
             // 
-            // dataGridView2
+            // 班次管理ToolStripMenuItem
             // 
-            this.dataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dataGridView2.Location = new System.Drawing.Point(3, 3);
-            this.dataGridView2.Name = "dataGridView2";
-            this.dataGridView2.RowTemplate.Height = 23;
-            this.dataGridView2.Size = new System.Drawing.Size(726, 465);
-            this.dataGridView2.TabIndex = 0;
+            this.班次管理ToolStripMenuItem.Name = "班次管理ToolStripMenuItem";
+            this.班次管理ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.班次管理ToolStripMenuItem.Text = "班次管理";
+            this.班次管理ToolStripMenuItem.Click += new System.EventHandler(this.班次管理ToolStripMenuItem_Click);
             // 
             // FrmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ButtonFace;
-            this.ClientSize = new System.Drawing.Size(754, 577);
+            this.ClientSize = new System.Drawing.Size(1008, 729);
             this.Controls.Add(this.lblState);
             this.Controls.Add(this.tctlReport);
             this.Controls.Add(this.btnGetLog);
@@ -421,6 +431,7 @@
         private System.Windows.Forms.ToolStripMenuItem 员工信息ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem 部门信息ToolStripMenuItem;
         private System.Windows.Forms.DataGridView dataGridView2;
+        private System.Windows.Forms.ToolStripMenuItem 班次管理ToolStripMenuItem;
     }
 }
 
