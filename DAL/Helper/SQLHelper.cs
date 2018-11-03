@@ -19,7 +19,7 @@ namespace DAL
 
 
 
-        // private static readonly string connString = "Server=.;DataBase=StudentManageDB;Uid=sa;Pwd=password01!";
+        //private static readonly string connString = "Data Source=.;DataBase=AttReport;Uid=sa;Pwd=654123";
 
         private static readonly string connString =
             ConfigurationManager.ConnectionStrings["connString"].ToString();
