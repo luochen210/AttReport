@@ -1,4 +1,4 @@
---创建班次表
+﻿--创建班次表
 use AttReport
 go
 if exists(select * from sysobjects where name='Classes')
@@ -41,27 +41,3 @@ create table ClassesTime
   Sunday bit not null--星期日
 )
 go
-
-
-
-
-case "Monday":
-week = "星期一";
-break;
-case "Tuesday":
-week = "星期二";
-break;
-case "Wednesday":
-week = "星期三";
-break;
-case "Thursday":
-week = "星期四";
-break;
-case "Friday":
-week = "星期五";
-break;
-case "Saturday":
-week = "星期六";
-break;
-case "Sunday":
-week = "星期日";
