@@ -221,7 +221,6 @@ namespace AttReport
         //}
         #endregion
 
-
         //员工入职窗口对象
         public static FrmAddStaff objFrmAddStaff = null;
 

@@ -24,9 +24,6 @@ namespace AttReport
         }
 
 
-
-
-
         #region 窗口关闭时清理对象
 
         //窗口关闭时清理对象
@@ -35,8 +32,7 @@ namespace AttReport
             FrmMain.objFrmShiftManage = null;
         }
 
+
         #endregion
-
-
     }
 }

@@ -31,6 +31,7 @@ create table ClassesTime
   EndSignBack datetime not null,--结束签退
   LateTime int not null,--迟到时间数，计分钟
   LeftEarly int not null,--早退时间数，计分钟
+  DayNumber int not null,--计天数
   Monday bit not null,--星期一，1代表true,0代表false
   Tuesday bit not null,--星期二
   Wednesday bit not null,--星期三
