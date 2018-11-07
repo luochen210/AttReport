@@ -21,6 +21,7 @@ drop table ClassesTime
 go
 create table ClassesTime
 (
+  ClassesId int not null,--班次ID
   ClassesName varchar(21) not null,--班次名称
   TimesName varchar(12) not null,--时间段名称
   WorkTime datetime not null,--上班时间

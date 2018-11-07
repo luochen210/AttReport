@@ -36,6 +36,7 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.系统管理ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.班次管理ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.人事管理ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.员工入职ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.员工信息ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -60,7 +61,7 @@
             this.dataGridView2 = new System.Windows.Forms.DataGridView();
             this.tabAnnual = new System.Windows.Forms.TabPage();
             this.lblState = new System.Windows.Forms.Label();
-            this.班次管理ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.progressBar1 = new System.Windows.Forms.ProgressBar();
             this.menuStrip1.SuspendLayout();
             this.tctlReport.SuspendLayout();
             this.tabLog.SuspendLayout();
@@ -92,6 +93,13 @@
             this.系统管理ToolStripMenuItem.Size = new System.Drawing.Size(68, 21);
             this.系统管理ToolStripMenuItem.Text = "系统管理";
             // 
+            // 班次管理ToolStripMenuItem
+            // 
+            this.班次管理ToolStripMenuItem.Name = "班次管理ToolStripMenuItem";
+            this.班次管理ToolStripMenuItem.Size = new System.Drawing.Size(124, 22);
+            this.班次管理ToolStripMenuItem.Text = "班次管理";
+            this.班次管理ToolStripMenuItem.Click += new System.EventHandler(this.班次管理ToolStripMenuItem_Click);
+            // 
             // 人事管理ToolStripMenuItem
             // 
             this.人事管理ToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -105,21 +113,21 @@
             // 员工入职ToolStripMenuItem
             // 
             this.员工入职ToolStripMenuItem.Name = "员工入职ToolStripMenuItem";
-            this.员工入职ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.员工入职ToolStripMenuItem.Size = new System.Drawing.Size(124, 22);
             this.员工入职ToolStripMenuItem.Text = "员工入职";
             this.员工入职ToolStripMenuItem.Click += new System.EventHandler(this.员工入职ToolStripMenuItem_Click);
             // 
             // 员工信息ToolStripMenuItem
             // 
             this.员工信息ToolStripMenuItem.Name = "员工信息ToolStripMenuItem";
-            this.员工信息ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.员工信息ToolStripMenuItem.Size = new System.Drawing.Size(124, 22);
             this.员工信息ToolStripMenuItem.Text = "员工信息";
             this.员工信息ToolStripMenuItem.Click += new System.EventHandler(this.员工信息ToolStripMenuItem_Click);
             // 
             // 部门信息ToolStripMenuItem
             // 
             this.部门信息ToolStripMenuItem.Name = "部门信息ToolStripMenuItem";
-            this.部门信息ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.部门信息ToolStripMenuItem.Size = new System.Drawing.Size(124, 22);
             this.部门信息ToolStripMenuItem.Text = "部门信息";
             this.部门信息ToolStripMenuItem.Click += new System.EventHandler(this.部门信息ToolStripMenuItem_Click);
             // 
@@ -305,7 +313,7 @@
             this.tabDaily.Margin = new System.Windows.Forms.Padding(2);
             this.tabDaily.Name = "tabDaily";
             this.tabDaily.Padding = new System.Windows.Forms.Padding(2);
-            this.tabDaily.Size = new System.Drawing.Size(732, 471);
+            this.tabDaily.Size = new System.Drawing.Size(986, 623);
             this.tabDaily.TabIndex = 1;
             this.tabDaily.Text = "日报表";
             this.tabDaily.UseVisualStyleBackColor = true;
@@ -317,7 +325,7 @@
             this.dataGridView1.Location = new System.Drawing.Point(2, 2);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowTemplate.Height = 23;
-            this.dataGridView1.Size = new System.Drawing.Size(728, 467);
+            this.dataGridView1.Size = new System.Drawing.Size(982, 619);
             this.dataGridView1.TabIndex = 0;
             // 
             // tabMonthly
@@ -346,7 +354,7 @@
             this.tabAnnual.Location = new System.Drawing.Point(4, 22);
             this.tabAnnual.Name = "tabAnnual";
             this.tabAnnual.Padding = new System.Windows.Forms.Padding(3);
-            this.tabAnnual.Size = new System.Drawing.Size(732, 471);
+            this.tabAnnual.Size = new System.Drawing.Size(986, 623);
             this.tabAnnual.TabIndex = 3;
             this.tabAnnual.Text = "年报表";
             this.tabAnnual.UseVisualStyleBackColor = true;
@@ -362,19 +370,19 @@
             this.lblState.TabIndex = 8;
             this.lblState.Text = "设备状态：等待连接……";
             // 
-            // 班次管理ToolStripMenuItem
+            // progressBar1
             // 
-            this.班次管理ToolStripMenuItem.Name = "班次管理ToolStripMenuItem";
-            this.班次管理ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-            this.班次管理ToolStripMenuItem.Text = "班次管理";
-            this.班次管理ToolStripMenuItem.Click += new System.EventHandler(this.班次管理ToolStripMenuItem_Click);
+            this.progressBar1.Location = new System.Drawing.Point(586, 32);
+            this.progressBar1.Name = "progressBar1";
+            this.progressBar1.Size = new System.Drawing.Size(100, 23);
+            this.progressBar1.TabIndex = 1;
             // 
             // FrmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.SystemColors.ButtonFace;
             this.ClientSize = new System.Drawing.Size(1008, 729);
+            this.Controls.Add(this.progressBar1);
             this.Controls.Add(this.lblState);
             this.Controls.Add(this.tctlReport);
             this.Controls.Add(this.btnGetLog);
@@ -432,6 +440,7 @@
         private System.Windows.Forms.ToolStripMenuItem 部门信息ToolStripMenuItem;
         private System.Windows.Forms.DataGridView dataGridView2;
         private System.Windows.Forms.ToolStripMenuItem 班次管理ToolStripMenuItem;
+        private System.Windows.Forms.ProgressBar progressBar1;
     }
 }
 
