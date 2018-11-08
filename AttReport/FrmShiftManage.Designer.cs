@@ -73,15 +73,15 @@
             this.chkSaturday = new System.Windows.Forms.CheckBox();
             this.chkSunday = new System.Windows.Forms.CheckBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.dtpEndSignBack = new System.Windows.Forms.DateTimePicker();
+            this.dtpEndCheckIn = new System.Windows.Forms.DateTimePicker();
+            this.dtpStartSignBack = new System.Windows.Forms.DateTimePicker();
+            this.dtpStartCheckIn = new System.Windows.Forms.DateTimePicker();
+            this.dtpOffDutyTime = new System.Windows.Forms.DateTimePicker();
+            this.dtpWorkTime = new System.Windows.Forms.DateTimePicker();
             this.btnRemove = new System.Windows.Forms.Button();
             this.btnUpdate = new System.Windows.Forms.Button();
             this.btnClassesAdd = new System.Windows.Forms.Button();
-            this.dtpWorkTime = new System.Windows.Forms.DateTimePicker();
-            this.dtpOffDutyTime = new System.Windows.Forms.DateTimePicker();
-            this.dtpStartCheckIn = new System.Windows.Forms.DateTimePicker();
-            this.dtpEndCheckIn = new System.Windows.Forms.DateTimePicker();
-            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
-            this.dateTimePicker2 = new System.Windows.Forms.DateTimePicker();
             ((System.ComponentModel.ISupportInitialize)(this.dgvClassses)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
@@ -465,9 +465,9 @@
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.dateTimePicker2);
+            this.groupBox1.Controls.Add(this.dtpEndSignBack);
             this.groupBox1.Controls.Add(this.dtpEndCheckIn);
-            this.groupBox1.Controls.Add(this.dateTimePicker1);
+            this.groupBox1.Controls.Add(this.dtpStartSignBack);
             this.groupBox1.Controls.Add(this.dtpStartCheckIn);
             this.groupBox1.Controls.Add(this.dtpOffDutyTime);
             this.groupBox1.Controls.Add(this.dtpWorkTime);
@@ -504,6 +504,60 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "班次时间修改";
             // 
+            // dtpEndSignBack
+            // 
+            this.dtpEndSignBack.Format = System.Windows.Forms.DateTimePickerFormat.Time;
+            this.dtpEndSignBack.Location = new System.Drawing.Point(358, 206);
+            this.dtpEndSignBack.Name = "dtpEndSignBack";
+            this.dtpEndSignBack.Size = new System.Drawing.Size(121, 21);
+            this.dtpEndSignBack.TabIndex = 8;
+            this.dtpEndSignBack.Value = new System.DateTime(2018, 11, 7, 8, 0, 0, 0);
+            // 
+            // dtpEndCheckIn
+            // 
+            this.dtpEndCheckIn.Format = System.Windows.Forms.DateTimePickerFormat.Time;
+            this.dtpEndCheckIn.Location = new System.Drawing.Point(358, 163);
+            this.dtpEndCheckIn.Name = "dtpEndCheckIn";
+            this.dtpEndCheckIn.Size = new System.Drawing.Size(121, 21);
+            this.dtpEndCheckIn.TabIndex = 8;
+            this.dtpEndCheckIn.Value = new System.DateTime(2018, 11, 7, 8, 0, 0, 0);
+            // 
+            // dtpStartSignBack
+            // 
+            this.dtpStartSignBack.Format = System.Windows.Forms.DateTimePickerFormat.Time;
+            this.dtpStartSignBack.Location = new System.Drawing.Point(117, 206);
+            this.dtpStartSignBack.Name = "dtpStartSignBack";
+            this.dtpStartSignBack.Size = new System.Drawing.Size(121, 21);
+            this.dtpStartSignBack.TabIndex = 8;
+            this.dtpStartSignBack.Value = new System.DateTime(2018, 11, 7, 8, 0, 0, 0);
+            // 
+            // dtpStartCheckIn
+            // 
+            this.dtpStartCheckIn.Format = System.Windows.Forms.DateTimePickerFormat.Time;
+            this.dtpStartCheckIn.Location = new System.Drawing.Point(117, 163);
+            this.dtpStartCheckIn.Name = "dtpStartCheckIn";
+            this.dtpStartCheckIn.Size = new System.Drawing.Size(121, 21);
+            this.dtpStartCheckIn.TabIndex = 8;
+            this.dtpStartCheckIn.Value = new System.DateTime(2018, 11, 7, 8, 0, 0, 0);
+            // 
+            // dtpOffDutyTime
+            // 
+            this.dtpOffDutyTime.Format = System.Windows.Forms.DateTimePickerFormat.Time;
+            this.dtpOffDutyTime.Location = new System.Drawing.Point(358, 79);
+            this.dtpOffDutyTime.Name = "dtpOffDutyTime";
+            this.dtpOffDutyTime.Size = new System.Drawing.Size(121, 21);
+            this.dtpOffDutyTime.TabIndex = 8;
+            this.dtpOffDutyTime.Value = new System.DateTime(2018, 11, 7, 8, 0, 0, 0);
+            // 
+            // dtpWorkTime
+            // 
+            this.dtpWorkTime.Format = System.Windows.Forms.DateTimePickerFormat.Time;
+            this.dtpWorkTime.Location = new System.Drawing.Point(117, 79);
+            this.dtpWorkTime.Name = "dtpWorkTime";
+            this.dtpWorkTime.Size = new System.Drawing.Size(121, 21);
+            this.dtpWorkTime.TabIndex = 8;
+            this.dtpWorkTime.Value = new System.DateTime(2018, 11, 7, 8, 0, 0, 0);
+            // 
             // btnRemove
             // 
             this.btnRemove.Location = new System.Drawing.Point(405, 256);
@@ -531,60 +585,6 @@
             this.btnClassesAdd.Text = "添加";
             this.btnClassesAdd.UseVisualStyleBackColor = true;
             this.btnClassesAdd.Click += new System.EventHandler(this.btnClassesAdd_Click);
-            // 
-            // dtpWorkTime
-            // 
-            this.dtpWorkTime.Format = System.Windows.Forms.DateTimePickerFormat.Time;
-            this.dtpWorkTime.Location = new System.Drawing.Point(117, 79);
-            this.dtpWorkTime.Name = "dtpWorkTime";
-            this.dtpWorkTime.Size = new System.Drawing.Size(121, 21);
-            this.dtpWorkTime.TabIndex = 8;
-            this.dtpWorkTime.Value = new System.DateTime(2018, 11, 7, 8, 0, 0, 0);
-            // 
-            // dtpOffDutyTime
-            // 
-            this.dtpOffDutyTime.Format = System.Windows.Forms.DateTimePickerFormat.Time;
-            this.dtpOffDutyTime.Location = new System.Drawing.Point(358, 79);
-            this.dtpOffDutyTime.Name = "dtpOffDutyTime";
-            this.dtpOffDutyTime.Size = new System.Drawing.Size(121, 21);
-            this.dtpOffDutyTime.TabIndex = 8;
-            this.dtpOffDutyTime.Value = new System.DateTime(2018, 11, 7, 8, 0, 0, 0);
-            // 
-            // dtpStartCheckIn
-            // 
-            this.dtpStartCheckIn.Format = System.Windows.Forms.DateTimePickerFormat.Time;
-            this.dtpStartCheckIn.Location = new System.Drawing.Point(117, 163);
-            this.dtpStartCheckIn.Name = "dtpStartCheckIn";
-            this.dtpStartCheckIn.Size = new System.Drawing.Size(121, 21);
-            this.dtpStartCheckIn.TabIndex = 8;
-            this.dtpStartCheckIn.Value = new System.DateTime(2018, 11, 7, 8, 0, 0, 0);
-            // 
-            // dtpEndCheckIn
-            // 
-            this.dtpEndCheckIn.Format = System.Windows.Forms.DateTimePickerFormat.Time;
-            this.dtpEndCheckIn.Location = new System.Drawing.Point(358, 163);
-            this.dtpEndCheckIn.Name = "dtpEndCheckIn";
-            this.dtpEndCheckIn.Size = new System.Drawing.Size(121, 21);
-            this.dtpEndCheckIn.TabIndex = 8;
-            this.dtpEndCheckIn.Value = new System.DateTime(2018, 11, 7, 8, 0, 0, 0);
-            // 
-            // dateTimePicker1
-            // 
-            this.dateTimePicker1.Format = System.Windows.Forms.DateTimePickerFormat.Time;
-            this.dateTimePicker1.Location = new System.Drawing.Point(117, 206);
-            this.dateTimePicker1.Name = "dateTimePicker1";
-            this.dateTimePicker1.Size = new System.Drawing.Size(121, 21);
-            this.dateTimePicker1.TabIndex = 8;
-            this.dateTimePicker1.Value = new System.DateTime(2018, 11, 7, 8, 0, 0, 0);
-            // 
-            // dateTimePicker2
-            // 
-            this.dateTimePicker2.Format = System.Windows.Forms.DateTimePickerFormat.Time;
-            this.dateTimePicker2.Location = new System.Drawing.Point(358, 206);
-            this.dateTimePicker2.Name = "dateTimePicker2";
-            this.dateTimePicker2.Size = new System.Drawing.Size(121, 21);
-            this.dateTimePicker2.TabIndex = 8;
-            this.dateTimePicker2.Value = new System.DateTime(2018, 11, 7, 8, 0, 0, 0);
             // 
             // FrmShiftManage
             // 
@@ -653,9 +653,9 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Saturday;
         private System.Windows.Forms.DataGridViewTextBoxColumn Sunday;
         private System.Windows.Forms.DateTimePicker dtpWorkTime;
-        private System.Windows.Forms.DateTimePicker dateTimePicker2;
+        private System.Windows.Forms.DateTimePicker dtpEndSignBack;
         private System.Windows.Forms.DateTimePicker dtpEndCheckIn;
-        private System.Windows.Forms.DateTimePicker dateTimePicker1;
+        private System.Windows.Forms.DateTimePicker dtpStartSignBack;
         private System.Windows.Forms.DateTimePicker dtpStartCheckIn;
         private System.Windows.Forms.DateTimePicker dtpOffDutyTime;
     }

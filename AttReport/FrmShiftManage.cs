@@ -45,13 +45,23 @@ namespace AttReport
             ShiftManage objShift = new ShiftManage()
             {
                 ClassesName = CboClassName.Text.Trim(),
-                TimesName=txtTimesName.Text.Trim(),
-                WorkTime=dtpWorkTime.Value.Hour&&,
-
-
-
-
-
+                TimesName = txtTimesName.Text.Trim(),
+                WorkTime = Convert.ToDateTime(dtpWorkTime.Text.Trim()),
+                OffDutyTime=Convert.ToDateTime(dtpOffDutyTime.Text.Trim()),
+                StartCheckIn=Convert.ToDateTime(dtpStartCheckIn.Text.Trim()),
+                EndCheckIn=Convert.ToDateTime(dtpEndCheckIn.Text.Trim()),
+                StartSignBack=Convert.ToDateTime(dtpStartSignBack.Text.Trim()),
+                EndSignBack=Convert.ToDateTime(dtpEndSignBack.Text.Trim()),
+                LateTime=Convert.ToInt32(txtLateTime.Text.Trim()),
+                LeftEarly=Convert.ToInt32(txtLeftEarly.Text.Trim()),
+                DayNumber=Convert.ToInt32(txtDayNumber.Text.Trim()),
+                Monday=Convert.ToInt32(chkMonday.Text.Trim()),
+                Tuesday=Convert.ToInt32(chkTuesday.Text.Trim()),
+                Wednesday=Convert.ToInt32(chkWednesday.Text.Trim()),
+                Thursday=Convert.ToInt32(chkThursday.Text.Trim()),
+                Friday=Convert.ToInt32(chkFriday.Text.Trim()),
+                Saturday=Convert.ToInt32(chkSaturday.Text.Trim()),
+                Sunday=Convert.ToInt32(chkSunday.Text.Trim())
             };
         }
 
