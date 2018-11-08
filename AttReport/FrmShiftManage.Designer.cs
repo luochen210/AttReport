@@ -28,8 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
             this.dgvClassses = new System.Windows.Forms.DataGridView();
             this.ClassesName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.TimesName = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -82,6 +82,7 @@
             this.btnRemove = new System.Windows.Forms.Button();
             this.btnUpdate = new System.Windows.Forms.Button();
             this.btnClassesAdd = new System.Windows.Forms.Button();
+            this.button1 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvClassses)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
@@ -93,14 +94,14 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.dgvClassses.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvClassses.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle7.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle7.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            dataGridViewCellStyle7.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle7.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvClassses.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle7;
             this.dgvClassses.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvClassses.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.ClassesName,
@@ -145,8 +146,8 @@
             // WorkTime
             // 
             this.WorkTime.DataPropertyName = "WorkTime";
-            dataGridViewCellStyle2.NullValue = null;
-            this.WorkTime.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle8.NullValue = null;
+            this.WorkTime.DefaultCellStyle = dataGridViewCellStyle8;
             this.WorkTime.HeaderText = "上班时间";
             this.WorkTime.Name = "WorkTime";
             this.WorkTime.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
@@ -472,6 +473,7 @@
             this.groupBox1.Controls.Add(this.dtpOffDutyTime);
             this.groupBox1.Controls.Add(this.dtpWorkTime);
             this.groupBox1.Controls.Add(this.label8);
+            this.groupBox1.Controls.Add(this.button1);
             this.groupBox1.Controls.Add(this.btnRemove);
             this.groupBox1.Controls.Add(this.chkThursday);
             this.groupBox1.Controls.Add(this.btnUpdate);
@@ -506,61 +508,67 @@
             // 
             // dtpEndSignBack
             // 
+            this.dtpEndSignBack.CustomFormat = "HH:mm:ss";
             this.dtpEndSignBack.Format = System.Windows.Forms.DateTimePickerFormat.Time;
             this.dtpEndSignBack.Location = new System.Drawing.Point(358, 206);
             this.dtpEndSignBack.Name = "dtpEndSignBack";
+            this.dtpEndSignBack.ShowUpDown = true;
             this.dtpEndSignBack.Size = new System.Drawing.Size(121, 21);
             this.dtpEndSignBack.TabIndex = 8;
-            this.dtpEndSignBack.Value = new System.DateTime(2018, 11, 7, 8, 0, 0, 0);
             // 
             // dtpEndCheckIn
             // 
+            this.dtpEndCheckIn.CustomFormat = "HH:mm:ss";
             this.dtpEndCheckIn.Format = System.Windows.Forms.DateTimePickerFormat.Time;
             this.dtpEndCheckIn.Location = new System.Drawing.Point(358, 163);
             this.dtpEndCheckIn.Name = "dtpEndCheckIn";
+            this.dtpEndCheckIn.ShowUpDown = true;
             this.dtpEndCheckIn.Size = new System.Drawing.Size(121, 21);
             this.dtpEndCheckIn.TabIndex = 8;
-            this.dtpEndCheckIn.Value = new System.DateTime(2018, 11, 7, 8, 0, 0, 0);
             // 
             // dtpStartSignBack
             // 
+            this.dtpStartSignBack.CustomFormat = "HH:mm:ss";
             this.dtpStartSignBack.Format = System.Windows.Forms.DateTimePickerFormat.Time;
             this.dtpStartSignBack.Location = new System.Drawing.Point(117, 206);
             this.dtpStartSignBack.Name = "dtpStartSignBack";
+            this.dtpStartSignBack.ShowUpDown = true;
             this.dtpStartSignBack.Size = new System.Drawing.Size(121, 21);
             this.dtpStartSignBack.TabIndex = 8;
-            this.dtpStartSignBack.Value = new System.DateTime(2018, 11, 7, 8, 0, 0, 0);
             // 
             // dtpStartCheckIn
             // 
+            this.dtpStartCheckIn.CustomFormat = "HH:mm:ss";
             this.dtpStartCheckIn.Format = System.Windows.Forms.DateTimePickerFormat.Time;
             this.dtpStartCheckIn.Location = new System.Drawing.Point(117, 163);
             this.dtpStartCheckIn.Name = "dtpStartCheckIn";
+            this.dtpStartCheckIn.ShowUpDown = true;
             this.dtpStartCheckIn.Size = new System.Drawing.Size(121, 21);
             this.dtpStartCheckIn.TabIndex = 8;
-            this.dtpStartCheckIn.Value = new System.DateTime(2018, 11, 7, 8, 0, 0, 0);
             // 
             // dtpOffDutyTime
             // 
+            this.dtpOffDutyTime.CustomFormat = "HH:mm:ss";
             this.dtpOffDutyTime.Format = System.Windows.Forms.DateTimePickerFormat.Time;
             this.dtpOffDutyTime.Location = new System.Drawing.Point(358, 79);
             this.dtpOffDutyTime.Name = "dtpOffDutyTime";
+            this.dtpOffDutyTime.ShowUpDown = true;
             this.dtpOffDutyTime.Size = new System.Drawing.Size(121, 21);
             this.dtpOffDutyTime.TabIndex = 8;
-            this.dtpOffDutyTime.Value = new System.DateTime(2018, 11, 7, 8, 0, 0, 0);
             // 
             // dtpWorkTime
             // 
+            this.dtpWorkTime.CustomFormat = "HH:mm:ss";
             this.dtpWorkTime.Format = System.Windows.Forms.DateTimePickerFormat.Time;
             this.dtpWorkTime.Location = new System.Drawing.Point(117, 79);
             this.dtpWorkTime.Name = "dtpWorkTime";
+            this.dtpWorkTime.ShowUpDown = true;
             this.dtpWorkTime.Size = new System.Drawing.Size(121, 21);
             this.dtpWorkTime.TabIndex = 8;
-            this.dtpWorkTime.Value = new System.DateTime(2018, 11, 7, 8, 0, 0, 0);
             // 
             // btnRemove
             // 
-            this.btnRemove.Location = new System.Drawing.Point(405, 256);
+            this.btnRemove.Location = new System.Drawing.Point(404, 261);
             this.btnRemove.Name = "btnRemove";
             this.btnRemove.Size = new System.Drawing.Size(75, 23);
             this.btnRemove.TabIndex = 1;
@@ -569,7 +577,7 @@
             // 
             // btnUpdate
             // 
-            this.btnUpdate.Location = new System.Drawing.Point(215, 256);
+            this.btnUpdate.Location = new System.Drawing.Point(276, 261);
             this.btnUpdate.Name = "btnUpdate";
             this.btnUpdate.Size = new System.Drawing.Size(75, 23);
             this.btnUpdate.TabIndex = 1;
@@ -578,13 +586,22 @@
             // 
             // btnClassesAdd
             // 
-            this.btnClassesAdd.Location = new System.Drawing.Point(23, 256);
+            this.btnClassesAdd.Location = new System.Drawing.Point(150, 261);
             this.btnClassesAdd.Name = "btnClassesAdd";
             this.btnClassesAdd.Size = new System.Drawing.Size(75, 23);
             this.btnClassesAdd.TabIndex = 1;
             this.btnClassesAdd.Text = "添加";
             this.btnClassesAdd.UseVisualStyleBackColor = true;
             this.btnClassesAdd.Click += new System.EventHandler(this.btnClassesAdd_Click);
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(24, 261);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(75, 23);
+            this.button1.TabIndex = 1;
+            this.button1.Text = "清除";
+            this.button1.UseVisualStyleBackColor = true;
             // 
             // FrmShiftManage
             // 
@@ -658,5 +675,6 @@
         private System.Windows.Forms.DateTimePicker dtpStartSignBack;
         private System.Windows.Forms.DateTimePicker dtpStartCheckIn;
         private System.Windows.Forms.DateTimePicker dtpOffDutyTime;
+        private System.Windows.Forms.Button button1;
     }
 }

@@ -30,7 +30,7 @@ namespace DAL
         /// <returns>班次列表</returns>
         public List<ShiftManage> GetGetClassList()
         {
-            string sql = "select ClassesId,ClasssesName from ClassesTime";
+            string sql = "select ClassesId,ClassesName from ClassesTime";
             sql = string.Format(sql);
 
             SqlDataReader objReader = SQLHelper.GetReader(sql);
@@ -52,24 +52,24 @@ namespace DAL
         /// <summary>
         /// 添加数据
         /// </summary>
-        /// <param name="objShiftManage">班次对象</param>
+        /// <param name="objShift">班次对象</param>
         /// <returns>>班次对象</returns>
-        public ShiftManage AddClass(ShiftManage objShiftManage)
+        public ShiftManage AddClass(ShiftManage objShift)
         {
             StringBuilder sqlBuilder = new StringBuilder();
             sqlBuilder.Append("insert into ClassesTime(ClassesId,ClassesName,TimesName,WorkTime,OffDutyTime,StartCheckIn,EndCheckIn,");
             sqlBuilder.Append("StartSignBack,EndSignBack,LateTime,LeftEarly,DayNumber,Monday,Tuesday,Wednesday,Thursday,Friday,Saturday,Sunday)");
-            sqlBuilder.Append(" values({0},'{1}','{2}','{3}','{4}','{5}','{6}','{7}','{8}',{9},{10},{11},{12}},{13}},{14},{15},{16},{17},{18}) ");
+            sqlBuilder.Append(" values({0},'{1}','{2}','{3}','{4}','{5}','{6}','{7}','{8}',{9},{10},{11},{12},{13},{14},{15},{16},{17},{18}) ");
 
-            string sql = string.Format(sqlBuilder.ToString(),objShiftManage.ClassesId,objShiftManage.ClassesName,objShiftManage.TimesName,objShiftManage.WorkTime,
-                objShiftManage.OffDutyTime,objShiftManage.StartCheckIn,objShiftManage.EndCheckIn,objShiftManage.StartSignBack,objShiftManage.EndSignBack,
-                objShiftManage.LateTime,objShiftManage.LeftEarly,objShiftManage.DayNumber,objShiftManage.Monday,objShiftManage.Thursday,objShiftManage.Wednesday,
-                objShiftManage.Thursday,objShiftManage.Friday,objShiftManage.Saturday,objShiftManage.Sunday);
+            string sql = string.Format(sqlBuilder.ToString(),objShift.ClassesId,objShift.ClassesName,objShift.TimesName,objShift.WorkTime,
+                objShift.OffDutyTime,objShift.StartCheckIn,objShift.EndCheckIn,objShift.StartSignBack,objShift.EndSignBack,
+                objShift.LateTime,objShift.LeftEarly,objShift.DayNumber,objShift.Monday,objShift.Thursday,objShift.Wednesday,
+                objShift.Thursday,objShift.Friday,objShift.Saturday,objShift.Sunday);
 
             try
             {
                 SQLHelper.Update(sql);
-                return objShiftManage;
+                return objShift;
             }
             catch (SqlException ex)
             {

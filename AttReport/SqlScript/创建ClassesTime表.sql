@@ -24,12 +24,12 @@ create table ClassesTime
   ClassesId int not null,--班次ID
   ClassesName varchar(21) not null,--班次名称
   TimesName varchar(12) not null,--时间段名称
-  WorkTime datetime not null,--上班时间
-  OffDutyTime datetime not null,--下班时间
-  StartCheckIn datetime not null,--开始签到
-  EndCheckIn datetime not null,--结束签到
-  StartSignBack datetime not null,--开始签退
-  EndSignBack datetime not null,--结束签退
+  WorkTime time not null,--上班时间
+  OffDutyTime time not null,--下班时间
+  StartCheckIn time not null,--开始签到
+  EndCheckIn time not null,--结束签到
+  StartSignBack time not null,--开始签退
+  EndSignBack time not null,--结束签退
   LateTime int not null,--迟到时间数，计分钟
   LeftEarly int not null,--早退时间数，计分钟
   DayNumber int not null,--计天数

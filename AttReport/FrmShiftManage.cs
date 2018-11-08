@@ -16,14 +16,14 @@ namespace AttReport
     public partial class FrmShiftManage : Form
     {
 
-        ShiftManageService objShift = new ShiftManageService();
+        ShiftManageService objShiftSer = new ShiftManageService();
 
         public FrmShiftManage()
         {
             InitializeComponent();
 
             //获取数据
-            this.CboClassName.DataSource = objShift.GetGetClassList();
+            this.CboClassName.DataSource = objShiftSer.GetGetClassList();
 
             //显示班次
             CboClassName.DisplayMember = "ClassesName";
@@ -34,7 +34,7 @@ namespace AttReport
         //窗体加载时读取班次表
         private void FrmShiftManage_Load(object sender, EventArgs e)
         {
-            this.dgvClassses.DataSource = objShift.GetClassTableDs();
+            this.dgvClassses.DataSource = objShiftSer.GetClassTableDs();
         }
 
 
@@ -42,27 +42,64 @@ namespace AttReport
         //添加班次
         private void btnClassesAdd_Click(object sender, EventArgs e)
         {
+            //int iMonday = Convert.ToInt32(chkMonday.Checked);
+            //int iTuesday = Convert.ToInt32(chkTuesday.Checked);
+            //int iWednesday = Convert.ToInt32(chkWednesday.Checked);
+            //int iThursday = Convert.ToInt32(chkThursday.Checked);
+            //int iFriday = Convert.ToInt32(chkFriday.Checked);
+            //int iSaturday = Convert.ToInt32(chkSaturday.Checked);
+            //int iSunday = Convert.ToInt32(chkSunday.Checked);
+
+            //MessageBox.Show(iMonday.ToString());
+
+
             ShiftManage objShift = new ShiftManage()
             {
                 ClassesName = CboClassName.Text.Trim(),
                 TimesName = txtTimesName.Text.Trim(),
-                WorkTime = Convert.ToDateTime(dtpWorkTime.Text.Trim()),
-                OffDutyTime=Convert.ToDateTime(dtpOffDutyTime.Text.Trim()),
-                StartCheckIn=Convert.ToDateTime(dtpStartCheckIn.Text.Trim()),
-                EndCheckIn=Convert.ToDateTime(dtpEndCheckIn.Text.Trim()),
-                StartSignBack=Convert.ToDateTime(dtpStartSignBack.Text.Trim()),
-                EndSignBack=Convert.ToDateTime(dtpEndSignBack.Text.Trim()),
-                LateTime=Convert.ToInt32(txtLateTime.Text.Trim()),
-                LeftEarly=Convert.ToInt32(txtLeftEarly.Text.Trim()),
-                DayNumber=Convert.ToInt32(txtDayNumber.Text.Trim()),
-                Monday=Convert.ToInt32(chkMonday.Text.Trim()),
-                Tuesday=Convert.ToInt32(chkTuesday.Text.Trim()),
-                Wednesday=Convert.ToInt32(chkWednesday.Text.Trim()),
-                Thursday=Convert.ToInt32(chkThursday.Text.Trim()),
-                Friday=Convert.ToInt32(chkFriday.Text.Trim()),
-                Saturday=Convert.ToInt32(chkSaturday.Text.Trim()),
-                Sunday=Convert.ToInt32(chkSunday.Text.Trim())
+                WorkTime = dtpWorkTime.Text.Trim(),
+                OffDutyTime = dtpOffDutyTime.Text.Trim(),
+                StartCheckIn = dtpStartCheckIn.Text.Trim(),
+                EndCheckIn = dtpEndCheckIn.Text.Trim(),
+                StartSignBack = dtpStartSignBack.Text.Trim(),
+                EndSignBack = dtpEndSignBack.Text.Trim(),
+
+                LateTime = Convert.ToInt32(txtLateTime.Text.Trim()),
+                LeftEarly = Convert.ToInt32(txtLeftEarly.Text.Trim()),
+
+                DayNumber = Convert.ToDouble(txtDayNumber.Text.Trim()),
+
+                Monday = Convert.ToInt32(chkMonday.Checked),
+                Tuesday = Convert.ToInt32(chkTuesday.Checked),
+                Wednesday = Convert.ToInt32(chkWednesday.Checked),
+                Thursday = Convert.ToInt32(chkThursday.Checked),
+                Friday = Convert.ToInt32(chkFriday.Checked),
+                Saturday = Convert.ToInt32(chkSaturday.Checked),
+                Sunday = Convert.ToInt32(chkSunday.Checked)
             };
+
+            //插入数据
+            objShiftSer.AddClass(objShift);
+
+            //清空数据
+            foreach (Control item in Controls)
+            {
+                if (item is TextBox)
+                {
+                    item.Text = "";
+                }
+
+                else if (item is ComboBox)
+                {
+                    item.Text = "";
+                }
+
+                else if (item is DateTimePicker)
+                {
+                    item.Text = null;
+                }
+            }
+
         }
 
 

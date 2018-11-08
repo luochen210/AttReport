@@ -29,32 +29,32 @@ namespace Models
         /// <summary>
         /// 上班时间
         /// </summary>
-        public DateTime WorkTime { get; set; }
+        public string WorkTime { get; set; }
 
         /// <summary>
         /// 下班时间
         /// </summary>
-        public DateTime OffDutyTime { get; set; }
+        public string OffDutyTime { get; set; }
 
         /// <summary>
         /// 开始签到时间
         /// </summary>
-        public DateTime StartCheckIn { get; set; }
+        public string StartCheckIn { get; set; }
 
         /// <summary>
         /// 结束签到时间
         /// </summary>
-        public DateTime EndCheckIn { get; set; }
+        public string EndCheckIn { get; set; }
 
         /// <summary>
         /// 天始签退时间
         /// </summary>
-        public DateTime StartSignBack { get; set; }
+        public string StartSignBack { get; set; }
 
         /// <summary>
         /// 结束签退时间
         /// </summary>
-        public DateTime EndSignBack { get; set; }
+        public string EndSignBack { get; set; }
 
         /// <summary>
         /// 迟到时间
@@ -69,7 +69,7 @@ namespace Models
         /// <summary>
         /// 天数
         /// </summary>
-        public int DayNumber { get; set; }
+        public double DayNumber { get; set; }
 
         /// <summary>
         /// 星期一
