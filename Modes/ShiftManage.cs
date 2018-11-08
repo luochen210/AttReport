@@ -47,6 +47,16 @@ namespace Models
         public DateTime EndCheckIn { get; set; }
 
         /// <summary>
+        /// 天始签退时间
+        /// </summary>
+        public DateTime StartSignBack { get; set; }
+
+        /// <summary>
+        /// 结束签退时间
+        /// </summary>
+        public DateTime EndSignBack { get; set; }
+
+        /// <summary>
         /// 迟到时间
         /// </summary>
         public int LateTime { get; set; }
