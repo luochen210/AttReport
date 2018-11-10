@@ -141,9 +141,8 @@
     </COMReference>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\人才观.png" />
+    <Folder Include="Resources\" />
   </ItemGroup>
-  <ItemGroup />
   <ItemGroup>
     <Content Include="SqlScript\创建ClassesTime表.sql" />
     <Content Include="SqlScript\创建CompanyStructure表.sql" />

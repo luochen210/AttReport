@@ -28,8 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.dgvClassses = new System.Windows.Forms.DataGridView();
             this.ClassesName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.TimesName = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -79,10 +79,11 @@
             this.dtpStartCheckIn = new System.Windows.Forms.DateTimePicker();
             this.dtpOffDutyTime = new System.Windows.Forms.DateTimePicker();
             this.dtpWorkTime = new System.Windows.Forms.DateTimePicker();
+            this.button1 = new System.Windows.Forms.Button();
             this.btnRemove = new System.Windows.Forms.Button();
             this.btnUpdate = new System.Windows.Forms.Button();
             this.btnClassesAdd = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
+            this.lblTips = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dgvClassses)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
@@ -94,14 +95,14 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.dgvClassses.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle7.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle7.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            dataGridViewCellStyle7.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle7.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvClassses.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle7;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvClassses.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dgvClassses.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvClassses.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.ClassesName,
@@ -124,7 +125,6 @@
             this.Sunday});
             this.dgvClassses.Location = new System.Drawing.Point(12, 337);
             this.dgvClassses.Name = "dgvClassses";
-            this.dgvClassses.RowHeadersVisible = false;
             this.dgvClassses.RowTemplate.Height = 23;
             this.dgvClassses.Size = new System.Drawing.Size(984, 380);
             this.dgvClassses.TabIndex = 0;
@@ -146,8 +146,8 @@
             // WorkTime
             // 
             this.WorkTime.DataPropertyName = "WorkTime";
-            dataGridViewCellStyle8.NullValue = null;
-            this.WorkTime.DefaultCellStyle = dataGridViewCellStyle8;
+            dataGridViewCellStyle2.NullValue = null;
+            this.WorkTime.DefaultCellStyle = dataGridViewCellStyle2;
             this.WorkTime.HeaderText = "上班时间";
             this.WorkTime.Name = "WorkTime";
             this.WorkTime.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
@@ -466,6 +466,7 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.lblTips);
             this.groupBox1.Controls.Add(this.dtpEndSignBack);
             this.groupBox1.Controls.Add(this.dtpEndCheckIn);
             this.groupBox1.Controls.Add(this.dtpStartSignBack);
@@ -566,6 +567,15 @@
             this.dtpWorkTime.Size = new System.Drawing.Size(121, 21);
             this.dtpWorkTime.TabIndex = 8;
             // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(24, 261);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(75, 23);
+            this.button1.TabIndex = 1;
+            this.button1.Text = "清除";
+            this.button1.UseVisualStyleBackColor = true;
+            // 
             // btnRemove
             // 
             this.btnRemove.Location = new System.Drawing.Point(404, 261);
@@ -594,14 +604,14 @@
             this.btnClassesAdd.UseVisualStyleBackColor = true;
             this.btnClassesAdd.Click += new System.EventHandler(this.btnClassesAdd_Click);
             // 
-            // button1
+            // lblTips
             // 
-            this.button1.Location = new System.Drawing.Point(24, 261);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 1;
-            this.button1.Text = "清除";
-            this.button1.UseVisualStyleBackColor = true;
+            this.lblTips.AutoSize = true;
+            this.lblTips.ForeColor = System.Drawing.Color.Red;
+            this.lblTips.Location = new System.Drawing.Point(576, 212);
+            this.lblTips.Name = "lblTips";
+            this.lblTips.Size = new System.Drawing.Size(0, 12);
+            this.lblTips.TabIndex = 9;
             // 
             // FrmShiftManage
             // 
@@ -676,5 +686,6 @@
         private System.Windows.Forms.DateTimePicker dtpStartCheckIn;
         private System.Windows.Forms.DateTimePicker dtpOffDutyTime;
         private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Label lblTips;
     }
 }

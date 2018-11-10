@@ -42,16 +42,32 @@ namespace AttReport
         //添加班次
         private void btnClassesAdd_Click(object sender, EventArgs e)
         {
-            //int iMonday = Convert.ToInt32(chkMonday.Checked);
-            //int iTuesday = Convert.ToInt32(chkTuesday.Checked);
-            //int iWednesday = Convert.ToInt32(chkWednesday.Checked);
-            //int iThursday = Convert.ToInt32(chkThursday.Checked);
-            //int iFriday = Convert.ToInt32(chkFriday.Checked);
-            //int iSaturday = Convert.ToInt32(chkSaturday.Checked);
-            //int iSunday = Convert.ToInt32(chkSunday.Checked);
+            if (CboClassName.Text.Trim() == "")
+            {
+                MessageBox.Show("班次名称不能为空！");
+                return;
+            }
 
-            //MessageBox.Show(iMonday.ToString());
-
+            if (txtTimesName.Text.Trim() == "")
+            {
+                MessageBox.Show("时段名称不能为空！");
+                return;
+            }
+            if (txtLateTime.Text.Trim() == "")
+            {
+                MessageBox.Show("迟到分种数不能为空！");
+                return;
+            }
+            if (txtLeftEarly.Text.Trim() == "")
+            {
+                MessageBox.Show("早退分钟数不能为空！");
+                return;
+            }
+            if (txtDayNumber.Text.Trim() == "")
+            {
+                MessageBox.Show("天数不能为空！");
+                return;
+            }
 
             ShiftManage objShift = new ShiftManage()
             {
@@ -81,6 +97,7 @@ namespace AttReport
             //插入数据
             objShiftSer.AddClass(objShift);
 
+
             //清空数据
             foreach (Control item in Controls)
             {
@@ -100,6 +117,7 @@ namespace AttReport
                 }
             }
 
+            lblTips.Text = "数据添加成功！";
         }
 
 

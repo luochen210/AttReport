@@ -23,15 +23,15 @@ create table ClassesTime
 (
   ClassesId int not null,--班次ID
   ClassesName varchar(21) not null,--班次名称
-  TimesName varchar(12) not null,--时间段名称
-  WorkTime time not null,--上班时间
-  OffDutyTime time not null,--下班时间
-  StartCheckIn time not null,--开始签到
-  EndCheckIn time not null,--结束签到
-  StartSignBack time not null,--开始签退
-  EndSignBack time not null,--结束签退
-  LateTime int not null,--迟到时间数，计分钟
-  LeftEarly int not null,--早退时间数，计分钟
+  TimesName varchar(18) not null,--时间段名称
+  WorkTime varchar(18) not null,--上班时间
+  OffDutyTime varchar(18) not null,--下班时间
+  StartCheckIn varchar(18) not null,--开始签到
+  EndCheckIn varchar(18) not null,--结束签到
+  StartSignBack varchar(18) not null,--开始签退
+  EndSignBack varchar(18) not null,--结束签退
+  LateTime varchar(18) not null,--迟到时间数，计分钟
+  LeftEarly varchar(18) not null,--早退时间数，计分钟
   DayNumber int not null,--计天数
   Monday bit not null,--星期一，1代表true,0代表false
   Tuesday bit not null,--星期二
