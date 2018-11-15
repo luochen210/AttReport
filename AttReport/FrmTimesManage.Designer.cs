@@ -58,7 +58,7 @@
             this.label9 = new System.Windows.Forms.Label();
             this.txtLeftEarly = new System.Windows.Forms.TextBox();
             this.btnAdd = new System.Windows.Forms.Button();
-            this.btnSave = new System.Windows.Forms.Button();
+            this.btnAlter = new System.Windows.Forms.Button();
             this.btnRemove = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
@@ -79,7 +79,7 @@
             // splitContainer1.Panel2
             // 
             this.splitContainer1.Panel2.Controls.Add(this.btnRemove);
-            this.splitContainer1.Panel2.Controls.Add(this.btnSave);
+            this.splitContainer1.Panel2.Controls.Add(this.btnAlter);
             this.splitContainer1.Panel2.Controls.Add(this.btnAdd);
             this.splitContainer1.Panel2.Controls.Add(this.dtpEndSignBack);
             this.splitContainer1.Panel2.Controls.Add(this.dtpStartSignBack);
@@ -105,6 +105,7 @@
             // 
             // dgvTimesManage
             // 
+            this.dgvTimesManage.AllowUserToAddRows = false;
             this.dgvTimesManage.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvTimesManage.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.TimesName,
@@ -374,15 +375,16 @@
             this.btnAdd.TabIndex = 3;
             this.btnAdd.Text = "添加";
             this.btnAdd.UseVisualStyleBackColor = true;
+            this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
             // 
-            // btnSave
+            // btnAlter
             // 
-            this.btnSave.Location = new System.Drawing.Point(85, 392);
-            this.btnSave.Name = "btnSave";
-            this.btnSave.Size = new System.Drawing.Size(50, 23);
-            this.btnSave.TabIndex = 3;
-            this.btnSave.Text = "保存";
-            this.btnSave.UseVisualStyleBackColor = true;
+            this.btnAlter.Location = new System.Drawing.Point(85, 392);
+            this.btnAlter.Name = "btnAlter";
+            this.btnAlter.Size = new System.Drawing.Size(50, 23);
+            this.btnAlter.TabIndex = 3;
+            this.btnAlter.Text = "修改";
+            this.btnAlter.UseVisualStyleBackColor = true;
             // 
             // btnRemove
             // 
@@ -402,6 +404,7 @@
             this.Name = "FrmTimesManage";
             this.Text = "时间段管理";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.FrmTimesManage_FormClosed);
+            this.Load += new System.EventHandler(this.FrmTimesManage_Load);
             this.splitContainer1.Panel1.ResumeLayout(false);
             this.splitContainer1.Panel2.ResumeLayout(false);
             this.splitContainer1.Panel2.PerformLayout();
@@ -426,7 +429,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn LateTime;
         private System.Windows.Forms.DataGridViewTextBoxColumn LeftEarly;
         private System.Windows.Forms.Button btnRemove;
-        private System.Windows.Forms.Button btnSave;
+        private System.Windows.Forms.Button btnAlter;
         private System.Windows.Forms.Button btnAdd;
         private System.Windows.Forms.DateTimePicker dtpEndSignBack;
         private System.Windows.Forms.DateTimePicker dtpStartSignBack;

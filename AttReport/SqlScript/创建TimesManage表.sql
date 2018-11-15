@@ -7,8 +7,8 @@ drop table TimesManage
 go
 create table TimesManage
 (
-  TimesId int not null,--时段ID
-  TimesName varchar(18) not null,--时间段名称
+  TimesId int not null primary key identity(1,1),--时段ID
+  TimesName varchar(18) not null ,--时间段名称
   WorkTime varchar(18) not null,--上班时间
   OffDutyTime varchar(18) not null,--下班时间
   StartCheckIn varchar(18) not null,--开始签到

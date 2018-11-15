@@ -25,6 +25,31 @@ namespace DAL
 
 
         /// <summary>
+        /// 获取时段数据集
+        /// </summary>
+        /// <returns>时段数据集</returns>
+        public DataSet GetTimesDataSet()
+        {
+            string sql = "select * from TimesManage ";
+            sql = string.Format(sql);
+            return SQLHelper.GetDataSet(sql);
+        }
+
+        /// <summary>
+        /// 验证结果
+        /// </summary>
+        /// <param name="TimesName">时段名称</param>
+        /// <returns></returns>
+        public string getTimesName(string TimesName)
+        {
+            string sql = "select '[0]' from TimesManage";
+            sql = string.Format(sql, TimesName);
+            SQLHelper.GetSingleResult(sql);
+            return TimesName;
+        }
+
+
+        /// <summary>
         /// 获取班次列表
         /// </summary>
         /// <returns>班次列表</returns>
@@ -49,22 +74,22 @@ namespace DAL
             return list;
         }
 
+
         /// <summary>
-        /// 添加数据
+        /// 添加时间段数据
         /// </summary>
-        /// <param name="objShift">班次对象</param>
+        /// <param name="objTimes">时间段对象</param>
         /// <returns>返回执行结果</returns>
-        public int AddClass(ShiftManage objShift)
+        public int AddTimes(ShiftManage objTimes)
         {
             StringBuilder sqlBuilder = new StringBuilder();
-            sqlBuilder.Append("insert into ClassesTime(ClassesName,TimesName,WorkTime,OffDutyTime,StartCheckIn,EndCheckIn,");
-            sqlBuilder.Append("StartSignBack,EndSignBack,LateTime,LeftEarly,DayNumber,Monday,Tuesday,Wednesday,Thursday,Friday,Saturday,Sunday)");
-            sqlBuilder.Append(" values('{0}','{1}','{2}','{3}','{4}','{5}','{6}','{7}',{8},{9},{10},{11},{12},{13},{14},{15},{16},{17}) ");
+            sqlBuilder.Append("insert into TimesManage(TimesName,WorkTime,OffDutyTime,StartCheckIn,EndCheckIn,");
+            sqlBuilder.Append("StartSignBack,EndSignBack,LateTime,LeftEarly)");
+            sqlBuilder.Append(" values('{0}','{1}','{2}','{3}','{4}','{5}','{6}',{7},{8})");
 
-            string sql = string.Format(sqlBuilder.ToString(), objShift.ClassesName, objShift.TimesName, objShift.WorkTime,
-                objShift.OffDutyTime, objShift.StartCheckIn, objShift.EndCheckIn, objShift.StartSignBack, objShift.EndSignBack,
-                objShift.LateTime, objShift.LeftEarly, objShift.DayNumber, objShift.Monday, objShift.Thursday, objShift.Wednesday,
-                objShift.Thursday, objShift.Friday, objShift.Saturday, objShift.Sunday);
+            string sql = string.Format(sqlBuilder.ToString(), objTimes.TimesName, objTimes.WorkTime,
+                objTimes.OffDutyTime, objTimes.StartCheckIn, objTimes.EndCheckIn, objTimes.StartSignBack, objTimes.EndSignBack,
+                objTimes.LateTime, objTimes.LeftEarly);
 
             try
             {
@@ -82,8 +107,5 @@ namespace DAL
                 throw ex;
             }
         }
-
-
-
     }
 }

@@ -46,102 +46,93 @@ namespace AttReport
         //窗体加载时读取班次表
         private void FrmShiftManage_Load(object sender, EventArgs e)
         {
-            this.dgvClassses.DataSource = objShiftServe.GetClassDataSet().Tables[0];
+            //this.dgvClassses.DataSource = objShiftServe.GetClassDataSet().Tables[0];
         }
-
 
 
         //添加班次
         private void btnClassesAdd_Click(object sender, EventArgs e)
         {
-            if (CboClassName.Text.Trim() == "")
-            {
-                MessageBox.Show("班次名称不能为空！");
-                return;
-            }
+            //if (CboClassName.Text.Trim() == "")
+            //{
+            //    MessageBox.Show("班次名称不能为空！");
+            //    return;
+            //}
 
-            if (txtTimesName.Text.Trim() == "")
-            {
-                MessageBox.Show("时段名称不能为空！");
-                return;
-            }
-            if (txtLateTime.Text.Trim() == "")
-            {
-                MessageBox.Show("迟到分种数不能为空！");
-                return;
-            }
-            if (txtLeftEarly.Text.Trim() == "")
-            {
-                MessageBox.Show("早退分钟数不能为空！");
-                return;
-            }
-            if (txtDayNumber.Text.Trim() == "")
-            {
-                MessageBox.Show("天数不能为空！");
-                return;
-            }
+            //if (txtTimesName.Text.Trim() == "")
+            //{
+            //    MessageBox.Show("时段名称不能为空！");
+            //    return;
+            //}
+            //if (txtLateTime.Text.Trim() == "")
+            //{
+            //    MessageBox.Show("迟到分种数不能为空！");
+            //    return;
+            //}
+            //if (txtLeftEarly.Text.Trim() == "")
+            //{
+            //    MessageBox.Show("早退分钟数不能为空！");
+            //    return;
+            //}
+            //if (txtDayNumber.Text.Trim() == "")
+            //{
+            //    MessageBox.Show("天数不能为空！");
+            //    return;
+            //}
 
-            ShiftManage objShift = new ShiftManage()
-            {
-                ClassesName = CboClassName.Text.Trim(),
-                TimesName = txtTimesName.Text.Trim(),
-                WorkTime = dtpWorkTime.Text.Trim(),
-                OffDutyTime = dtpOffDutyTime.Text.Trim(),
-                StartCheckIn = dtpStartCheckIn.Text.Trim(),
-                EndCheckIn = dtpEndCheckIn.Text.Trim(),
-                StartSignBack = dtpStartSignBack.Text.Trim(),
-                EndSignBack = dtpEndSignBack.Text.Trim(),
+            //ShiftManage objShift = new ShiftManage()
+            //{
+            //    ClassesName = CboClassName.Text.Trim(),
+            //    TimesName = txtTimesName.Text.Trim(),
+            //    WorkTime = dtpWorkTime.Text.Trim(),
+            //    OffDutyTime = dtpOffDutyTime.Text.Trim(),
+            //    StartCheckIn = dtpStartCheckIn.Text.Trim(),
+            //    EndCheckIn = dtpEndCheckIn.Text.Trim(),
+            //    StartSignBack = dtpStartSignBack.Text.Trim(),
+            //    EndSignBack = dtpEndSignBack.Text.Trim(),
 
-                LateTime = Convert.ToInt32(txtLateTime.Text.Trim()),
-                LeftEarly = Convert.ToInt32(txtLeftEarly.Text.Trim()),
+            //    LateTime = Convert.ToInt32(txtLateTime.Text.Trim()),
+            //    LeftEarly = Convert.ToInt32(txtLeftEarly.Text.Trim()),
 
-                DayNumber = Convert.ToDouble(txtDayNumber.Text.Trim()),
+            //    DayNumber = Convert.ToDouble(txtDayNumber.Text.Trim()),
 
-                Monday = Convert.ToInt32(chkMonday.Checked),
-                Tuesday = Convert.ToInt32(chkTuesday.Checked),
-                Wednesday = Convert.ToInt32(chkWednesday.Checked),
-                Thursday = Convert.ToInt32(chkThursday.Checked),
-                Friday = Convert.ToInt32(chkFriday.Checked),
-                Saturday = Convert.ToInt32(chkSaturday.Checked),
-                Sunday = Convert.ToInt32(chkSunday.Checked)
-            };
+            //    Monday = Convert.ToInt32(chkMonday.Checked),
+            //    Tuesday = Convert.ToInt32(chkTuesday.Checked),
+            //    Wednesday = Convert.ToInt32(chkWednesday.Checked),
+            //    Thursday = Convert.ToInt32(chkThursday.Checked),
+            //    Friday = Convert.ToInt32(chkFriday.Checked),
+            //    Saturday = Convert.ToInt32(chkSaturday.Checked),
+            //    Sunday = Convert.ToInt32(chkSunday.Checked)
+            //};
 
-            //插入数据
-            objShiftServe.AddClass(objShift);
+            ////插入数据
+            //objShiftServe.AddTimes(objShift);
 
-            //刷新DGV
-            dgvClassses.DataSource = objShiftServe.GetClassDataSet().Tables[0];
+            ////刷新DGV
+            //dgvClassses.DataSource = objShiftServe.GetClassDataSet().Tables[0];
 
 
-            //清空数据
-            foreach (Control item in Controls)
-            {
-                if (item is TextBox)
-                {
-                    item.Text = "";
-                }
+            ////清空数据
+            //foreach (Control item in Controls)
+            //{
+            //    if (item is TextBox)
+            //    {
+            //        item.Text = "";
+            //    }
 
-                else if (item is ComboBox)
-                {
-                    item.Text = "";
-                }
+            //    else if (item is ComboBox)
+            //    {
+            //        item.Text = "";
+            //    }
 
-                else if (item is DateTimePicker)
-                {
-                    item.Text = null;
-                }
-            }
+            //    else if (item is DateTimePicker)
+            //    {
+            //        item.Text = null;
+            //    }
+            //}
 
-            lblTips.Text = "数据添加成功！";
+            //lblTips.Text = "数据添加成功！";
         }
-
-
-
-
-
-
-
-
 
 
 
