@@ -292,5 +292,23 @@ namespace AttReport
                 objFrmShiftManage.WindowState = FormWindowState.Normal;
             }
         }
+
+        //时段管理窗口对象
+        public static FrmTimesManage objFrmTimesManage = null;
+
+        //时段管理菜单事件
+        private void 时段管理ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (objFrmTimesManage==null)
+            {
+                objFrmTimesManage = new FrmTimesManage();
+                objFrmTimesManage.Show();
+            }
+            else
+            {
+                objFrmTimesManage.Activate();
+                objFrmTimesManage.WindowState = FormWindowState.Normal;
+            }
+        }
     }
 }

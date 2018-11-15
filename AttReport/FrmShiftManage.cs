@@ -16,25 +16,37 @@ namespace AttReport
     public partial class FrmShiftManage : Form
     {
 
-        ShiftManageService objShiftSer = new ShiftManageService();
+        ShiftManageService objShiftServe = new ShiftManageService();
 
         public FrmShiftManage()
         {
             InitializeComponent();
 
             //获取数据
-            this.CboClassName.DataSource = objShiftSer.GetGetClassList();
+            this.CboClassName.DataSource = objShiftServe.GetGetClassList();
 
             //显示班次
             CboClassName.DisplayMember = "ClassesName";
-            CboClassName.ValueMember = "ClassesId";
+            //CboClassName.ValueMember = "ClassesId";
             CboClassName.SelectedIndex = -1;//默认不显示
+
+            //设置默认时间
+            txtTimesName.Text = "上午";
+            dtpWorkTime.Value = Convert.ToDateTime("08:00:00");
+            dtpOffDutyTime.Value = Convert.ToDateTime("12:00:00");
+            dtpStartCheckIn.Value = Convert.ToDateTime("07:30:00");
+            dtpEndCheckIn.Value = Convert.ToDateTime("08:30:00");
+            dtpStartSignBack.Value = Convert.ToDateTime("12:00:00");
+            dtpEndSignBack.Value = Convert.ToDateTime("12:30:00");
+            txtLateTime.Text = "3";
+            txtLeftEarly.Text = "0";
+
         }
 
         //窗体加载时读取班次表
         private void FrmShiftManage_Load(object sender, EventArgs e)
         {
-            this.dgvClassses.DataSource = objShiftSer.GetClassTableDs();
+            this.dgvClassses.DataSource = objShiftServe.GetClassDataSet().Tables[0];
         }
 
 
@@ -95,7 +107,10 @@ namespace AttReport
             };
 
             //插入数据
-            objShiftSer.AddClass(objShift);
+            objShiftServe.AddClass(objShift);
+
+            //刷新DGV
+            dgvClassses.DataSource = objShiftServe.GetClassDataSet().Tables[0];
 
 
             //清空数据
@@ -138,8 +153,6 @@ namespace AttReport
         {
             FrmMain.objFrmShiftManage = null;
         }
-
-
 
         #endregion
 

@@ -81,6 +81,12 @@
     <Compile Include="FrmShiftManage.Designer.cs">
       <DependentUpon>FrmShiftManage.cs</DependentUpon>
     </Compile>
+    <Compile Include="FrmTimesManage.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmTimesManage.Designer.cs">
+      <DependentUpon>FrmTimesManage.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="FrmDtManage.resx">
@@ -97,6 +103,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FrmShiftManage.resx">
       <DependentUpon>FrmShiftManage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmTimesManage.resx">
+      <DependentUpon>FrmTimesManage.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -151,6 +160,7 @@
     <Content Include="SqlScript\创建OriginalLog约束.sql" />
     <Content Include="SqlScript\创建OriginalLog表.sql" />
     <Content Include="SqlScript\创建Staffs表.sql" />
+    <Content Include="SqlScript\创建TimesManage表.sql" />
     <Content Include="SqlScript\创建公司架构脚本.sql" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

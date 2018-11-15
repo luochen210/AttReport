@@ -16,7 +16,7 @@ namespace DAL
         /// 获得班次数据集
         /// </summary>
         /// <returns>班次数据集</returns>
-        public DataSet GetClassTableDs()
+        public DataSet GetClassDataSet()
         {
             string sql = "select * from ClassesTime";
             sql = string.Format(sql);
@@ -30,7 +30,7 @@ namespace DAL
         /// <returns>班次列表</returns>
         public List<ShiftManage> GetGetClassList()
         {
-            string sql = "select ClassesId,ClassesName from ClassesTime";
+            string sql = "select ClassesName from ClassesTime";
             sql = string.Format(sql);
 
             SqlDataReader objReader = SQLHelper.GetReader(sql);
@@ -40,7 +40,7 @@ namespace DAL
                 list.Add(new ShiftManage()
                 {
                     ClassesName = objReader["ClassesName"].ToString(),
-                    ClassesId=Convert.ToInt32(objReader["ClassesId"])
+                    //ClassesId=Convert.ToInt32(objReader["ClassesId"])
 
                 });                
 
@@ -53,23 +53,24 @@ namespace DAL
         /// 添加数据
         /// </summary>
         /// <param name="objShift">班次对象</param>
-        /// <returns>>班次对象</returns>
-        public ShiftManage AddClass(ShiftManage objShift)
+        /// <returns>返回执行结果</returns>
+        public int AddClass(ShiftManage objShift)
         {
             StringBuilder sqlBuilder = new StringBuilder();
-            sqlBuilder.Append("insert into ClassesTime(ClassesId,ClassesName,TimesName,WorkTime,OffDutyTime,StartCheckIn,EndCheckIn,");
+            sqlBuilder.Append("insert into ClassesTime(ClassesName,TimesName,WorkTime,OffDutyTime,StartCheckIn,EndCheckIn,");
             sqlBuilder.Append("StartSignBack,EndSignBack,LateTime,LeftEarly,DayNumber,Monday,Tuesday,Wednesday,Thursday,Friday,Saturday,Sunday)");
-            sqlBuilder.Append(" values({0},'{1}','{2}','{3}','{4}','{5}','{6}','{7}','{8}',{9},{10},{11},{12},{13},{14},{15},{16},{17},{18}) ");
+            sqlBuilder.Append(" values('{0}','{1}','{2}','{3}','{4}','{5}','{6}','{7}',{8},{9},{10},{11},{12},{13},{14},{15},{16},{17}) ");
 
-            string sql = string.Format(sqlBuilder.ToString(),objShift.ClassesId,objShift.ClassesName,objShift.TimesName,objShift.WorkTime,
-                objShift.OffDutyTime,objShift.StartCheckIn,objShift.EndCheckIn,objShift.StartSignBack,objShift.EndSignBack,
-                objShift.LateTime,objShift.LeftEarly,objShift.DayNumber,objShift.Monday,objShift.Thursday,objShift.Wednesday,
-                objShift.Thursday,objShift.Friday,objShift.Saturday,objShift.Sunday);
+            string sql = string.Format(sqlBuilder.ToString(), objShift.ClassesName, objShift.TimesName, objShift.WorkTime,
+                objShift.OffDutyTime, objShift.StartCheckIn, objShift.EndCheckIn, objShift.StartSignBack, objShift.EndSignBack,
+                objShift.LateTime, objShift.LeftEarly, objShift.DayNumber, objShift.Monday, objShift.Thursday, objShift.Wednesday,
+                objShift.Thursday, objShift.Friday, objShift.Saturday, objShift.Sunday);
 
             try
             {
-                SQLHelper.Update(sql);
-                return objShift;
+                
+                return SQLHelper.Update(sql);
+
             }
             catch (SqlException ex)
             {

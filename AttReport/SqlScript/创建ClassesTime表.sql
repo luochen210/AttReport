@@ -21,7 +21,7 @@ drop table ClassesTime
 go
 create table ClassesTime
 (
-  ClassesId int not null,--班次ID
+  --ClassesId int not null,--班次ID
   ClassesName varchar(21) not null,--班次名称
   TimesName varchar(18) not null,--时间段名称
   WorkTime varchar(18) not null,--上班时间
@@ -32,7 +32,7 @@ create table ClassesTime
   EndSignBack varchar(18) not null,--结束签退
   LateTime varchar(18) not null,--迟到时间数，计分钟
   LeftEarly varchar(18) not null,--早退时间数，计分钟
-  DayNumber int not null,--计天数
+  DayNumber decimal(2,1) not null,--计天数
   Monday bit not null,--星期一，1代表true,0代表false
   Tuesday bit not null,--星期二
   Wednesday bit not null,--星期三

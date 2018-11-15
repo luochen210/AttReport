@@ -62,6 +62,7 @@
             this.tabAnnual = new System.Windows.Forms.TabPage();
             this.lblState = new System.Windows.Forms.Label();
             this.progressBar1 = new System.Windows.Forms.ProgressBar();
+            this.时段管理ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.tctlReport.SuspendLayout();
             this.tabLog.SuspendLayout();
@@ -88,7 +89,8 @@
             // 系统管理ToolStripMenuItem
             // 
             this.系统管理ToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.班次管理ToolStripMenuItem});
+            this.班次管理ToolStripMenuItem,
+            this.时段管理ToolStripMenuItem});
             this.系统管理ToolStripMenuItem.Name = "系统管理ToolStripMenuItem";
             this.系统管理ToolStripMenuItem.Size = new System.Drawing.Size(68, 21);
             this.系统管理ToolStripMenuItem.Text = "系统管理";
@@ -96,7 +98,7 @@
             // 班次管理ToolStripMenuItem
             // 
             this.班次管理ToolStripMenuItem.Name = "班次管理ToolStripMenuItem";
-            this.班次管理ToolStripMenuItem.Size = new System.Drawing.Size(124, 22);
+            this.班次管理ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.班次管理ToolStripMenuItem.Text = "班次管理";
             this.班次管理ToolStripMenuItem.Click += new System.EventHandler(this.班次管理ToolStripMenuItem_Click);
             // 
@@ -377,6 +379,13 @@
             this.progressBar1.Size = new System.Drawing.Size(100, 23);
             this.progressBar1.TabIndex = 1;
             // 
+            // 时段管理ToolStripMenuItem
+            // 
+            this.时段管理ToolStripMenuItem.Name = "时段管理ToolStripMenuItem";
+            this.时段管理ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.时段管理ToolStripMenuItem.Text = "时段管理";
+            this.时段管理ToolStripMenuItem.Click += new System.EventHandler(this.时段管理ToolStripMenuItem_Click);
+            // 
             // FrmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -441,6 +450,7 @@
         private System.Windows.Forms.DataGridView dataGridView2;
         private System.Windows.Forms.ToolStripMenuItem 班次管理ToolStripMenuItem;
         private System.Windows.Forms.ProgressBar progressBar1;
+        private System.Windows.Forms.ToolStripMenuItem 时段管理ToolStripMenuItem;
     }
 }
 

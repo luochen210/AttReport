@@ -61,10 +61,6 @@
             this.label7 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
-            this.label10 = new System.Windows.Forms.Label();
-            this.txtDayNumber = new System.Windows.Forms.TextBox();
-            this.label11 = new System.Windows.Forms.Label();
-            this.CboClassName = new System.Windows.Forms.ComboBox();
             this.chkMonday = new System.Windows.Forms.CheckBox();
             this.chkTuesday = new System.Windows.Forms.CheckBox();
             this.chkWednesday = new System.Windows.Forms.CheckBox();
@@ -73,6 +69,7 @@
             this.chkSaturday = new System.Windows.Forms.CheckBox();
             this.chkSunday = new System.Windows.Forms.CheckBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.lblTips = new System.Windows.Forms.Label();
             this.dtpEndSignBack = new System.Windows.Forms.DateTimePicker();
             this.dtpEndCheckIn = new System.Windows.Forms.DateTimePicker();
             this.dtpStartSignBack = new System.Windows.Forms.DateTimePicker();
@@ -83,13 +80,17 @@
             this.btnRemove = new System.Windows.Forms.Button();
             this.btnUpdate = new System.Windows.Forms.Button();
             this.btnClassesAdd = new System.Windows.Forms.Button();
-            this.lblTips = new System.Windows.Forms.Label();
+            this.label10 = new System.Windows.Forms.Label();
+            this.txtDayNumber = new System.Windows.Forms.TextBox();
+            this.label11 = new System.Windows.Forms.Label();
+            this.CboClassName = new System.Windows.Forms.ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.dgvClassses)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
             // dgvClassses
             // 
+            this.dgvClassses.AllowUserToAddRows = false;
             this.dgvClassses.AllowUserToOrderColumns = true;
             this.dgvClassses.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
@@ -131,61 +132,77 @@
             // 
             // ClassesName
             // 
+            this.ClassesName.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
             this.ClassesName.DataPropertyName = "ClassesName";
             this.ClassesName.HeaderText = "班次名称";
             this.ClassesName.Name = "ClassesName";
             this.ClassesName.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.ClassesName.Width = 59;
             // 
             // TimesName
             // 
+            this.TimesName.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
             this.TimesName.DataPropertyName = "TimesName";
             this.TimesName.HeaderText = "时段名称";
             this.TimesName.Name = "TimesName";
             this.TimesName.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.TimesName.Width = 42;
             // 
             // WorkTime
             // 
+            this.WorkTime.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
             this.WorkTime.DataPropertyName = "WorkTime";
             dataGridViewCellStyle2.NullValue = null;
             this.WorkTime.DefaultCellStyle = dataGridViewCellStyle2;
             this.WorkTime.HeaderText = "上班时间";
             this.WorkTime.Name = "WorkTime";
             this.WorkTime.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.WorkTime.Width = 42;
             // 
             // OffDutyTime
             // 
+            this.OffDutyTime.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
             this.OffDutyTime.DataPropertyName = "OffDutyTime";
             this.OffDutyTime.HeaderText = "下班时间";
             this.OffDutyTime.Name = "OffDutyTime";
             this.OffDutyTime.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.OffDutyTime.Width = 42;
             // 
             // StartCheckIn
             // 
+            this.StartCheckIn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
             this.StartCheckIn.DataPropertyName = "StartCheckIn";
             this.StartCheckIn.HeaderText = "开始签到";
             this.StartCheckIn.Name = "StartCheckIn";
             this.StartCheckIn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.StartCheckIn.Width = 42;
             // 
             // EndCheckIn
             // 
+            this.EndCheckIn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
             this.EndCheckIn.DataPropertyName = "EndCheckIn";
             this.EndCheckIn.HeaderText = "结束签到";
             this.EndCheckIn.Name = "EndCheckIn";
             this.EndCheckIn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.EndCheckIn.Width = 42;
             // 
             // StartSignBack
             // 
+            this.StartSignBack.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
             this.StartSignBack.DataPropertyName = "StartSignBack";
             this.StartSignBack.HeaderText = "天始签退";
             this.StartSignBack.Name = "StartSignBack";
             this.StartSignBack.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.StartSignBack.Width = 42;
             // 
             // EndSignBack
             // 
+            this.EndSignBack.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
             this.EndSignBack.DataPropertyName = "EndSignBack";
             this.EndSignBack.HeaderText = "结束签退";
             this.EndSignBack.Name = "EndSignBack";
             this.EndSignBack.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.EndSignBack.Width = 42;
             // 
             // LateTime
             // 
@@ -359,39 +376,6 @@
             this.label9.TabIndex = 2;
             this.label9.Text = "结束签退时间：";
             // 
-            // label10
-            // 
-            this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(574, 84);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(101, 12);
-            this.label10.TabIndex = 2;
-            this.label10.Text = "记多少个工作日：";
-            // 
-            // txtDayNumber
-            // 
-            this.txtDayNumber.Location = new System.Drawing.Point(681, 79);
-            this.txtDayNumber.Name = "txtDayNumber";
-            this.txtDayNumber.Size = new System.Drawing.Size(121, 21);
-            this.txtDayNumber.TabIndex = 3;
-            // 
-            // label11
-            // 
-            this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(46, 40);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(65, 12);
-            this.label11.TabIndex = 5;
-            this.label11.Text = "班次名称：";
-            // 
-            // CboClassName
-            // 
-            this.CboClassName.FormattingEnabled = true;
-            this.CboClassName.Location = new System.Drawing.Point(117, 36);
-            this.CboClassName.Name = "CboClassName";
-            this.CboClassName.Size = new System.Drawing.Size(121, 20);
-            this.CboClassName.TabIndex = 6;
-            // 
             // chkMonday
             // 
             this.chkMonday.AutoSize = true;
@@ -507,10 +491,19 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "班次时间修改";
             // 
+            // lblTips
+            // 
+            this.lblTips.AutoSize = true;
+            this.lblTips.ForeColor = System.Drawing.Color.Red;
+            this.lblTips.Location = new System.Drawing.Point(576, 212);
+            this.lblTips.Name = "lblTips";
+            this.lblTips.Size = new System.Drawing.Size(0, 12);
+            this.lblTips.TabIndex = 9;
+            // 
             // dtpEndSignBack
             // 
             this.dtpEndSignBack.CustomFormat = "HH:mm:ss";
-            this.dtpEndSignBack.Format = System.Windows.Forms.DateTimePickerFormat.Time;
+            this.dtpEndSignBack.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.dtpEndSignBack.Location = new System.Drawing.Point(358, 206);
             this.dtpEndSignBack.Name = "dtpEndSignBack";
             this.dtpEndSignBack.ShowUpDown = true;
@@ -520,7 +513,7 @@
             // dtpEndCheckIn
             // 
             this.dtpEndCheckIn.CustomFormat = "HH:mm:ss";
-            this.dtpEndCheckIn.Format = System.Windows.Forms.DateTimePickerFormat.Time;
+            this.dtpEndCheckIn.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.dtpEndCheckIn.Location = new System.Drawing.Point(358, 163);
             this.dtpEndCheckIn.Name = "dtpEndCheckIn";
             this.dtpEndCheckIn.ShowUpDown = true;
@@ -530,7 +523,7 @@
             // dtpStartSignBack
             // 
             this.dtpStartSignBack.CustomFormat = "HH:mm:ss";
-            this.dtpStartSignBack.Format = System.Windows.Forms.DateTimePickerFormat.Time;
+            this.dtpStartSignBack.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.dtpStartSignBack.Location = new System.Drawing.Point(117, 206);
             this.dtpStartSignBack.Name = "dtpStartSignBack";
             this.dtpStartSignBack.ShowUpDown = true;
@@ -540,7 +533,7 @@
             // dtpStartCheckIn
             // 
             this.dtpStartCheckIn.CustomFormat = "HH:mm:ss";
-            this.dtpStartCheckIn.Format = System.Windows.Forms.DateTimePickerFormat.Time;
+            this.dtpStartCheckIn.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.dtpStartCheckIn.Location = new System.Drawing.Point(117, 163);
             this.dtpStartCheckIn.Name = "dtpStartCheckIn";
             this.dtpStartCheckIn.ShowUpDown = true;
@@ -550,7 +543,7 @@
             // dtpOffDutyTime
             // 
             this.dtpOffDutyTime.CustomFormat = "HH:mm:ss";
-            this.dtpOffDutyTime.Format = System.Windows.Forms.DateTimePickerFormat.Time;
+            this.dtpOffDutyTime.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.dtpOffDutyTime.Location = new System.Drawing.Point(358, 79);
             this.dtpOffDutyTime.Name = "dtpOffDutyTime";
             this.dtpOffDutyTime.ShowUpDown = true;
@@ -560,7 +553,7 @@
             // dtpWorkTime
             // 
             this.dtpWorkTime.CustomFormat = "HH:mm:ss";
-            this.dtpWorkTime.Format = System.Windows.Forms.DateTimePickerFormat.Time;
+            this.dtpWorkTime.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.dtpWorkTime.Location = new System.Drawing.Point(117, 79);
             this.dtpWorkTime.Name = "dtpWorkTime";
             this.dtpWorkTime.ShowUpDown = true;
@@ -604,14 +597,38 @@
             this.btnClassesAdd.UseVisualStyleBackColor = true;
             this.btnClassesAdd.Click += new System.EventHandler(this.btnClassesAdd_Click);
             // 
-            // lblTips
+            // label10
             // 
-            this.lblTips.AutoSize = true;
-            this.lblTips.ForeColor = System.Drawing.Color.Red;
-            this.lblTips.Location = new System.Drawing.Point(576, 212);
-            this.lblTips.Name = "lblTips";
-            this.lblTips.Size = new System.Drawing.Size(0, 12);
-            this.lblTips.TabIndex = 9;
+            this.label10.AutoSize = true;
+            this.label10.Location = new System.Drawing.Point(574, 84);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(101, 12);
+            this.label10.TabIndex = 2;
+            this.label10.Text = "记多少个工作日：";
+            // 
+            // txtDayNumber
+            // 
+            this.txtDayNumber.Location = new System.Drawing.Point(681, 79);
+            this.txtDayNumber.Name = "txtDayNumber";
+            this.txtDayNumber.Size = new System.Drawing.Size(121, 21);
+            this.txtDayNumber.TabIndex = 3;
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Location = new System.Drawing.Point(46, 40);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(65, 12);
+            this.label11.TabIndex = 5;
+            this.label11.Text = "班次名称：";
+            // 
+            // CboClassName
+            // 
+            this.CboClassName.FormattingEnabled = true;
+            this.CboClassName.Location = new System.Drawing.Point(117, 36);
+            this.CboClassName.Name = "CboClassName";
+            this.CboClassName.Size = new System.Drawing.Size(121, 20);
+            this.CboClassName.TabIndex = 6;
             // 
             // FrmShiftManage
             // 
@@ -646,10 +663,6 @@
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.Label label10;
-        private System.Windows.Forms.TextBox txtDayNumber;
-        private System.Windows.Forms.Label label11;
-        private System.Windows.Forms.ComboBox CboClassName;
         private System.Windows.Forms.CheckBox chkMonday;
         private System.Windows.Forms.CheckBox chkTuesday;
         private System.Windows.Forms.CheckBox chkWednesday;
@@ -661,6 +674,14 @@
         private System.Windows.Forms.Button btnRemove;
         private System.Windows.Forms.Button btnUpdate;
         private System.Windows.Forms.Button btnClassesAdd;
+        private System.Windows.Forms.DateTimePicker dtpWorkTime;
+        private System.Windows.Forms.DateTimePicker dtpEndSignBack;
+        private System.Windows.Forms.DateTimePicker dtpEndCheckIn;
+        private System.Windows.Forms.DateTimePicker dtpStartSignBack;
+        private System.Windows.Forms.DateTimePicker dtpStartCheckIn;
+        private System.Windows.Forms.DateTimePicker dtpOffDutyTime;
+        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Label lblTips;
         private System.Windows.Forms.DataGridViewTextBoxColumn ClassesName;
         private System.Windows.Forms.DataGridViewTextBoxColumn TimesName;
         private System.Windows.Forms.DataGridViewTextBoxColumn WorkTime;
@@ -679,13 +700,9 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Friday;
         private System.Windows.Forms.DataGridViewTextBoxColumn Saturday;
         private System.Windows.Forms.DataGridViewTextBoxColumn Sunday;
-        private System.Windows.Forms.DateTimePicker dtpWorkTime;
-        private System.Windows.Forms.DateTimePicker dtpEndSignBack;
-        private System.Windows.Forms.DateTimePicker dtpEndCheckIn;
-        private System.Windows.Forms.DateTimePicker dtpStartSignBack;
-        private System.Windows.Forms.DateTimePicker dtpStartCheckIn;
-        private System.Windows.Forms.DateTimePicker dtpOffDutyTime;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Label lblTips;
+        private System.Windows.Forms.ComboBox CboClassName;
+        private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.TextBox txtDayNumber;
+        private System.Windows.Forms.Label label10;
     }
 }
