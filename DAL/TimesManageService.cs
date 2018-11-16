@@ -10,7 +10,10 @@ using Models;
 
 namespace DAL
 {
-    public class ShiftManageService
+    /// <summary>
+    /// 时段管理业务逻辑类
+    /// </summary>
+    public class TimesManageService
     {
         /// <summary>
         /// 获得班次数据集
@@ -36,51 +39,25 @@ namespace DAL
         }
 
         /// <summary>
-        /// 验证结果
+        /// 验证时段名称
         /// </summary>
         /// <param name="TimesName">时段名称</param>
         /// <returns></returns>
-        public string getTimesName(string TimesName)
+        public bool IsTimesNameExisted(string TimesName)
         {
-            string sql = "select '[0]' from TimesManage";
+            string sql = "select count(*) from TimesManage where TimesName='{0}'";//count(*)代表计算返回的行数
             sql = string.Format(sql, TimesName);
-            SQLHelper.GetSingleResult(sql);
-            return TimesName;
+            int result= Convert.ToInt32(SQLHelper.GetSingleResult(sql));//条目数转换为int
+            if (result == 1) return true;//如果结果等于1则返回true
+            return false;//如果结果不等于1则返回false
         }
-
-
-        /// <summary>
-        /// 获取班次列表
-        /// </summary>
-        /// <returns>班次列表</returns>
-        public List<ShiftManage> GetGetClassList()
-        {
-            string sql = "select ClassesName from ClassesTime";
-            sql = string.Format(sql);
-
-            SqlDataReader objReader = SQLHelper.GetReader(sql);
-            List<ShiftManage> list = new List<ShiftManage>();
-            while (objReader.Read())
-            {
-                list.Add(new ShiftManage()
-                {
-                    ClassesName = objReader["ClassesName"].ToString(),
-                    //ClassesId=Convert.ToInt32(objReader["ClassesId"])
-
-                });                
-
-            }
-            objReader.Close();
-            return list;
-        }
-
 
         /// <summary>
         /// 添加时间段数据
         /// </summary>
         /// <param name="objTimes">时间段对象</param>
         /// <returns>返回执行结果</returns>
-        public int AddTimes(ShiftManage objTimes)
+        public int AddTimes(TimesManage objTimes)
         {
             StringBuilder sqlBuilder = new StringBuilder();
             sqlBuilder.Append("insert into TimesManage(TimesName,WorkTime,OffDutyTime,StartCheckIn,EndCheckIn,");

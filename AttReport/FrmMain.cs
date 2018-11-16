@@ -276,20 +276,20 @@ namespace AttReport
         }
 
         //班次管理窗口对象
-        public static FrmShiftManage objFrmShiftManage = null;
+        public static FrmClassesTimes objFrmClassesTimes = null;
 
         //班次管理菜单事件
         private void 班次管理ToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            if (objFrmShiftManage==null)
+            if (objFrmClassesTimes==null)
             {
-                objFrmShiftManage = new FrmShiftManage();
-                objFrmShiftManage.Show();
+                objFrmClassesTimes = new FrmClassesTimes();
+                objFrmClassesTimes.Show();
             }
             else
             {
-                objFrmShiftManage.Activate();//激活只能在最小化的时候起作用
-                objFrmShiftManage.WindowState = FormWindowState.Normal;
+                objFrmClassesTimes.Activate();//激活只能在最小化的时候起作用
+                objFrmClassesTimes.WindowState = FormWindowState.Normal;
             }
         }
 

@@ -13,33 +13,22 @@ using Models;
 
 namespace AttReport
 {
-    public partial class FrmShiftManage : Form
+    public partial class FrmClassesTimes : Form
     {
 
-        ShiftManageService objShiftServe = new ShiftManageService();
+        TimesManageService objShiftServe = new TimesManageService();
 
-        public FrmShiftManage()
+        public FrmClassesTimes()
         {
             InitializeComponent();
 
-            //获取数据
-            this.CboClassName.DataSource = objShiftServe.GetGetClassList();
+            ////获取数据
+            //this.cboClassName.DataSource = objShiftServe.GetClassList();
 
-            //显示班次
-            CboClassName.DisplayMember = "ClassesName";
-            //CboClassName.ValueMember = "ClassesId";
-            CboClassName.SelectedIndex = -1;//默认不显示
-
-            //设置默认时间
-            txtTimesName.Text = "上午";
-            dtpWorkTime.Value = Convert.ToDateTime("08:00:00");
-            dtpOffDutyTime.Value = Convert.ToDateTime("12:00:00");
-            dtpStartCheckIn.Value = Convert.ToDateTime("07:30:00");
-            dtpEndCheckIn.Value = Convert.ToDateTime("08:30:00");
-            dtpStartSignBack.Value = Convert.ToDateTime("12:00:00");
-            dtpEndSignBack.Value = Convert.ToDateTime("12:30:00");
-            txtLateTime.Text = "3";
-            txtLeftEarly.Text = "0";
+            ////显示班次
+            //cboClassName.DisplayMember = "ClassesName";
+            ////CboClassName.ValueMember = "ClassesId";
+            //cboClassName.SelectedIndex = -1;//默认不显示
 
         }
 
@@ -140,9 +129,9 @@ namespace AttReport
         #region 窗口关闭时清理对象
 
         //窗口关闭时清理对象
-        private void FrmShiftManage_FormClosed(object sender, FormClosedEventArgs e)
+        private void FrmClassesTimes_FormClosed(object sender, FormClosedEventArgs e)
         {
-            FrmMain.objFrmShiftManage = null;
+            FrmMain.objFrmClassesTimes = null;
         }
 
         #endregion

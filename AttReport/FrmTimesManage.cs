@@ -8,7 +8,6 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-using System.Data;
 using System.Data.SqlClient;
 using DAL;
 using Models;
@@ -17,7 +16,7 @@ namespace AttReport
 {
     public partial class FrmTimesManage : Form
     {
-        ShiftManageService objShiftServe = new ShiftManageService();
+        TimesManageService objShiftServe = new TimesManageService();
 
         public FrmTimesManage()
         {
@@ -35,6 +34,7 @@ namespace AttReport
             txtLeftEarly.Text = "0";
         }
 
+
         //启动时加载数据集
         private void FrmTimesManage_Load(object sender, EventArgs e)
         {
@@ -45,64 +45,97 @@ namespace AttReport
         }
 
 
+        //把dgv内容输出到txt等控件
+        private void dgvTimesManage_SelectionChanged(object sender, EventArgs e)
+        {
+            if (dgvTimesManage.SelectionMode != DataGridViewSelectionMode.FullColumnSelect)
+            {
+                int index = dgvTimesManage.CurrentRow.Index;
+                txtTimesName.Text = dgvTimesManage.Rows[index].Cells[0].Value.ToString();
+                dtpWorkTime.Text = dgvTimesManage.Rows[index].Cells[1].Value.ToString();
+                dtpOffDutyTime.Text = dgvTimesManage.Rows[index].Cells[2].Value.ToString();
+                dtpStartCheckIn.Text = dgvTimesManage.Rows[index].Cells[3].Value.ToString();
+                dtpEndCheckIn.Text = dgvTimesManage.Rows[index].Cells[4].Value.ToString();
+                dtpStartSignBack.Text = dgvTimesManage.Rows[index].Cells[5].Value.ToString();
+                dtpEndSignBack.Text = dgvTimesManage.Rows[index].Cells[6].Value.ToString();
+                txtLateTime.Text = dgvTimesManage.Rows[index].Cells[7].Value.ToString();
+                txtLeftEarly.Text = dgvTimesManage.Rows[index].Cells[8].Value.ToString();
+            }
+
+        }
+
+
         //添加时间段
         private void btnAdd_Click(object sender, EventArgs e)
         {
             if (txtTimesName.Text.Trim() == "")
             {
                 MessageBox.Show("时段名称不能为空！");
+                txtTimesName.Focus();
                 return;
             }
             if (txtLateTime.Text.Trim() == "")
             {
                 MessageBox.Show("迟到分种数不能为空！");
+                txtLateTime.Focus();
                 return;
             }
             if (txtLeftEarly.Text.Trim() == "")
             {
                 MessageBox.Show("早退分钟数不能为空！");
+                txtLeftEarly.Focus();
                 return;
             }
 
-            ShiftManage objTimes = new ShiftManage()
+            //验证时段名称
+            if (objShiftServe.IsTimesNameExisted(txtTimesName.Text.Trim()))
             {
-                TimesName = txtTimesName.Text.Trim(),
-                WorkTime = dtpWorkTime.Text.Trim(),
-                OffDutyTime = dtpOffDutyTime.Text.Trim(),
-                StartCheckIn = dtpStartCheckIn.Text.Trim(),
-                EndCheckIn = dtpEndCheckIn.Text.Trim(),
-                StartSignBack = dtpStartSignBack.Text.Trim(),
-                EndSignBack = dtpEndSignBack.Text.Trim(),
-
-                LateTime = Convert.ToInt32(txtLateTime.Text.Trim()),
-                LeftEarly = Convert.ToInt32(txtLeftEarly.Text.Trim()),
-            };
-
-            //插入数据
-            objShiftServe.AddTimes(objTimes);
-
-            //刷新DGV
-            dgvTimesManage.DataSource = objShiftServe.GetTimesDataSet().Tables[0];
-
-
-            //清空数据
-            foreach (Control item in Controls)
+                MessageBox.Show("时段名称重复");
+                txtTimesName.Focus();//设置焦点
+                txtTimesName.SelectAll();//选定文本
+                return;
+            }
+            else
             {
-                if (item is TextBox)
+                TimesManage objTimes = new TimesManage()
                 {
-                    item.Text = "";
-                }
+                    TimesName = txtTimesName.Text.Trim(),
+                    WorkTime = dtpWorkTime.Text.Trim(),
+                    OffDutyTime = dtpOffDutyTime.Text.Trim(),
+                    StartCheckIn = dtpStartCheckIn.Text.Trim(),
+                    EndCheckIn = dtpEndCheckIn.Text.Trim(),
+                    StartSignBack = dtpStartSignBack.Text.Trim(),
+                    EndSignBack = dtpEndSignBack.Text.Trim(),
 
-                else if (item is ComboBox)
-                {
-                    item.Text = "";
-                }
+                    LateTime = Convert.ToInt32(txtLateTime.Text.Trim()),
+                    LeftEarly = Convert.ToInt32(txtLeftEarly.Text.Trim()),
+                };
 
-                else if (item is DateTimePicker)
+                //插入数据
+                objShiftServe.AddTimes(objTimes);
+
+                //刷新DGV
+                DataTable dtTimesManage = objShiftServe.GetTimesDataSet().Tables[0];//获取TimesManage表
+
+                dtTimesManage.Columns.Remove("TimesId");//移除TimesId列
+                dgvTimesManage.DataSource = dtTimesManage;//输出过滤后的数据
+
+
+                //清空数据
+                foreach (Control item in Controls)
                 {
-                    item.Text = null;
+                    if (item is TextBox)
+                    {
+                        item.Text = "";
+                    }
+
+                    else if (item is ComboBox)
+                    {
+                        item.Text = "";
+                    }
                 }
             }
+
         }
 
 
