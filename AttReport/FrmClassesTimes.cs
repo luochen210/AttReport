@@ -40,57 +40,42 @@ namespace AttReport
         //添加班次
         private void btnClassesAdd_Click(object sender, EventArgs e)
         {
-            //if (CboClassName.Text.Trim() == "")
-            //{
-            //    MessageBox.Show("班次名称不能为空！");
-            //    return;
-            //}
+            //验证输入
+            if (txtClassesName.Text.Trim() == "")
+            {
+                MessageBox.Show("班次名称不能为空！");
+                return;
+            }
 
-            //if (txtTimesName.Text.Trim() == "")
-            //{
-            //    MessageBox.Show("时段名称不能为空！");
-            //    return;
-            //}
-            //if (txtLateTime.Text.Trim() == "")
-            //{
-            //    MessageBox.Show("迟到分种数不能为空！");
-            //    return;
-            //}
-            //if (txtLeftEarly.Text.Trim() == "")
-            //{
-            //    MessageBox.Show("早退分钟数不能为空！");
-            //    return;
-            //}
-            //if (txtDayNumber.Text.Trim() == "")
-            //{
-            //    MessageBox.Show("天数不能为空！");
-            //    return;
-            //}
+            if (cboTimes1.Text.Trim() == "")
+            {
+                MessageBox.Show("时段名称1不能为空！");
+                return;
+            }
+            if (cboTimes2.Text.Trim() == "")
+            {
+                MessageBox.Show("时段2名称不能为空！");
+                return;
+            }
 
-            //ShiftManage objShift = new ShiftManage()
-            //{
-            //    ClassesName = CboClassName.Text.Trim(),
-            //    TimesName = txtTimesName.Text.Trim(),
-            //    WorkTime = dtpWorkTime.Text.Trim(),
-            //    OffDutyTime = dtpOffDutyTime.Text.Trim(),
-            //    StartCheckIn = dtpStartCheckIn.Text.Trim(),
-            //    EndCheckIn = dtpEndCheckIn.Text.Trim(),
-            //    StartSignBack = dtpStartSignBack.Text.Trim(),
-            //    EndSignBack = dtpEndSignBack.Text.Trim(),
+            //封装对象
+            ClassesTimes objClasses = new ClassesTimes()
+            {
+                ClassesName = txtClassesName.Text.Trim(),
+                TimesName1 = cboTimes1.Text.Trim(),
+                TimesName2 = cboTimes2.Text.Trim(),
+                TimesName3 = cboTimes3.Text.Trim(),
 
-            //    LateTime = Convert.ToInt32(txtLateTime.Text.Trim()),
-            //    LeftEarly = Convert.ToInt32(txtLeftEarly.Text.Trim()),
+                Monday = Convert.ToInt32(chkMonday.Checked),
+                Tuesday = Convert.ToInt32(chkTuesday.Checked),
+                Wednesday = Convert.ToInt32(chkWednesday.Checked),
+                Thursday = Convert.ToInt32(chkThursday.Checked),
+                Friday = Convert.ToInt32(chkFriday.Checked),
+                Saturday = Convert.ToInt32(chkSaturday.Checked),
+                Sunday = Convert.ToInt32(chkSunday.Checked)
+            };
 
-            //    DayNumber = Convert.ToDouble(txtDayNumber.Text.Trim()),
 
-            //    Monday = Convert.ToInt32(chkMonday.Checked),
-            //    Tuesday = Convert.ToInt32(chkTuesday.Checked),
-            //    Wednesday = Convert.ToInt32(chkWednesday.Checked),
-            //    Thursday = Convert.ToInt32(chkThursday.Checked),
-            //    Friday = Convert.ToInt32(chkFriday.Checked),
-            //    Saturday = Convert.ToInt32(chkSaturday.Checked),
-            //    Sunday = Convert.ToInt32(chkSunday.Checked)
-            //};
 
             ////插入数据
             //objShiftServe.AddTimes(objShift);
@@ -153,11 +138,11 @@ namespace AttReport
 
                 for (int i = cboTempDataList.Count - 1; i >= 0; i--) //倒序循环，list.Count-1是因为集合索引是从0开始
                 {
-                    if (cboTempDataList[i].TimesName == cboTimes1.Text.Trim())//如果索引名称等于cbo已选择的名称
+                    if (cboTempDataList[i].TimesName == cboTimes1.Text.Trim())//判断索引名称是否等于cbo1
                     {
                         cboTempDataList.Remove(cboTempDataList[i]);//删除对应的索引对象
                     }
-                    else if (cboTempDataList[i].TimesName == cboTimes2.Text.Trim())
+                    else if (cboTempDataList[i].TimesName == cboTimes2.Text.Trim()) //判断索引名称是否等于cbo2
                     {
                         cboTempDataList.Remove(cboTempDataList[i]);//删除对应的索引对象
                     }
