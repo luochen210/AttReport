@@ -28,29 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this.dgvClassses = new System.Windows.Forms.DataGridView();
-            this.label1 = new System.Windows.Forms.Label();
-            this.chkMonday = new System.Windows.Forms.CheckBox();
-            this.chkTuesday = new System.Windows.Forms.CheckBox();
-            this.chkWednesday = new System.Windows.Forms.CheckBox();
-            this.chkThursday = new System.Windows.Forms.CheckBox();
-            this.chkFriday = new System.Windows.Forms.CheckBox();
-            this.chkSaturday = new System.Windows.Forms.CheckBox();
-            this.chkSunday = new System.Windows.Forms.CheckBox();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.button1 = new System.Windows.Forms.Button();
-            this.btnRemove = new System.Windows.Forms.Button();
-            this.btnUpdate = new System.Windows.Forms.Button();
-            this.btnClassesAdd = new System.Windows.Forms.Button();
-            this.cboClassName = new System.Windows.Forms.ComboBox();
-            this.label11 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.cboTimes1 = new System.Windows.Forms.ComboBox();
-            this.cboTimes2 = new System.Windows.Forms.ComboBox();
-            this.cboTimes3 = new System.Windows.Forms.ComboBox();
             this.ClassesName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Times1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Times2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -62,6 +42,26 @@
             this.Friday = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Saturday = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Sunday = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.label1 = new System.Windows.Forms.Label();
+            this.chkMonday = new System.Windows.Forms.CheckBox();
+            this.chkTuesday = new System.Windows.Forms.CheckBox();
+            this.chkWednesday = new System.Windows.Forms.CheckBox();
+            this.chkThursday = new System.Windows.Forms.CheckBox();
+            this.chkFriday = new System.Windows.Forms.CheckBox();
+            this.chkSaturday = new System.Windows.Forms.CheckBox();
+            this.chkSunday = new System.Windows.Forms.CheckBox();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.txtClassesName = new System.Windows.Forms.TextBox();
+            this.button1 = new System.Windows.Forms.Button();
+            this.btnRemove = new System.Windows.Forms.Button();
+            this.btnUpdate = new System.Windows.Forms.Button();
+            this.btnClassesAdd = new System.Windows.Forms.Button();
+            this.cboTimes3 = new System.Windows.Forms.ComboBox();
+            this.cboTimes2 = new System.Windows.Forms.ComboBox();
+            this.cboTimes1 = new System.Windows.Forms.ComboBox();
+            this.label11 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dgvClassses)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
@@ -74,14 +74,14 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.dgvClassses.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvClassses.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvClassses.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
             this.dgvClassses.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvClassses.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.ClassesName,
@@ -99,8 +99,87 @@
             this.dgvClassses.Name = "dgvClassses";
             this.dgvClassses.RowHeadersVisible = false;
             this.dgvClassses.RowTemplate.Height = 23;
-            this.dgvClassses.Size = new System.Drawing.Size(984, 255);
+            this.dgvClassses.Size = new System.Drawing.Size(984, 556);
             this.dgvClassses.TabIndex = 0;
+            // 
+            // ClassesName
+            // 
+            this.ClassesName.DataPropertyName = "ClassesName";
+            this.ClassesName.HeaderText = "班次名称";
+            this.ClassesName.Name = "ClassesName";
+            this.ClassesName.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            // 
+            // Times1
+            // 
+            this.Times1.DataPropertyName = "Times1";
+            this.Times1.HeaderText = "时段1";
+            this.Times1.Name = "Times1";
+            this.Times1.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            // 
+            // Times2
+            // 
+            this.Times2.DataPropertyName = "Times2";
+            dataGridViewCellStyle4.NullValue = null;
+            this.Times2.DefaultCellStyle = dataGridViewCellStyle4;
+            this.Times2.HeaderText = "时段2";
+            this.Times2.Name = "Times2";
+            this.Times2.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            // 
+            // Times3
+            // 
+            this.Times3.DataPropertyName = "Times3";
+            this.Times3.HeaderText = "时段3";
+            this.Times3.Name = "Times3";
+            this.Times3.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            // 
+            // Monday
+            // 
+            this.Monday.DataPropertyName = "Monday";
+            this.Monday.HeaderText = "周一";
+            this.Monday.Name = "Monday";
+            this.Monday.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            // 
+            // Tuesday
+            // 
+            this.Tuesday.DataPropertyName = "Tuesday";
+            this.Tuesday.HeaderText = "周二";
+            this.Tuesday.Name = "Tuesday";
+            this.Tuesday.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            // 
+            // Wednesday
+            // 
+            this.Wednesday.DataPropertyName = "Wednesday";
+            this.Wednesday.HeaderText = "周三";
+            this.Wednesday.Name = "Wednesday";
+            this.Wednesday.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            // 
+            // Thursday
+            // 
+            this.Thursday.DataPropertyName = "Thursday";
+            this.Thursday.HeaderText = "周四";
+            this.Thursday.Name = "Thursday";
+            this.Thursday.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            // 
+            // Friday
+            // 
+            this.Friday.DataPropertyName = "Friday";
+            this.Friday.HeaderText = "周五";
+            this.Friday.Name = "Friday";
+            this.Friday.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            // 
+            // Saturday
+            // 
+            this.Saturday.DataPropertyName = "Saturday";
+            this.Saturday.HeaderText = "周六";
+            this.Saturday.Name = "Saturday";
+            this.Saturday.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            // 
+            // Sunday
+            // 
+            this.Sunday.DataPropertyName = "Sunday";
+            this.Sunday.HeaderText = "周日";
+            this.Sunday.Name = "Sunday";
+            this.Sunday.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
             // 
             // label1
             // 
@@ -185,6 +264,7 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.txtClassesName);
             this.groupBox1.Controls.Add(this.button1);
             this.groupBox1.Controls.Add(this.btnRemove);
             this.groupBox1.Controls.Add(this.chkThursday);
@@ -199,7 +279,6 @@
             this.groupBox1.Controls.Add(this.cboTimes3);
             this.groupBox1.Controls.Add(this.cboTimes2);
             this.groupBox1.Controls.Add(this.cboTimes1);
-            this.groupBox1.Controls.Add(this.cboClassName);
             this.groupBox1.Controls.Add(this.label11);
             this.groupBox1.Controls.Add(this.label3);
             this.groupBox1.Controls.Add(this.label2);
@@ -210,6 +289,13 @@
             this.groupBox1.TabIndex = 8;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "班次时间修改";
+            // 
+            // txtClassesName
+            // 
+            this.txtClassesName.Location = new System.Drawing.Point(109, 36);
+            this.txtClassesName.Name = "txtClassesName";
+            this.txtClassesName.Size = new System.Drawing.Size(121, 21);
+            this.txtClassesName.TabIndex = 8;
             // 
             // button1
             // 
@@ -248,13 +334,31 @@
             this.btnClassesAdd.UseVisualStyleBackColor = true;
             this.btnClassesAdd.Click += new System.EventHandler(this.btnClassesAdd_Click);
             // 
-            // cboClassName
+            // cboTimes3
             // 
-            this.cboClassName.FormattingEnabled = true;
-            this.cboClassName.Location = new System.Drawing.Point(109, 36);
-            this.cboClassName.Name = "cboClassName";
-            this.cboClassName.Size = new System.Drawing.Size(121, 20);
-            this.cboClassName.TabIndex = 6;
+            this.cboTimes3.FormattingEnabled = true;
+            this.cboTimes3.Location = new System.Drawing.Point(826, 36);
+            this.cboTimes3.Name = "cboTimes3";
+            this.cboTimes3.Size = new System.Drawing.Size(121, 20);
+            this.cboTimes3.TabIndex = 6;
+            // 
+            // cboTimes2
+            // 
+            this.cboTimes2.FormattingEnabled = true;
+            this.cboTimes2.Location = new System.Drawing.Point(587, 36);
+            this.cboTimes2.Name = "cboTimes2";
+            this.cboTimes2.Size = new System.Drawing.Size(121, 20);
+            this.cboTimes2.TabIndex = 6;
+            this.cboTimes2.SelectedIndexChanged += new System.EventHandler(this.cboTimes2_SelectedIndexChanged);
+            // 
+            // cboTimes1
+            // 
+            this.cboTimes1.FormattingEnabled = true;
+            this.cboTimes1.Location = new System.Drawing.Point(348, 36);
+            this.cboTimes1.Name = "cboTimes1";
+            this.cboTimes1.Size = new System.Drawing.Size(121, 20);
+            this.cboTimes1.TabIndex = 6;
+            this.cboTimes1.SelectedIndexChanged += new System.EventHandler(this.cboTimes1_SelectedIndexChanged);
             // 
             // label11
             // 
@@ -265,15 +369,6 @@
             this.label11.TabIndex = 5;
             this.label11.Text = "班次名称：";
             // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(534, 40);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(47, 12);
-            this.label2.TabIndex = 2;
-            this.label2.Text = "时段2：";
-            // 
             // label3
             // 
             this.label3.AutoSize = true;
@@ -283,122 +378,28 @@
             this.label3.TabIndex = 2;
             this.label3.Text = "时段3：";
             // 
-            // cboTimes1
+            // label2
             // 
-            this.cboTimes1.FormattingEnabled = true;
-            this.cboTimes1.Location = new System.Drawing.Point(348, 36);
-            this.cboTimes1.Name = "cboTimes1";
-            this.cboTimes1.Size = new System.Drawing.Size(121, 20);
-            this.cboTimes1.TabIndex = 6;
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(534, 40);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(47, 12);
+            this.label2.TabIndex = 2;
+            this.label2.Text = "时段2：";
             // 
-            // cboTimes2
-            // 
-            this.cboTimes2.FormattingEnabled = true;
-            this.cboTimes2.Location = new System.Drawing.Point(587, 36);
-            this.cboTimes2.Name = "cboTimes2";
-            this.cboTimes2.Size = new System.Drawing.Size(121, 20);
-            this.cboTimes2.TabIndex = 6;
-            // 
-            // cboTimes3
-            // 
-            this.cboTimes3.FormattingEnabled = true;
-            this.cboTimes3.Location = new System.Drawing.Point(826, 36);
-            this.cboTimes3.Name = "cboTimes3";
-            this.cboTimes3.Size = new System.Drawing.Size(121, 20);
-            this.cboTimes3.TabIndex = 6;
-            // 
-            // ClassesName
-            // 
-            this.ClassesName.DataPropertyName = "ClassesName";
-            this.ClassesName.HeaderText = "班次名称";
-            this.ClassesName.Name = "ClassesName";
-            this.ClassesName.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            // 
-            // Times1
-            // 
-            this.Times1.DataPropertyName = "Times1";
-            this.Times1.HeaderText = "时段1";
-            this.Times1.Name = "Times1";
-            this.Times1.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            // 
-            // Times2
-            // 
-            this.Times2.DataPropertyName = "Times2";
-            dataGridViewCellStyle2.NullValue = null;
-            this.Times2.DefaultCellStyle = dataGridViewCellStyle2;
-            this.Times2.HeaderText = "时段2";
-            this.Times2.Name = "Times2";
-            this.Times2.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            // 
-            // Times3
-            // 
-            this.Times3.DataPropertyName = "Times3";
-            this.Times3.HeaderText = "时段3";
-            this.Times3.Name = "Times3";
-            this.Times3.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            // 
-            // Monday
-            // 
-            this.Monday.DataPropertyName = "Monday";
-            this.Monday.HeaderText = "周一";
-            this.Monday.Name = "Monday";
-            this.Monday.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            // 
-            // Tuesday
-            // 
-            this.Tuesday.DataPropertyName = "Tuesday";
-            this.Tuesday.HeaderText = "周二";
-            this.Tuesday.Name = "Tuesday";
-            this.Tuesday.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            // 
-            // Wednesday
-            // 
-            this.Wednesday.DataPropertyName = "Wednesday";
-            this.Wednesday.HeaderText = "周三";
-            this.Wednesday.Name = "Wednesday";
-            this.Wednesday.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            // 
-            // Thursday
-            // 
-            this.Thursday.DataPropertyName = "Thursday";
-            this.Thursday.HeaderText = "周四";
-            this.Thursday.Name = "Thursday";
-            this.Thursday.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            // 
-            // Friday
-            // 
-            this.Friday.DataPropertyName = "Friday";
-            this.Friday.HeaderText = "周五";
-            this.Friday.Name = "Friday";
-            this.Friday.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            // 
-            // Saturday
-            // 
-            this.Saturday.DataPropertyName = "Saturday";
-            this.Saturday.HeaderText = "周六";
-            this.Saturday.Name = "Saturday";
-            this.Saturday.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            // 
-            // Sunday
-            // 
-            this.Sunday.DataPropertyName = "Sunday";
-            this.Sunday.HeaderText = "周日";
-            this.Sunday.Name = "Sunday";
-            this.Sunday.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            // 
-            // FrmShiftManage
+            // FrmClassesTimes
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1008, 428);
+            this.ClientSize = new System.Drawing.Size(1008, 729);
             this.Controls.Add(this.dgvClassses);
             this.Controls.Add(this.groupBox1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
-            this.Name = "FrmShiftManage";
+            this.Name = "FrmClassesTimes";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "班次管理";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.FrmClassesTimes_FormClosed);
-            this.Load += new System.EventHandler(this.FrmShiftManage_Load);
+            this.Load += new System.EventHandler(this.FrmClassesTimes_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvClassses)).EndInit();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
@@ -421,7 +422,6 @@
         private System.Windows.Forms.Button btnUpdate;
         private System.Windows.Forms.Button btnClassesAdd;
         private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.ComboBox cboClassName;
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.DataGridViewTextBoxColumn ClassesName;
         private System.Windows.Forms.DataGridViewTextBoxColumn Times1;
@@ -439,5 +439,6 @@
         private System.Windows.Forms.ComboBox cboTimes1;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.TextBox txtClassesName;
     }
 }

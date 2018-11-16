@@ -16,24 +16,22 @@ namespace AttReport
     public partial class FrmClassesTimes : Form
     {
 
-        TimesManageService objShiftServe = new TimesManageService();
+        TimesManageService objTimesService = new TimesManageService();
 
         public FrmClassesTimes()
         {
             InitializeComponent();
 
-            ////获取数据
-            //this.cboClassName.DataSource = objShiftServe.GetClassList();
-
-            ////显示班次
-            //cboClassName.DisplayMember = "ClassesName";
-            ////CboClassName.ValueMember = "ClassesId";
-            //cboClassName.SelectedIndex = -1;//默认不显示
+            //获取数据
+            this.cboTimes1.DataSource = objTimesService.GetTimesNameList();
+            cboTimes1.DisplayMember = "TimesName";
+            cboTimes1.SelectedIndex = -1;//默认不显示
 
         }
 
+
         //窗体加载时读取班次表
-        private void FrmShiftManage_Load(object sender, EventArgs e)
+        private void FrmClassesTimes_Load(object sender, EventArgs e)
         {
             //this.dgvClassses.DataSource = objShiftServe.GetClassDataSet().Tables[0];
         }
@@ -125,6 +123,53 @@ namespace AttReport
 
 
 
+        //移除已占用的时段
+        private void cboTimes1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (FrmMain.objFrmClassesTimes != null)
+            {
+                var cboTempDataList = objTimesService.GetTimesNameList();//获取集合
+
+                for (int i = cboTempDataList.Count - 1; i >= 0; i--) //倒序循环，list.Count-1是因为集合索引是从0开始
+                {
+                    if (cboTempDataList[i].TimesName == cboTimes1.Text.Trim())//如果索引名称等于cbo已选择的名称
+                    {
+                        cboTempDataList.Remove(cboTempDataList[i]);//删除对应的索引对象
+                    }
+                }
+
+                cboTimes2.DataSource = cboTempDataList;
+                cboTimes2.DisplayMember = "TimesName";
+                cboTimes2.SelectedIndex = -1;//默认不显示
+            }
+
+        }
+
+        private void cboTimes2_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (FrmMain.objFrmClassesTimes != null)
+            {
+                var cboTempDataList = objTimesService.GetTimesNameList();//获取集合
+
+                for (int i = cboTempDataList.Count - 1; i >= 0; i--) //倒序循环，list.Count-1是因为集合索引是从0开始
+                {
+                    if (cboTempDataList[i].TimesName == cboTimes1.Text.Trim())//如果索引名称等于cbo已选择的名称
+                    {
+                        cboTempDataList.Remove(cboTempDataList[i]);//删除对应的索引对象
+                    }
+                    else if (cboTempDataList[i].TimesName == cboTimes2.Text.Trim())
+                    {
+                        cboTempDataList.Remove(cboTempDataList[i]);//删除对应的索引对象
+                    }
+                }
+
+                cboTimes3.DataSource = cboTempDataList;
+                cboTimes3.DisplayMember = "TimesName";
+                cboTimes3.SelectedIndex = -1;//默认不显示
+
+            }
+        }
+
 
         #region 窗口关闭时清理对象
 
@@ -134,8 +179,7 @@ namespace AttReport
             FrmMain.objFrmClassesTimes = null;
         }
 
+
         #endregion
-
-
     }
 }

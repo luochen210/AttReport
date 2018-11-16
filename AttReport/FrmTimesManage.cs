@@ -16,7 +16,7 @@ namespace AttReport
 {
     public partial class FrmTimesManage : Form
     {
-        TimesManageService objShiftServe = new TimesManageService();
+        TimesManageService objTimesService = new TimesManageService();
 
         public FrmTimesManage()
         {
@@ -38,7 +38,7 @@ namespace AttReport
         //启动时加载数据集
         private void FrmTimesManage_Load(object sender, EventArgs e)
         {
-            DataTable dtTimesManage = objShiftServe.GetTimesDataSet().Tables[0];//获取TimesManage表
+            DataTable dtTimesManage = objTimesService.GetTimesDataSet().Tables[0];//获取TimesManage表
 
             dtTimesManage.Columns.Remove("TimesId");//移除TimesId列
             dgvTimesManage.DataSource = dtTimesManage;//输出过滤后的数据
@@ -88,7 +88,7 @@ namespace AttReport
             }
 
             //验证时段名称
-            if (objShiftServe.IsTimesNameExisted(txtTimesName.Text.Trim()))
+            if (objTimesService.IsTimesNameExisted(txtTimesName.Text.Trim()))
             {
                 MessageBox.Show("时段名称重复");
                 txtTimesName.Focus();//设置焦点
@@ -112,10 +112,10 @@ namespace AttReport
                 };
 
                 //插入数据
-                objShiftServe.AddTimes(objTimes);
+                objTimesService.AddTimes(objTimes);
 
                 //刷新DGV
-                DataTable dtTimesManage = objShiftServe.GetTimesDataSet().Tables[0];//获取TimesManage表
+                DataTable dtTimesManage = objTimesService.GetTimesDataSet().Tables[0];//获取TimesManage表
 
                 dtTimesManage.Columns.Remove("TimesId");//移除TimesId列
                 dgvTimesManage.DataSource = dtTimesManage;//输出过滤后的数据

@@ -16,53 +16,7 @@ namespace DAL
     /// </summary>
     public class ClassesTimesService
     {
-        /// <summary>
-        /// 获取班次列表
-        /// </summary>
-        /// <returns>班次列表</returns>
-        public List<ClassesTimes> GetClassList()
-        {
-            string sql = "select ClassesName from ClassesTimes";
-            sql = string.Format(sql);
 
-            SqlDataReader objReader = SQLHelper.GetReader(sql);
-            List<ClassesTimes> list = new List<ClassesTimes>();
-            while (objReader.Read())
-            {
-                list.Add(new ClassesTimes()
-                {
-                    ClassesName = objReader["ClassesName"].ToString(),
-                    //ClassesId=Convert.ToInt32(objReader["ClassesId"])
-
-                });
-
-            }
-            objReader.Close();
-            return list;
-        }
-
-
-        /// <summary>
-        /// 获得时段1
-        /// </summary>
-        /// <returns></returns>
-        public List<ClassesTimes> GetTimesList()
-        {
-            string sql = "select TimesName1 from ClassesTimes";
-            sql = string.Format(sql);
-
-            SqlDataReader objReader = SQLHelper.GetReader(sql);
-            List<ClassesTimes> list = new List<ClassesTimes>();
-            while (objReader.Read())
-            {
-                list.Add(new ClassesTimes()
-                {
-                    TimesName1=objReader["TimesName1"].ToString(),
-                });
-            }
-            objReader.Close();
-            return list;
-        }
 
 
 

@@ -53,6 +53,29 @@ namespace DAL
         }
 
         /// <summary>
+        /// 获得时段名
+        /// </summary>
+        /// <returns>时段名集合</returns>
+        public List<TimesManage> GetTimesNameList()
+        {
+            string sql = "select TimesName from TimesManage";
+            sql = string.Format(sql);
+
+            SqlDataReader objReader = SQLHelper.GetReader(sql);
+            List<TimesManage> list = new List<TimesManage>();
+            while (objReader.Read())
+            {
+                list.Add(new TimesManage()
+                {
+                    TimesName = objReader["TimesName"].ToString(),
+                });
+            }
+            objReader.Close();
+            return list;
+        }
+
+
+        /// <summary>
         /// 添加时间段数据
         /// </summary>
         /// <param name="objTimes">时间段对象</param>
