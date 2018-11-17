@@ -17,13 +17,18 @@ namespace AttReport
     {
 
         TimesManageService objTimesService = new TimesManageService();
+        ClassesTimesService objClassesService = new ClassesTimesService();
+
+        List<TimesManage> cboDataSource;//cbo数据源成员变量
 
         public FrmClassesTimes()
         {
             InitializeComponent();
 
+            cboDataSource = objTimesService.GetTimesNameList();
+
             //获取数据
-            this.cboTimes1.DataSource = objTimesService.GetTimesNameList();
+            this.cboTimes1.DataSource = cboDataSource;
             cboTimes1.DisplayMember = "TimesName";
             cboTimes1.SelectedIndex = -1;//默认不显示
 
@@ -33,7 +38,8 @@ namespace AttReport
         //窗体加载时读取班次表
         private void FrmClassesTimes_Load(object sender, EventArgs e)
         {
-            //this.dgvClassses.DataSource = objShiftServe.GetClassDataSet().Tables[0];
+            ClassesTimesService objClasses = new ClassesTimesService();
+            //this.dgvClassses.DataSource = objClasses.GetClassDataSet().Tables[0];
         }
 
 
@@ -113,17 +119,14 @@ namespace AttReport
         {
             if (FrmMain.objFrmClassesTimes != null)
             {
-                var cboTempDataList = objTimesService.GetTimesNameList();//获取集合
+                cboTimes2.DataSource = null;//清空源
 
-                for (int i = cboTempDataList.Count - 1; i >= 0; i--) //倒序循环，list.Count-1是因为集合索引是从0开始
-                {
-                    if (cboTempDataList[i].TimesName == cboTimes1.Text.Trim())//如果索引名称等于cbo已选择的名称
-                    {
-                        cboTempDataList.Remove(cboTempDataList[i]);//删除对应的索引对象
-                    }
-                }
+                var cboTempData = cboDataSource;//获取集合
 
-                cboTimes2.DataSource = cboTempDataList;
+                cboTimes2.DataSource = cboTempData//设置源
+                    .Where(item => item.TimesName != cboTimes1.Text.Trim())//排除cboTimes2选择的元素
+                    .ToList();//转换为List
+
                 cboTimes2.DisplayMember = "TimesName";
                 cboTimes2.SelectedIndex = -1;//默认不显示
             }
@@ -134,24 +137,15 @@ namespace AttReport
         {
             if (FrmMain.objFrmClassesTimes != null)
             {
-                var cboTempDataList = objTimesService.GetTimesNameList();//获取集合
+                cboTimes3.DataSource = null; //清空源
 
-                for (int i = cboTempDataList.Count - 1; i >= 0; i--) //倒序循环，list.Count-1是因为集合索引是从0开始
-                {
-                    if (cboTempDataList[i].TimesName == cboTimes1.Text.Trim())//判断索引名称是否等于cbo1
-                    {
-                        cboTempDataList.Remove(cboTempDataList[i]);//删除对应的索引对象
-                    }
-                    else if (cboTempDataList[i].TimesName == cboTimes2.Text.Trim()) //判断索引名称是否等于cbo2
-                    {
-                        cboTempDataList.Remove(cboTempDataList[i]);//删除对应的索引对象
-                    }
-                }
+                 var cboTempData = cboDataSource;//获取集合，cboDataSource为成员变量
+                cboTimes3.DataSource = cboTempData//设置源
+                    .Where(item => item.TimesName != cboTimes1.Text.Trim() && item.TimesName != cboTimes2.Text.Trim())//排除cboTimes1和cboTimes2选择的元素
+                    .ToList();//转换为List
 
-                cboTimes3.DataSource = cboTempDataList;
                 cboTimes3.DisplayMember = "TimesName";
                 cboTimes3.SelectedIndex = -1;//默认不显示
-
             }
         }
 
