@@ -99,13 +99,13 @@
             this.dgvClassses.Name = "dgvClassses";
             this.dgvClassses.RowHeadersVisible = false;
             this.dgvClassses.RowTemplate.Height = 23;
-            this.dgvClassses.Size = new System.Drawing.Size(984, 556);
+            this.dgvClassses.Size = new System.Drawing.Size(923, 293);
             this.dgvClassses.TabIndex = 0;
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(295, 40);
+            this.label1.Location = new System.Drawing.Point(267, 40);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(47, 12);
             this.label1.TabIndex = 2;
@@ -114,7 +114,7 @@
             // chkMonday
             // 
             this.chkMonday.AutoSize = true;
-            this.chkMonday.Location = new System.Drawing.Point(40, 85);
+            this.chkMonday.Location = new System.Drawing.Point(21, 85);
             this.chkMonday.Name = "chkMonday";
             this.chkMonday.Size = new System.Drawing.Size(48, 16);
             this.chkMonday.TabIndex = 7;
@@ -124,7 +124,7 @@
             // chkTuesday
             // 
             this.chkTuesday.AutoSize = true;
-            this.chkTuesday.Location = new System.Drawing.Point(104, 85);
+            this.chkTuesday.Location = new System.Drawing.Point(85, 85);
             this.chkTuesday.Name = "chkTuesday";
             this.chkTuesday.Size = new System.Drawing.Size(48, 16);
             this.chkTuesday.TabIndex = 7;
@@ -134,7 +134,7 @@
             // chkWednesday
             // 
             this.chkWednesday.AutoSize = true;
-            this.chkWednesday.Location = new System.Drawing.Point(168, 85);
+            this.chkWednesday.Location = new System.Drawing.Point(149, 85);
             this.chkWednesday.Name = "chkWednesday";
             this.chkWednesday.Size = new System.Drawing.Size(48, 16);
             this.chkWednesday.TabIndex = 7;
@@ -144,7 +144,7 @@
             // chkThursday
             // 
             this.chkThursday.AutoSize = true;
-            this.chkThursday.Location = new System.Drawing.Point(232, 85);
+            this.chkThursday.Location = new System.Drawing.Point(213, 85);
             this.chkThursday.Name = "chkThursday";
             this.chkThursday.Size = new System.Drawing.Size(48, 16);
             this.chkThursday.TabIndex = 7;
@@ -154,7 +154,7 @@
             // chkFriday
             // 
             this.chkFriday.AutoSize = true;
-            this.chkFriday.Location = new System.Drawing.Point(296, 85);
+            this.chkFriday.Location = new System.Drawing.Point(277, 85);
             this.chkFriday.Name = "chkFriday";
             this.chkFriday.Size = new System.Drawing.Size(48, 16);
             this.chkFriday.TabIndex = 7;
@@ -165,7 +165,7 @@
             // 
             this.chkSaturday.AutoSize = true;
             this.chkSaturday.ForeColor = System.Drawing.Color.Red;
-            this.chkSaturday.Location = new System.Drawing.Point(360, 85);
+            this.chkSaturday.Location = new System.Drawing.Point(341, 85);
             this.chkSaturday.Name = "chkSaturday";
             this.chkSaturday.Size = new System.Drawing.Size(48, 16);
             this.chkSaturday.TabIndex = 7;
@@ -176,7 +176,7 @@
             // 
             this.chkSunday.AutoSize = true;
             this.chkSunday.ForeColor = System.Drawing.Color.Red;
-            this.chkSunday.Location = new System.Drawing.Point(428, 85);
+            this.chkSunday.Location = new System.Drawing.Point(409, 85);
             this.chkSunday.Name = "chkSunday";
             this.chkSunday.Size = new System.Drawing.Size(48, 16);
             this.chkSunday.TabIndex = 7;
@@ -206,21 +206,21 @@
             this.groupBox1.Controls.Add(this.label1);
             this.groupBox1.Location = new System.Drawing.Point(12, 13);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(984, 130);
+            this.groupBox1.Size = new System.Drawing.Size(923, 130);
             this.groupBox1.TabIndex = 8;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "班次时间修改";
             // 
             // txtClassesName
             // 
-            this.txtClassesName.Location = new System.Drawing.Point(109, 36);
+            this.txtClassesName.Location = new System.Drawing.Point(90, 36);
             this.txtClassesName.Name = "txtClassesName";
             this.txtClassesName.Size = new System.Drawing.Size(121, 21);
             this.txtClassesName.TabIndex = 8;
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(536, 82);
+            this.button1.Location = new System.Drawing.Point(490, 82);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(75, 23);
             this.button1.TabIndex = 1;
@@ -229,7 +229,7 @@
             // 
             // btnRemove
             // 
-            this.btnRemove.Location = new System.Drawing.Point(872, 82);
+            this.btnRemove.Location = new System.Drawing.Point(826, 82);
             this.btnRemove.Name = "btnRemove";
             this.btnRemove.Size = new System.Drawing.Size(75, 23);
             this.btnRemove.TabIndex = 1;
@@ -238,7 +238,7 @@
             // 
             // btnUpdate
             // 
-            this.btnUpdate.Location = new System.Drawing.Point(760, 82);
+            this.btnUpdate.Location = new System.Drawing.Point(714, 82);
             this.btnUpdate.Name = "btnUpdate";
             this.btnUpdate.Size = new System.Drawing.Size(75, 23);
             this.btnUpdate.TabIndex = 1;
@@ -247,7 +247,7 @@
             // 
             // btnClassesAdd
             // 
-            this.btnClassesAdd.Location = new System.Drawing.Point(648, 82);
+            this.btnClassesAdd.Location = new System.Drawing.Point(602, 82);
             this.btnClassesAdd.Name = "btnClassesAdd";
             this.btnClassesAdd.Size = new System.Drawing.Size(75, 23);
             this.btnClassesAdd.TabIndex = 1;
@@ -258,7 +258,7 @@
             // cboTimes3
             // 
             this.cboTimes3.FormattingEnabled = true;
-            this.cboTimes3.Location = new System.Drawing.Point(826, 36);
+            this.cboTimes3.Location = new System.Drawing.Point(780, 36);
             this.cboTimes3.Name = "cboTimes3";
             this.cboTimes3.Size = new System.Drawing.Size(121, 20);
             this.cboTimes3.TabIndex = 6;
@@ -266,7 +266,7 @@
             // cboTimes2
             // 
             this.cboTimes2.FormattingEnabled = true;
-            this.cboTimes2.Location = new System.Drawing.Point(587, 36);
+            this.cboTimes2.Location = new System.Drawing.Point(550, 36);
             this.cboTimes2.Name = "cboTimes2";
             this.cboTimes2.Size = new System.Drawing.Size(121, 20);
             this.cboTimes2.TabIndex = 6;
@@ -275,7 +275,7 @@
             // cboTimes1
             // 
             this.cboTimes1.FormattingEnabled = true;
-            this.cboTimes1.Location = new System.Drawing.Point(348, 36);
+            this.cboTimes1.Location = new System.Drawing.Point(320, 36);
             this.cboTimes1.Name = "cboTimes1";
             this.cboTimes1.Size = new System.Drawing.Size(121, 20);
             this.cboTimes1.TabIndex = 6;
@@ -284,7 +284,7 @@
             // label11
             // 
             this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(38, 40);
+            this.label11.Location = new System.Drawing.Point(19, 40);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(65, 12);
             this.label11.TabIndex = 5;
@@ -293,7 +293,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(773, 40);
+            this.label3.Location = new System.Drawing.Point(727, 40);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(47, 12);
             this.label3.TabIndex = 2;
@@ -302,7 +302,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(534, 40);
+            this.label2.Location = new System.Drawing.Point(497, 40);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(47, 12);
             this.label2.TabIndex = 2;
@@ -391,7 +391,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1008, 729);
+            this.ClientSize = new System.Drawing.Size(947, 466);
             this.Controls.Add(this.dgvClassses);
             this.Controls.Add(this.groupBox1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
