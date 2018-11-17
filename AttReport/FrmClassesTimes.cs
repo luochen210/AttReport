@@ -25,7 +25,7 @@ namespace AttReport
         {
             InitializeComponent();
 
-            cboDataSource = objTimesService.GetTimesNameList();
+            cboDataSource = objTimesService.GetTimesNameList();//初始化成员变量
 
             //获取数据
             this.cboTimes1.DataSource = cboDataSource;
@@ -38,8 +38,11 @@ namespace AttReport
         //窗体加载时读取班次表
         private void FrmClassesTimes_Load(object sender, EventArgs e)
         {
-            ClassesTimesService objClasses = new ClassesTimesService();
-            //this.dgvClassses.DataSource = objClasses.GetClassDataSet().Tables[0];
+            DataTable dgvClassesTable= objClassesService.GetClassesDataSet().Tables[0];//获取数据
+
+            dgvClassesTable.Columns.Remove("ClassesId");//移除数据
+
+            this.dgvClassses.DataSource = dgvClassesTable;//设置源
         }
 
 
@@ -113,7 +116,6 @@ namespace AttReport
         }
 
 
-
         //移除已占用的时段
         private void cboTimes1_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -139,7 +141,7 @@ namespace AttReport
             {
                 cboTimes3.DataSource = null; //清空源
 
-                 var cboTempData = cboDataSource;//获取集合，cboDataSource为成员变量
+                var cboTempData = cboDataSource;//获取集合，cboDataSource为成员变量
                 cboTimes3.DataSource = cboTempData//设置源
                     .Where(item => item.TimesName != cboTimes1.Text.Trim() && item.TimesName != cboTimes2.Text.Trim())//排除cboTimes1和cboTimes2选择的元素
                     .ToList();//转换为List

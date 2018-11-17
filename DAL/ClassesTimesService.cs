@@ -16,7 +16,17 @@ namespace DAL
     /// </summary>
     public class ClassesTimesService
     {
+        /// <summary>
+        /// 获取班次时段表
+        /// </summary>
+        /// <returns></returns>
+        public DataSet GetClassesDataSet()
+        {
+            string sql = "select * from ClassesTimes";
+            string.Format(sql);
 
+            return SQLHelper.GetDataSet(sql);
+        }
 
 
 
