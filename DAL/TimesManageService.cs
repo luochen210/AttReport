@@ -15,17 +15,6 @@ namespace DAL
     /// </summary>
     public class TimesManageService
     {
-        /// <summary>
-        /// 获得班次数据集
-        /// </summary>
-        /// <returns>班次数据集</returns>
-        public DataSet GetClassDataSet()
-        {
-            string sql = "select * from ClassesTime";
-            sql = string.Format(sql);
-            return SQLHelper.GetDataSet(sql);
-        }
-
 
         /// <summary>
         /// 获取时段数据集
@@ -47,9 +36,11 @@ namespace DAL
         {
             string sql = "select count(*) from TimesManage where TimesName='{0}'";//count(*)代表计算返回的行数
             sql = string.Format(sql, TimesName);
-            int result= Convert.ToInt32(SQLHelper.GetSingleResult(sql));//条目数转换为int
+            int result = Convert.ToInt32(SQLHelper.GetSingleResult(sql));//条目数转换为int
+
             if (result == 1) return true;//如果结果等于1则返回true
             return false;//如果结果不等于1则返回false
+
         }
 
         /// <summary>
@@ -93,14 +84,14 @@ namespace DAL
 
             try
             {
-                
+
                 return SQLHelper.Update(sql);
 
             }
             catch (SqlException ex)
             {
                 throw new Exception("数据库操作出现异常！具体信息：" + ex.Message);
-                
+
             }
             catch (Exception ex)
             {

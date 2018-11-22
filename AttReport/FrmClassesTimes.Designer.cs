@@ -28,9 +28,20 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this.dgvClassses = new System.Windows.Forms.DataGridView();
+            this.ClassesName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TimesName1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TimesName2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TimesName3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Monday = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Tuesday = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Wednesday = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Thursday = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Friday = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Saturday = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Sunday = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.label1 = new System.Windows.Forms.Label();
             this.chkMonday = new System.Windows.Forms.CheckBox();
             this.chkTuesday = new System.Windows.Forms.CheckBox();
@@ -51,17 +62,6 @@
             this.label11 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.ClassesName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.TimesName1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.TimesName2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.TimesName3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Monday = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Tuesday = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Wednesday = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Thursday = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Friday = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Saturday = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Sunday = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dgvClassses)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
@@ -74,14 +74,14 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.dgvClassses.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvClassses.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvClassses.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
             this.dgvClassses.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvClassses.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.ClassesName,
@@ -97,10 +97,103 @@
             this.Sunday});
             this.dgvClassses.Location = new System.Drawing.Point(12, 161);
             this.dgvClassses.Name = "dgvClassses";
+            this.dgvClassses.ReadOnly = true;
             this.dgvClassses.RowHeadersVisible = false;
             this.dgvClassses.RowTemplate.Height = 23;
+            this.dgvClassses.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvClassses.Size = new System.Drawing.Size(923, 293);
             this.dgvClassses.TabIndex = 0;
+            this.dgvClassses.SelectionChanged += new System.EventHandler(this.dgvClassses_SelectionChanged);
+            // 
+            // ClassesName
+            // 
+            this.ClassesName.DataPropertyName = "ClassesName";
+            this.ClassesName.HeaderText = "班次名称";
+            this.ClassesName.Name = "ClassesName";
+            this.ClassesName.ReadOnly = true;
+            this.ClassesName.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            // 
+            // TimesName1
+            // 
+            this.TimesName1.DataPropertyName = "TimesName1";
+            this.TimesName1.HeaderText = "时段1";
+            this.TimesName1.Name = "TimesName1";
+            this.TimesName1.ReadOnly = true;
+            this.TimesName1.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            // 
+            // TimesName2
+            // 
+            this.TimesName2.DataPropertyName = "TimesName2";
+            dataGridViewCellStyle4.NullValue = null;
+            this.TimesName2.DefaultCellStyle = dataGridViewCellStyle4;
+            this.TimesName2.HeaderText = "时段2";
+            this.TimesName2.Name = "TimesName2";
+            this.TimesName2.ReadOnly = true;
+            this.TimesName2.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            // 
+            // TimesName3
+            // 
+            this.TimesName3.DataPropertyName = "TimesName3";
+            this.TimesName3.HeaderText = "时段3";
+            this.TimesName3.Name = "TimesName3";
+            this.TimesName3.ReadOnly = true;
+            this.TimesName3.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            // 
+            // Monday
+            // 
+            this.Monday.DataPropertyName = "Monday";
+            this.Monday.HeaderText = "周一";
+            this.Monday.Name = "Monday";
+            this.Monday.ReadOnly = true;
+            this.Monday.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            // 
+            // Tuesday
+            // 
+            this.Tuesday.DataPropertyName = "Tuesday";
+            this.Tuesday.HeaderText = "周二";
+            this.Tuesday.Name = "Tuesday";
+            this.Tuesday.ReadOnly = true;
+            this.Tuesday.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            // 
+            // Wednesday
+            // 
+            this.Wednesday.DataPropertyName = "Wednesday";
+            this.Wednesday.HeaderText = "周三";
+            this.Wednesday.Name = "Wednesday";
+            this.Wednesday.ReadOnly = true;
+            this.Wednesday.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            // 
+            // Thursday
+            // 
+            this.Thursday.DataPropertyName = "Thursday";
+            this.Thursday.HeaderText = "周四";
+            this.Thursday.Name = "Thursday";
+            this.Thursday.ReadOnly = true;
+            this.Thursday.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            // 
+            // Friday
+            // 
+            this.Friday.DataPropertyName = "Friday";
+            this.Friday.HeaderText = "周五";
+            this.Friday.Name = "Friday";
+            this.Friday.ReadOnly = true;
+            this.Friday.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            // 
+            // Saturday
+            // 
+            this.Saturday.DataPropertyName = "Saturday";
+            this.Saturday.HeaderText = "周六";
+            this.Saturday.Name = "Saturday";
+            this.Saturday.ReadOnly = true;
+            this.Saturday.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            // 
+            // Sunday
+            // 
+            this.Sunday.DataPropertyName = "Sunday";
+            this.Sunday.HeaderText = "周日";
+            this.Sunday.Name = "Sunday";
+            this.Sunday.ReadOnly = true;
+            this.Sunday.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
             // 
             // label1
             // 
@@ -244,6 +337,7 @@
             this.btnUpdate.TabIndex = 1;
             this.btnUpdate.Text = "修改";
             this.btnUpdate.UseVisualStyleBackColor = true;
+            this.btnUpdate.Click += new System.EventHandler(this.btnUpdate_Click);
             // 
             // btnClassesAdd
             // 
@@ -307,85 +401,6 @@
             this.label2.Size = new System.Drawing.Size(47, 12);
             this.label2.TabIndex = 2;
             this.label2.Text = "时段2：";
-            // 
-            // ClassesName
-            // 
-            this.ClassesName.DataPropertyName = "ClassesName";
-            this.ClassesName.HeaderText = "班次名称";
-            this.ClassesName.Name = "ClassesName";
-            this.ClassesName.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            // 
-            // TimesName1
-            // 
-            this.TimesName1.DataPropertyName = "TimesName1";
-            this.TimesName1.HeaderText = "时段1";
-            this.TimesName1.Name = "TimesName1";
-            this.TimesName1.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            // 
-            // TimesName2
-            // 
-            this.TimesName2.DataPropertyName = "TimesName2";
-            dataGridViewCellStyle2.NullValue = null;
-            this.TimesName2.DefaultCellStyle = dataGridViewCellStyle2;
-            this.TimesName2.HeaderText = "时段2";
-            this.TimesName2.Name = "TimesName2";
-            this.TimesName2.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            // 
-            // TimesName3
-            // 
-            this.TimesName3.DataPropertyName = "TimesName3";
-            this.TimesName3.HeaderText = "时段3";
-            this.TimesName3.Name = "TimesName3";
-            this.TimesName3.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            // 
-            // Monday
-            // 
-            this.Monday.DataPropertyName = "Monday";
-            this.Monday.HeaderText = "周一";
-            this.Monday.Name = "Monday";
-            this.Monday.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            // 
-            // Tuesday
-            // 
-            this.Tuesday.DataPropertyName = "Tuesday";
-            this.Tuesday.HeaderText = "周二";
-            this.Tuesday.Name = "Tuesday";
-            this.Tuesday.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            // 
-            // Wednesday
-            // 
-            this.Wednesday.DataPropertyName = "Wednesday";
-            this.Wednesday.HeaderText = "周三";
-            this.Wednesday.Name = "Wednesday";
-            this.Wednesday.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            // 
-            // Thursday
-            // 
-            this.Thursday.DataPropertyName = "Thursday";
-            this.Thursday.HeaderText = "周四";
-            this.Thursday.Name = "Thursday";
-            this.Thursday.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            // 
-            // Friday
-            // 
-            this.Friday.DataPropertyName = "Friday";
-            this.Friday.HeaderText = "周五";
-            this.Friday.Name = "Friday";
-            this.Friday.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            // 
-            // Saturday
-            // 
-            this.Saturday.DataPropertyName = "Saturday";
-            this.Saturday.HeaderText = "周六";
-            this.Saturday.Name = "Saturday";
-            this.Saturday.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            // 
-            // Sunday
-            // 
-            this.Sunday.DataPropertyName = "Sunday";
-            this.Sunday.HeaderText = "周日";
-            this.Sunday.Name = "Sunday";
-            this.Sunday.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
             // 
             // FrmClassesTimes
             // 

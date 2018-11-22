@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Data.SqlClient;
 
 using DAL;
 using Models;
@@ -53,17 +54,31 @@ namespace AttReport
             if (txtClassesName.Text.Trim() == "")
             {
                 MessageBox.Show("班次名称不能为空！");
+                txtClassesName.Focus();
+                txtClassesName.SelectAll();
                 return;
             }
 
             if (cboTimes1.Text.Trim() == "")
             {
                 MessageBox.Show("时段名称1不能为空！");
+                cboTimes1.Focus();
+                cboTimes1.SelectAll();
                 return;
             }
             if (cboTimes2.Text.Trim() == "")
             {
                 MessageBox.Show("时段2名称不能为空！");
+                cboTimes2.Focus();
+                cboTimes2.SelectAll();
+                return;
+            }
+
+            if (objClassesService.IsClassesNameExisted(txtClassesName.Text.Trim()))
+            {
+                MessageBox.Show("班次名称重复！");
+                txtClassesName.Focus();
+                txtClassesName.SelectAll();
                 return;
             }
 
@@ -86,33 +101,70 @@ namespace AttReport
 
 
 
-            ////插入数据
-            //objShiftServe.AddTimes(objShift);
+            //插入数据
+            objClassesService.AddClasses(objClasses);
 
-            ////刷新DGV
-            //dgvClassses.DataSource = objShiftServe.GetClassDataSet().Tables[0];
+            //刷新DGV显示数据
+            //获取数据
+            DataTable dtClasses=objClassesService.GetClassesDataSet().Tables[0];
 
+            //移除ID列
+            dtClasses.Columns.Remove("ClassesId");
 
-            ////清空数据
-            //foreach (Control item in Controls)
-            //{
-            //    if (item is TextBox)
-            //    {
-            //        item.Text = "";
-            //    }
+            //设置数据源
+            dgvClassses.DataSource = dtClasses;
 
-            //    else if (item is ComboBox)
-            //    {
-            //        item.Text = "";
-            //    }
+        }
 
-            //    else if (item is DateTimePicker)
-            //    {
-            //        item.Text = null;
-            //    }
-            //}
+        //修改班次
+        private void btnUpdate_Click(object sender, EventArgs e)
+        {
+            //验证
+            if (objClassesService.IsClassesNameExisted(txtClassesName.Text.Trim()))
+            {
+                MessageBox.Show("班次名称重复！");
+                txtClassesName.Focus();
+                txtClassesName.SelectAll();
+                return;
+            }
+            else
+            {
+                int index = dgvClassses.CurrentRow.Index;
 
-            //lblTips.Text = "数据添加成功！";
+                //获取原始班次名
+                string AgoClassesName = dgvClassses.Rows[index].Cells[0].Value.ToString();
+
+                MessageBox.Show(AgoClassesName);
+
+                ClassesTimes objClasses = new ClassesTimes()
+                {
+                    ClassesName = txtClassesName.Text.Trim(),
+                    TimesName1 = cboTimes1.Text.Trim(),
+                    TimesName2 = cboTimes2.Text.Trim(),
+                    TimesName3 = cboTimes3.Text.Trim(),
+
+                    Monday = Convert.ToInt32(chkMonday.Checked),
+                    Tuesday = Convert.ToInt32(chkTuesday.Checked),
+                    Wednesday = Convert.ToInt32(chkWednesday.Checked),
+                    Thursday = Convert.ToInt32(chkThursday.Checked),
+                    Friday = Convert.ToInt32(chkFriday.Checked),
+                    Saturday = Convert.ToInt32(chkSaturday.Checked),
+                    Sunday = Convert.ToInt32(chkSunday.Checked),
+                };
+
+                //插入数据
+                objClassesService.UpdateClasses(objClasses, AgoClassesName);
+
+                //更新DGV
+                //获取数据
+                DataTable dtClasses = objClassesService.GetClassesDataSet().Tables[0];
+
+                //移除ID列
+                dtClasses.Columns.Remove("ClassesId");
+
+                //设置数据源
+                dgvClassses.DataSource = dtClasses;
+            }
         }
 
 
@@ -151,6 +203,25 @@ namespace AttReport
             }
         }
 
+        private void dgvClassses_SelectionChanged(object sender, EventArgs e)
+        {
+            if (dgvClassses.SelectionMode != DataGridViewSelectionMode.FullColumnSelect)
+            {
+                int index = dgvClassses.CurrentRow.Index;
+                txtClassesName.Text = dgvClassses.Rows[index].Cells[0].Value.ToString();
+                cboTimes1.Text = dgvClassses.Rows[index].Cells[1].Value.ToString();
+                cboTimes2.Text = dgvClassses.Rows[index].Cells[2].Value.ToString();
+                cboTimes3.Text = dgvClassses.Rows[index].Cells[3].Value.ToString();
+                chkMonday.Checked = bool.Parse(dgvClassses.Rows[index].Cells[4].Value.ToString());
+                chkTuesday.Checked = bool.Parse(dgvClassses.Rows[index].Cells[5].Value.ToString());
+                chkWednesday.Checked = bool.Parse(dgvClassses.Rows[index].Cells[6].Value.ToString());
+                chkThursday.Checked = bool.Parse(dgvClassses.Rows[index].Cells[7].Value.ToString());
+                chkFriday.Checked = bool.Parse(dgvClassses.Rows[index].Cells[8].Value.ToString());
+                chkSaturday.Checked = bool.Parse(dgvClassses.Rows[index].Cells[9].Value.ToString());
+                chkSunday.Checked = bool.Parse(dgvClassses.Rows[index].Cells[10].Value.ToString());
+            }
+        }
+
 
         #region 窗口关闭时清理对象
 
@@ -162,5 +233,7 @@ namespace AttReport
 
 
         #endregion
+
+
     }
 }
