@@ -43,7 +43,7 @@ namespace AttReport
             DataTable dpTable = new DataTable();
             OrganizationService objService = new OrganizationService();
 
-            ds = objService.GetCompanyDs();//获得公司数据集
+            ds = objService.GetCompanyDataSet();//获得公司数据集
 
             for (int c = 0; c < ds.Tables[0].Rows.Count; c++)//for循环生成树形菜单
             {
@@ -52,7 +52,7 @@ namespace AttReport
                 CompanyNode.Tag = int.Parse(ds.Tables[0].Rows[c]["CompanyId"].ToString()); //保存对应节点的值  
                 trvwCompany.Nodes.Add(CompanyNode);  //将节点填充到树形控件上
 
-                dtTable = objService.GetDepartmentDs(CompanyNode.Text.Trim()).Tables[0];
+                dtTable = objService.GetDepartmentDataSet(CompanyNode.Text.Trim()).Tables[0];
                 for (int d = 0; d < dtTable.Rows.Count; d++)
                 {
                     DepartmentNode = new TreeNode(); //创建【部门】节点
@@ -60,7 +60,7 @@ namespace AttReport
                     DepartmentNode.Tag = int.Parse(dtTable.Rows[d]["DepartmentId"].ToString());//显示节点对应的值
                     CompanyNode.Nodes.Add(DepartmentNode); //将节点绑定到【公司】中
 
-                    dpTable = objService.GetGroupListDs(DepartmentNode.Text.Trim()).Tables[0];
+                    dpTable = objService.GetGroupDataSet(DepartmentNode.Text.Trim()).Tables[0];
                     for (int j = 0; j < dpTable.Rows.Count; j++)
                     {
                         DtGroupNode = new TreeNode(); //创建【组别】节点  

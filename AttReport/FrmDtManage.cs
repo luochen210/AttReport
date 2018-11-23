@@ -64,7 +64,7 @@ namespace AttReport
 
             OrganizationService objService = new OrganizationService();
 
-            ds = objService.GetCompanyDs();//获得公司数据集
+            ds = objService.GetCompanyDataSet();//获得公司数据集
 
             trvwDepartment.BeginUpdate();//禁树型菜单重绘，防止闪烁
 
@@ -80,7 +80,7 @@ namespace AttReport
                 CompanyNode.Tag = int.Parse(ds.Tables[0].Rows[c]["CompanyId"].ToString()); //保存对应节点的值  
                 this.trvwDepartment.Nodes.Add(CompanyNode);  //将节点填充到树形控件上
 
-                dtTable = objService.GetDepartmentDs(CompanyNode.Text.Trim()).Tables[0];
+                dtTable = objService.GetDepartmentDataSet(CompanyNode.Text.Trim()).Tables[0];
                 for (int d = 0; d < dtTable.Rows.Count; d++)
                 {
                     DepartmentNode = new TreeNode(); //创建【部门】节点
@@ -88,7 +88,7 @@ namespace AttReport
                     DepartmentNode.Tag = int.Parse(dtTable.Rows[d]["DepartmentId"].ToString());//显示节点对应的值
                     CompanyNode.Nodes.Add(DepartmentNode); //将节点绑定到【公司】中
 
-                    dpTable = objService.GetGroupListDs(DepartmentNode.Text.Trim()).Tables[0];
+                    dpTable = objService.GetGroupDataSet(DepartmentNode.Text.Trim()).Tables[0];
                     for (int j = 0; j < dpTable.Rows.Count; j++)
                     {
                         DtGroupNode = new TreeNode(); //创建【组别】节点  
@@ -495,7 +495,7 @@ namespace AttReport
                 if (trvwDepartment.SelectedNode.Level == 0)
                 {
                     //查询节点下是否存在部门信息
-                    var iDtNumber = objOnServiceList.GetDepartmentList(txtParentNode2.Text.Trim());
+                    var iDtNumber = objOnServiceList.GetAllDepartmentList(txtParentNode2.Text.Trim());
                     //如果节点下没有部门信息则删除公司
                     if (iDtNumber.Count == 0)
                     {
@@ -560,38 +560,38 @@ namespace AttReport
                 }
 
                 //判断选择的节点是否为组别
-                else if (trvwDepartment.SelectedNode.Level == 2)
-                {
-                    //查询组别下是否存在职位信息
-                    var iJobsNumber = objOnServiceList.GetAllJobList(txtParentNode2.Text.Trim());
-                    //如果节点下没有职位信息则删除组别
-                    if (iJobsNumber.Count == 0)
-                    {
-                        //删除组别
-                        objOnServiceList.DeleteData("DtGroup", "DtGroupName", txtParentNode2.Text.Trim());
+                //else if (trvwDepartment.SelectedNode.Level == 2)
+                //{
+                //    ////查询组别下是否存在职位信息
+                //    //var iJobsNumber = objOnServiceList.GetAllJobList(txtParentNode2.Text.Trim());
+                //    ////如果节点下没有职位信息则删除组别
+                //    //if (iJobsNumber.Count == 0)
+                //    //{
+                //    //    //删除组别
+                //    //    objOnServiceList.DeleteData("DtGroup", "DtGroupName", txtParentNode2.Text.Trim());
 
-                        //重新加载树形菜单
-                        BindTreeView();//重绘方法
+                //    //    //重新加载树形菜单
+                //    //    BindTreeView();//重绘方法
 
-                        //输出提示
-                        lblInputTips2.ForeColor = Color.Green;
-                        lblInputTips2.Text = "组别删除成功！";
+                //    //    //输出提示
+                //    //    lblInputTips2.ForeColor = Color.Green;
+                //    //    lblInputTips2.Text = "组别删除成功！";
 
-                        txtParentNode2.Text = null;
+                //    //    txtParentNode2.Text = null;
 
-                        txtParentNode2.Focus();
-                    }
-                    else
-                    {
-                        //重新加载树形菜单
-                        BindTreeView();//重绘方法
+                //    //    txtParentNode2.Focus();
+                //    }
+                //    else
+                //    {
+                //        ////重新加载树形菜单
+                //        //BindTreeView();//重绘方法
 
-                        txtParentNode2.Text = null;
+                //        //txtParentNode2.Text = null;
 
-                        lblInputTips2.ForeColor = Color.Red;
-                        lblInputTips2.Text = "组别下存在数据，不可删除组别！";
-                    }
-                }
+                //        //lblInputTips2.ForeColor = Color.Red;
+                //        //lblInputTips2.Text = "组别下存在数据，不可删除组别！";
+                //    }
+                //}
                 else
                 {
                     lblInputTips2.Text = "选择错误！";

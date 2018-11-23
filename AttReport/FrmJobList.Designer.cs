@@ -1,6 +1,6 @@
 ﻿namespace AttReport
 {
-    partial class FrmJobList
+    partial class FrmJobs
     {
         /// <summary>
         /// Required designer variable.
@@ -28,117 +28,140 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.label1 = new System.Windows.Forms.Label();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
-            this.label2 = new System.Windows.Forms.Label();
-            this.comboBox2 = new System.Windows.Forms.ComboBox();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            this.btnAdd = new System.Windows.Forms.Button();
+            this.btnChange = new System.Windows.Forms.Button();
+            this.btnRemove = new System.Windows.Forms.Button();
+            this.lblJobs = new System.Windows.Forms.Label();
+            this.dgvJobs = new System.Windows.Forms.DataGridView();
+            this.JobId = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.JobName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.txtJob = new System.Windows.Forms.TextBox();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvJobs)).BeginInit();
             this.SuspendLayout();
             // 
-            // label1
+            // btnAdd
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(25, 26);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(41, 12);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "label1";
+            this.btnAdd.Location = new System.Drawing.Point(219, 58);
+            this.btnAdd.Name = "btnAdd";
+            this.btnAdd.Size = new System.Drawing.Size(45, 23);
+            this.btnAdd.TabIndex = 3;
+            this.btnAdd.Text = "添加";
+            this.btnAdd.UseVisualStyleBackColor = true;
+            this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
             // 
-            // comboBox1
+            // btnChange
             // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(72, 23);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(121, 20);
-            this.comboBox1.TabIndex = 1;
+            this.btnChange.Location = new System.Drawing.Point(280, 58);
+            this.btnChange.Name = "btnChange";
+            this.btnChange.Size = new System.Drawing.Size(45, 23);
+            this.btnChange.TabIndex = 3;
+            this.btnChange.Text = "修改";
+            this.btnChange.UseVisualStyleBackColor = true;
             // 
-            // label2
+            // btnRemove
             // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(251, 26);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(41, 12);
-            this.label2.TabIndex = 0;
-            this.label2.Text = "label1";
+            this.btnRemove.Location = new System.Drawing.Point(340, 58);
+            this.btnRemove.Name = "btnRemove";
+            this.btnRemove.Size = new System.Drawing.Size(45, 23);
+            this.btnRemove.TabIndex = 3;
+            this.btnRemove.Text = "删除";
+            this.btnRemove.UseVisualStyleBackColor = true;
             // 
-            // comboBox2
+            // lblJobs
             // 
-            this.comboBox2.FormattingEnabled = true;
-            this.comboBox2.Location = new System.Drawing.Point(298, 23);
-            this.comboBox2.Name = "comboBox2";
-            this.comboBox2.Size = new System.Drawing.Size(121, 20);
-            this.comboBox2.TabIndex = 1;
+            this.lblJobs.AutoSize = true;
+            this.lblJobs.Location = new System.Drawing.Point(217, 25);
+            this.lblJobs.Name = "lblJobs";
+            this.lblJobs.Size = new System.Drawing.Size(41, 12);
+            this.lblJobs.TabIndex = 0;
+            this.lblJobs.Text = "职位：";
             // 
-            // dataGridView1
+            // dgvJobs
             // 
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(27, 70);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.RowTemplate.Height = 23;
-            this.dataGridView1.Size = new System.Drawing.Size(818, 432);
-            this.dataGridView1.TabIndex = 2;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvJobs.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle4;
+            this.dgvJobs.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvJobs.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.JobId,
+            this.JobName});
+            this.dgvJobs.Location = new System.Drawing.Point(21, 21);
+            this.dgvJobs.Name = "dgvJobs";
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle5.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            dataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvJobs.RowHeadersDefaultCellStyle = dataGridViewCellStyle5;
+            this.dgvJobs.RowHeadersVisible = false;
+            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.dgvJobs.RowsDefaultCellStyle = dataGridViewCellStyle6;
+            this.dgvJobs.RowTemplate.Height = 23;
+            this.dgvJobs.Size = new System.Drawing.Size(176, 407);
+            this.dgvJobs.TabIndex = 2;
             // 
-            // button1
+            // JobId
             // 
-            this.button1.Location = new System.Drawing.Point(492, 26);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 3;
-            this.button1.Text = "添加";
-            this.button1.UseVisualStyleBackColor = true;
+            this.JobId.DataPropertyName = "JobId";
+            this.JobId.HeaderText = "职位ID";
+            this.JobId.Name = "JobId";
+            this.JobId.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.JobId.Width = 55;
             // 
-            // button2
+            // JobName
             // 
-            this.button2.Location = new System.Drawing.Point(588, 26);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(75, 23);
-            this.button2.TabIndex = 3;
-            this.button2.Text = "添加";
-            this.button2.UseVisualStyleBackColor = true;
+            this.JobName.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.JobName.DataPropertyName = "JobName";
+            this.JobName.HeaderText = "职位名称";
+            this.JobName.Name = "JobName";
+            this.JobName.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
             // 
-            // button3
+            // txtJob
             // 
-            this.button3.Location = new System.Drawing.Point(682, 26);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(75, 23);
-            this.button3.TabIndex = 3;
-            this.button3.Text = "添加";
-            this.button3.UseVisualStyleBackColor = true;
+            this.txtJob.Location = new System.Drawing.Point(265, 21);
+            this.txtJob.Name = "txtJob";
+            this.txtJob.Size = new System.Drawing.Size(120, 21);
+            this.txtJob.TabIndex = 5;
             // 
-            // FrmJobList
+            // FrmJobs
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(875, 529);
-            this.Controls.Add(this.button3);
-            this.Controls.Add(this.button2);
-            this.Controls.Add(this.button1);
-            this.Controls.Add(this.dataGridView1);
-            this.Controls.Add(this.comboBox2);
-            this.Controls.Add(this.label2);
-            this.Controls.Add(this.comboBox1);
-            this.Controls.Add(this.label1);
-            this.Name = "FrmJobList";
-            this.Text = "FrmJobList";
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            this.ClientSize = new System.Drawing.Size(407, 448);
+            this.Controls.Add(this.txtJob);
+            this.Controls.Add(this.btnRemove);
+            this.Controls.Add(this.btnChange);
+            this.Controls.Add(this.btnAdd);
+            this.Controls.Add(this.dgvJobs);
+            this.Controls.Add(this.lblJobs);
+            this.Name = "FrmJobs";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.Text = "职位管理";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.FrmJobs_FormClosed);
+            ((System.ComponentModel.ISupportInitialize)(this.dgvJobs)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
         }
 
         #endregion
-
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.ComboBox comboBox1;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.ComboBox comboBox2;
-        private System.Windows.Forms.DataGridView dataGridView1;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.Button btnAdd;
+        private System.Windows.Forms.Button btnChange;
+        private System.Windows.Forms.Button btnRemove;
+        private System.Windows.Forms.Label lblJobs;
+        private System.Windows.Forms.DataGridView dgvJobs;
+        private System.Windows.Forms.DataGridViewTextBoxColumn JobId;
+        private System.Windows.Forms.DataGridViewTextBoxColumn JobName;
+        private System.Windows.Forms.TextBox txtJob;
     }
 }

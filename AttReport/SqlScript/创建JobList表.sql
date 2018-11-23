@@ -6,10 +6,7 @@ drop table JobList
 go
 create table JobList
 (  
-  JobID int PRIMARY KEY IDENTITY(1,1),--职位ID，自增列
-  JobName varchar(10) not null,--职位名称
-  DepartmentName varchar(10) not null,--部门名称
-  DepartmentID int not null,--部门ID
-  
+  JobId int PRIMARY KEY IDENTITY(1,1),--职位ID，自增列
+  JobName varchar(30) not null,--职位名称  
 )
 go

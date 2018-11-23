@@ -15,24 +15,9 @@ namespace DAL
     /// </summary>
     public class OrganizationService
     {
-        //获取公司名
-        public string GetCompany()
-        {
-            string sql = "select CompanyName from Company";
-            try
-            {
-                string result = SQLHelper.GetSingleResult(sql).ToString();
-                return result;
-            }
-            catch (Exception ex)
-            {
-
-                throw ex;
-            }
-        }
 
         //获取所有公司集合
-        public List<Organization> GetAllCompany()
+        public List<Organization> GetAllCompanyList()
         {
             string sql = "select * from Company";
 
@@ -51,7 +36,7 @@ namespace DAL
         }
 
         //获取公司数据集
-        public DataSet GetCompanyDs()
+        public DataSet GetCompanyDataSet()
         {
             string sql = "select * from Company";
             return SQLHelper.GetDataSet(sql);
@@ -62,7 +47,7 @@ namespace DAL
         /// </summary>
         /// <param name="CompanyName"></param>
         /// <returns></returns>
-        public List<Organization> GetDepartmentList(String CompanyName)
+        public List<Organization> GetAllDepartmentList(String CompanyName)
         {
             string sql = "select DepartmentName,DepartmentId from Department where CyId=(select CompanyId from Company where CompanyName='{0}')";
             sql = string.Format(sql, CompanyName);
@@ -80,7 +65,7 @@ namespace DAL
             return list;
         }
 
-        public DataSet GetDepartmentDs(String CompanyName)
+        public DataSet GetDepartmentDataSet(String CompanyName)
         {
             string sql = "select DepartmentName,DepartmentId from Department where CyId=(select CompanyId from Company where CompanyName='{0}')";
             sql = string.Format(sql, CompanyName);
@@ -111,7 +96,7 @@ namespace DAL
             return list;
         }
 
-        public DataSet GetGroupListDs(string DepartmentName)
+        public DataSet GetGroupDataSet(string DepartmentName)
         {
             string sql = "select DtGroupId,DtGroupName from DtGroup where DtId = (select DepartmentId from Department where DepartmentName = '{0}')";
             sql = string.Format(sql, DepartmentName);
@@ -123,10 +108,10 @@ namespace DAL
         /// </summary>
         /// <param name="DtGroupName">组别名称</param>
         /// <returns>返回属于组别的职位列表集合</returns>
-        public List<Organization> GetAllJobList(string DtGroupName)
+        public List<Organization> GetAllJobList()
         {
-            string sql = "select JobId,JobName from JobList where DpId = (select DtGroupId from DtGroup where DtGroupName = '{0}')";
-            sql = string.Format(sql, DtGroupName);
+            string sql = "select * from JobList";
+            sql = string.Format(sql);
             SqlDataReader objReader = SQLHelper.GetReader(sql);
             List<Organization> list = new List<Organization>();
             while (objReader.Read())
@@ -141,6 +126,20 @@ namespace DAL
             return list;
         }
 
+        /// <summary>
+        /// 查询所有职位
+        /// </summary>
+        /// <returns>所有职位DataSet</returns>
+        public DataSet GetAllJobsDataSet()
+        {
+            string sql = "select * from JobList";
+            sql = string.Format(sql);
+            return SQLHelper.GetDataSet(sql);
+        }
+
+
+
+
         //查询公司是否存在
         public string GetCompanyName(string CompanyName)
         {
@@ -150,7 +149,7 @@ namespace DAL
             try
             {
                 var objSqlStr = SQLHelper.GetSingleResult(sql);
-                if (objSqlStr!=null)
+                if (objSqlStr != null)
                 {
                     result = objSqlStr.ToString();
                 }
@@ -195,7 +194,7 @@ namespace DAL
             try
             {
                 var objSqlStr = SQLHelper.GetSingleResult(sql);
-                if (objSqlStr!=null)
+                if (objSqlStr != null)
                 {
                     result = objSqlStr.ToString();
                 }
@@ -207,6 +206,19 @@ namespace DAL
                 throw ex;
             }
         }
+
+        //验证职位是否存在
+        public bool IsJobNameExisted(string JobName)
+        {
+
+            string sql = "select count(*) from JobList where JobName='{0}'";
+            sql = string.Format(sql, JobName);
+            int result = Convert.ToInt32(SQLHelper.GetSingleResult(sql));
+            if (result == 1) return true;
+            return false;
+        }
+
+
 
         /// <summary>
         /// 获得公司ID
@@ -394,6 +406,31 @@ namespace DAL
                 throw ex;
             }
         }
+
+        /// <summary>
+        /// 插入职位
+        /// </summary>
+        /// <param name="objOrganization">职位对象</param>
+        /// <returns>执行结果</returns>
+        public int InsertJob(Organization objOrganization)
+        {
+            StringBuilder objBuilder = new StringBuilder();
+            objBuilder.Append("insert into JobList (JobName)");
+            objBuilder.Append(" values('{0}')");
+            string sql = string.Format(objBuilder.ToString(), objOrganization.JobName);
+            try
+            {
+                return SQLHelper.Update(sql);
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+        }
+
+
+
 
         /// <summary>
         /// 删除数据

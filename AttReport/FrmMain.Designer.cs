@@ -41,6 +41,7 @@
             this.人事管理ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.员工入职ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.员工信息ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.职位信息ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.部门信息ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.lblIP = new System.Windows.Forms.Label();
             this.txtIP = new System.Windows.Forms.TextBox();
@@ -63,7 +64,6 @@
             this.tabAnnual = new System.Windows.Forms.TabPage();
             this.lblState = new System.Windows.Forms.Label();
             this.progressBar1 = new System.Windows.Forms.ProgressBar();
-            this.职位信息ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.tctlReport.SuspendLayout();
             this.tabLog.SuspendLayout();
@@ -99,14 +99,14 @@
             // 班次管理ToolStripMenuItem
             // 
             this.班次管理ToolStripMenuItem.Name = "班次管理ToolStripMenuItem";
-            this.班次管理ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.班次管理ToolStripMenuItem.Size = new System.Drawing.Size(124, 22);
             this.班次管理ToolStripMenuItem.Text = "班次管理";
             this.班次管理ToolStripMenuItem.Click += new System.EventHandler(this.班次管理ToolStripMenuItem_Click);
             // 
             // 时段管理ToolStripMenuItem
             // 
             this.时段管理ToolStripMenuItem.Name = "时段管理ToolStripMenuItem";
-            this.时段管理ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.时段管理ToolStripMenuItem.Size = new System.Drawing.Size(124, 22);
             this.时段管理ToolStripMenuItem.Text = "时段管理";
             this.时段管理ToolStripMenuItem.Click += new System.EventHandler(this.时段管理ToolStripMenuItem_Click);
             // 
@@ -134,6 +134,13 @@
             this.员工信息ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.员工信息ToolStripMenuItem.Text = "员工信息";
             this.员工信息ToolStripMenuItem.Click += new System.EventHandler(this.员工信息ToolStripMenuItem_Click);
+            // 
+            // 职位信息ToolStripMenuItem
+            // 
+            this.职位信息ToolStripMenuItem.Name = "职位信息ToolStripMenuItem";
+            this.职位信息ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.职位信息ToolStripMenuItem.Text = "职位信息";
+            this.职位信息ToolStripMenuItem.Click += new System.EventHandler(this.职位信息ToolStripMenuItem_Click);
             // 
             // 部门信息ToolStripMenuItem
             // 
@@ -387,12 +394,6 @@
             this.progressBar1.Name = "progressBar1";
             this.progressBar1.Size = new System.Drawing.Size(100, 23);
             this.progressBar1.TabIndex = 1;
-            // 
-            // 职位信息ToolStripMenuItem
-            // 
-            this.职位信息ToolStripMenuItem.Name = "职位信息ToolStripMenuItem";
-            this.职位信息ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-            this.职位信息ToolStripMenuItem.Text = "职位信息";
             // 
             // FrmMain
             // 

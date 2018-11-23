@@ -22,13 +22,19 @@ namespace AttReport
             InitializeComponent();
 
             //获取公司名
-            string CompanyName = objJobListService.GetCompany();
+            var CompanyList = objJobListService.GetAllCompanyList();
 
             //UI启动时获取部门列表
-            this.cboDepartment.DataSource = objJobListService.GetDepartmentList(CompanyName);
+            this.cboDepartment.DataSource = objJobListService.GetAllDepartmentList(CompanyList[0].CompanyName);
             this.cboDepartment.DisplayMember = "DepartmentName";
             this.cboDepartment.ValueMember = "DepartmentId";
             this.cboDepartment.SelectedIndex = -1;//默认不选中
+
+            //加载职位列表
+            cboJob.DataSource = objJobListService.GetAllJobList();
+            cboJob.DisplayMember = "JobName";
+            cboJob.ValueMember = "JobId";
+            cboJob.SelectedIndex = -1;//默认不选中
         }
 
         //根据部门获取组别的事件
@@ -41,15 +47,15 @@ namespace AttReport
             this.cboGroup.SelectedIndex = -1;//默认不选中
         }
 
-        //根据组别获取职位列表的事件
-        private void JobList_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            //获取职位
-            this.cboJob.DataSource = objJobListService.GetAllJobList(this.cboGroup.Text.Trim());
-            this.cboJob.DisplayMember = "JobName";
-            this.cboJob.ValueMember = "JobId";
-            this.cboJob.SelectedIndex = -1;//默认不选中
-        }
+        ////根据组别获取职位列表的事件
+        //private void JobList_SelectedIndexChanged(object sender, EventArgs e)
+        //{
+        //    //获取职位
+        //    this.cboJob.DataSource = objJobListService.GetAllJobList(this.cboGroup.Text.Trim());
+        //    this.cboJob.DisplayMember = "JobName";
+        //    this.cboJob.ValueMember = "JobId";
+        //    this.cboJob.SelectedIndex = -1;//默认不选中
+        //}
 
         //按回车调用验证按钮的事件
         private void btnExamine_KeyDown(object sender, KeyEventArgs e)

@@ -310,5 +310,23 @@ namespace AttReport
                 objFrmTimesManage.WindowState = FormWindowState.Normal;
             }
         }
+
+        //职位管理窗口对象
+        public static FrmJobs objFrmJobs = null;
+
+        //职位信息菜单事件
+        private void 职位信息ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (objFrmJobs==null)
+            {
+                objFrmJobs = new FrmJobs();
+                objFrmJobs.Show();
+            }
+            else
+            {
+                objFrmJobs.Activate();
+                objFrmJobs.WindowState = FormWindowState.Normal;
+            }
+        }
     }
 }
