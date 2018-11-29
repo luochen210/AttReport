@@ -63,6 +63,12 @@ namespace DAL
         }
 
 
+        /// <summary>
+        /// 修改班次对象
+        /// </summary>
+        /// <param name="objClasses">班次对象</param>
+        /// <param name="AgoClassesName">原始名称</param>
+        /// <returns></returns>
         public int UpdateClasses(ClassesTimes objClasses,string AgoClassesName)
         {
             StringBuilder sqlBuilder = new StringBuilder();

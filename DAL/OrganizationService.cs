@@ -96,6 +96,11 @@ namespace DAL
             return list;
         }
 
+        /// <summary>
+        /// 获得组别数据集
+        /// </summary>
+        /// <param name="DepartmentName"></param>
+        /// <returns></returns>
         public DataSet GetGroupDataSet(string DepartmentName)
         {
             string sql = "select DtGroupId,DtGroupName from DtGroup where DtId = (select DepartmentId from Department where DepartmentName = '{0}')";

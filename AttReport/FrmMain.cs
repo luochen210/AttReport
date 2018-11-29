@@ -328,5 +328,24 @@ namespace AttReport
                 objFrmJobs.WindowState = FormWindowState.Normal;
             }
         }
+
+
+        //月报查询窗口对象
+        public static FrmMonthlyReport objFrmMonthlyReport = null;
+
+        //月报查询菜单事件
+        private void 月报查询ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (objFrmMonthlyReport==null)
+            {
+                objFrmMonthlyReport = new FrmMonthlyReport();
+                objFrmMonthlyReport.Show();
+            }
+            else
+            {
+                objFrmMonthlyReport.Activate();//激活窗口并给焦点
+                objFrmMonthlyReport.WindowState = FormWindowState.Normal;
+            }
+        }
     }
 }
