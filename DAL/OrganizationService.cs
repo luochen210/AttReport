@@ -167,6 +167,7 @@ namespace DAL
             }
         }
 
+
         //查询部门是否存在
         public string GetDepartmentName(string DepartmentName)
         {
@@ -189,6 +190,7 @@ namespace DAL
                 throw ex;
             }
         }
+
 
         //查询组别是否存在
         public string GetDtGroupName(string DtGroupName)
@@ -451,6 +453,7 @@ namespace DAL
 
             return SQLHelper.Update(sql);
         }
+
 
         /// <summary>
         /// 获得自增列的新索引数

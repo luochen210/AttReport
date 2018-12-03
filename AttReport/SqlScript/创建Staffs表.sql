@@ -6,11 +6,12 @@ drop table Staffs
 go
 create table Staffs
 (
-  SfId int not null primary key identity(3000,1),--员工ID、考勤号、工号(自增长)
-  AttCardNo varchar(21) not null default'待分配',--考勤卡号
-  CyDepartment varchar(21) not null default'待分配',--部门名
-  DtGroup varchar(21) not null default'待分配',--组别
-  DpJob varchar(28) not null default'待分配',--职位
+  --SfId int not null primary key identity(3000,1),--员工ID、考勤号、工号(自增长)
+  SfId int not null,--员工ID、考勤号、工号(自增长)
+  SfCardNo varchar(21) not null default'待分配',--考勤卡号
+  SfDepartment varchar(21) not null default'待分配',--部门名
+  SfGroup varchar(21) not null default'待分配',--组别
+  SfJob varchar(28) not null default'待分配',--职位
   SfName varchar(21) not null,--姓名
   SfGender varchar(21) not null,--性别
   SfMarriage varchar(6) not null,--婚姻

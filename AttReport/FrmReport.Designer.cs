@@ -31,7 +31,7 @@
             this.btnQuery = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
             this.progressBar1 = new System.Windows.Forms.ProgressBar();
-            this.label1 = new System.Windows.Forms.Label();
+            this.lblQueryTips = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.dgvRecord = new System.Windows.Forms.DataGridView();
             this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -85,7 +85,7 @@
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(779, 15);
+            this.button1.Location = new System.Drawing.Point(859, 14);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(134, 23);
             this.button1.TabIndex = 0;
@@ -99,14 +99,14 @@
             this.progressBar1.Size = new System.Drawing.Size(176, 23);
             this.progressBar1.TabIndex = 1;
             // 
-            // label1
+            // lblQueryTips
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(701, 20);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(41, 12);
-            this.label1.TabIndex = 2;
-            this.label1.Text = "label1";
+            this.lblQueryTips.AutoSize = true;
+            this.lblQueryTips.Location = new System.Drawing.Point(680, 20);
+            this.lblQueryTips.Name = "lblQueryTips";
+            this.lblQueryTips.Size = new System.Drawing.Size(77, 12);
+            this.lblQueryTips.TabIndex = 2;
+            this.lblQueryTips.Text = "等待查询……";
             // 
             // groupBox1
             // 
@@ -361,7 +361,7 @@
             this.Controls.Add(this.dtpStartDate);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.groupBox1);
-            this.Controls.Add(this.label1);
+            this.Controls.Add(this.lblQueryTips);
             this.Controls.Add(this.progressBar1);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.btnQuery);
@@ -380,7 +380,7 @@
         private System.Windows.Forms.Button btnQuery;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.ProgressBar progressBar1;
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label lblQueryTips;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.DataGridView dgvRecord;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column1;

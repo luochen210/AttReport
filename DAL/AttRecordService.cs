@@ -55,10 +55,10 @@ namespace DAL
         /// <param name="StartDate">起始时间</param>
         /// <param name="EndDate">结束时间</param>
         /// <returns>月记录数据集</returns>
-        public DataSet GetMonthlyReportDataSet(string StartDate,string EndDate)
+        public DataSet GetMonthlyReportDataSet(string StartDate, string EndDate)
         {
             string sql = "select * from OriginalLog ";
-            sql+=" where CONVERT(varchar(100), ClockRecord, 111) >= '{0}' and CONVERT(varchar(100), ClockRecord, 111) <= '{1}'";
+            sql += " where CONVERT(varchar(100), ClockRecord, 111) >= '{0}' and CONVERT(varchar(100), ClockRecord, 111) <= '{1}'";
             sql = string.Format(sql, StartDate, EndDate);
 
             return SQLHelper.GetDataSet(sql);
@@ -68,39 +68,96 @@ namespace DAL
         /// <summary>
         /// 获取员工姓名
         /// </summary>
-        /// <param name="StaffId">考勤Id</param>
+        /// <param name="AttId">考勤Id</param>
         /// <returns>员工姓名</returns>
-        public List<Staff> GetStaffList(string StaffId)
+        public int GetStaffList(string AttId)
         {
-            string sql = "select * from Staffs where StaffId={0}";
-            sql = string.Format(sql,StaffId);
-            SqlDataReader objReader = SQLHelper.GetReader(sql);
-            List<Staff> list = new List<Staff>();
+            string sql = "select SfName from Staffs where SfId={0}";
+            sql = string.Format(sql, AttId);
 
-            while (objReader.Read())
-            {
-                list.Add(new Staff()
-                {
-                    
-                });
-            }
-
-            objReader.Close();
-            return list;
+            return Convert.ToInt32(SQLHelper.GetSingleResult(sql));
         }
 
         /// <summary>
         /// 获取员工班次
         /// </summary>
         /// <param name="StaffId">考勤Id</param>
-        /// <returns>员工班次</returns>
+        /// <returns>员工班次名称</returns>
         public string GetShifts(string StaffId)
         {
-            string sql = "select Shifts from Staffs where StaffId={0}";
+            string sql = "select SfShifts from Staffs where SfId={0}";
             sql = string.Format(sql, StaffId);
 
-            return SQLHelper.GetSingleResult(sql).ToString();
+            var result = SQLHelper.GetSingleResult(sql);
+
+            if (result != null)
+            {
+                return result.ToString();
+            }
+            else
+            {
+                return null;
+            }
         }
+
+        /// <summary>
+        /// 获取时段名称
+        /// </summary>
+        /// <param name="ClassesName">班次名称</param>
+        /// <returns>时段名称List</returns>
+        public List<ClassesTimes> GetTimesName(string ClassesName)
+        {
+            string sql = "select * from ClassesTimes where ClassesName='{0}'";
+            sql = string.Format(sql, ClassesName);
+
+            SqlDataReader objReader = SQLHelper.GetReader(sql);
+
+            List<ClassesTimes> list = new List<ClassesTimes>();
+            while (objReader.Read())
+            {
+                list.Add(new ClassesTimes()
+                {
+                    ClassesName=objReader["ClassesName"].ToString(),
+                    TimesName1 = objReader["TimesName1"].ToString(),
+                    TimesName2 = objReader["TimesName2"].ToString(),
+                    TimesName3=objReader["TimesName3"].ToString()
+                });
+            }
+            return list;
+        }
+
+        
+        /// <summary>
+        /// 获取班次时段List
+        /// </summary>
+        /// <param name="TimesName">时段名称</param>
+        /// <returns>时段集合</returns>
+        public List<TimesManage> GetTimes(string TimesName)
+        {
+            string sql = "select * from TimesManage where TimesName='{0}'";
+            sql = string.Format(sql, TimesName);
+
+            SqlDataReader objReader = SQLHelper.GetReader(sql);
+            List<TimesManage> list = new List<TimesManage>();
+            while (objReader.Read())
+            {
+                list.Add(new TimesManage()
+                {
+                    TimesName = objReader["TimesName"].ToString(),
+                    WorkTime = objReader["WorkTime"].ToString(),
+                    OffDutyTime=objReader["OffDutyTime"].ToString(),
+                    StartCheckIn=objReader["StartCheckIn"].ToString(),
+                    EndCheckIn = objReader["EndCheckIn"].ToString(),
+                    StartSignBack = objReader["StartSignBack"].ToString(),
+                    EndSignBack = objReader["EndSignBack"].ToString(),
+                    LateTime = Convert.ToInt32(objReader["LateTime"]),
+                    LeftEarly = Convert.ToInt32(objReader["LeftEarly"])
+
+                });
+            }
+            return list;
+        }
+
 
 
 

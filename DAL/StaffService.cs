@@ -31,14 +31,15 @@ namespace DAL
         {
             //【1】编写SQL语句
             StringBuilder sqlBuilder = new StringBuilder();
-            sqlBuilder.Append("insert into Staffs(AttCardNo,Department,WorkGroup,Job,StaffName,Gender,Age,Seniority,Marriage,Education,Major,Nativeplace,EntryDate,BirthDate,Domicile,Residence,Introducer,Friend,Relation,FriendsPhone)");
+            sqlBuilder.Append("insert into Staffs(SfAttCardNo,SfDepartment,SfWorkGroup,SfJobName,SfName,SfGender,SfAge,SfSeniority,SfMarriage,SfEducation,SfMajor,");
+            sqlBuilder.Append("SfNativeplace,SfEntryDate,SfBirthDate,SfDomicile,SfResidence,SfIntroducer,SfFriend,SfRelation,SfFriendsPhone)");
             sqlBuilder.Append("  values('{0}','{1}','{2}','{3}','{4}','{5}',{6},{7},'{8}',{9},'{10}','{11}',{12},{13},'{14}','{15}','{16}','{17}','{18}','{19}')");
             //【2】解析对象
             string sql = string.Format(sqlBuilder.ToString(),
-               objStaff.AttCardNo, objStaff.DepartmentName,objStaff.DtGroupName, objStaff.JobName, objStaff.StaffName,
-               objStaff.Gender, objStaff.Age, objStaff.Seniority, objStaff.Marriage, objStaff.Education, objStaff.Major,
-               objStaff.NativePlace, objStaff.EntryDate, objStaff.BirthDate, objStaff.Domicile, objStaff.Residence,
-               objStaff.Introducer, objStaff.Friend, objStaff.Relation, objStaff.FriendsPhone);
+               objStaff.SfAttCardNo, objStaff.SfDepartmentName, objStaff.SfDtGroupName, objStaff.SfJobName, objStaff.SfName,
+               objStaff.SfGender, objStaff.SfAge, objStaff.SfSeniority, objStaff.SfMarriage, objStaff.SfEducation, objStaff.SfMajor,
+               objStaff.SfNativePlace, objStaff.SfEntryDate, objStaff.SfBirthDate, objStaff.SfDomicile, objStaff.SfResidence,
+               objStaff.SfIntroducer, objStaff.SfFriend, objStaff.SfRelation, objStaff.SfFriendsPhone);
             //【3】提交到数据库
             try
             {

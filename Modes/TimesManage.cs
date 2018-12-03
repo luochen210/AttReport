@@ -38,7 +38,7 @@ namespace Models
         public string EndCheckIn { get; set; }
 
         /// <summary>
-        /// 天始签退时间
+        /// 开始签退时间
         /// </summary>
         public string StartSignBack { get; set; }
 

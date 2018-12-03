@@ -11,43 +11,43 @@ namespace Models
     /// </summary>
     public class Staff
     {
-        public int JobNo { get; set; } //员工工号
-        public string StaffName { get; set; }//员工姓名
-        public string Gender { get; set; }//员工性别
-        public double Seniority { get; set; }//员工工龄
-        public string Marriage { get; set; }//婚姻状态
-        public int Age { get; set; }//员工年龄
-        public string Education { get; set; }//学历
-        public string Major { get; set; }//专业
-        public string NativePlace { get; set; }//籍贯
-        public string Nation { get; set; }//民族
-        public string AttCardNo { get; set; }//卡号
-        public string MobilePhone { get; set; }//员工手机号码
-        public string Introducer { get; set; }//介绍人
-        public DateTime EntryDate { get; set; }//入职日期
-        public DateTime BirthDate { get; set; }//出生日期
-        public string Domicile { get; set; }//户籍地址
-        public string Residence { get; set; }//现居住地
-        public string Friend { get; set; }//紧急联络人
-        public string Relation { get; set; }//与紧急联络人的关系
-        public string FriendsPhone { get; set; }//紧急联络人的电话
+        public int SfId { get; set; } //员工工号
+        public string SfName { get; set; }//员工姓名
+        public string SfGender { get; set; }//员工性别
+        public double SfSeniority { get; set; }//员工工龄
+        public string SfMarriage { get; set; }//婚姻状态
+        public int SfAge { get; set; }//员工年龄
+        public string SfEducation { get; set; }//学历
+        public string SfMajor { get; set; }//专业
+        public string SfNativePlace { get; set; }//籍贯
+        public string SfNation { get; set; }//民族
+        public string SfAttCardNo { get; set; }//卡号
+        public string SfMobilePhone { get; set; }//员工手机号码
+        public string SfIntroducer { get; set; }//介绍人
+        public DateTime SfEntryDate { get; set; }//入职日期
+        public DateTime SfBirthDate { get; set; }//出生日期
+        public string SfDomicile { get; set; }//户籍地址
+        public string SfResidence { get; set; }//现居住地
+        public string SfFriend { get; set; }//紧急联络人
+        public string SfRelation { get; set; }//与紧急联络人的关系
+        public string SfFriendsPhone { get; set; }//紧急联络人的电话
         public string SfStatus { get; set; }//在职状态
         public string SfShifts{get;set;}//轮班班次
 
-        public int CompanyId { get; set; }//公司ID
-        public string CompanyName { get; set; }//公司名称
+        public int SfCompanyId { get; set; }//公司ID
+        public string SfCompanyName { get; set; }//公司名称
 
-        public int DepartmentId { get; set; }//部门ID
-        public string DepartmentName { get; set; }//部门名称
-        public int CyId { get; set; }//关联公司ID
+        public int SfDepartmentId { get; set; }//部门ID
+        public string SfDepartmentName { get; set; }//部门名称
+        public int SfCyId { get; set; }//关联公司ID
 
-        public int DtGroupId { get; set; }//工作组ID
-        public string DtGroupName { get; set; }//工作组名称
-        public int DtId { get; set; }//关联部门ID
+        public int SfDtGroupId { get; set; }//工作组ID
+        public string SfDtGroupName { get; set; }//工作组名称
+        public int SfDtId { get; set; }//关联部门ID
 
-        public int JobId { get; set; }//职位ID
-        public string JobName { get; set; }//职位名称
-        public int DpId { get; set; }//关联组别ID
+        public int SfJobId { get; set; }//职位ID
+        public string SfJobName { get; set; }//职位名称
+        public int SfDpId { get; set; }//关联组别ID
 
     }
 }
