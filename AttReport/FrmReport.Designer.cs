@@ -34,41 +34,41 @@
             this.lblQueryTips = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.dgvRecord = new System.Windows.Forms.DataGridView();
-            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column8 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column9 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column10 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column11 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column12 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column13 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column14 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column15 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column16 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column17 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column18 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column19 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column20 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column21 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column22 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column23 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column24 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column25 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column26 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column27 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column28 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column29 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column30 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column31 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.label2 = new System.Windows.Forms.Label();
             this.dtpStartDate = new System.Windows.Forms.DateTimePicker();
             this.label3 = new System.Windows.Forms.Label();
             this.dtpEndDate = new System.Windows.Forms.DateTimePicker();
+            this.SfDepartment = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.SfId = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.StaffName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.SfJob = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.SfShouldAtt = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.SfLegalHoliday = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.SfActualAtt = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.SfLeave = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.SfRest = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.SfFuneral = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.SfAnnual = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.SfAbsenteeism = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.SfAccidents = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.SfFullAtt = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.SfSeniorityAward = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.SfSubsidy = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.SfSleepover = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.SfOutpatient = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.SfRetirementInsurance = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.SfHousingFund = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.SfOvertime1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.SfOvertime2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.SfOvertime3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.SfReward = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.SfUtilities = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.SfOther = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.SfEntryDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.SfSalaryMethod = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.SfRemarks = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.SfAutograph = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.SfLnsurance = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvRecord)).BeginInit();
             this.SuspendLayout();
@@ -122,198 +122,43 @@
             // 
             this.dgvRecord.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvRecord.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.Column1,
-            this.Column2,
-            this.Column3,
-            this.Column4,
-            this.Column5,
-            this.Column6,
-            this.Column7,
-            this.Column8,
-            this.Column9,
-            this.Column10,
-            this.Column11,
-            this.Column12,
-            this.Column13,
-            this.Column14,
-            this.Column15,
-            this.Column16,
-            this.Column17,
-            this.Column18,
-            this.Column19,
-            this.Column20,
-            this.Column21,
-            this.Column22,
-            this.Column23,
-            this.Column24,
-            this.Column25,
-            this.Column26,
-            this.Column27,
-            this.Column28,
-            this.Column29,
-            this.Column30,
-            this.Column31});
+            this.SfDepartment,
+            this.SfId,
+            this.StaffName,
+            this.SfJob,
+            this.SfShouldAtt,
+            this.SfLegalHoliday,
+            this.SfActualAtt,
+            this.SfLeave,
+            this.SfRest,
+            this.SfFuneral,
+            this.SfAnnual,
+            this.SfAbsenteeism,
+            this.SfAccidents,
+            this.SfFullAtt,
+            this.SfSeniorityAward,
+            this.SfSubsidy,
+            this.SfSleepover,
+            this.SfOutpatient,
+            this.SfRetirementInsurance,
+            this.SfHousingFund,
+            this.SfOvertime1,
+            this.SfOvertime2,
+            this.SfOvertime3,
+            this.SfReward,
+            this.SfUtilities,
+            this.SfOther,
+            this.SfEntryDate,
+            this.SfSalaryMethod,
+            this.SfRemarks,
+            this.SfAutograph,
+            this.SfLnsurance});
             this.dgvRecord.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgvRecord.Location = new System.Drawing.Point(3, 17);
             this.dgvRecord.Name = "dgvRecord";
             this.dgvRecord.RowTemplate.Height = 23;
             this.dgvRecord.Size = new System.Drawing.Size(977, 644);
             this.dgvRecord.TabIndex = 0;
-            // 
-            // Column1
-            // 
-            this.Column1.HeaderText = "部门";
-            this.Column1.Name = "Column1";
-            // 
-            // Column2
-            // 
-            this.Column2.HeaderText = "工号";
-            this.Column2.Name = "Column2";
-            // 
-            // Column3
-            // 
-            this.Column3.HeaderText = "姓名";
-            this.Column3.Name = "Column3";
-            // 
-            // Column4
-            // 
-            this.Column4.HeaderText = "职位";
-            this.Column4.Name = "Column4";
-            // 
-            // Column5
-            // 
-            this.Column5.HeaderText = "应出勤";
-            this.Column5.Name = "Column5";
-            // 
-            // Column6
-            // 
-            this.Column6.HeaderText = "法定假";
-            this.Column6.Name = "Column6";
-            // 
-            // Column7
-            // 
-            this.Column7.HeaderText = "实出勤";
-            this.Column7.Name = "Column7";
-            // 
-            // Column8
-            // 
-            this.Column8.HeaderText = "事假";
-            this.Column8.Name = "Column8";
-            // 
-            // Column9
-            // 
-            this.Column9.HeaderText = "调休";
-            this.Column9.Name = "Column9";
-            // 
-            // Column10
-            // 
-            this.Column10.HeaderText = "丧假";
-            this.Column10.Name = "Column10";
-            // 
-            // Column11
-            // 
-            this.Column11.HeaderText = "年假";
-            this.Column11.Name = "Column11";
-            // 
-            // Column12
-            // 
-            this.Column12.HeaderText = "旷工";
-            this.Column12.Name = "Column12";
-            // 
-            // Column13
-            // 
-            this.Column13.HeaderText = "工伤";
-            this.Column13.Name = "Column13";
-            // 
-            // Column14
-            // 
-            this.Column14.HeaderText = "全勤";
-            this.Column14.Name = "Column14";
-            // 
-            // Column15
-            // 
-            this.Column15.HeaderText = "年资";
-            this.Column15.Name = "Column15";
-            // 
-            // Column16
-            // 
-            this.Column16.HeaderText = "补贴";
-            this.Column16.Name = "Column16";
-            // 
-            // Column17
-            // 
-            this.Column17.HeaderText = "外宿";
-            this.Column17.Name = "Column17";
-            // 
-            // Column18
-            // 
-            this.Column18.HeaderText = "门诊医疗";
-            this.Column18.Name = "Column18";
-            // 
-            // Column19
-            // 
-            this.Column19.HeaderText = "养老保险";
-            this.Column19.Name = "Column19";
-            // 
-            // Column20
-            // 
-            this.Column20.HeaderText = "住房公积金";
-            this.Column20.Name = "Column20";
-            // 
-            // Column21
-            // 
-            this.Column21.HeaderText = "1.5倍";
-            this.Column21.Name = "Column21";
-            // 
-            // Column22
-            // 
-            this.Column22.HeaderText = "2倍";
-            this.Column22.Name = "Column22";
-            // 
-            // Column23
-            // 
-            this.Column23.HeaderText = "3倍";
-            this.Column23.Name = "Column23";
-            // 
-            // Column24
-            // 
-            this.Column24.HeaderText = "奖励";
-            this.Column24.Name = "Column24";
-            // 
-            // Column25
-            // 
-            this.Column25.HeaderText = "水电扣款";
-            this.Column25.Name = "Column25";
-            // 
-            // Column26
-            // 
-            this.Column26.HeaderText = "其它扣款";
-            this.Column26.Name = "Column26";
-            // 
-            // Column27
-            // 
-            this.Column27.HeaderText = "入职日期";
-            this.Column27.Name = "Column27";
-            // 
-            // Column28
-            // 
-            this.Column28.HeaderText = "计薪方式";
-            this.Column28.Name = "Column28";
-            // 
-            // Column29
-            // 
-            this.Column29.HeaderText = "备注";
-            this.Column29.Name = "Column29";
-            // 
-            // Column30
-            // 
-            this.Column30.HeaderText = "本人签名";
-            this.Column30.Name = "Column30";
-            // 
-            // Column31
-            // 
-            this.Column31.HeaderText = "险种";
-            this.Column31.Name = "Column31";
             // 
             // label2
             // 
@@ -351,6 +196,192 @@
             this.dtpEndDate.Size = new System.Drawing.Size(98, 21);
             this.dtpEndDate.TabIndex = 6;
             // 
+            // SfDepartment
+            // 
+            this.SfDepartment.DataPropertyName = "SfDepartment";
+            this.SfDepartment.HeaderText = "部门";
+            this.SfDepartment.Name = "SfDepartment";
+            // 
+            // SfId
+            // 
+            this.SfId.DataPropertyName = "SfId";
+            this.SfId.HeaderText = "工号";
+            this.SfId.Name = "SfId";
+            // 
+            // StaffName
+            // 
+            this.StaffName.DataPropertyName = "StaffName";
+            this.StaffName.HeaderText = "姓名";
+            this.StaffName.Name = "StaffName";
+            // 
+            // SfJob
+            // 
+            this.SfJob.DataPropertyName = "SfJob";
+            this.SfJob.HeaderText = "职位";
+            this.SfJob.Name = "SfJob";
+            // 
+            // SfShouldAtt
+            // 
+            this.SfShouldAtt.DataPropertyName = "SfShouldAtt";
+            this.SfShouldAtt.HeaderText = "应出勤";
+            this.SfShouldAtt.Name = "SfShouldAtt";
+            // 
+            // SfLegalHoliday
+            // 
+            this.SfLegalHoliday.DataPropertyName = "SfLegalHoliday";
+            this.SfLegalHoliday.HeaderText = "法定假";
+            this.SfLegalHoliday.Name = "SfLegalHoliday";
+            // 
+            // SfActualAtt
+            // 
+            this.SfActualAtt.DataPropertyName = "SfActualAtt";
+            this.SfActualAtt.HeaderText = "实出勤";
+            this.SfActualAtt.Name = "SfActualAtt";
+            // 
+            // SfLeave
+            // 
+            this.SfLeave.DataPropertyName = "SfLeave";
+            this.SfLeave.HeaderText = "事假";
+            this.SfLeave.Name = "SfLeave";
+            // 
+            // SfRest
+            // 
+            this.SfRest.DataPropertyName = "SfRest";
+            this.SfRest.HeaderText = "调休";
+            this.SfRest.Name = "SfRest";
+            // 
+            // SfFuneral
+            // 
+            this.SfFuneral.DataPropertyName = "SfFuneral";
+            this.SfFuneral.HeaderText = "丧假";
+            this.SfFuneral.Name = "SfFuneral";
+            // 
+            // SfAnnual
+            // 
+            this.SfAnnual.DataPropertyName = "SfAnnual";
+            this.SfAnnual.HeaderText = "年假";
+            this.SfAnnual.Name = "SfAnnual";
+            // 
+            // SfAbsenteeism
+            // 
+            this.SfAbsenteeism.DataPropertyName = "SfAbsenteeism";
+            this.SfAbsenteeism.HeaderText = "旷工";
+            this.SfAbsenteeism.Name = "SfAbsenteeism";
+            // 
+            // SfAccidents
+            // 
+            this.SfAccidents.DataPropertyName = "SfAccidents";
+            this.SfAccidents.HeaderText = "工伤";
+            this.SfAccidents.Name = "SfAccidents";
+            // 
+            // SfFullAtt
+            // 
+            this.SfFullAtt.DataPropertyName = "SfFullAtt";
+            this.SfFullAtt.HeaderText = "全勤";
+            this.SfFullAtt.Name = "SfFullAtt";
+            // 
+            // SfSeniorityAward
+            // 
+            this.SfSeniorityAward.DataPropertyName = "SfSeniorityAward";
+            this.SfSeniorityAward.HeaderText = "年资";
+            this.SfSeniorityAward.Name = "SfSeniorityAward";
+            // 
+            // SfSubsidy
+            // 
+            this.SfSubsidy.DataPropertyName = "SfSubsidy";
+            this.SfSubsidy.HeaderText = "补贴";
+            this.SfSubsidy.Name = "SfSubsidy";
+            // 
+            // SfSleepover
+            // 
+            this.SfSleepover.DataPropertyName = "SfSleepover";
+            this.SfSleepover.HeaderText = "外宿";
+            this.SfSleepover.Name = "SfSleepover";
+            // 
+            // SfOutpatient
+            // 
+            this.SfOutpatient.DataPropertyName = "SfOutpatient";
+            this.SfOutpatient.HeaderText = "门诊医疗";
+            this.SfOutpatient.Name = "SfOutpatient";
+            // 
+            // SfRetirementInsurance
+            // 
+            this.SfRetirementInsurance.DataPropertyName = "SfRetirementInsurance";
+            this.SfRetirementInsurance.HeaderText = "养老保险";
+            this.SfRetirementInsurance.Name = "SfRetirementInsurance";
+            // 
+            // SfHousingFund
+            // 
+            this.SfHousingFund.DataPropertyName = "SfHousingFund";
+            this.SfHousingFund.HeaderText = "住房公积金";
+            this.SfHousingFund.Name = "SfHousingFund";
+            // 
+            // SfOvertime1
+            // 
+            this.SfOvertime1.DataPropertyName = "SfOvertime1";
+            this.SfOvertime1.HeaderText = "1倍";
+            this.SfOvertime1.Name = "SfOvertime1";
+            // 
+            // SfOvertime2
+            // 
+            this.SfOvertime2.DataPropertyName = "SfOvertime2";
+            this.SfOvertime2.HeaderText = "2倍";
+            this.SfOvertime2.Name = "SfOvertime2";
+            // 
+            // SfOvertime3
+            // 
+            this.SfOvertime3.DataPropertyName = "SfOvertime3";
+            this.SfOvertime3.HeaderText = "3倍";
+            this.SfOvertime3.Name = "SfOvertime3";
+            // 
+            // SfReward
+            // 
+            this.SfReward.DataPropertyName = "SfReward";
+            this.SfReward.HeaderText = "奖励";
+            this.SfReward.Name = "SfReward";
+            // 
+            // SfUtilities
+            // 
+            this.SfUtilities.DataPropertyName = "SfUtilities";
+            this.SfUtilities.HeaderText = "水电扣款";
+            this.SfUtilities.Name = "SfUtilities";
+            // 
+            // SfOther
+            // 
+            this.SfOther.DataPropertyName = "SfOther";
+            this.SfOther.HeaderText = "其它扣款";
+            this.SfOther.Name = "SfOther";
+            // 
+            // SfEntryDate
+            // 
+            this.SfEntryDate.DataPropertyName = "SfEntryDate";
+            this.SfEntryDate.HeaderText = "入职日期";
+            this.SfEntryDate.Name = "SfEntryDate";
+            // 
+            // SfSalaryMethod
+            // 
+            this.SfSalaryMethod.DataPropertyName = "SfSalaryMethod";
+            this.SfSalaryMethod.HeaderText = "计薪方式";
+            this.SfSalaryMethod.Name = "SfSalaryMethod";
+            // 
+            // SfRemarks
+            // 
+            this.SfRemarks.DataPropertyName = "SfRemarks";
+            this.SfRemarks.HeaderText = "备注";
+            this.SfRemarks.Name = "SfRemarks";
+            // 
+            // SfAutograph
+            // 
+            this.SfAutograph.DataPropertyName = "SfAutograph";
+            this.SfAutograph.HeaderText = "本人签名";
+            this.SfAutograph.Name = "SfAutograph";
+            // 
+            // SfLnsurance
+            // 
+            this.SfLnsurance.DataPropertyName = "SfLnsurance";
+            this.SfLnsurance.HeaderText = "险种";
+            this.SfLnsurance.Name = "SfLnsurance";
+            // 
             // FrmMonthlyReport
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -383,40 +414,40 @@
         private System.Windows.Forms.Label lblQueryTips;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.DataGridView dgvRecord;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column4;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column5;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column6;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column7;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column8;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column9;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column10;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column11;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column12;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column13;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column14;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column15;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column16;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column17;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column18;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column19;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column20;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column21;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column22;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column23;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column24;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column25;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column26;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column27;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column28;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column29;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column30;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column31;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.DateTimePicker dtpStartDate;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.DateTimePicker dtpEndDate;
+        private System.Windows.Forms.DataGridViewTextBoxColumn SfDepartment;
+        private System.Windows.Forms.DataGridViewTextBoxColumn SfId;
+        private System.Windows.Forms.DataGridViewTextBoxColumn StaffName;
+        private System.Windows.Forms.DataGridViewTextBoxColumn SfJob;
+        private System.Windows.Forms.DataGridViewTextBoxColumn SfShouldAtt;
+        private System.Windows.Forms.DataGridViewTextBoxColumn SfLegalHoliday;
+        private System.Windows.Forms.DataGridViewTextBoxColumn SfActualAtt;
+        private System.Windows.Forms.DataGridViewTextBoxColumn SfLeave;
+        private System.Windows.Forms.DataGridViewTextBoxColumn SfRest;
+        private System.Windows.Forms.DataGridViewTextBoxColumn SfFuneral;
+        private System.Windows.Forms.DataGridViewTextBoxColumn SfAnnual;
+        private System.Windows.Forms.DataGridViewTextBoxColumn SfAbsenteeism;
+        private System.Windows.Forms.DataGridViewTextBoxColumn SfAccidents;
+        private System.Windows.Forms.DataGridViewTextBoxColumn SfFullAtt;
+        private System.Windows.Forms.DataGridViewTextBoxColumn SfSeniorityAward;
+        private System.Windows.Forms.DataGridViewTextBoxColumn SfSubsidy;
+        private System.Windows.Forms.DataGridViewTextBoxColumn SfSleepover;
+        private System.Windows.Forms.DataGridViewTextBoxColumn SfOutpatient;
+        private System.Windows.Forms.DataGridViewTextBoxColumn SfRetirementInsurance;
+        private System.Windows.Forms.DataGridViewTextBoxColumn SfHousingFund;
+        private System.Windows.Forms.DataGridViewTextBoxColumn SfOvertime1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn SfOvertime2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn SfOvertime3;
+        private System.Windows.Forms.DataGridViewTextBoxColumn SfReward;
+        private System.Windows.Forms.DataGridViewTextBoxColumn SfUtilities;
+        private System.Windows.Forms.DataGridViewTextBoxColumn SfOther;
+        private System.Windows.Forms.DataGridViewTextBoxColumn SfEntryDate;
+        private System.Windows.Forms.DataGridViewTextBoxColumn SfSalaryMethod;
+        private System.Windows.Forms.DataGridViewTextBoxColumn SfRemarks;
+        private System.Windows.Forms.DataGridViewTextBoxColumn SfAutograph;
+        private System.Windows.Forms.DataGridViewTextBoxColumn SfLnsurance;
     }
 }

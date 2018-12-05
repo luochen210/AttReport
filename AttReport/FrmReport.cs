@@ -21,29 +21,21 @@ namespace AttReport
         {
             InitializeComponent();
 
+            ////设置月报起始值为上月第1天的0点
+            //dtpStartDate.Value = DateTime.Now.AddMonths(-1).Date.AddDays(1 - DateTime.Now.Day);//设置值为上月第1天的0点
+
+            ////设置结束值为上月最后1天的最后1秒
+            //dtpEndDate.Value = DateTime.Parse(DateTime.Now.AddDays(1 - DateTime.Now.Day).ToShortDateString()).AddSeconds(-1);//设置值为上月最后1天的最后1秒
+
+            //设置月报起始值为上月第1天的0点
+            dtpStartDate.Value = DateTime.Now.AddMonths(-1).Date.AddDays(1 - DateTime.Now.Day - 1);//设置值为上上月最后1天的0点
+
+            //设置结束值为上月最后1天的最后1秒
+            dtpEndDate.Value = DateTime.Parse(DateTime.Now.AddDays(1 - DateTime.Now.Day + 1).ToShortDateString()).AddSeconds(-1);//设置值为本月第1天的最后1毫秒
 
         }
 
-        #region 参考代码1
-        //protected bool getTimeSpan(string timeStr)
-        //{
-        //    //判断当前时间是否在工作时间段内
-        //    string _strWorkingDayAM = "08:30";//工作时间上午08:30
-        //    string _strWorkingDayPM = "17:30";
-        //    TimeSpan dspWorkingDayAM = DateTime.Parse(_strWorkingDayAM).TimeOfDay;
-        //    TimeSpan dspWorkingDayPM = DateTime.Parse(_strWorkingDayPM).TimeOfDay;
-
-        //    //string time1 = "2017-2-17 8:10:00";
-        //    DateTime t1 = Convert.ToDateTime(timeStr);
-
-        //    TimeSpan dspNow = t1.TimeOfDay;
-        //    if (dspNow > dspWorkingDayAM && dspNow < dspWorkingDayPM)
-        //    {
-        //        return true;
-        //    }
-        //    return false;
-        //}
-        #endregion
+        public static string iStaffName = string.Empty;//员工名字
 
 
 
@@ -51,126 +43,84 @@ namespace AttReport
 
         public void GetMonthlyReport()
         {
-            if (dtpStartDate.Text.Trim() == dtpEndDate.Text.Trim())
+            double iDay = 0;//天
+
+            if (dtpStartDate.Text.Trim() != null && dtpEndDate.Text.Trim() != null)
             {
-                MessageBox.Show("开始与结束时间不能相同！");
-                return;
-            }
-            else
-            {
-                #region 生成报表
+                int index = 0;
+                DataTable dtReport = null;
 
-                //创建新的Datatable表
-
-                //根据时期区间获取原始记录表
-                DataTable dtReport = objRecordService.GetMonthlyReportDataSet(dtpStartDate.Text.Trim(), dtpEndDate.Text.Trim()).Tables[0];
-
-                if (dtReport.Rows.Count != 0)
+                foreach (DataRow item in dtReport.Rows)
                 {
-                    //遍历记录表
-                    int index = 0;
-                    for (int i = 0; i < dtReport.Rows.Count; i++)
+                    index++;
+
+                    //获取员工Id
+                    var iSfId = dtReport.Rows[0]["ClockId"].ToString();//员工Id
+
+                    //获得轮班班次名称
+                    string iClassesName = objRecordService.GetClassesName(iSfId);//轮班班次名称
+
+                    //获取划分的时段List
+                    var iTimesNameList = objRecordService.GetTimesName(iClassesName);
+
+                    string TimesName1 = iTimesNameList[0].TimesName1;//时段1
+                    string TimesName2 = iTimesNameList[0].TimesName2;//时段2
+                    string TimesName3 = iTimesNameList[0].TimesName3;//时段3
+
+                    //获取班次时段List集合
+                    var TimesList1 = objRecordService.GetTimes(TimesName1);
+                    var TimesList2 = objRecordService.GetTimes(TimesName2);
+                    var TimesList3 = objRecordService.GetTimes(TimesName3);
+
+
+                    //上班时间
+                    TimeSpan WorkTime1 = TimeSpan.Parse(TimesList1[0].WorkTime);//早上上班时间
+                    TimeSpan WorkTime2 = TimeSpan.Parse(TimesList2[0].WorkTime);//下午上班时间
+                    TimeSpan WorkTime3 = TimeSpan.Parse(TimesList3[0].WorkTime);//晚上上班时间
+
+                    //开始签到时间
+                    TimeSpan StartCheckIn1 = TimeSpan.Parse(TimesList1[0].StartCheckIn);//上午开始签到
+                    TimeSpan StartCheckIn2 = TimeSpan.Parse(TimesList2[0].StartCheckIn);//下午开始签到
+                    TimeSpan StartCheckIn3 = TimeSpan.Parse(TimesList3[0].StartCheckIn);//晚上开始签到
+
+                    //结束签到时间
+                    TimeSpan EndCheckIn1 = TimeSpan.Parse(TimesList1[0].EndCheckIn);//上午结束签到
+                    TimeSpan EndCheckIn2 = TimeSpan.Parse(TimesList2[0].EndCheckIn);//下午结束签到
+                    TimeSpan EndCheckIn3 = TimeSpan.Parse(TimesList3[0].EndCheckIn);//晚上结束签到
+
+                    //下班时间
+                    TimeSpan OffDutyTime1 = TimeSpan.Parse(TimesList1[0].OffDutyTime);//上午下班时间
+                    TimeSpan OffDutyTime2 = TimeSpan.Parse(TimesList2[0].OffDutyTime);//下午下班时间
+                    TimeSpan OffDutyTime3 = TimeSpan.Parse(TimesList3[0].OffDutyTime);//晚上下班时间
+
+                    //获得打卡时间
+                    TimeSpan iClockRecord = TimeSpan.Parse(dtReport.Rows[0]["ClockRecord"].ToString());
+
+                    if (iClockRecord >= StartCheckIn1 && iClockRecord <= WorkTime1)
                     {
-                        index++;
-                        //从记录表获得Id
-                        string iSfId = dtReport.Rows[i]["ClockId"].ToString(); //ClockId原始考勤ID
-                        //从数据库获得姓名
-                        string iSfName = objRecordService.GetStaffList(iSfId).ToString();
-
-                        //获得轮班班次
-                        string iSfShiftsName = objRecordService.GetShifts(iSfId);
-
-                        //判断人员是否排班
-                        //if (iSfShiftsName == null)
-                        //{
-                            //lblQueryTips.Text = "请先为：[" + iSfName + "]排班！";
-                            //return;
-
-                            //测试用变量///////////////////////////////
-                            iSfShiftsName = "生产作业";//测试专用变量//
-                           ////////////////////////////////////////////
-
-
-                            //获得班次时间段list集合
-                            var TimesNameList = objRecordService.GetTimesName(iSfShiftsName);//封装了时段名称
-
-                            //获取集合中的班次名称
-                            var ClassesName = TimesNameList[0].ClassesName;
-                            MessageBox.Show(ClassesName);
-
-                            var TimesName1 = TimesNameList[0].TimesName1;//时段名称1
-                            MessageBox.Show(TimesName1);
-
-                            var TimesName2 = TimesNameList[0].TimesName2;//时段名称2
-                            MessageBox.Show(TimesName2);
-
-                            var TimesName3 = TimesNameList[0].TimesName3;//时段名称3
-                            MessageBox.Show(TimesName3);
-                            
-                            
-                            //var TimesList=
-
-
-
-
-                        //}
-                        //else
-                        //{
-                        //    //获得班次时间段list集合
-                        //    var Times = objRecordService.GetTimes(iSfShiftsName);//封装了上班时间和下班时间
-
-                        //    //获取集合中的上班时间
-                        //    var WorkTime = Times[0].WorkTime;
-
-                        //    MessageBox.Show(WorkTime);
-
-                        //    var OffDutyTime = Times[1].OffDutyTime;
-                        //}
-
-
-                        //if (DateTime.Parse(dtReport.Rows[i]["ClockRecord"].ToString()) >= DateTime.Parse("01:00"))
-                        //{
-
-                        //}
+                        //记录上午上班时间
                     }
-
-
-                    #region 参考代码2
-
-                    ////创建一个数据集
-                    //DataSet ds = new DataSet();
-                    ////创建一个名为"AttLogTable"的DataTable表
-                    //DataTable attDt = new DataTable("AttLogTable");
-
-                    ////设定列数据
-                    //attDt.Columns.Add("ClockId", typeof(int));
-                    //attDt.Columns.Add("MachineId", typeof(int));
-                    //attDt.Columns.Add("VerifyMode", typeof(int));
-                    //attDt.Columns.Add("InOutMode", typeof(int));
-                    //attDt.Columns.Add("ClockRecord", typeof(string));
-
-                    ////清空DataTable行数据
-                    //attDt.Rows.Clear();
-
-
-                    //var Cid= dtReport.Rows[0]["ClockId"].ToString();
-                    //var idx = dtReport.Select("ClockRecord =Cid");
-                    //foreach (var item in idx)
-                    //{
-                    //    if (item)
-                    //    {
-
-                    //    }
-                    //}
-
-                    #endregion
-
+                    else if (iClockRecord >= StartCheckIn2 && iClockRecord <= WorkTime2)
+                    {
+                        //记录下午上班时间
+                    }
+                    else if (iClockRecord >= StartCheckIn3 && iClockRecord <= WorkTime3)
+                    {
+                        //记录晚上加班上班时间
+                    }
+                    else if (iClockRecord >= OffDutyTime1 && iClockRecord <= EndCheckIn1)
+                    {
+                        //记录上午下班时间
+                    }
+                    else if (iClockRecord >= OffDutyTime2 && iClockRecord <= EndCheckIn2)
+                    {
+                        //记录下午下班时间
+                    }
+                    else if (iClockRecord >= OffDutyTime3 && iClockRecord <= EndCheckIn3)
+                    {
+                        //记录加班下班时间
+                    }
                 }
-                else
-                {
-                    lblQueryTips.Text = "没有查到数据！";
-                }
-                #endregion
 
             }
 

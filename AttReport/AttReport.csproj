@@ -171,6 +171,7 @@
     <Folder Include="Resources\" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="README.txt" />
     <Content Include="SqlScript\创建ClassesTimes表.sql" />
     <Content Include="SqlScript\创建CompanyStructure表.sql" />
     <Content Include="SqlScript\创建JobList表.sql" />

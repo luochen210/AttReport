@@ -43,6 +43,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AttRecord.cs" />
+    <Compile Include="AttReport.cs" />
     <Compile Include="ClassesTimes.cs" />
     <Compile Include="Organization.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

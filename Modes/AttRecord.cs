@@ -9,7 +9,7 @@ namespace Models
     /// 打卡记录实体类
     /// </summary>
     public class AttRecord
-    {
+    {        
         public int MachineId { get; set; }//机器ID
 
         public int ClockId { set; get; }//考勤ID

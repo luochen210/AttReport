@@ -70,12 +70,12 @@ namespace DAL
         /// </summary>
         /// <param name="AttId">考勤Id</param>
         /// <returns>员工姓名</returns>
-        public int GetStaffList(string AttId)
+        public string GetStaffName(string AttId)
         {
             string sql = "select SfName from Staffs where SfId={0}";
             sql = string.Format(sql, AttId);
 
-            return Convert.ToInt32(SQLHelper.GetSingleResult(sql));
+            return SQLHelper.GetSingleResult(sql).ToString();//返回员工姓名
         }
 
         /// <summary>
@@ -83,7 +83,7 @@ namespace DAL
         /// </summary>
         /// <param name="StaffId">考勤Id</param>
         /// <returns>员工班次名称</returns>
-        public string GetShifts(string StaffId)
+        public string GetClassesName(string StaffId)
         {
             string sql = "select SfShifts from Staffs where SfId={0}";
             sql = string.Format(sql, StaffId);
