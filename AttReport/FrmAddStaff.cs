@@ -118,6 +118,9 @@ namespace AttReport
                 this.lblExamineResult.Text = "号码非法！";
                 this.txtIDCard.Text = null;
                 this.txtIDCard.Focus();
+
+                var list = cboDepartment.Items;
+                
             }
         }
 

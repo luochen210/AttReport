@@ -34,12 +34,8 @@
             this.lblQueryTips = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.dgvRecord = new System.Windows.Forms.DataGridView();
-            this.label2 = new System.Windows.Forms.Label();
-            this.dtpStartDate = new System.Windows.Forms.DateTimePicker();
-            this.label3 = new System.Windows.Forms.Label();
-            this.dtpEndDate = new System.Windows.Forms.DateTimePicker();
             this.SfDepartment = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.SfId = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.iSfId = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.StaffName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.SfJob = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.SfShouldAtt = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -69,13 +65,21 @@
             this.SfRemarks = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.SfAutograph = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.SfLnsurance = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.label2 = new System.Windows.Forms.Label();
+            this.dtpStartDate = new System.Windows.Forms.DateTimePicker();
+            this.dtpEndDate = new System.Windows.Forms.DateTimePicker();
+            this.label1 = new System.Windows.Forms.Label();
+            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.comboBox2 = new System.Windows.Forms.ComboBox();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvRecord)).BeginInit();
             this.SuspendLayout();
             // 
             // btnQuery
             // 
-            this.btnQuery.Location = new System.Drawing.Point(405, 15);
+            this.btnQuery.Location = new System.Drawing.Point(405, 27);
             this.btnQuery.Name = "btnQuery";
             this.btnQuery.Size = new System.Drawing.Size(75, 23);
             this.btnQuery.TabIndex = 0;
@@ -94,7 +98,7 @@
             // 
             // progressBar1
             // 
-            this.progressBar1.Location = new System.Drawing.Point(498, 15);
+            this.progressBar1.Location = new System.Drawing.Point(498, 27);
             this.progressBar1.Name = "progressBar1";
             this.progressBar1.Size = new System.Drawing.Size(176, 23);
             this.progressBar1.TabIndex = 1;
@@ -102,7 +106,7 @@
             // lblQueryTips
             // 
             this.lblQueryTips.AutoSize = true;
-            this.lblQueryTips.Location = new System.Drawing.Point(680, 20);
+            this.lblQueryTips.Location = new System.Drawing.Point(680, 32);
             this.lblQueryTips.Name = "lblQueryTips";
             this.lblQueryTips.Size = new System.Drawing.Size(77, 12);
             this.lblQueryTips.TabIndex = 2;
@@ -111,9 +115,9 @@
             // groupBox1
             // 
             this.groupBox1.Controls.Add(this.dgvRecord);
-            this.groupBox1.Location = new System.Drawing.Point(13, 53);
+            this.groupBox1.Location = new System.Drawing.Point(13, 80);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(983, 664);
+            this.groupBox1.Size = new System.Drawing.Size(983, 637);
             this.groupBox1.TabIndex = 3;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "考勤月报";
@@ -123,7 +127,7 @@
             this.dgvRecord.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvRecord.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.SfDepartment,
-            this.SfId,
+            this.iSfId,
             this.StaffName,
             this.SfJob,
             this.SfShouldAtt,
@@ -157,44 +161,8 @@
             this.dgvRecord.Location = new System.Drawing.Point(3, 17);
             this.dgvRecord.Name = "dgvRecord";
             this.dgvRecord.RowTemplate.Height = 23;
-            this.dgvRecord.Size = new System.Drawing.Size(977, 644);
+            this.dgvRecord.Size = new System.Drawing.Size(977, 617);
             this.dgvRecord.TabIndex = 0;
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(14, 20);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(41, 12);
-            this.label2.TabIndex = 4;
-            this.label2.Text = "月份：";
-            // 
-            // dtpStartDate
-            // 
-            this.dtpStartDate.CustomFormat = "yyyy/MM/dd";
-            this.dtpStartDate.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dtpStartDate.Location = new System.Drawing.Point(61, 16);
-            this.dtpStartDate.Name = "dtpStartDate";
-            this.dtpStartDate.Size = new System.Drawing.Size(98, 21);
-            this.dtpStartDate.TabIndex = 6;
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(165, 21);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(11, 12);
-            this.label3.TabIndex = 4;
-            this.label3.Text = "-";
-            // 
-            // dtpEndDate
-            // 
-            this.dtpEndDate.CustomFormat = "yyyy/MM/dd";
-            this.dtpEndDate.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dtpEndDate.Location = new System.Drawing.Point(182, 16);
-            this.dtpEndDate.Name = "dtpEndDate";
-            this.dtpEndDate.Size = new System.Drawing.Size(98, 21);
-            this.dtpEndDate.TabIndex = 6;
             // 
             // SfDepartment
             // 
@@ -204,9 +172,9 @@
             // 
             // SfId
             // 
-            this.SfId.DataPropertyName = "SfId";
-            this.SfId.HeaderText = "工号";
-            this.SfId.Name = "SfId";
+            this.iSfId.DataPropertyName = "SfId";
+            this.iSfId.HeaderText = "工号";
+            this.iSfId.Name = "SfId";
             // 
             // StaffName
             // 
@@ -382,14 +350,92 @@
             this.SfLnsurance.HeaderText = "险种";
             this.SfLnsurance.Name = "SfLnsurance";
             // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(242, 15);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(29, 12);
+            this.label2.TabIndex = 4;
+            this.label2.Text = "从：";
+            // 
+            // dtpStartDate
+            // 
+            this.dtpStartDate.CustomFormat = "yyyy/MM/dd";
+            this.dtpStartDate.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.dtpStartDate.Location = new System.Drawing.Point(274, 11);
+            this.dtpStartDate.Name = "dtpStartDate";
+            this.dtpStartDate.Size = new System.Drawing.Size(98, 21);
+            this.dtpStartDate.TabIndex = 6;
+            // 
+            // dtpEndDate
+            // 
+            this.dtpEndDate.CustomFormat = "yyyy/MM/dd";
+            this.dtpEndDate.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.dtpEndDate.Location = new System.Drawing.Point(274, 48);
+            this.dtpEndDate.Name = "dtpEndDate";
+            this.dtpEndDate.Size = new System.Drawing.Size(98, 21);
+            this.dtpEndDate.TabIndex = 6;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(242, 52);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(29, 12);
+            this.label1.TabIndex = 4;
+            this.label1.Text = "到：";
+            // 
+            // comboBox1
+            // 
+            this.comboBox1.Enabled = false;
+            this.comboBox1.FormattingEnabled = true;
+            this.comboBox1.Location = new System.Drawing.Point(65, 11);
+            this.comboBox1.Name = "comboBox1";
+            this.comboBox1.Size = new System.Drawing.Size(121, 20);
+            this.comboBox1.TabIndex = 7;
+            this.comboBox1.Text = "功能暂停";
+            // 
+            // comboBox2
+            // 
+            this.comboBox2.Enabled = false;
+            this.comboBox2.FormattingEnabled = true;
+            this.comboBox2.Location = new System.Drawing.Point(65, 48);
+            this.comboBox2.Name = "comboBox2";
+            this.comboBox2.Size = new System.Drawing.Size(121, 20);
+            this.comboBox2.TabIndex = 7;
+            this.comboBox2.Text = "功能暂停";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(18, 15);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(41, 12);
+            this.label3.TabIndex = 4;
+            this.label3.Text = "部门：";
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(18, 52);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(41, 12);
+            this.label4.TabIndex = 4;
+            this.label4.Text = "员工：";
+            // 
             // FrmMonthlyReport
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1008, 729);
+            this.Controls.Add(this.comboBox2);
+            this.Controls.Add(this.comboBox1);
             this.Controls.Add(this.dtpEndDate);
-            this.Controls.Add(this.label3);
             this.Controls.Add(this.dtpStartDate);
+            this.Controls.Add(this.label4);
+            this.Controls.Add(this.label3);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.lblQueryTips);
@@ -416,10 +462,9 @@
         private System.Windows.Forms.DataGridView dgvRecord;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.DateTimePicker dtpStartDate;
-        private System.Windows.Forms.Label label3;
         private System.Windows.Forms.DateTimePicker dtpEndDate;
         private System.Windows.Forms.DataGridViewTextBoxColumn SfDepartment;
-        private System.Windows.Forms.DataGridViewTextBoxColumn SfId;
+        private System.Windows.Forms.DataGridViewTextBoxColumn iSfId;
         private System.Windows.Forms.DataGridViewTextBoxColumn StaffName;
         private System.Windows.Forms.DataGridViewTextBoxColumn SfJob;
         private System.Windows.Forms.DataGridViewTextBoxColumn SfShouldAtt;
@@ -449,5 +494,10 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn SfRemarks;
         private System.Windows.Forms.DataGridViewTextBoxColumn SfAutograph;
         private System.Windows.Forms.DataGridViewTextBoxColumn SfLnsurance;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.ComboBox comboBox2;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label label4;
     }
 }
