@@ -172,15 +172,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="README.txt" />
-    <Content Include="SqlScript\创建ClassesTimes表.sql" />
-    <Content Include="SqlScript\创建CompanyStructure表.sql" />
-    <Content Include="SqlScript\创建JobList表.sql" />
-    <Content Include="SqlScript\创建OriginalLog存储过程.sql" />
-    <Content Include="SqlScript\创建OriginalLog约束.sql" />
-    <Content Include="SqlScript\创建OriginalLog表.sql" />
-    <Content Include="SqlScript\创建Staffs表.sql" />
-    <Content Include="SqlScript\创建TimesManage表.sql" />
-    <Content Include="SqlScript\创建公司架构脚本.sql" />
+    <Content Include="SqlScript\AttReport.sql" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

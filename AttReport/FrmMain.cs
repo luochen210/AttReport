@@ -155,64 +155,68 @@ namespace AttReport
             int idwInOutMode = 0;
             string sTime = "";
 
-            //创建一个数据集
-            DataSet ds = new DataSet();
+            //实例化委托
+            objUpdataLbl = new UpdataLbl(LblState);
+
             //创建一个名为"AttLogTable"的DataTable表
-            DataTable attDt = new DataTable("AttLogTable");
+            DataTable AttLogTable = new DataTable();
 
             //设定列数据
-            attDt.Columns.Add("ClockId", typeof(int));
-            attDt.Columns.Add("MachineId", typeof(int));
-            attDt.Columns.Add("VerifyMode", typeof(int));
-            attDt.Columns.Add("InOutMode", typeof(int));
-            attDt.Columns.Add("ClockRecord", typeof(string));
+            AttLogTable.Columns.Add("ClockId", typeof(int));
+            AttLogTable.Columns.Add("MachineId", typeof(int));
+            AttLogTable.Columns.Add("VerifyMode", typeof(int));
+            AttLogTable.Columns.Add("InOutMode", typeof(int));
+            AttLogTable.Columns.Add("ClockRecord", typeof(string));
 
             //清空DataTable行数据
-            attDt.Rows.Clear();
+            AttLogTable.Rows.Clear();
+
+            ////读取已有数据
+            //DataTable PastLogTable = objAttRecordService.GetAllOriginalLog().Tables[0];
+
+            //异步修改lbl值
+            BeginInvoke(objUpdataLbl, "正在下载记录……");
 
             while (axCZKEM1.GetGeneralLogDataStr(iMachineNumber, ref idwEnrollNumber, ref idwVerifyMode, ref idwInOutMode, ref sTime))//从内存取得记录
             {
-                //把记录循环写入DataTable表
-                DataRow dr = attDt.NewRow();
-                dr[0] = idwEnrollNumber;
-                dr[1] = iMachineNumber;
-                dr[2] = idwVerifyMode;
-                dr[3] = idwInOutMode;
-                dr[4] = sTime;
-                attDt.Rows.Add(dr);
+                        //把记录循环写入DataTable表
+                        DataRow dr = AttLogTable.NewRow();
+                        dr[0] = idwEnrollNumber;
+                        dr[1] = iMachineNumber;
+                        dr[2] = idwVerifyMode;
+                        dr[3] = idwInOutMode;
+                        dr[4] = sTime;
+                        AttLogTable.Rows.Add(dr);
             }
 
             //更新dgvAttLog
-            dgvAttLog.DataSource = attDt;
+            dgvAttLog.DataSource = AttLogTable;
 
-            #region 新建两个表，对比数据
+            //异步修改lbl值
+            BeginInvoke(objUpdataLbl, "下载完毕！正在保存记录……");
 
-            ////创建ResultTable表存放差集结果
-            //DataTable resultDt = new DataTable("ResultTable");
+            #region 数据批量对比去重
 
-            ////读取已有数据
-            //ds = objAttRecordService.GetALLAttRecord("OriginalLog");
-            //ds.Tables[0].TableName = "RecordTable";//设置表名称
+            //读取数据库已有数据
+            DataTable PastLogTable = objAttRecordService.GetAllOriginalLog().Tables[0];
 
-            ////添加进数据集
-            //ds.Tables.Add(attDt);//添加进数据集
-            ////ds.Tables.Add(dataDt);
-            //ds.Tables.Add(resultDt);
+            //求差集结果，
+            IEnumerable<DataRow> drResult = AttLogTable.AsEnumerable().Except(PastLogTable.AsEnumerable(), DataRowComparer.Default);
 
-            //attDt = ds.Tables["AttLogTable"];
-            //resultDt = ds.Tables["ResultTable"];
+            //处理空结果的异常
+            if (drResult.Count()>0)//如果序列元素的个数>0，则写入数据，否则跳过
+            {
+                DataTable dtResult = drResult.CopyToDataTable();
 
-            #endregion
+                //批量写入数据库
+                SQLHelper.UpdataByBulk(dtResult, "OriginalLog");
+            }            
 
-
-            //批量写入数据库
-            SQLHelper.UpdataByBulk(attDt, "OriginalLog");
+            #endregion            
 
             //清空dt对象
-            attDt = null;
-
-            //实例化委托
-            objUpdataLbl = new UpdataLbl(LblState);
+            AttLogTable = null;
+            PastLogTable = null;
 
             //异步修改lbl值
             BeginInvoke(objUpdataLbl, "数据保存成功！");
@@ -220,8 +224,46 @@ namespace AttReport
         }
         #endregion
 
+
+        #region 创建日报表   
+
+        //创建日报表
+        public void CreateDailyReport(DataTable AttLog)
+        {
+            TimeSpan WorkTime1;
+            TimeSpan OffDutyTime1;
+
+            TimeSpan WorkTime2;
+            TimeSpan OffDutyTime2;
+
+            TimeSpan WorkTime3;
+            TimeSpan OffDutyTime3;
+
+
+            //获取全部在职员工 0在职，1申请离职，2已离职
+
+            //for循环遍历员工，多表查询获取班次时间
+            for (int i = 0; i < 10; i++)
+            {
+                WorkTime1 = TimeSpan.Parse("8:00:00");
+            }
+
+            //
+
+            foreach (DataRow dr in AttLog.Rows)
+            {
+
+            }
+        }
+
+        #endregion
+
+
+
+
         //员工入职窗口对象
         public static FrmAddStaff objFrmAddStaff = null;
+
         //员工入职菜单事件
         private void 员工入职ToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -279,7 +321,7 @@ namespace AttReport
         //班次管理菜单事件
         private void 班次管理ToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            if (objFrmClassesTimes==null)
+            if (objFrmClassesTimes == null)
             {
                 objFrmClassesTimes = new FrmClassesTimes();
                 objFrmClassesTimes.Show();
@@ -297,7 +339,7 @@ namespace AttReport
         //时段管理菜单事件
         private void 时段管理ToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            if (objFrmTimesManage==null)
+            if (objFrmTimesManage == null)
             {
                 objFrmTimesManage = new FrmTimesManage();
                 objFrmTimesManage.Show();
@@ -315,7 +357,7 @@ namespace AttReport
         //职位信息菜单事件
         private void 职位信息ToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            if (objFrmJobs==null)
+            if (objFrmJobs == null)
             {
                 objFrmJobs = new FrmJobs();
                 objFrmJobs.Show();
@@ -334,7 +376,7 @@ namespace AttReport
         //月报查询菜单事件
         private void 月报查询ToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            if (objFrmMonthlyReport==null)
+            if (objFrmMonthlyReport == null)
             {
                 objFrmMonthlyReport = new FrmMonthlyReport();
                 objFrmMonthlyReport.Show();

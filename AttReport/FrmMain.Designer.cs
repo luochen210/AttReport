@@ -272,7 +272,6 @@
             // btnConnect
             // 
             this.btnConnect.AutoSize = true;
-            this.btnConnect.Enabled = false;
             this.btnConnect.Location = new System.Drawing.Point(250, 32);
             this.btnConnect.Margin = new System.Windows.Forms.Padding(2);
             this.btnConnect.Name = "btnConnect";
@@ -285,7 +284,6 @@
             // btnGetLog
             // 
             this.btnGetLog.AutoSize = true;
-            this.btnGetLog.Enabled = false;
             this.btnGetLog.Location = new System.Drawing.Point(331, 32);
             this.btnGetLog.Margin = new System.Windows.Forms.Padding(2);
             this.btnGetLog.Name = "btnGetLog";
