@@ -57,9 +57,7 @@ go
 create table JobList
 (  
   JobId int not null PRIMARY KEY IDENTITY(1,1),--职位ID，自增列
-  JobName varchar(21) not null,--职位名称
-  DpId int not null FOREIGN KEY (DpId) REFERENCES DtGroup(DtGroupId),--组别关联ID
-  
+  JobName varchar(21) not null,--职位名称  
 )
 go
 

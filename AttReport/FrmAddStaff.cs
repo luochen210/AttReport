@@ -24,11 +24,15 @@ namespace AttReport
             //获取公司名
             var CompanyList = objJobListService.GetAllCompanyList();
 
-            //UI启动时获取部门列表
-            this.cboDepartment.DataSource = objJobListService.GetAllDepartmentList(CompanyList[0].CompanyName);
-            this.cboDepartment.DisplayMember = "DepartmentName";
-            this.cboDepartment.ValueMember = "DepartmentId";
-            this.cboDepartment.SelectedIndex = -1;//默认不选中
+
+            if (CompanyList.Count>0)
+            {
+                //UI启动时获取部门列表
+                this.cboDepartment.DataSource = objJobListService.GetAllDepartmentList(CompanyList[0].CompanyName);
+                this.cboDepartment.DisplayMember = "DepartmentName";
+                this.cboDepartment.ValueMember = "DepartmentId";
+                this.cboDepartment.SelectedIndex = -1;//默认不选中
+            }
 
             //加载职位列表
             cboJob.DataSource = objJobListService.GetAllJobList();
