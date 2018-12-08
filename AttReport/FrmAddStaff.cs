@@ -25,7 +25,7 @@ namespace AttReport
             var CompanyList = objJobListService.GetAllCompanyList();
 
 
-            if (CompanyList.Count>0)
+            if (CompanyList.Count > 0)
             {
                 //UI启动时获取部门列表
                 this.cboDepartment.DataSource = objJobListService.GetAllDepartmentList(CompanyList[0].CompanyName);
@@ -116,6 +116,7 @@ namespace AttReport
                 this.txtAge.Text = age.ToString();
 
                 #endregion //获取结束！
+
             }
             else
             {
@@ -124,7 +125,7 @@ namespace AttReport
                 this.txtIDCard.Focus();
 
                 var list = cboDepartment.Items;
-                
+
             }
         }
 
@@ -504,6 +505,7 @@ namespace AttReport
             #endregion
 
         }
+
 
         #region 窗体激活与关闭
 
