@@ -81,13 +81,28 @@ namespace DAL
         /// 获得所有在职员工
         /// </summary>
         /// <returns>所有在职员的数据集</returns>
-        public DataSet GetAllStaffsDataSet()
+        public DataSet GetAllEmployeeDataSet()
         {
             string sql = "select * from Staffs where SfStatus='在职'";
             sql = string.Format(sql);
 
             return SQLHelper.GetDataSet(sql);
         }
+
+
+        /// <summary>
+        /// 获得所有员工
+        /// </summary>
+        /// <returns>所有员工</returns>
+        public DataSet GetAllStaffsDataSet()
+        {
+            string sql = "select SfId,SfName,SfGroup,SfShifts from Staffs";
+            sql = string.Format(sql);
+            return SQLHelper.GetDataSet(sql);
+        }
+
+
+
 
         /// <summary>
         /// 获得所有时间段
