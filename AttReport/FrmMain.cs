@@ -228,38 +228,71 @@ namespace AttReport
         #region 创建日报表
 
         //根据读取的记录生成日报表(异步委托)
-        public void CreateDayLog(DataTable dtResult)
+        public void CreateDayLog(DataTable dtAttLog)
         {
-            ////获取在职员工表
-            //DataTable dtStaff=objAttRecordService.GetAllStaffsDataSet().Tables[0];
+            #region 查询所有员工的日报记录
+
+            //获取员工表
+            DataTable dtStaff = objAttRecordService.GetAllStaffsDataSet().Tables[0];
+
+            //获取所有时段
+            var iTimesList = objAttRecordService.GetAllTimesList();
+
+            //月天数变量
+            var idayNumber = DateTime.Now;//日期的天数,测试变量，实际使用中为查询的日期
+
+            DataTable dt = new DataTable();
 
             //计算日报
-            for (int i = 0; i < dtResult.Rows.Count; i++)
+            for (int i = 0; i < dtStaff.Rows.Count; i++)
             {
-                int iSfId = Convert.ToInt32(dtResult.Rows[i]["SfId"]);//员工Id
-                string iSfName = objAttRecordService.GetStaffName(iSfId);//员工姓名
-                string iSfGroupName = objAttRecordService.GetSfGroupName(iSfId);//员工组别
-                string iClassesName = dtResult.Rows[i]["SfShifts"].ToString();//班次名称
-                var TimesNameList = objAttRecordService.GetTimesName(iClassesName);//时段名称List
-                string TimesName1 = TimesNameList[1].ToString();//上午的名称
-                string TimesName2 = TimesNameList[2].ToString();//下午的名称
-                string TimesName3 = TimesNameList[3].ToString();//晚上的名称
-                var TimesList1 = objAttRecordService.GetTimes(TimesName1);//获取上午时段表1
-                var TimesList2 = objAttRecordService.GetTimes(TimesName2);//获取下午时段表1
-                var TimesList3 = objAttRecordService.GetTimes(TimesName3);//获取晚上时段表1
+                int iSfId = Convert.ToInt32(dtStaff.Rows[i]["SfId"]);//员工Id
+                string iSfName = dtStaff.Rows[i]["SfName"].ToString();//员工姓名
+                string iSfGroupName = dtStaff.Rows[i]["SfGroup"].ToString();//员工组别
+                string iClassesName = dtStaff.Rows[i]["SfShifts"].ToString();//班次名称
+
+                var iTimesNameList = objAttRecordService.GetTimesName(iClassesName);//时段名称List  
+
+                #region 放弃的代码
+
+                if (iTimesNameList.Count != 0)
+                {
+                    string iTimesName1 = iTimesNameList[0].TimesName1;//时段1名称
+                    string iTimesName2 = iTimesNameList[0].TimesName2;//时段2名称
+                    string iTimesName3 = iTimesNameList[0].TimesName3;//时段3名称
 
 
+                    //LinQ多表查询，获取某个员工当天的打卡记录
+                    var Result1 = from log in dtAttLog.AsEnumerable()
+                                  where Convert.ToInt32(log.Field<Int32>("ClockId")) == iSfId
+                                  &&
+                                  DateTime.Parse(log.Field<string>("ClockRecord").ToString()).TimeOfDay//查找打卡时间
+                                  <= TimeSpan.Parse(iTimesList.Find(times => times.TimesName.Equals(iTimesName1)).WorkTime.ToString())//查找时段list的第一次上班时间
+                                  &&
+                                  DateTime.Parse(log.Field<string>("ClockRecord")).Day == idayNumber.Day//天数相等
+                                  select new
+                                  {
+                                      iSfId,
+                                      iSfName,
+                                      iSfGroupName,
+                                      ClockRecord = log.Field<string>("ClockRecord")
+                                  };
 
-
-
+                    //添加进表
+                    foreach (var item in Result1)
+                    {
+                        DataRow dr = dt.NewRow();
+                        dr[0] = item.iSfId;
+                        dr[1] = item.iSfName;
+                        dr[2] = item.iSfGroupName;
+                        dr[3] = item.ClockRecord;
+                        dt.Rows.Add(dr);
+                    }
+                }
+                #endregion
             }
-//     int sfId = datatable.rows[i][sfId]；
-//     string name =…
-//     string date =…
-//     var days = form p in datatable1.AsEnumerable()
-//where p.field〈string〉（“打卡记录”）
-//〈上班时间，&& 〉签到时间
-//     select p.field<string>("记录").tolist()
+
+            #endregion
 
         }
 
