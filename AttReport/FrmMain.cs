@@ -225,40 +225,47 @@ namespace AttReport
         #endregion
 
 
-        #region 创建日报表   
+        #region 创建日报表
 
-        //创建日报表
-        public void CreateDailyReport(DataTable AttLog)
+        //根据读取的记录生成日报表(异步委托)
+        public void CreateDayLog(DataTable dtResult)
         {
-            TimeSpan WorkTime1;
-            TimeSpan OffDutyTime1;
+            ////获取在职员工表
+            //DataTable dtStaff=objAttRecordService.GetAllStaffsDataSet().Tables[0];
 
-            TimeSpan WorkTime2;
-            TimeSpan OffDutyTime2;
-
-            TimeSpan WorkTime3;
-            TimeSpan OffDutyTime3;
-
-
-            //获取全部在职员工 0在职，1申请离职，2已离职
-
-            //for循环遍历员工，多表查询获取班次时间
-            for (int i = 0; i < 10; i++)
+            //计算日报
+            for (int i = 0; i < dtResult.Rows.Count; i++)
             {
-                WorkTime1 = TimeSpan.Parse("8:00:00");
+                int iSfId = Convert.ToInt32(dtResult.Rows[i]["SfId"]);//员工Id
+                string iSfName = objAttRecordService.GetStaffName(iSfId);//员工姓名
+                string iSfGroupName = objAttRecordService.GetSfGroupName(iSfId);//员工组别
+                string iClassesName = dtResult.Rows[i]["SfShifts"].ToString();//班次名称
+                var TimesNameList = objAttRecordService.GetTimesName(iClassesName);//时段名称List
+                string TimesName1 = TimesNameList[1].ToString();//上午的名称
+                string TimesName2 = TimesNameList[2].ToString();//下午的名称
+                string TimesName3 = TimesNameList[3].ToString();//晚上的名称
+                var TimesList1 = objAttRecordService.GetTimes(TimesName1);//获取上午时段表1
+                var TimesList2 = objAttRecordService.GetTimes(TimesName2);//获取下午时段表1
+                var TimesList3 = objAttRecordService.GetTimes(TimesName3);//获取晚上时段表1
+
+
+
+
+
             }
+//     int sfId = datatable.rows[i][sfId]；
+//     string name =…
+//     string date =…
+//     var days = form p in datatable1.AsEnumerable()
+//where p.field〈string〉（“打卡记录”）
+//〈上班时间，&& 〉签到时间
+//     select p.field<string>("记录").tolist()
 
-            //
-
-            foreach (DataRow dr in AttLog.Rows)
-            {
-
-            }
         }
 
+
+
         #endregion
-
-
 
 
         //员工入职窗口对象
