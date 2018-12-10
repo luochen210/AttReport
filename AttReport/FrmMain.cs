@@ -179,14 +179,14 @@ namespace AttReport
 
             while (axCZKEM1.GetGeneralLogDataStr(iMachineNumber, ref idwEnrollNumber, ref idwVerifyMode, ref idwInOutMode, ref sTime))//从内存取得记录
             {
-                //把记录循环写入DataTable表
-                DataRow dr = AttLogTable.NewRow();
-                dr[0] = idwEnrollNumber;
-                dr[1] = iMachineNumber;
-                dr[2] = idwVerifyMode;
-                dr[3] = idwInOutMode;
-                dr[4] = sTime;
-                AttLogTable.Rows.Add(dr);
+                        //把记录循环写入DataTable表
+                        DataRow dr = AttLogTable.NewRow();
+                        dr[0] = idwEnrollNumber;
+                        dr[1] = iMachineNumber;
+                        dr[2] = idwVerifyMode;
+                        dr[3] = idwInOutMode;
+                        dr[4] = sTime;
+                        AttLogTable.Rows.Add(dr);
             }
 
             //更新dgvAttLog
@@ -204,24 +204,15 @@ namespace AttReport
             IEnumerable<DataRow> drResult = AttLogTable.AsEnumerable().Except(PastLogTable.AsEnumerable(), DataRowComparer.Default);
 
             //处理空结果的异常
-            if (drResult.Count() > 0)//如果序列元素的个数>0，则写入数据，否则跳过
+            if (drResult.Count()>0)//如果序列元素的个数>0，则写入数据，否则跳过
             {
                 DataTable dtResult = drResult.CopyToDataTable();
 
-                //异步修改lbl值
-                BeginInvoke(objUpdataLbl, "正在生成日报！");
-
-                //生成日报
-                CreateDayLog(dtResult);
-                //异步修改lbl值
-                BeginInvoke(objUpdataLbl, "日报生成成功！");
-
                 //批量写入数据库
                 SQLHelper.UpdataByBulk(dtResult, "OriginalLog");
-            }
+            }            
 
-            #endregion           
-
+            #endregion            
 
             //清空dt对象
             AttLogTable = null;
@@ -234,90 +225,40 @@ namespace AttReport
         #endregion
 
 
-        #region 创建日报表
+        #region 创建日报表   
 
-        //根据读取的记录生成日报表(异步委托)
-        public void CreateDayLog(DataTable dtAttLog)
+        //创建日报表
+        public void CreateDailyReport(DataTable AttLog)
         {
-            //var listRssult = dtAttLog.AsEnumerable();
+            TimeSpan WorkTime1;
+            TimeSpan OffDutyTime1;
 
-            #region 查询所有员工的日报记录
-            
-            //获取员工表
-            DataTable dtStaff = objAttRecordService.GetAllStaffsDataSet().Tables[0];
+            TimeSpan WorkTime2;
+            TimeSpan OffDutyTime2;
 
-            //获取所有时段
-            var iTimesList = objAttRecordService.GetAllTimesList();
+            TimeSpan WorkTime3;
+            TimeSpan OffDutyTime3;
 
-            //月天数变量
-            var idayNumber = DateTime.Now;//日期的天数,测试变量，实际使用中为查询的日期
 
-            DataTable dt = new DataTable();
+            //获取全部在职员工 0在职，1申请离职，2已离职
 
-            //计算日报
-            for (int i = 0; i < dtStaff.Rows.Count; i++)
+            //for循环遍历员工，多表查询获取班次时间
+            for (int i = 0; i < 10; i++)
             {
-                int iSfId = Convert.ToInt32(dtStaff.Rows[i]["SfId"]);//员工Id
-                string iSfName = dtStaff.Rows[i]["SfName"].ToString();//员工姓名
-                string iSfGroupName = dtStaff.Rows[i]["SfGroup"].ToString();//员工组别
-                string iClassesName = dtStaff.Rows[i]["SfShifts"].ToString();//班次名称
-
-                var iTimesNameList = objAttRecordService.GetTimesName(iClassesName);//时段名称List  
-
-                #region 放弃的代码
-
-                if (iTimesNameList.Count != 0)
-                {
-                    string iTimesName1 = iTimesNameList[0].TimesName1;//时段1名称
-                    string iTimesName2 = iTimesNameList[0].TimesName2;//时段2名称
-                    string iTimesName3 = iTimesNameList[0].TimesName3;//时段3名称
-
-
-                    //LinQ多表查询，获取某个员工当天的打卡记录
-                    var Result1 = from log in dtAttLog.AsEnumerable()
-                                  where Convert.ToInt32(log.Field<Int32>("ClockId")) == iSfId
-                                  &&
-                                  DateTime.Parse(log.Field<string>("ClockRecord").ToString()).TimeOfDay//查找打卡时间
-                                  <= TimeSpan.Parse(iTimesList.Find(times => times.TimesName.Equals(iTimesName1)).WorkTime.ToString())//查找时段list的第一次上班时间
-                                  &&
-                                  DateTime.Parse(log.Field<string>("ClockRecord")).Day == idayNumber.Day//天数相等
-                                  select new
-                                  {
-                                      iSfId,
-                                      iSfName,
-                                      iSfGroupName,
-                                      ClockRecord = log.Field<string>("ClockRecord")
-                                  };
-
-                    //添加进表
-                    foreach (var item in Result1)
-                    {
-                        DataRow dr = dt.NewRow();
-                        dr[0] = item.iSfId;
-                        dr[1] = item.iSfName;
-                        dr[2] = item.iSfGroupName;
-                        dr[3] = item.ClockRecord;
-                        dt.Rows.Add(dr);
-                    }
-                }
-                #endregion
+                WorkTime1 = TimeSpan.Parse("8:00:00");
             }
 
-            #endregion
+            //
 
-            //     int sfId = datatable.rows[i][sfId]；
-            //     string name =…
-            //     string date =…
-            //     var days = form p in datatable1.AsEnumerable()
-            //where p.field〈string〉（“打卡记录”）
-            //〈上班时间，&& 〉签到时间
-            //     select p.field<string>("记录").tolist()
+            foreach (DataRow dr in AttLog.Rows)
+            {
 
+            }
         }
 
-
-
         #endregion
+
+
 
 
         //员工入职窗口对象

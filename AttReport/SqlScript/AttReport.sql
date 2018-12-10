@@ -190,30 +190,3 @@ create table DailyReport
   AttDay decimal(2,1)--考勤天数
 )
 go
-
---插入员工测试数据
-
-  insert into Staffs 
-    (SfId,SfCardNo,SfDepartment,SfGroup,SfJob,SfName,SfGender,SfMarriage,SfEducation,SfMajor,SfNativePlace, SfNation,  SfEntryDate,SfBirthDate,SfDomicile,SfResidence,SfIntroducer,SfFriend,SfRelation,SfFriendsPhone,SfStatus,SfShifts)
-	values
-	(78,'0004873086','管理部','管理部','IT工程师','张三','男','未婚','本科','计算机','湖北','汉','2015/06/12','1986/07/12','湖北省十堰市','湖北省十堰市','无','东子','朋友','13912345678','在职','办公职员')
-	
-	
-  insert into Staffs 
-    (
-    SfId,SfCardNo,SfDepartment,SfGroup,SfJob,SfName,SfGender,SfMarriage,SfEducation,SfMajor,SfNativePlace, SfNation,  SfEntryDate,SfBirthDate,SfDomicile,SfResidence,SfIntroducer,SfFriend,SfRelation,SfFriendsPhone,SfStatus,SfShifts)
-	values
-	(63177,'0000046081','管理部','管理部','人事专员','小妹','女','未婚','本科','计算机','湖北','汉','2015/06/12','1986/07/12','湖北省十堰市','湖北省十堰市','无','东子','朋友','13912345678','在职','默认班次')
-	
-  insert into Staffs 
-    (
-    SfId,SfCardNo,SfDepartment,SfGroup,SfJob,SfName,SfGender,SfMarriage,SfEducation,SfMajor,SfNativePlace, SfNation,  SfEntryDate,SfBirthDate,SfDomicile,SfResidence,SfIntroducer,SfFriend,SfRelation,SfFriendsPhone,SfStatus,SfShifts)
-	values
-	(50,'0013041136','生产部','生产冲压','冲压组长','李四','男','未婚','本科','计算机','湖北','汉','2015/06/12','1986/07/12','湖北省十堰市','湖北省十堰市','无','东子','朋友','13912345678','在职','生产作业')
-	
-  insert into Staffs 
-    (
-    SfId,SfCardNo,SfDepartment,SfGroup,SfJob,SfName,SfGender,SfMarriage,SfEducation,SfMajor,SfNativePlace, SfNation,  SfEntryDate,SfBirthDate,SfDomicile,SfResidence,SfIntroducer,SfFriend,SfRelation,SfFriendsPhone,SfStatus,SfShifts)
-	values
-	(45,'0013057700','管理部','生产冲压','作业员','小敏','女','未婚','本科','计算机','湖北','汉','2015/06/12','1986/07/12','湖北省十堰市','湖北省十堰市','无','东子','朋友','13912345678','在职','生产作业')
-

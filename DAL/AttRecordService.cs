@@ -48,8 +48,6 @@ namespace DAL
 
         #endregion
 
-
-
         /// <summary>
         /// 获取所有打卡记录
         /// </summary>
@@ -77,94 +75,6 @@ namespace DAL
             return SQLHelper.GetDataSet(sql);
         }
 
-        /// <summary>
-        /// 获得所有在职员工
-        /// </summary>
-        /// <returns>所有在职员的数据集</returns>
-        public DataSet GetAllEmployeeDataSet()
-        {
-            string sql = "select * from Staffs where SfStatus='在职'";
-            sql = string.Format(sql);
-
-            return SQLHelper.GetDataSet(sql);
-        }
-
-
-        /// <summary>
-        /// 获得所有员工
-        /// </summary>
-        /// <returns>所有员工</returns>
-        public DataSet GetAllStaffsDataSet()
-        {
-            string sql = "select SfId,SfName,SfGroup,SfShifts from Staffs";
-            sql = string.Format(sql);
-            return SQLHelper.GetDataSet(sql);
-        }
-
-
-
-
-        /// <summary>
-        /// 获得所有时间段
-        /// </summary>
-        /// <returns></returns>
-        public List<TimesManage> GetAllTimesList()
-        {
-            string sql = "select * from TimesManage";
-            sql = string.Format(sql);
-
-            SqlDataReader objReader = SQLHelper.GetReader(sql);
-            List<TimesManage> list = new List<TimesManage>();
-            while (objReader.Read())
-            {
-                list.Add(new TimesManage()
-                {
-                    TimesName = objReader["TimesName"].ToString(),
-                    WorkTime = objReader["WorkTime"].ToString(),
-                    OffDutyTime = objReader["OffDutyTime"].ToString(),
-                    StartCheckIn = objReader["StartCheckIn"].ToString(),
-                    EndCheckIn = objReader["EndCheckIn"].ToString(),
-                    StartSignBack = objReader["StartSignBack"].ToString(),
-                    EndSignBack = objReader["EndSignBack"].ToString(),
-                    LateTime = Convert.ToInt32(objReader["LateTime"]),
-                    LeftEarly = Convert.ToInt32(objReader["LeftEarly"]),
-                });
-            }
-            return list;
-        }
-
-
-        /// <summary>
-        /// 根据时段名称获取时段
-        /// </summary>
-        /// <param name="TimesName">时段名称</param>
-        /// <returns>时段List</returns>
-        public List<TimesManage> GetTimes(string TimesName)
-        {
-            string sql = "select * from TimesManage where TimesName={0}" + TimesName;
-            sql = string.Format(sql);
-            SqlDataReader objReader = SQLHelper.GetReader(sql);
-            List<TimesManage> list = new List<TimesManage>();
-            while (objReader.Read())
-            {
-                list.Add(new TimesManage()
-                {
-                    TimesName = objReader["TimesName"].ToString(),
-                    WorkTime = objReader["WorkTime"].ToString(),
-                    OffDutyTime = objReader["OffDutyTime"].ToString(),
-                    StartCheckIn = objReader["StartCheckIn"].ToString(),
-                    EndCheckIn = objReader["EndCheckIn"].ToString(),
-                    StartSignBack = objReader["StartSignBack"].ToString(),
-                    EndSignBack = objReader["EndSignBack"].ToString(),
-                    LateTime = Convert.ToInt32(objReader["LateTime"]),
-                    LeftEarly = Convert.ToInt32(objReader["LeftEarly"]),
-                });
-            }
-
-            return list;
-
-        }
-
 
         /// <summary>
         /// 获取员工姓名
@@ -178,30 +88,6 @@ namespace DAL
 
             return SQLHelper.GetSingleResult(sql).ToString();//返回员工姓名
         }
-
-
-        /// <summary>
-        /// 获取员工的组别名称
-        /// </summary>
-        /// <param name="SfId">员工Id</param>
-        /// <returns>组别名称</returns>
-        public string GetSfGroupName(int SfId)
-        {
-            string sql = "select SfGroup from staffs where SfId={0}" + SfId;
-            sql = string.Format(sql);
-            var result = SQLHelper.GetSingleResult(sql).ToString();
-
-            if (result != null)
-            {
-                return result.ToString();
-            }
-            else
-            {
-                return null;
-            }
-        }
-
-
 
         /// <summary>
         /// 获取员工班次
@@ -242,15 +128,45 @@ namespace DAL
             {
                 list.Add(new ClassesTimes()
                 {
-                    ClassesName = objReader["ClassesName"].ToString(),
+                    ClassesName=objReader["ClassesName"].ToString(),
                     TimesName1 = objReader["TimesName1"].ToString(),
                     TimesName2 = objReader["TimesName2"].ToString(),
-                    TimesName3 = objReader["TimesName3"].ToString()
+                    TimesName3=objReader["TimesName3"].ToString()
                 });
             }
             return list;
         }
 
+        
+        /// <summary>
+        /// 获取班次时段List
+        /// </summary>
+        /// <param name="TimesName">时段名称</param>
+        /// <returns>时段集合</returns>
+        public List<TimesManage> GetTimes(string TimesName)
+        {
+            string sql = "select * from TimesManage where TimesName='{0}'";
+            sql = string.Format(sql, TimesName);
 
+            SqlDataReader objReader = SQLHelper.GetReader(sql);
+            List<TimesManage> list = new List<TimesManage>();
+            while (objReader.Read())
+            {
+                list.Add(new TimesManage()
+                {
+                    TimesName = objReader["TimesName"].ToString(),
+                    WorkTime = objReader["WorkTime"].ToString(),
+                    OffDutyTime=objReader["OffDutyTime"].ToString(),
+                    StartCheckIn=objReader["StartCheckIn"].ToString(),
+                    EndCheckIn = objReader["EndCheckIn"].ToString(),
+                    StartSignBack = objReader["StartSignBack"].ToString(),
+                    EndSignBack = objReader["EndSignBack"].ToString(),
+                    LateTime = Convert.ToInt32(objReader["LateTime"]),
+                    LeftEarly = Convert.ToInt32(objReader["LeftEarly"])
+
+                });
+            }
+            return list;
+        }
     }
 }
