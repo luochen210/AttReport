@@ -178,14 +178,14 @@ namespace AttReport
 
             while (axCZKEM1.GetGeneralLogDataStr(iMachineNumber, ref idwEnrollNumber, ref idwVerifyMode, ref idwInOutMode, ref sTime))//从内存取得记录
             {
-                        //把记录循环写入DataTable表
-                        DataRow dr = AttLogTable.NewRow();
-                        dr[0] = idwEnrollNumber;
-                        dr[1] = iMachineNumber;
-                        dr[2] = idwVerifyMode;
-                        dr[3] = idwInOutMode;
-                        dr[4] = sTime;
-                        AttLogTable.Rows.Add(dr);
+                //把记录循环写入DataTable表
+                DataRow dr = AttLogTable.NewRow();
+                dr[0] = idwEnrollNumber;
+                dr[1] = iMachineNumber;
+                dr[2] = idwVerifyMode;
+                dr[3] = idwInOutMode;
+                dr[4] = sTime;
+                AttLogTable.Rows.Add(dr);
             }
 
             //更新dgvAttLog
@@ -206,7 +206,7 @@ namespace AttReport
             IEnumerable<DataRow> drResult = AttLogTable.AsEnumerable().Except(PastLogTable.AsEnumerable(), DataRowComparer.Default);
 
             //处理空结果的异常
-            if (drResult.Count()>0)//如果序列元素的个数>0，则写入数据，否则跳过
+            if (drResult.Count() > 0)//如果序列元素的个数>0，则写入数据，否则跳过
             {
                 DataTable dtResult = drResult.CopyToDataTable();
 
@@ -215,9 +215,9 @@ namespace AttReport
 
                 //批量写入数据库
                 SQLHelper.UpdataByBulk(dtResult, "OriginalLog");
-            }            
+            }
 
-            #endregion            
+            #endregion
 
             //清空dt对象
             AttLogTable = null;
@@ -235,19 +235,21 @@ namespace AttReport
         //根据读取的记录生成日报表(异步委托)
         public void CreateDayLog(DataTable dtAttLog)
         {
+            //时段
+            TimeSpan psAm = TimeSpan.Parse("00:00:00");
+            TimeSpan psPm = TimeSpan.Parse("23:59:59");
+            DateTime iToday = DateTime.Now;
+
             #region 查询所有员工的日报记录
 
             //获取员工表
             DataTable dtStaff = objAttRecordService.GetAllStaffsDataSet().Tables[0];
-
             //获取所有时段
             var iTimesList = objAttRecordService.GetAllTimesList();
-
             //月天数变量
             var idayNumber = DateTime.Now;//日期的天数,测试变量，实际使用中为查询的日期
-
-            DataTable dt = new DataTable();
-
+            //缓存表
+            DataTable dtAttTemp = new DataTable();
             //计算日报
             for (int i = 0; i < dtStaff.Rows.Count; i++)
             {
@@ -256,35 +258,83 @@ namespace AttReport
                 string iSfGroupName = dtStaff.Rows[i]["SfGroup"].ToString();//员工组别
                 string iClassesName = dtStaff.Rows[i]["SfShifts"].ToString();//班次名称
 
-                var iTimesNameList = objAttRecordService.GetTimesName(iClassesName);//时段名称List  
+                var iTimesNameList = objAttRecordService.GetTimesName(iClassesName);//时段名称List
 
                 #region 放弃的代码
 
                 if (iTimesNameList.Count != 0)
                 {
+                    #region 获取上下班时间
+
                     string iTimesName1 = iTimesNameList[0].TimesName1;//时段1名称
                     string iTimesName2 = iTimesNameList[0].TimesName2;//时段2名称
                     string iTimesName3 = iTimesNameList[0].TimesName3;//时段3名称
 
+                    //上班时间1
+                    TimeSpan WorkTime1 = TimeSpan.Parse((from time in iTimesList
+                                                         where time.TimesName == iTimesName1
+                                                         select time.WorkTime.ToList()).First().ToString());//上班1
+                    //下班时间1
+                    TimeSpan OffDutyTime1 = TimeSpan.Parse((from time in iTimesList
+                                                            where time.TimesName == iTimesName1
+                                                            select time.OffDutyTime.ToList()).First().ToString());//下班1
 
-                    //LinQ多表查询，获取某个员工当天的打卡记录
-                    var Result1 = from log in dtAttLog.AsEnumerable()
-                                  where Convert.ToInt32(log.Field<Int32>("ClockId")) == iSfId
-                                  &&
-                                  DateTime.Parse(log.Field<string>("ClockRecord").ToString()).TimeOfDay//查找打卡时间
-                                  <= TimeSpan.Parse(iTimesList.Find(times => times.TimesName.Equals(iTimesName1)).WorkTime.ToString())//查找时段list的第一次上班时间
-                                  select (log);
+                    //上班时间2
+                    TimeSpan WorkTime2 = TimeSpan.Parse((from time in iTimesList
+                                                         where time.TimesName == iTimesName2
+                                                         select time.WorkTime.ToList()).First().ToString());//上班1
+                    //下班时间2
+                    TimeSpan OffDutyTime2 = TimeSpan.Parse((from time in iTimesList
+                                                            where time.TimesName == iTimesName2
+                                                            select time.OffDutyTime.ToList()).First().ToString());//下班1
 
-                    //添加进表
-                    foreach (var item in Result1)
-                    {
-                        DataRow dr = dt.NewRow();
-                        dr[0] = iSfId;
-                        dr[1] = iSfName;
-                        dr[2] = iSfGroupName;
-                        dr[3] = item.Field<string>("ClockRecord");
-                        dt.Rows.Add(dr);
-                    }
+                    //上班时间3
+                    TimeSpan WorkTime3 = TimeSpan.Parse((from time in iTimesList
+                                                         where time.TimesName == iTimesName3
+                                                         select time.WorkTime.ToList()).First().ToString());//上班1
+                    //下班时间3
+                    TimeSpan OffDutyTime3 = TimeSpan.Parse((from time in iTimesList
+                                                            where time.TimesName == iTimesName3
+                                                            select time.OffDutyTime.ToList()).First().ToString());//下班1
+
+                    #endregion
+
+
+                    #region 重新整理打卡记录
+
+                    ////获取第一次上班时间以前的记录
+                    //var Result1 = from log in dtAttLog.AsEnumerable()
+                    //              where Convert.ToInt32(log.Field<Int32>("ClockId")) == iSfId &&
+                    //              DateTime.Parse(log.Field<string>("ClockRecord").ToString()).TimeOfDay <= WorkTime1//查找第一次上班打卡时间
+                    //              select log.Field<string>("ClockRecord").ToList();
+
+                    //计算当日记录
+                    var AttResult = from log in dtAttLog.AsEnumerable()
+                                    where Convert.ToInt32(log.Field<Int32>("ClockId")) == iSfId &&
+                                    Convert.ToDateTime(log.Field<string>("ClockRecord").ToString()) == iToday
+                                    select log.Field<string>("ClockRecord").ToList();
+                    ////计算有效记录
+                    //var ValidResult=AttResult
+                    //    .Where(log=>log.FindAll((DateTime.Parse("ClockRecord")).TimeOfDay) <= WorkTime1)
+
+
+
+
+                    //获取第一次下班的打卡记录
+
+                    #endregion
+
+
+                    ////添加进表
+                    //foreach (var item in Result1)
+                    //{
+                    //    DataRow dr = dtAttTemp.NewRow();
+                    //    dr[0] = iSfId;
+                    //    dr[1] = iSfName;
+                    //    dr[2] = iSfGroupName;
+                    //    dr[3] = item.Field<string>("ClockRecord");
+                    //    dtAttTemp.Rows.Add(dr);
+                    //}
                 }
                 #endregion
             }
