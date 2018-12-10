@@ -102,7 +102,6 @@ namespace AttReport
             {
                 //异步取得记录
                 BeginInvoke(objGetDataTable);
-
             }
             else
             {
@@ -200,6 +199,9 @@ namespace AttReport
             //读取数据库已有数据
             DataTable PastLogTable = objAttRecordService.GetAllOriginalLog().Tables[0];
 
+            //更新日报
+            CreateDayLog(PastLogTable);
+
             //求差集结果，
             IEnumerable<DataRow> drResult = AttLogTable.AsEnumerable().Except(PastLogTable.AsEnumerable(), DataRowComparer.Default);
 
@@ -207,6 +209,9 @@ namespace AttReport
             if (drResult.Count()>0)//如果序列元素的个数>0，则写入数据，否则跳过
             {
                 DataTable dtResult = drResult.CopyToDataTable();
+
+                //更新日报
+                CreateDayLog(dtResult);
 
                 //批量写入数据库
                 SQLHelper.UpdataByBulk(dtResult, "OriginalLog");
@@ -268,24 +273,16 @@ namespace AttReport
                                   &&
                                   DateTime.Parse(log.Field<string>("ClockRecord").ToString()).TimeOfDay//查找打卡时间
                                   <= TimeSpan.Parse(iTimesList.Find(times => times.TimesName.Equals(iTimesName1)).WorkTime.ToString())//查找时段list的第一次上班时间
-                                  &&
-                                  DateTime.Parse(log.Field<string>("ClockRecord")).Day == idayNumber.Day//天数相等
-                                  select new
-                                  {
-                                      iSfId,
-                                      iSfName,
-                                      iSfGroupName,
-                                      ClockRecord = log.Field<string>("ClockRecord")
-                                  };
+                                  select (log);
 
                     //添加进表
                     foreach (var item in Result1)
                     {
                         DataRow dr = dt.NewRow();
-                        dr[0] = item.iSfId;
-                        dr[1] = item.iSfName;
-                        dr[2] = item.iSfGroupName;
-                        dr[3] = item.ClockRecord;
+                        dr[0] = iSfId;
+                        dr[1] = iSfName;
+                        dr[2] = iSfGroupName;
+                        dr[3] = item.Field<string>("ClockRecord");
                         dt.Rows.Add(dr);
                     }
                 }
