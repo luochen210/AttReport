@@ -199,9 +199,6 @@ namespace AttReport
             //读取数据库已有数据
             DataTable PastLogTable = objAttRecordService.GetAllOriginalLog().Tables[0];
 
-            //更新日报
-            CreateDayLog(PastLogTable);
-
             //求差集结果，
             IEnumerable<DataRow> drResult = AttLogTable.AsEnumerable().Except(PastLogTable.AsEnumerable(), DataRowComparer.Default);
 
@@ -210,8 +207,8 @@ namespace AttReport
             {
                 DataTable dtResult = drResult.CopyToDataTable();
 
-                //更新日报
-                CreateDayLog(dtResult);
+                ////更新日报
+                //CreateDayLog(dtResult);
 
                 //批量写入数据库
                 SQLHelper.UpdataByBulk(dtResult, "OriginalLog");
@@ -229,8 +226,19 @@ namespace AttReport
         }
         #endregion
 
+        //测试事件
+        private void btnTest_Click(object sender, EventArgs e)
+        {
+            //获得测试表
 
-        #region 创建日报表
+            DataTable dtTest = objAttRecordService.GetAllOriginalLog().Tables[0];
+
+            //测试功能
+            CreateDayLog(dtTest);
+        }
+
+
+        #region 日报表计算方法
 
         //根据读取的记录生成日报表(异步委托)
         public void CreateDayLog(DataTable dtAttLog)
@@ -238,16 +246,17 @@ namespace AttReport
             //时段
             TimeSpan psAm = TimeSpan.Parse("00:00:00");
             TimeSpan psPm = TimeSpan.Parse("23:59:59");
-            DateTime iToday = DateTime.Now;
 
-            #region 查询所有员工的日报记录
+            //DateTime iToday = DateTime.Now.Date;
+            DateTime iToday = DateTime.Parse("2018/12/10");//测试用
+            //MessageBox.Show(iToday.ToString());
 
             //获取员工表
             DataTable dtStaff = objAttRecordService.GetAllStaffsDataSet().Tables[0];
             //获取所有时段
             var iTimesList = objAttRecordService.GetAllTimesList();
             //月天数变量
-            var idayNumber = DateTime.Now;//日期的天数,测试变量，实际使用中为查询的日期
+            var idayNumber = DateTime.Now.Date;//日期的天数,测试变量，实际使用中为查询的日期
             //缓存表
             DataTable dtAttTemp = new DataTable();
             //计算日报
@@ -260,8 +269,6 @@ namespace AttReport
 
                 var iTimesNameList = objAttRecordService.GetTimesName(iClassesName);//时段名称List
 
-                #region 放弃的代码
-
                 if (iTimesNameList.Count != 0)
                 {
                     string iTimesName1 = iTimesNameList[0].TimesName1;//时段1名称
@@ -273,31 +280,27 @@ namespace AttReport
                     ////////////////////////////////////////////上下班时间/////////////////////////////////////////////////////
 
                     //上班时间1
-                    TimeSpan WorkTime1 = TimeSpan.Parse((from time in iTimesList
-                                                         where time.TimesName == iTimesName1
-                                                         select time.WorkTime.ToList()).First().ToString());
+                    TimeSpan WorkTime1 = TimeSpan.Parse(iTimesList
+                        .Where(time => time.TimesName == iTimesName1).ToList()[0].WorkTime);
+
                     //下班时间1
-                    TimeSpan OffDutyTime1 = TimeSpan.Parse((from time in iTimesList
-                                                            where time.TimesName == iTimesName1
-                                                            select time.OffDutyTime.ToList()).First().ToString());
+                    TimeSpan OffDutyTime1 = TimeSpan.Parse(iTimesList
+                        .Where(time => time.TimesName == iTimesName1).ToList()[0].OffDutyTime);
 
                     //上班时间2
-                    TimeSpan WorkTime2 = TimeSpan.Parse((from time in iTimesList
-                                                         where time.TimesName == iTimesName2
-                                                         select time.WorkTime.ToList()).First().ToString());
+                    TimeSpan WorkTime2 = TimeSpan.Parse(iTimesList
+                        .Where(time => time.TimesName == iTimesName2).ToList()[0].WorkTime);
                     //下班时间2
-                    TimeSpan OffDutyTime2 = TimeSpan.Parse((from time in iTimesList
-                                                            where time.TimesName == iTimesName2
-                                                            select time.OffDutyTime.ToList()).First().ToString());
+                    TimeSpan OffDutyTime2 = TimeSpan.Parse(iTimesList
+                        .Where(time => time.TimesName == iTimesName2).ToList()[0].OffDutyTime);
 
                     //上班时间3
-                    TimeSpan WorkTime3 = TimeSpan.Parse((from time in iTimesList
-                                                         where time.TimesName == iTimesName3
-                                                         select time.WorkTime.ToList()).First().ToString());
+                    TimeSpan WorkTime3 = TimeSpan.Parse(iTimesList
+                        .Where(time => time.TimesName == iTimesName3).ToList()[0].WorkTime);
                     //下班时间3
-                    TimeSpan OffDutyTime3 = TimeSpan.Parse((from time in iTimesList
-                                                            where time.TimesName == iTimesName3
-                                                            select time.OffDutyTime.ToList()).First().ToString());
+                    TimeSpan OffDutyTime3 = TimeSpan.Parse(iTimesList
+                        .Where(time => time.TimesName == iTimesName3).ToList()[0].OffDutyTime);
+
                     #endregion
 
                     #region 开始与结束签到时间
@@ -305,30 +308,29 @@ namespace AttReport
                     //////////////////////////////////////////////////开始与结束签到时间/////////////////////////////////////////////////////////
 
                     //开始签到时间1
-                    TimeSpan StartCheckIn1 = TimeSpan.Parse((from time in iTimesList
-                                                             where time.TimesName == iTimesName1
-                                                             select time.StartCheckIn.ToList()).First().ToString());
-                    //结束签到时间1
-                    TimeSpan EndCheckIn1 = TimeSpan.Parse((from time in iTimesList
-                                                           where time.TimesName == iTimesName1
-                                                           select time.EndCheckIn.ToList()).First().ToString());
+                    TimeSpan StartCheckIn1 = TimeSpan.Parse(iTimesList
+                        .Where(time => time.TimesName == iTimesName1).ToList()[0].StartCheckIn);
 
-                    //开始签到时间1
-                    TimeSpan StartCheckIn2 = TimeSpan.Parse((from time in iTimesList
-                                                             where time.TimesName == iTimesName2
-                                                             select time.StartCheckIn.ToList()).First().ToString());
                     //结束签到时间1
-                    TimeSpan EndCheckIn2 = TimeSpan.Parse((from time in iTimesList
-                                                           where time.TimesName == iTimesName2
-                                                           select time.EndCheckIn.ToList()).First().ToString());
-                    //开始签到时间1
-                    TimeSpan StartCheckIn3 = TimeSpan.Parse((from time in iTimesList
-                                                             where time.TimesName == iTimesName3
-                                                             select time.StartCheckIn.ToList()).First().ToString());
-                    //结束签到时间1
-                    TimeSpan EndCheckIn3 = TimeSpan.Parse((from time in iTimesList
-                                                           where time.TimesName == iTimesName3
-                                                           select time.EndCheckIn.ToList()).First().ToString());
+                    TimeSpan EndCheckIn1 = TimeSpan.Parse(iTimesList
+                        .Where(time => time.TimesName == iTimesName1).ToList()[0].EndCheckIn);
+
+                    //开始签到时间2
+                    TimeSpan StartCheckIn2 = TimeSpan.Parse(iTimesList
+                        .Where(time => time.TimesName == iTimesName2).ToList()[0].StartCheckIn);
+
+                    //结束签到时间2
+                    TimeSpan EndCheckIn2 = TimeSpan.Parse(iTimesList
+                        .Where(time => time.TimesName == iTimesName2).ToList()[0].EndCheckIn);
+
+                    //开始签到时间3
+                    TimeSpan StartCheckIn3 = TimeSpan.Parse(iTimesList
+                        .Where(time => time.TimesName == iTimesName3).ToList()[0].StartCheckIn);
+
+                    //结束签到时间3
+                    TimeSpan EndCheckIn3 = TimeSpan.Parse(iTimesList
+                        .Where(time => time.TimesName == iTimesName3).ToList()[0].EndCheckIn);
+
                     #endregion
 
                     #region 开始与结束签退时间
@@ -336,73 +338,90 @@ namespace AttReport
                     ///////////////////////////////////////////////开始与结束签退时间/////////////////////////////////////////////////
 
                     //开始签退时间1
-                    TimeSpan StartSignBack1 = TimeSpan.Parse((from time in iTimesList
-                                                              where time.TimesName == iTimesName1
-                                                              select time.StartSignBack.ToList()).First().ToString());
+                    TimeSpan StartSignBack1 = TimeSpan.Parse(iTimesList
+                        .Where(time => time.TimesName == iTimesName1).ToList()[0].StartSignBack);
+
                     //结束签退时间1
-                    TimeSpan EndSignBack1 = TimeSpan.Parse((from time in iTimesList
-                                                            where time.TimesName == iTimesName1
-                                                            select time.EndSignBack.ToList()).First().ToString());
+                    TimeSpan EndSignBack1 = TimeSpan.Parse(iTimesList
+                        .Where(time => time.TimesName == iTimesName1).ToList()[0].EndSignBack);
 
                     //开始签退时间2
-                    TimeSpan StartSignBack2 = TimeSpan.Parse((from time in iTimesList
-                                                              where time.TimesName == iTimesName2
-                                                              select time.StartSignBack.ToList()).First().ToString());
+                    TimeSpan StartSignBack2 = TimeSpan.Parse(iTimesList
+                        .Where(time => time.TimesName == iTimesName2).ToList()[0].StartSignBack);
+
                     //结束签退时间2
-                    TimeSpan EndSignBack2 = TimeSpan.Parse((from time in iTimesList
-                                                            where time.TimesName == iTimesName2
-                                                            select time.EndSignBack.ToList()).First().ToString());
+                    TimeSpan EndSignBack2 = TimeSpan.Parse(iTimesList
+                        .Where(time => time.TimesName == iTimesName2).ToList()[0].EndSignBack);
 
                     //开始签退时间3
-                    TimeSpan StartSignBack3 = TimeSpan.Parse((from time in iTimesList
-                                                              where time.TimesName == iTimesName3
-                                                              select time.StartSignBack.ToList()).First().ToString());
+                    TimeSpan StartSignBack3 = TimeSpan.Parse(iTimesList
+                        .Where(time => time.TimesName == iTimesName3).ToList()[0].StartSignBack);
+
                     //结束签退时间3
-                    TimeSpan EndSignBack3 = TimeSpan.Parse((from time in iTimesList
-                                                            where time.TimesName == iTimesName3
-                                                            select time.EndSignBack.ToList()).First().ToString());
+                    TimeSpan EndSignBack3 = TimeSpan.Parse(iTimesList
+                        .Where(time => time.TimesName == iTimesName3).ToList()[0].EndSignBack);
 
                     #endregion
 
-                    #region 重新整理打卡记录
+                    #region 重新整理打卡记录                    
 
-                    ////获取第一次上班时间以前的记录
-                    //var Result1 = from log in dtAttLog.AsEnumerable()
-                    //              where Convert.ToInt32(log.Field<Int32>("ClockId")) == iSfId &&
-                    //              DateTime.Parse(log.Field<string>("ClockRecord").ToString()).TimeOfDay <= WorkTime1//查找第一次上班打卡时间
-                    //              select log.Field<string>("ClockRecord").ToList();
+                    //计算统计每位员工的考勤记录
+                    var AttResult = (from log in dtAttLog.AsEnumerable()//查询集合
+                                    where Convert.ToInt32(log.Field<Int32>("ClockId")) == iSfId//满足id条件
+                                    && Convert.ToDateTime(log.Field<string>("ClockRecord").ToString()).Date == iToday//满足单日条件
+                                    select log.Field<string>("ClockRecord")).ToList();//返回记录集合
 
-                    //计算当日记录
-                    var AttResult = from log in dtAttLog.AsEnumerable()//查询集合
-                                    where Convert.ToInt32(log.Field<Int32>("ClockId")) == iSfId &&//满足id条件
-                                    Convert.ToDateTime(log.Field<string>("ClockRecord").ToString()) == iToday//满足单日条件
-                                    select log.Field<string>("ClockRecord").ToList();//返回记录集合
+                    /////////////////////////////////
+                    foreach (string item in AttResult)
+                    {
+                        Console.WriteLine(item);
+                        Console.WriteLine("-------------");
+                    }
+                    /////////////////////////////////
 
+                    #region 计算唯一有效记录
+
+                    //创建局部变量接收唯一打卡值
                     string OnlyWorkTime = "";//唯一打卡值
 
-                    //计算有效记录
+                    //创建List集合，用于后面的数据存放
+                    List<string> logList = new List<string>();
+
+                    //筛选第一次上班（上午）的有效记录
                     foreach (var at in AttResult)
                     {
-                        if (TimeSpan.Parse(at.ToString()) < WorkTime1)//WorkTime1代表上班时间
+                        if (DateTime.Parse(at).TimeOfDay < WorkTime1)//WorkTime1代表第一次上班时间
                         {
-                            List<string> list = new List<string>();
                             //添加进list集合
-                            list.Add(at.ToString());
-                            if (list.Count > 1)
+                            logList.Add(at);
+                        }
+                    }
+
+                    //筛选唯一记录
+                    if (logList != null)
+                    {
+                        if (logList.Count == 1)
+                        {
+                            OnlyWorkTime = logList.FirstOrDefault();
+                        }
+                        else if (logList.Count > 1)
+                        {
+                            if (logList.Where(x => DateTime.Parse(x).TimeOfDay >= StartCheckIn1).FirstOrDefault().Count() > 0
+                                && logList.Where(x => DateTime.Parse(x).TimeOfDay >= StartCheckIn1).FirstOrDefault() != null)
                             {
-                                if (list.Where(x => TimeSpan.Parse(x) >= StartCheckIn1).FirstOrDefault().Count() > 0
-                                    && list.Where(x => TimeSpan.Parse(x) >= StartCheckIn1).FirstOrDefault() != null)
-                                {
-                                    OnlyWorkTime = list.Where(x => TimeSpan.Parse(x) >= StartCheckIn1).FirstOrDefault();//StartCheckIn1是开始签到时间1
-                                }
-                                else
-                                {
-                                    OnlyWorkTime = list.FirstOrDefault();
-                                }
+                                OnlyWorkTime = logList.Where(x => DateTime.Parse(x).TimeOfDay >= StartCheckIn1).FirstOrDefault();//StartCheckIn1是开始签到时间1
+                            }
+                            else
+                            {
+                                OnlyWorkTime = logList.FirstOrDefault();
                             }
                         }
                     }
 
+                    //测试输出
+                    Console.WriteLine(iSfId+" "+iSfName+" "+iSfGroupName+" "+OnlyWorkTime+"\n");                    
+
+                    #endregion
 
 
                     //获取第一次下班的打卡记录
@@ -421,17 +440,10 @@ namespace AttReport
                     //    dtAttTemp.Rows.Add(dr);
                     //}
                 }
-                #endregion
             }
-
-            #endregion
-
+            Console.ReadLine();
         }
-
-
-
         #endregion
-
 
         //员工入职窗口对象
         public static FrmAddStaff objFrmAddStaff = null;
@@ -559,5 +571,6 @@ namespace AttReport
                 objFrmMonthlyReport.WindowState = FormWindowState.Normal;
             }
         }
+
     }
 }

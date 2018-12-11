@@ -101,6 +101,7 @@
             this.tabAnnual = new System.Windows.Forms.TabPage();
             this.lblState = new System.Windows.Forms.Label();
             this.progressBar1 = new System.Windows.Forms.ProgressBar();
+            this.btnTest = new System.Windows.Forms.Button();
             this.menuStrip1.SuspendLayout();
             this.tctlReport.SuspendLayout();
             this.tabLog.SuspendLayout();
@@ -659,16 +660,27 @@
             // 
             // progressBar1
             // 
-            this.progressBar1.Location = new System.Drawing.Point(685, 32);
+            this.progressBar1.Location = new System.Drawing.Point(643, 32);
             this.progressBar1.Name = "progressBar1";
-            this.progressBar1.Size = new System.Drawing.Size(100, 23);
+            this.progressBar1.Size = new System.Drawing.Size(307, 23);
             this.progressBar1.TabIndex = 1;
+            // 
+            // btnTest
+            // 
+            this.btnTest.Location = new System.Drawing.Point(280, 59);
+            this.btnTest.Name = "btnTest";
+            this.btnTest.Size = new System.Drawing.Size(75, 23);
+            this.btnTest.TabIndex = 9;
+            this.btnTest.Text = "测试";
+            this.btnTest.UseVisualStyleBackColor = true;
+            this.btnTest.Click += new System.EventHandler(this.btnTest_Click);
             // 
             // FrmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1008, 729);
+            this.Controls.Add(this.btnTest);
             this.Controls.Add(this.progressBar1);
             this.Controls.Add(this.lblState);
             this.Controls.Add(this.tctlReport);
@@ -767,6 +779,7 @@
         private System.Windows.Forms.ToolStripMenuItem 日报查询ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem 考勤管理ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem 签卡ToolStripMenuItem;
+        private System.Windows.Forms.Button btnTest;
     }
 }
 
