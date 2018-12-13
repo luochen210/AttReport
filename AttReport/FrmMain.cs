@@ -192,7 +192,7 @@ namespace AttReport
             dgvAttLog.DataSource = AttLogTable;
 
             //异步修改lbl值
-            BeginInvoke(objUpdataLbl, "下载完毕！正在保存记录……");
+            BeginInvoke(objUpdataLbl, "下载完毕！正在筛选记录……");
 
             #region 数据批量对比去重
 
@@ -205,13 +205,17 @@ namespace AttReport
             //处理空结果的异常
             if (drResult.Count() > 0)//如果序列元素的个数>0，则写入数据，否则跳过
             {
+                //接收不重复的数据
                 DataTable dtResult = drResult.CopyToDataTable();
-
-                ////更新日报
-                //CreateDayLog(dtResult);
-
+                //异步修改lbl值
+                BeginInvoke(objUpdataLbl, "筛选完毕！正在写入记录……");
                 //批量写入数据库
                 SQLHelper.UpdataByBulk(dtResult, "OriginalLog");
+                BeginInvoke(objUpdataLbl, "写入完毕！正在计算报表……");
+                //更新日报
+                CreateDayLog(dtResult);
+                //异步修改lbl值
+                BeginInvoke(objUpdataLbl, "计算完毕！正在保存报表……");
             }
 
             #endregion
@@ -242,6 +246,9 @@ namespace AttReport
         //根据读取的记录生成日报表(异步委托)
         public void CreateDayLog(DataTable dtAttLog)
         {
+            //实例化委托
+            objUpdataLbl = new UpdataLbl(LblState);
+
             //时段
             TimeSpan psAm = TimeSpan.Parse("00:00:00");//1天开始
             TimeSpan psPm = TimeSpan.Parse("23:59:59");//1天结束
@@ -296,6 +303,9 @@ namespace AttReport
                     string iTimesName1 = iTimesNameList[0].TimesName1;//时段1名称
                     string iTimesName2 = iTimesNameList[0].TimesName2;//时段2名称
                     string iTimesName3 = iTimesNameList[0].TimesName3;//时段3名称
+
+                    //异步修改lbl值
+                    BeginInvoke(objUpdataLbl, "开始计算上下班时间……");
 
                     #region 上下班时间
 
@@ -423,7 +433,8 @@ namespace AttReport
                     #endregion
 
                     #region 重新整理打卡记录，根据Id取单日记录                    
-
+                    //异步修改lbl值
+                    BeginInvoke(objUpdataLbl, "开始筛选单日记录……");
                     //计算统计每位员工的考勤记录
                     var AttResult = (from log in dtAttLog.AsEnumerable()//查询集合
                                      where Convert.ToInt32(log.Field<Int32>("ClockId")) == iSfId//满足id条件
@@ -432,7 +443,8 @@ namespace AttReport
                     #endregion
 
                     #region 获取唯一打卡值                     
-
+                    //异步修改lbl值
+                    BeginInvoke(objUpdataLbl, "整理完毕！开始归类打卡时间……");
                     /////////////////////
                     //创建局部变量接收唯一打卡值
                     string OnlyWorkTime1 = "";//上班唯一打卡值1
@@ -507,7 +519,8 @@ namespace AttReport
                     #endregion
 
                     #region 处理考勤  
-
+                    //异步修改lbl值
+                    BeginInvoke(objUpdataLbl, "归类完毕！开始自动处理正班考勤……");
                     /*处理考勤
                      * 
                      * int AtState = 0;//考勤状态 0:正常，1:迟到，2:早退，3:未打卡，4:缺勤(旷工)，5:无薪请假，6:底薪休假，7:全薪休假
@@ -562,7 +575,8 @@ namespace AttReport
                     #endregion
 
                     #region 处理多班倒考勤
-                    
+                    //异步修改lbl值
+                    BeginInvoke(objUpdataLbl, "开始处理多班倒考勤……");
                     //计算多班倒天数--如果是多班倒，并且打卡值不为""，则天数增加
                     if (iTimesName2 == "" && iTimesName3 == "")
                     {
@@ -606,6 +620,8 @@ namespace AttReport
                             AtSign = 1;//考勤处理标记 0:未处理，1:已计算，2:已签卡处理，3:已处理假期
                         }
                     }
+                    //异步修改lbl值
+                    BeginInvoke(objUpdataLbl, "考勤处理完毕！开始保存数据……");
                     #endregion
 
                     #endregion
@@ -628,7 +644,6 @@ namespace AttReport
                     dr[11] = AtState;//考勤状态
                     dr[12] = AtSign;//处理标记
                     dtAttTemp.Rows.Add(dr);
-
                     #endregion
 
                 }
