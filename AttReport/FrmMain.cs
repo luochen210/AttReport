@@ -292,7 +292,7 @@ namespace AttReport
             {
                 double AtDay = 0;//工作天数
                 int AtState = 0;//考勤状态 考勤状态 0:正常，1:迟到，2:早退，3:未打卡，4:缺勤，5:无薪请假，6:底薪休假，7:全薪休假
-                int AtSign = 0;//考勤处理标记 0:未处理，1:已计算，2:已签卡处理，3:已处理假期
+                int AtSign = 0;//考勤处理标记 0:未处理，1:已计算，2:已签卡，3:已处理假期
                 int iSfId = Convert.ToInt32(dtStaff.Rows[i]["SfId"]);//员工Id
                 string iSfName = dtStaff.Rows[i]["SfName"].ToString();//员工姓名
                 string iSfGroupName = dtStaff.Rows[i]["SfGroup"].ToString();//员工组别
@@ -647,6 +647,8 @@ namespace AttReport
                     dtAttTemp.Rows.Add(dr);
                     #endregion
 
+                    //显示到DGV
+                    dgvDailyReport.DataSource = dtAttTemp;
                 }
             }
 
