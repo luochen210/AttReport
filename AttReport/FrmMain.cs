@@ -145,7 +145,7 @@ namespace AttReport
         //}
         #endregion
 
-        #region 记录下载的方法
+        #region 记录下载保存的方法
         public void iDateTable()
         {
             //初始化记录变量
@@ -208,14 +208,16 @@ namespace AttReport
                 //接收不重复的数据
                 DataTable dtResult = drResult.CopyToDataTable();
                 //异步修改lbl值
-                BeginInvoke(objUpdataLbl, "筛选完毕！正在写入记录……");
-                //批量写入数据库
-                SQLHelper.UpdataByBulk(dtResult, "OriginalLog");
-                BeginInvoke(objUpdataLbl, "写入完毕！正在计算报表……");
-                //更新日报
+                BeginInvoke(objUpdataLbl, "筛选完毕！正在计算报表……");
+                //计算日报
                 CreateDayLog(dtResult);
                 //异步修改lbl值
                 BeginInvoke(objUpdataLbl, "计算完毕！正在保存报表……");
+
+                //批量写入数据库
+                SQLHelper.UpdataByBulk(dtResult, "OriginalLog");
+                //异步修改lbl值
+                BeginInvoke(objUpdataLbl, "数据保存成功！");
             }
 
             #endregion
@@ -223,7 +225,6 @@ namespace AttReport
             //清空dt对象
             AttLogTable = null;
             PastLogTable = null;
-
             //异步修改lbl值
             BeginInvoke(objUpdataLbl, "数据保存成功！");
 
