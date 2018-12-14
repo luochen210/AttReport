@@ -142,9 +142,6 @@ namespace DAL
             return SQLHelper.GetDataSet(sql);
         }
 
-
-
-
         //查询公司是否存在
         public string GetCompanyName(string CompanyName)
         {
@@ -224,8 +221,6 @@ namespace DAL
             if (result == 1) return true;
             return false;
         }
-
-
 
         /// <summary>
         /// 获得公司ID

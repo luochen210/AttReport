@@ -22,9 +22,6 @@ namespace AttReport
             InitializeComponent();
         }
 
-
-
-
         #region 日报表计算方法
 
         //根据读取的记录生成日报表
@@ -35,16 +32,10 @@ namespace AttReport
             TimeSpan psAm = TimeSpan.Parse("00:00:00");//1天开始
             TimeSpan psPm = TimeSpan.Parse("23:59:59");//1天结束
 
-            //获取当天日期
-            //iToday = DateTime.Today;
-
             //获取员工表
             DataTable dtStaff = objAttRecordService.GetAllStaffsDataSet().Tables[0];
             //获取所有时段
             var iTimesList = objAttRecordService.GetAllTimesList();
-
-            //月天数变量
-            //DateTime idayNumber; //= DateTime.Now.Date;//日期的天数,测试变量，实际使用中为查询的日期
 
             #region 创建一个Datatable表存放整理好的打卡数据
 
@@ -69,7 +60,7 @@ namespace AttReport
 
             #region 计算统计日报
 
-            //计算日报
+            //计算日报（基于员工）
             for (int i = 0; i < dtStaff.Rows.Count; i++)
             {
                 double AtDay = 0;//工作天数
@@ -422,7 +413,7 @@ namespace AttReport
                     #endregion
 
                     //显示到DGV
-                    dgvDailyReport.DataSource = dtAttTemp;
+                    dgvDayReport.DataSource = dtAttTemp;
                 }
             }
 
@@ -431,8 +422,46 @@ namespace AttReport
 
         #endregion
 
+        /*//////////////////////////////////
+         * 
+         * 
+         * 
+         */////////////////////////////////
+
+
+        //生成报表的事件
         private void btnCreateLog_Click(object sender, EventArgs e)
         {
+            DateTime CBeginDate = DateTime.Parse(dtpCBeginDate.Text.Trim()).Date.AddDays(-1).AddHours(23);//开始日期,从前1天的23:00开始
+            DateTime CEndDate = DateTime.Parse(dtpCEndDate.Text.Trim()).Date.AddDays(1).AddHours(9);//结束日期，到次日的9:00结束
+
+            //如果结束日期小于开始日期，则提示错误！
+            if (CEndDate < CBeginDate)
+            {
+                MessageBox.Show("结束日期不能小于开始日期！","错误提示");
+                return;
+            }
+                        
+            TimeSpan ts = CEndDate.Date - CBeginDate.Date;//计算日期差
+            int mDay = ts.Days+1;//计算天数
+
+            //根据起始结束时间获取原始数据
+            DataTable dtAttOrganization = null;
+            dtAttOrganization = objAttRecordService.GetMonthlyReportDataSet(CBeginDate, CEndDate).Tables[0];
+
+            DateTime iToday = DateTime.Today;//日期标记，用于日报计算
+            for (int i = 0; i < mDay; i++)
+            {
+                iToday = CBeginDate.AddDays(i);
+                Cursor = Cursors.WaitCursor;//鼠标
+                CreateDayLog(iToday, dtAttOrganization);
+                Cursor = Cursors.Default;//鼠标
+            }
+
+
+
+
+
 
         }
     }

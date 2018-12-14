@@ -173,10 +173,10 @@ go
 --创建DailyReport表 --考勤日报表
 use AttReport
 go
-if exists(select*from sysobjects where name='DailyReport')
-drop table DailyReport
+if exists(select*from sysobjects where name='DayReport')
+drop table DayReport
 go
-create table DailyReport
+create table DayReport
 (
   SfId int not null,--员工ID、考勤号、工号
   SfName varchar(21) not null,--员工姓名
