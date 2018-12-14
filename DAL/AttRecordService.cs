@@ -68,11 +68,10 @@ namespace DAL
         /// <param name="StartDate">起始时间</param>
         /// <param name="EndDate">结束时间</param>
         /// <returns>月记录数据集</returns>
-        public DataSet GetMonthlyReportDataSet(string StartDate, string EndDate)
+        public DataSet GetMonthlyReportDataSet(string strToday)
         {
-            string sql = "select * from OriginalLog ";
-            sql += " where CONVERT(varchar(100), ClockRecord, 111) >= '{0}' and CONVERT(varchar(100), ClockRecord, 111) <= '{1}'";
-            sql = string.Format(sql, StartDate, EndDate);
+            string sql = "select * from OriginalLog where ClockRecord LIKE '{0}'";
+            sql = string.Format(sql, strToday);
 
             return SQLHelper.GetDataSet(sql);
         }

@@ -35,7 +35,7 @@
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.dgvRecord = new System.Windows.Forms.DataGridView();
             this.SfDepartment = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.iSfId = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.SfId = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.StaffName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.SfJob = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.SfShouldAtt = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -127,7 +127,7 @@
             this.dgvRecord.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvRecord.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.SfDepartment,
-            this.iSfId,
+            this.SfId,
             this.StaffName,
             this.SfJob,
             this.SfShouldAtt,
@@ -172,9 +172,9 @@
             // 
             // SfId
             // 
-            this.iSfId.DataPropertyName = "SfId";
-            this.iSfId.HeaderText = "工号";
-            this.iSfId.Name = "SfId";
+            this.SfId.DataPropertyName = "SfId";
+            this.SfId.HeaderText = "工号";
+            this.SfId.Name = "SfId";
             // 
             // StaffName
             // 
@@ -443,7 +443,7 @@
             this.Controls.Add(this.button1);
             this.Controls.Add(this.btnQuery);
             this.Name = "FrmMonthlyReport";
-            this.Text = "报表查询";
+            this.Text = "月报查询";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.FrmMonthlyReport_FormClosed);
             this.groupBox1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgvRecord)).EndInit();
@@ -464,7 +464,7 @@
         private System.Windows.Forms.DateTimePicker dtpStartDate;
         private System.Windows.Forms.DateTimePicker dtpEndDate;
         private System.Windows.Forms.DataGridViewTextBoxColumn SfDepartment;
-        private System.Windows.Forms.DataGridViewTextBoxColumn iSfId;
+        private System.Windows.Forms.DataGridViewTextBoxColumn SfId;
         private System.Windows.Forms.DataGridViewTextBoxColumn StaffName;
         private System.Windows.Forms.DataGridViewTextBoxColumn SfJob;
         private System.Windows.Forms.DataGridViewTextBoxColumn SfShouldAtt;
@@ -498,6 +498,6 @@
         private System.Windows.Forms.ComboBox comboBox1;
         private System.Windows.Forms.ComboBox comboBox2;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label label4;        
     }
 }

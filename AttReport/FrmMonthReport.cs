@@ -95,9 +95,9 @@ namespace AttReport
             dtAttLogTemp.Columns.Add("iday", typeof(double));
 
             #endregion
-
+            string strToday = "2018-1%";//测试用变量
             //获得月度打卡记录
-            DataTable dtReportTemp = objRecordService.GetMonthlyReportDataSet(dtpStartDate.Text.Trim(), dtpEndDate.Text.Trim()).Tables[0];
+            DataTable dtReportTemp = objRecordService.GetMonthlyReportDataSet(strToday).Tables[0];
 
             for (int i = 0; i < dtReportTemp.Rows.Count; i++)
             {

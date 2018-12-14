@@ -129,7 +129,7 @@ go
 create table Staffs
 (
   --SfId int not null primary key identity(3000,1),--员工ID、考勤号、工号(自增长)
-  SfId int not null,--员工ID、考勤号、工号(自增长)
+  SfId int not null,--员工ID、考勤号、工号
   SfCardNo varchar(21) not null default'待分配',--考勤卡号
   SfDepartment varchar(21) not null default'待分配',--部门名
   SfGroup varchar(21) not null default'待分配',--组别
@@ -166,7 +166,7 @@ create table OriginalLog
   MachineId int not null,--机器号  
   VerifyMode int not null,--验证方式：0为密码验证，1为指纹验证，2为卡验证
   InOutMode int not null,--考勤状态
-  ClockRecord varchar(20) not null,--打卡时间
+  ClockRecord datetime not null,--打卡时间
 )
 go
 

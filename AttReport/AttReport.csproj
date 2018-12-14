@@ -54,6 +54,12 @@
     <Compile Include="Common\DataValidate.cs" />
     <Compile Include="Common\StringSecurity.cs" />
     <Compile Include="Common\DataGridViewStyle.cs" />
+    <Compile Include="FrmDayReport.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmDayReport.Designer.cs">
+      <DependentUpon>FrmDayReport.cs</DependentUpon>
+    </Compile>
     <Compile Include="FrmDtManage.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -72,11 +78,11 @@
     <Compile Include="FrmJobList.Designer.cs">
       <DependentUpon>FrmJobList.cs</DependentUpon>
     </Compile>
-    <Compile Include="FrmReport.cs">
+    <Compile Include="FrmMonthReport.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FrmReport.Designer.cs">
-      <DependentUpon>FrmReport.cs</DependentUpon>
+    <Compile Include="FrmMonthReport.Designer.cs">
+      <DependentUpon>FrmMonthReport.cs</DependentUpon>
     </Compile>
     <Compile Include="FrmSfManage.cs">
       <SubType>Form</SubType>
@@ -104,6 +110,9 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="FrmDayReport.resx">
+      <DependentUpon>FrmDayReport.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FrmDtManage.resx">
       <DependentUpon>FrmDtManage.cs</DependentUpon>
     </EmbeddedResource>
@@ -113,8 +122,8 @@
     <EmbeddedResource Include="FrmJobList.resx">
       <DependentUpon>FrmJobList.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FrmReport.resx">
-      <DependentUpon>FrmReport.cs</DependentUpon>
+    <EmbeddedResource Include="FrmMonthReport.resx">
+      <DependentUpon>FrmMonthReport.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FrmSfManage.resx">
       <DependentUpon>FrmSfManage.cs</DependentUpon>
