@@ -28,10 +28,10 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
             this.panel1 = new System.Windows.Forms.Panel();
             this.cboName = new System.Windows.Forms.ComboBox();
             this.lblName = new System.Windows.Forms.Label();
@@ -70,8 +70,7 @@
             // 
             // panel1
             // 
-            this.panel1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
+            this.panel1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.panel1.BackColor = System.Drawing.Color.MintCream;
             this.panel1.Controls.Add(this.cboName);
@@ -91,152 +90,136 @@
             this.panel1.Controls.Add(this.btnExactQuery);
             this.panel1.Controls.Add(this.btnQueryLog);
             this.panel1.Controls.Add(this.btnCreateLog);
-            this.panel1.Location = new System.Drawing.Point(17, 18);
-            this.panel1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.panel1.Location = new System.Drawing.Point(13, 14);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1065, 79);
+            this.panel1.Size = new System.Drawing.Size(799, 63);
             this.panel1.TabIndex = 9;
             // 
             // cboName
             // 
             this.cboName.FormattingEnabled = true;
-            this.cboName.Location = new System.Drawing.Point(736, 44);
-            this.cboName.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.cboName.Location = new System.Drawing.Point(552, 35);
             this.cboName.Name = "cboName";
-            this.cboName.Size = new System.Drawing.Size(160, 23);
+            this.cboName.Size = new System.Drawing.Size(121, 20);
             this.cboName.TabIndex = 10;
             // 
             // lblName
             // 
             this.lblName.AutoSize = true;
-            this.lblName.Location = new System.Drawing.Point(676, 48);
-            this.lblName.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblName.Location = new System.Drawing.Point(507, 38);
             this.lblName.Name = "lblName";
-            this.lblName.Size = new System.Drawing.Size(52, 15);
+            this.lblName.Size = new System.Drawing.Size(41, 12);
             this.lblName.TabIndex = 9;
             this.lblName.Text = "姓名：";
             // 
             // cboDepartment
             // 
             this.cboDepartment.FormattingEnabled = true;
-            this.cboDepartment.Location = new System.Drawing.Point(736, 10);
-            this.cboDepartment.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.cboDepartment.Location = new System.Drawing.Point(552, 8);
             this.cboDepartment.Name = "cboDepartment";
-            this.cboDepartment.Size = new System.Drawing.Size(160, 23);
+            this.cboDepartment.Size = new System.Drawing.Size(121, 20);
             this.cboDepartment.TabIndex = 10;
             // 
             // lblDep
             // 
             this.lblDep.AutoSize = true;
-            this.lblDep.Location = new System.Drawing.Point(676, 14);
-            this.lblDep.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblDep.Location = new System.Drawing.Point(507, 11);
             this.lblDep.Name = "lblDep";
-            this.lblDep.Size = new System.Drawing.Size(52, 15);
+            this.lblDep.Size = new System.Drawing.Size(41, 12);
             this.lblDep.TabIndex = 9;
             this.lblDep.Text = "部门：";
             // 
             // comboBox1
             // 
             this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(736, 10);
-            this.comboBox1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.comboBox1.Location = new System.Drawing.Point(552, 8);
             this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(160, 23);
+            this.comboBox1.Size = new System.Drawing.Size(121, 20);
             this.comboBox1.TabIndex = 10;
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(676, 14);
-            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label2.Location = new System.Drawing.Point(507, 11);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(52, 15);
+            this.label2.Size = new System.Drawing.Size(41, 12);
             this.label2.TabIndex = 9;
             this.label2.Text = "部门：";
             // 
             // dtpQEndDate
             // 
             this.dtpQEndDate.CustomFormat = "";
-            this.dtpQEndDate.Location = new System.Drawing.Point(389, 44);
-            this.dtpQEndDate.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.dtpQEndDate.Location = new System.Drawing.Point(292, 35);
             this.dtpQEndDate.Name = "dtpQEndDate";
-            this.dtpQEndDate.Size = new System.Drawing.Size(145, 25);
+            this.dtpQEndDate.Size = new System.Drawing.Size(110, 21);
             this.dtpQEndDate.TabIndex = 8;
             // 
             // dtpCEndDate
             // 
             this.dtpCEndDate.CustomFormat = "";
-            this.dtpCEndDate.Location = new System.Drawing.Point(52, 44);
-            this.dtpCEndDate.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.dtpCEndDate.Location = new System.Drawing.Point(39, 35);
             this.dtpCEndDate.Name = "dtpCEndDate";
-            this.dtpCEndDate.Size = new System.Drawing.Size(145, 25);
+            this.dtpCEndDate.Size = new System.Drawing.Size(110, 21);
             this.dtpCEndDate.TabIndex = 8;
             // 
             // dtpQBeginDate
             // 
             this.dtpQBeginDate.CustomFormat = "";
-            this.dtpQBeginDate.Location = new System.Drawing.Point(389, 10);
-            this.dtpQBeginDate.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.dtpQBeginDate.Location = new System.Drawing.Point(292, 8);
             this.dtpQBeginDate.Name = "dtpQBeginDate";
-            this.dtpQBeginDate.Size = new System.Drawing.Size(145, 25);
+            this.dtpQBeginDate.Size = new System.Drawing.Size(110, 21);
             this.dtpQBeginDate.TabIndex = 8;
             // 
             // dtpCBeginDate
             // 
             this.dtpCBeginDate.CustomFormat = "";
-            this.dtpCBeginDate.Location = new System.Drawing.Point(52, 10);
-            this.dtpCBeginDate.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.dtpCBeginDate.Location = new System.Drawing.Point(39, 8);
             this.dtpCBeginDate.Name = "dtpCBeginDate";
-            this.dtpCBeginDate.Size = new System.Drawing.Size(145, 25);
+            this.dtpCBeginDate.Size = new System.Drawing.Size(110, 21);
             this.dtpCBeginDate.TabIndex = 8;
             // 
             // lblQEnd
             // 
             this.lblQEnd.AutoSize = true;
-            this.lblQEnd.Location = new System.Drawing.Point(349, 49);
-            this.lblQEnd.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblQEnd.Location = new System.Drawing.Point(262, 39);
             this.lblQEnd.Name = "lblQEnd";
-            this.lblQEnd.Size = new System.Drawing.Size(37, 15);
+            this.lblQEnd.Size = new System.Drawing.Size(29, 12);
             this.lblQEnd.TabIndex = 0;
             this.lblQEnd.Text = "到：";
             // 
             // lblCEnd
             // 
             this.lblCEnd.AutoSize = true;
-            this.lblCEnd.Location = new System.Drawing.Point(12, 49);
-            this.lblCEnd.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblCEnd.Location = new System.Drawing.Point(9, 39);
             this.lblCEnd.Name = "lblCEnd";
-            this.lblCEnd.Size = new System.Drawing.Size(37, 15);
+            this.lblCEnd.Size = new System.Drawing.Size(29, 12);
             this.lblCEnd.TabIndex = 0;
             this.lblCEnd.Text = "到：";
             // 
             // lblQBegin
             // 
             this.lblQBegin.AutoSize = true;
-            this.lblQBegin.Location = new System.Drawing.Point(349, 15);
-            this.lblQBegin.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblQBegin.Location = new System.Drawing.Point(262, 12);
             this.lblQBegin.Name = "lblQBegin";
-            this.lblQBegin.Size = new System.Drawing.Size(37, 15);
+            this.lblQBegin.Size = new System.Drawing.Size(29, 12);
             this.lblQBegin.TabIndex = 0;
             this.lblQBegin.Text = "从：";
             // 
             // lblCBegin
             // 
             this.lblCBegin.AutoSize = true;
-            this.lblCBegin.Location = new System.Drawing.Point(12, 15);
-            this.lblCBegin.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblCBegin.Location = new System.Drawing.Point(9, 12);
             this.lblCBegin.Name = "lblCBegin";
-            this.lblCBegin.Size = new System.Drawing.Size(37, 15);
+            this.lblCBegin.Size = new System.Drawing.Size(29, 12);
             this.lblCBegin.TabIndex = 0;
             this.lblCBegin.Text = "从：";
             // 
             // btnExactQuery
             // 
             this.btnExactQuery.BackColor = System.Drawing.Color.White;
-            this.btnExactQuery.Location = new System.Drawing.Point(905, 10);
-            this.btnExactQuery.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnExactQuery.Location = new System.Drawing.Point(679, 8);
             this.btnExactQuery.Name = "btnExactQuery";
-            this.btnExactQuery.Size = new System.Drawing.Size(100, 60);
+            this.btnExactQuery.Size = new System.Drawing.Size(75, 48);
             this.btnExactQuery.TabIndex = 5;
             this.btnExactQuery.Text = "精确查询";
             this.btnExactQuery.UseVisualStyleBackColor = false;
@@ -244,10 +227,9 @@
             // btnQueryLog
             // 
             this.btnQueryLog.BackColor = System.Drawing.Color.White;
-            this.btnQueryLog.Location = new System.Drawing.Point(544, 10);
-            this.btnQueryLog.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnQueryLog.Location = new System.Drawing.Point(408, 8);
             this.btnQueryLog.Name = "btnQueryLog";
-            this.btnQueryLog.Size = new System.Drawing.Size(100, 60);
+            this.btnQueryLog.Size = new System.Drawing.Size(75, 48);
             this.btnQueryLog.TabIndex = 5;
             this.btnQueryLog.Text = "查询日报";
             this.btnQueryLog.UseVisualStyleBackColor = false;
@@ -255,10 +237,9 @@
             // btnCreateLog
             // 
             this.btnCreateLog.BackColor = System.Drawing.Color.White;
-            this.btnCreateLog.Location = new System.Drawing.Point(207, 10);
-            this.btnCreateLog.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnCreateLog.Location = new System.Drawing.Point(155, 8);
             this.btnCreateLog.Name = "btnCreateLog";
-            this.btnCreateLog.Size = new System.Drawing.Size(100, 60);
+            this.btnCreateLog.Size = new System.Drawing.Size(75, 48);
             this.btnCreateLog.TabIndex = 5;
             this.btnCreateLog.Text = "生成日报";
             this.btnCreateLog.UseVisualStyleBackColor = false;
@@ -271,14 +252,14 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.dgvDayReport.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgvDayReport.BackgroundColor = System.Drawing.SystemColors.ButtonFace;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvDayReport.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle5.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            dataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvDayReport.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle5;
             this.dgvDayReport.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvDayReport.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.SfId,
@@ -294,30 +275,29 @@
             this.AtDay,
             this.AtState,
             this.AtSign});
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvDayReport.DefaultCellStyle = dataGridViewCellStyle2;
-            this.dgvDayReport.Location = new System.Drawing.Point(17, 116);
-            this.dgvDayReport.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle6.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle6.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            dataGridViewCellStyle6.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvDayReport.DefaultCellStyle = dataGridViewCellStyle6;
+            this.dgvDayReport.Location = new System.Drawing.Point(13, 93);
             this.dgvDayReport.Name = "dgvDayReport";
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvDayReport.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.dgvDayReport.RowsDefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle7.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle7.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            dataGridViewCellStyle7.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle7.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvDayReport.RowHeadersDefaultCellStyle = dataGridViewCellStyle7;
+            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.dgvDayReport.RowsDefaultCellStyle = dataGridViewCellStyle8;
             this.dgvDayReport.RowTemplate.DefaultCellStyle.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             this.dgvDayReport.RowTemplate.Height = 23;
-            this.dgvDayReport.Size = new System.Drawing.Size(1065, 632);
+            this.dgvDayReport.Size = new System.Drawing.Size(799, 506);
             this.dgvDayReport.TabIndex = 8;
             // 
             // SfId
@@ -413,12 +393,11 @@
             // 
             // FrmDayReport
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1099, 764);
+            this.ClientSize = new System.Drawing.Size(824, 611);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.dgvDayReport);
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "FrmDayReport";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "考勤日报";

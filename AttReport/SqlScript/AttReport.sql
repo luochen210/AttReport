@@ -178,6 +178,7 @@ drop table DayReport
 go
 create table DayReport
 (
+  AtDate datetime,--考勤日期
   SfId int not null,--员工ID、考勤号、工号
   SfName varchar(21) not null,--员工姓名
   ClassesName varchar(21) not null,--班次名称
@@ -187,6 +188,8 @@ create table DayReport
   OffDutyTime2 datetime,--下班打卡时间2
   WorkTime3 datetime,--上班打卡时间3
   OffDutyTime3 datetime,--下班打卡时间3
-  AttDay decimal(2,1)--考勤天数
+  AttDay decimal(2,1),--考勤天数
+  AtState int,--考勤状态
+  AtSign int--考勤标记
 )
 go
