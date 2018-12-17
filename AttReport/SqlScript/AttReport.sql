@@ -181,14 +181,15 @@ create table DayReport
   AtDate datetime,--考勤日期
   SfId int not null,--员工ID、考勤号、工号
   SfName varchar(21) not null,--员工姓名
+  SfGroup varchar(21) not null,--员工组别
   ClassesName varchar(21) not null,--班次名称
-  WorkTime1 datetime,--上班打卡时间1
-  OffDutyTime1 datetime,--下班打卡时间1
-  WorkTime2 datetime,--上班打卡时间2
-  OffDutyTime2 datetime,--下班打卡时间2
-  WorkTime3 datetime,--上班打卡时间3
-  OffDutyTime3 datetime,--下班打卡时间3
-  AttDay decimal(2,1),--考勤天数
+  WorkTime1 varchar(21),--上班打卡时间1
+  OffDutyTime1 varchar(21),--下班打卡时间1
+  WorkTime2 varchar(21),--上班打卡时间2
+  OffDutyTime2 varchar(21),--下班打卡时间2
+  WorkTime3 varchar(21),--上班打卡时间3
+  OffDutyTime3 varchar(21),--下班打卡时间3
+  AtDay decimal(2,1),--考勤天数
   AtState int,--考勤状态
   AtSign int--考勤标记
 )

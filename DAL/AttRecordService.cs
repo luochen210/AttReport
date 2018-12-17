@@ -237,7 +237,7 @@ namespace DAL
 
         public DataSet GetDayReport(DateTime BeginDate,DateTime EndDate)
         {
-            string sql = "select * from DayReport where AtDate>={0} and AtDate<={0}";
+            string sql = "select * from DayReport where AtDate>='{0}' and AtDate<='{0}'";
             sql = string.Format(sql,BeginDate,EndDate);
             return SQLHelper.GetDataSet(sql);
         }
