@@ -31,7 +31,7 @@ namespace AttReport
             int mDay = ts.Days;//计算天数
 
             //根据起始结束时间获取原始数据
-            DataTable dtAttOrganization = objAttRecordService.GetMonthlyReportDataSet(CBeginDate, CEndDate).Tables[0];
+            DataTable dtAttOrganization = objAttRecordService.GetReportDataSet(CBeginDate, CEndDate).Tables[0];
 
             //创建日期标记
             DateTime iToday = DateTime.Today;//日期标记，用于日报计算
@@ -315,6 +315,7 @@ namespace AttReport
                          * 注意，处理考勤的对象是单次单条记录，不是一天的记录！！！
                          * int AtState = 0;//考勤状态 0:正常，1:迟到，2:早退，3:未打卡，4:缺勤(旷工)，5:无薪请假，6:底薪休假，7:全薪休假
                          * int AtSign = 0;//考勤处理标记 0:未处理，1:已计算，2:已签卡处理，3:已处理假期
+                         * 20181217增加各种缺勤处理
                          * 
                         */
 
@@ -322,35 +323,25 @@ namespace AttReport
                         //计算正班天数--如果不是多班倒，并且打卡值不为""，则天数增加
                         if (iTimesName2 != "" && iTimesName3 != "")
                         {
-                            if (OnlyWorkTime1 != null && OnlyOffDutyTime1 != null)
+                            if (OnlyWorkTime1 != null && OnlyOffDutyTime1 != null)//上午
+                            {
+                                AtDay = AtDay + 0.5;//考勤天数加半天
+                            }
+                            else//处理上午缺勤
+                            {
+                                AtState = 4;//缺勤,考勤状态 0:正常，1:迟到，2:早退，3:未打卡，4:缺勤（旷工），5:无薪请假，6:底薪休假，7:全薪休假
+                                AtSign = 1;//考勤处理标记 0:未处理，1:已计算，2:已签卡处理，3:已处理假期
+                            }
+
+
+                            if (OnlyWorkTime2 != null && OnlyOffDutyTime2 != null)//下午
                             {
                                 AtDay = AtDay + 0.5;
                             }
-                            if (OnlyWorkTime2 != null && OnlyOffDutyTime2 != null)
+                            else//处理下午缺勤
                             {
-                                AtDay = AtDay + 0.5;
-                            }
-
-                            //处理上午缺勤(加班除外)
-                            if (OnlyWorkTime1 == null && OnlyOffDutyTime1 == null)
-                            {
-                                AtState = 4;//缺勤
-                                AtSign = 1;//考勤处理标记 0:未处理，1:已计算，2:已签卡处理，3:已处理假期
-                                if (AtDay > 0.5)
-                                {
-                                    AtDay = AtDay - 0.5;
-                                }
-                            }
-
-                            //处理下午缺勤
-                            if (OnlyWorkTime2 == null && OnlyOffDutyTime2 == null)
-                            {
-                                AtState = 4;//缺勤
-                                AtSign = 1;//考勤处理标记 0:未处理，1:已计算，2:已签卡处理，3:已处理假期
-                                if (AtDay > 0.5)
-                                {
-                                    AtDay = AtDay - 0.5;
-                                }
+                                AtState = 4;
+                                AtSign = 1;
                             }
 
                             //处理未打卡

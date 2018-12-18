@@ -68,7 +68,7 @@ namespace DAL
         /// <param name="StartDate">起始时间</param>
         /// <param name="EndDate">结束时间</param>
         /// <returns>月记录数据集</returns>
-        public DataSet GetMonthlyReportDataSet(DateTime BeginDate, DateTime EndDate)
+        public DataSet GetReportDataSet(DateTime BeginDate, DateTime EndDate)
         {
             string sql = "select * from OriginalLog where ClockRecord >= '{0}' and ClockRecord <= '{1}'";
             sql = string.Format(sql, BeginDate, EndDate);
@@ -235,11 +235,18 @@ namespace DAL
             return list;
         }
 
+        /// <summary>
+        /// 查询日报
+        /// </summary>
+        /// <param name="BeginDate"></param>
+        /// <param name="EndDate"></param>
+        /// <returns></returns>
         public DataSet GetDayReport(DateTime BeginDate,DateTime EndDate)
         {
             string sql = "select * from DayReport where AtDate>='{0}' and AtDate<='{0}'";
             sql = string.Format(sql,BeginDate,EndDate);
             return SQLHelper.GetDataSet(sql);
         }
+
     }
 }

@@ -21,17 +21,7 @@ namespace AttReport
         {
             InitializeComponent();
 
-            ////设置月报起始值为上月第1天的0点
-            //dtpStartDate.Value = DateTime.Now.AddMonths(-1).Date.AddDays(1 - DateTime.Now.Day);//设置值为上月第1天的0点
-
-            ////设置结束值为上月最后1天的最后1秒
-            //dtpEndDate.Value = DateTime.Parse(DateTime.Now.AddDays(1 - DateTime.Now.Day).ToShortDateString()).AddSeconds(-1);//设置值为上月最后1天的最后1秒
-
-            //设置月报起始值为上月第1天的0点
-            dtpStartDate.Value = DateTime.Now.AddMonths(-1).Date.AddDays(1 - DateTime.Now.Day - 1);//设置值为上上月最后1天的0点
-
-            //设置结束值为上月最后1天的最后1秒
-            dtpEndDate.Value = DateTime.Parse(DateTime.Now.AddDays(1 - DateTime.Now.Day + 1).ToShortDateString()).AddSeconds(-1);//设置值为本月第1天的最后1毫秒
+            cboMonthly.Text = DateTime.Today.AddMonths(-1).Month.ToString() + "月";//设置Cbo初始值为上月
 
         }
 
@@ -39,6 +29,13 @@ namespace AttReport
 
         public void GetMonthlyReport()
         {
+            DateTime BeginDate = DateTime.Parse(cboMonthly.Text.Trim()).AddMonths(-1).Date;//设置起始值为上上月最后1天，根据Cbo值计算
+
+            DateTime EndDate = DateTime.Parse(cboMonthly.Text.Trim()).AddMonths(1).Date;////设置结束值为本月第1天，根据Cbo值计算
+
+            DataTable DayRecordTable=objRecordService.GetDayReport(BeginDate, EndDate).Tables[0];//获得月度日报
+
+            //根据日报计算月报
 
         }
 

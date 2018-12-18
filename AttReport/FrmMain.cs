@@ -225,14 +225,24 @@ namespace AttReport
         }
         #endregion
 
+        /***************************************************************************************************/
+        #region 测试专用事件
+
         //测试事件
         private void btnTest_Click(object sender, EventArgs e)
         {
-            //获得测试表
-            DataTable dtTest = objAttRecordService.GetAllOriginalLog().Tables[0];
-            //获取当天日期
-            DateTime iToday = DateTime.Today;//当天日期
+            //string dateTest = "12月";
+            //DateTime Month = DateTime.Parse(dateTest);
+            //设置结束值为上月最后1天的最后1秒
+            //DateTime EndDate = DateTime.Today.AddDays(1 - DateTime.Today.Day).AddHours(9);//设置值为本月第1天上午9点
+
+            DayOfWeek Test = DateTime.Now.DayOfWeek;
+            MessageBox.Show(Test.ToString());
         }
+
+        #endregion
+        /***************************************************************************************************/
+
 
         //员工入职窗口对象
         public static FrmAddStaff objFrmAddStaff = null;
@@ -341,7 +351,6 @@ namespace AttReport
                 objFrmJobs.WindowState = FormWindowState.Normal;
             }
         }
-
 
         //月报查询窗口对象
         public static FrmMonthlyReport objFrmMonthlyReport = null;

@@ -190,7 +190,21 @@ create table DayReport
   WorkTime3 varchar(21),--上班打卡时间3
   OffDutyTime3 varchar(21),--下班打卡时间3
   AtDay decimal(2,1),--考勤天数
+  ----------------------------------
   AtState int,--考勤状态
-  AtSign int--考勤标记
+  AtSign int,--考勤标记
+  AtLateM int,--迟到分钟
+  AtLateNumber int,--迟到次数
+  AtLeaveEarlyM int,--早退分钟
+  AtLeaveEarlyNumber int,--早退次数
+  AtleaveH decimal(2,1),--事假小时数
+  AtleaveNumber int,--事假次数（事假）
+  AtSickLeave decimal(2,1),--病假小时数
+  AtSickLeaveNumber int,--病假次数
+  AtAbsenteeism decimal(2,1),--旷工天数
+  AtAbsenteeismNumber int,--旷工次数
+  AtRestH decimal(2,1),--放假休息小时数
+  AtHoliday decimal(2,1),--节假日，按天计
+
 )
 go
