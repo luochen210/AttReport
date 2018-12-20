@@ -1,6 +1,6 @@
 ﻿namespace AttReport
 {
-    partial class FrmMonthlyReport
+    partial class FrmMonthReport
     {
         /// <summary>
         /// Required designer variable.
@@ -79,10 +79,9 @@
             // 
             // btnQuery
             // 
-            this.btnQuery.Location = new System.Drawing.Point(193, 24);
-            this.btnQuery.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnQuery.Location = new System.Drawing.Point(145, 19);
             this.btnQuery.Name = "btnQuery";
-            this.btnQuery.Size = new System.Drawing.Size(100, 29);
+            this.btnQuery.Size = new System.Drawing.Size(75, 23);
             this.btnQuery.TabIndex = 0;
             this.btnQuery.Text = "查询生成";
             this.btnQuery.UseVisualStyleBackColor = true;
@@ -90,40 +89,35 @@
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(1145, 18);
-            this.button1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.button1.Location = new System.Drawing.Point(859, 14);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(179, 29);
+            this.button1.Size = new System.Drawing.Size(134, 23);
             this.button1.TabIndex = 0;
             this.button1.Text = "导出为Excel表格";
             this.button1.UseVisualStyleBackColor = true;
             // 
             // progressBar1
             // 
-            this.progressBar1.Location = new System.Drawing.Point(317, 24);
-            this.progressBar1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.progressBar1.Location = new System.Drawing.Point(238, 19);
             this.progressBar1.Name = "progressBar1";
-            this.progressBar1.Size = new System.Drawing.Size(235, 29);
+            this.progressBar1.Size = new System.Drawing.Size(176, 23);
             this.progressBar1.TabIndex = 1;
             // 
             // lblQueryTips
             // 
             this.lblQueryTips.AutoSize = true;
-            this.lblQueryTips.Location = new System.Drawing.Point(560, 30);
-            this.lblQueryTips.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblQueryTips.Location = new System.Drawing.Point(420, 24);
             this.lblQueryTips.Name = "lblQueryTips";
-            this.lblQueryTips.Size = new System.Drawing.Size(97, 15);
+            this.lblQueryTips.Size = new System.Drawing.Size(77, 12);
             this.lblQueryTips.TabIndex = 2;
             this.lblQueryTips.Text = "等待查询……";
             // 
             // groupBox1
             // 
             this.groupBox1.Controls.Add(this.dgvRecord);
-            this.groupBox1.Location = new System.Drawing.Point(17, 100);
-            this.groupBox1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.groupBox1.Location = new System.Drawing.Point(13, 80);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.groupBox1.Size = new System.Drawing.Size(1311, 796);
+            this.groupBox1.Size = new System.Drawing.Size(983, 637);
             this.groupBox1.TabIndex = 3;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "考勤月报";
@@ -164,11 +158,10 @@
             this.SfAutograph,
             this.SfLnsurance});
             this.dgvRecord.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dgvRecord.Location = new System.Drawing.Point(4, 22);
-            this.dgvRecord.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.dgvRecord.Location = new System.Drawing.Point(3, 17);
             this.dgvRecord.Name = "dgvRecord";
             this.dgvRecord.RowTemplate.Height = 23;
-            this.dgvRecord.Size = new System.Drawing.Size(1303, 770);
+            this.dgvRecord.Size = new System.Drawing.Size(977, 617);
             this.dgvRecord.TabIndex = 0;
             // 
             // SfDepartment
@@ -361,10 +354,9 @@
             // 
             this.comboBox1.Enabled = false;
             this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(770, 16);
-            this.comboBox1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.comboBox1.Location = new System.Drawing.Point(578, 13);
             this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(160, 23);
+            this.comboBox1.Size = new System.Drawing.Size(121, 20);
             this.comboBox1.TabIndex = 7;
             this.comboBox1.Text = "功能暂停";
             // 
@@ -372,39 +364,37 @@
             // 
             this.comboBox2.Enabled = false;
             this.comboBox2.FormattingEnabled = true;
-            this.comboBox2.Location = new System.Drawing.Point(770, 62);
-            this.comboBox2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.comboBox2.Location = new System.Drawing.Point(578, 50);
             this.comboBox2.Name = "comboBox2";
-            this.comboBox2.Size = new System.Drawing.Size(160, 23);
+            this.comboBox2.Size = new System.Drawing.Size(121, 20);
             this.comboBox2.TabIndex = 7;
             this.comboBox2.Text = "功能暂停";
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(707, 21);
-            this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label3.Location = new System.Drawing.Point(530, 17);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(52, 15);
+            this.label3.Size = new System.Drawing.Size(41, 12);
             this.label3.TabIndex = 4;
             this.label3.Text = "部门：";
             // 
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(707, 67);
-            this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label4.Location = new System.Drawing.Point(530, 54);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(52, 15);
+            this.label4.Size = new System.Drawing.Size(41, 12);
             this.label4.TabIndex = 4;
             this.label4.Text = "员工：";
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(17, 30);
+            this.label1.Location = new System.Drawing.Point(13, 24);
+            this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(52, 15);
+            this.label1.Size = new System.Drawing.Size(41, 12);
             this.label1.TabIndex = 9;
             this.label1.Text = "月度：";
             // 
@@ -425,9 +415,10 @@
             "10月",
             "11月",
             "12月"});
-            this.cboMonthly.Location = new System.Drawing.Point(75, 27);
+            this.cboMonthly.Location = new System.Drawing.Point(56, 22);
+            this.cboMonthly.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.cboMonthly.Name = "cboMonthly";
-            this.cboMonthly.Size = new System.Drawing.Size(82, 23);
+            this.cboMonthly.Size = new System.Drawing.Size(62, 20);
             this.cboMonthly.TabIndex = 10;
             // 
             // groupBox2
@@ -437,18 +428,20 @@
             this.groupBox2.Controls.Add(this.btnQuery);
             this.groupBox2.Controls.Add(this.label1);
             this.groupBox2.Controls.Add(this.lblQueryTips);
-            this.groupBox2.Location = new System.Drawing.Point(17, 12);
+            this.groupBox2.Location = new System.Drawing.Point(13, 10);
+            this.groupBox2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(677, 70);
+            this.groupBox2.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.groupBox2.Size = new System.Drawing.Size(508, 56);
             this.groupBox2.TabIndex = 11;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "批量查询";
             // 
-            // FrmMonthlyReport
+            // FrmMonthReport
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1344, 911);
+            this.ClientSize = new System.Drawing.Size(1008, 729);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.comboBox2);
             this.Controls.Add(this.comboBox1);
@@ -456,8 +449,8 @@
             this.Controls.Add(this.label3);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.button1);
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.Name = "FrmMonthlyReport";
+            this.Name = "FrmMonthReport";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "月报查询";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.FrmMonthlyReport_FormClosed);
             this.groupBox1.ResumeLayout(false);

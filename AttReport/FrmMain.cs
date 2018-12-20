@@ -243,6 +243,13 @@ namespace AttReport
         #endregion
         /***************************************************************************************************/
 
+        //让窗体在容器panle2的中间位置
+        private void FormStarPosition(Form objForm)
+        {
+            objForm.Location = new Point(
+                Location.X + splitContainer1.Panel1.Width + (splitContainer1.Panel2.Width - objForm.Width) / 2 + 20,
+                Location.Y + (splitContainer1.Panel2.Height - objForm.Height) / 2 + 100);
+        }
 
         //员工入职窗口对象
         public static FrmAddStaff objFrmAddStaff = null;
@@ -260,6 +267,7 @@ namespace AttReport
                 objFrmAddStaff.Activate();//激活只能在最小化的时候起作用
                 objFrmAddStaff.WindowState = FormWindowState.Normal;
             }
+            FormStarPosition(objFrmAddStaff);
         }
 
         //员工信息窗口对象
@@ -353,25 +361,26 @@ namespace AttReport
         }
 
         //月报查询窗口对象
-        public static FrmMonthlyReport objFrmMonthlyReport = null;
+        public static FrmMonthReport objFrmMonthReport = null;
 
         //月报查询菜单事件
         private void 月报查询ToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            if (objFrmMonthlyReport == null)
+            if (objFrmMonthReport == null)
             {
-                objFrmMonthlyReport = new FrmMonthlyReport();
-                objFrmMonthlyReport.Show();
+                objFrmMonthReport = new FrmMonthReport();
+                objFrmMonthReport.Show();
             }
             else
             {
-                objFrmMonthlyReport.Activate();//激活窗口并给焦点
-                objFrmMonthlyReport.WindowState = FormWindowState.Normal;
+                objFrmMonthReport.Activate();//激活窗口并给焦点
+                objFrmMonthReport.WindowState = FormWindowState.Normal;
             }
         }
 
         //日报查询窗口对象
         public static FrmDayReport objFrmDayReport = null;
+
         //日报查询菜单事件
         private void 日报查询ToolStripMenuItem_Click(object sender, EventArgs e)
         {

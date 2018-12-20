@@ -13,11 +13,11 @@ using DAL;
 
 namespace AttReport
 {
-    public partial class FrmMonthlyReport : Form
+    public partial class FrmMonthReport : Form
     {
         AttRecordService objRecordService = new AttRecordService();
 
-        public FrmMonthlyReport()
+        public FrmMonthReport()
         {
             InitializeComponent();
 
@@ -43,7 +43,7 @@ namespace AttReport
         //窗体关闭事件
         private void FrmMonthlyReport_FormClosed(object sender, FormClosedEventArgs e)
         {
-            FrmMain.objFrmMonthlyReport = null;
+            FrmMain.objFrmMonthReport = null;
         }
 
         private void btnQuery_Click(object sender, EventArgs e)
