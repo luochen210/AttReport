@@ -243,8 +243,22 @@ namespace DAL
         /// <returns></returns>
         public DataSet GetDayReport(DateTime BeginDate,DateTime EndDate)
         {
-            string sql = "select * from DayReport where AtDate>='{0}' and AtDate<='{0}'";
+            string sql = "select * from DayReport where AtDate>='{0}' and AtDate<='{1}'";
             sql = string.Format(sql,BeginDate,EndDate);
+            return SQLHelper.GetDataSet(sql);
+        }
+
+        /// <summary>
+        /// 按考勤状态查询日报
+        /// </summary>
+        /// <param name="BeginDate">开始时间</param>
+        /// <param name="EndDate">结束时间</param>
+        /// <param name="AtState">考勤状态</param>
+        /// <returns>考勤日报</returns>
+        public DataSet GetDayResult(DateTime BeginDate, DateTime EndDate, int AtState)
+        {
+            string sql = "select * from DayReport where AtDate >= '{0}' and AtDate <= '{1}' and AtState != {2}";
+            sql = string.Format(sql,BeginDate,EndDate,AtState);
             return SQLHelper.GetDataSet(sql);
         }
 

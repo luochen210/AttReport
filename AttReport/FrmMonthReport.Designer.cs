@@ -391,7 +391,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(13, 24);
+            this.label1.Location = new System.Drawing.Point(6, 24);
             this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(41, 12);
@@ -415,8 +415,8 @@
             "10月",
             "11月",
             "12月"});
-            this.cboMonthly.Location = new System.Drawing.Point(56, 22);
-            this.cboMonthly.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.cboMonthly.Location = new System.Drawing.Point(49, 20);
+            this.cboMonthly.Margin = new System.Windows.Forms.Padding(2);
             this.cboMonthly.Name = "cboMonthly";
             this.cboMonthly.Size = new System.Drawing.Size(62, 20);
             this.cboMonthly.TabIndex = 10;
@@ -429,9 +429,9 @@
             this.groupBox2.Controls.Add(this.label1);
             this.groupBox2.Controls.Add(this.lblQueryTips);
             this.groupBox2.Location = new System.Drawing.Point(13, 10);
-            this.groupBox2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.groupBox2.Margin = new System.Windows.Forms.Padding(2);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.groupBox2.Padding = new System.Windows.Forms.Padding(2);
             this.groupBox2.Size = new System.Drawing.Size(508, 56);
             this.groupBox2.TabIndex = 11;
             this.groupBox2.TabStop = false;
@@ -452,7 +452,7 @@
             this.Name = "FrmMonthReport";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "月报查询";
-            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.FrmMonthlyReport_FormClosed);
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.FrmMonthReport_FormClosed);
             this.groupBox1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgvRecord)).EndInit();
             this.groupBox2.ResumeLayout(false);

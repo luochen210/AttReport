@@ -1,6 +1,6 @@
 ﻿namespace AttReport
 {
-    partial class FrmDayReport
+    partial class FrmSignCard
     {
         /// <summary>
         /// Required designer variable.
@@ -38,17 +38,12 @@
             this.cboDepartment = new System.Windows.Forms.ComboBox();
             this.lblDep = new System.Windows.Forms.Label();
             this.dtpQEndDate = new System.Windows.Forms.DateTimePicker();
-            this.dtpCEndDate = new System.Windows.Forms.DateTimePicker();
             this.dtpQBeginDate = new System.Windows.Forms.DateTimePicker();
-            this.dtpCBeginDate = new System.Windows.Forms.DateTimePicker();
-            this.lblQEnd = new System.Windows.Forms.Label();
             this.lblCEnd = new System.Windows.Forms.Label();
-            this.lblQBegin = new System.Windows.Forms.Label();
             this.lblCBegin = new System.Windows.Forms.Label();
             this.btnExactQuery = new System.Windows.Forms.Button();
-            this.btnQueryLog = new System.Windows.Forms.Button();
-            this.btnCreateLog = new System.Windows.Forms.Button();
-            this.dgvDayReport = new System.Windows.Forms.DataGridView();
+            this.btnQuery = new System.Windows.Forms.Button();
+            this.dgvDayResult = new System.Windows.Forms.DataGridView();
             this.AtDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.SfId = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.SfName = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -64,7 +59,7 @@
             this.AtState = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.AtSign = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvDayReport)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvDayResult)).BeginInit();
             this.SuspendLayout();
             // 
             // panel1
@@ -77,25 +72,20 @@
             this.panel1.Controls.Add(this.cboDepartment);
             this.panel1.Controls.Add(this.lblDep);
             this.panel1.Controls.Add(this.dtpQEndDate);
-            this.panel1.Controls.Add(this.dtpCEndDate);
             this.panel1.Controls.Add(this.dtpQBeginDate);
-            this.panel1.Controls.Add(this.dtpCBeginDate);
-            this.panel1.Controls.Add(this.lblQEnd);
             this.panel1.Controls.Add(this.lblCEnd);
-            this.panel1.Controls.Add(this.lblQBegin);
             this.panel1.Controls.Add(this.lblCBegin);
             this.panel1.Controls.Add(this.btnExactQuery);
-            this.panel1.Controls.Add(this.btnQueryLog);
-            this.panel1.Controls.Add(this.btnCreateLog);
-            this.panel1.Location = new System.Drawing.Point(13, 14);
+            this.panel1.Controls.Add(this.btnQuery);
+            this.panel1.Location = new System.Drawing.Point(12, 12);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(799, 63);
-            this.panel1.TabIndex = 9;
+            this.panel1.Size = new System.Drawing.Size(986, 63);
+            this.panel1.TabIndex = 11;
             // 
             // cboName
             // 
             this.cboName.FormattingEnabled = true;
-            this.cboName.Location = new System.Drawing.Point(594, 35);
+            this.cboName.Location = new System.Drawing.Point(311, 35);
             this.cboName.Name = "cboName";
             this.cboName.Size = new System.Drawing.Size(121, 20);
             this.cboName.TabIndex = 10;
@@ -103,7 +93,7 @@
             // lblName
             // 
             this.lblName.AutoSize = true;
-            this.lblName.Location = new System.Drawing.Point(549, 38);
+            this.lblName.Location = new System.Drawing.Point(266, 38);
             this.lblName.Name = "lblName";
             this.lblName.Size = new System.Drawing.Size(41, 12);
             this.lblName.TabIndex = 9;
@@ -112,7 +102,7 @@
             // cboDepartment
             // 
             this.cboDepartment.FormattingEnabled = true;
-            this.cboDepartment.Location = new System.Drawing.Point(594, 8);
+            this.cboDepartment.Location = new System.Drawing.Point(311, 8);
             this.cboDepartment.Name = "cboDepartment";
             this.cboDepartment.Size = new System.Drawing.Size(121, 20);
             this.cboDepartment.TabIndex = 10;
@@ -120,7 +110,7 @@
             // lblDep
             // 
             this.lblDep.AutoSize = true;
-            this.lblDep.Location = new System.Drawing.Point(549, 11);
+            this.lblDep.Location = new System.Drawing.Point(266, 11);
             this.lblDep.Name = "lblDep";
             this.lblDep.Size = new System.Drawing.Size(41, 12);
             this.lblDep.TabIndex = 9;
@@ -129,43 +119,18 @@
             // dtpQEndDate
             // 
             this.dtpQEndDate.CustomFormat = "";
-            this.dtpQEndDate.Location = new System.Drawing.Point(292, 35);
+            this.dtpQEndDate.Location = new System.Drawing.Point(39, 35);
             this.dtpQEndDate.Name = "dtpQEndDate";
             this.dtpQEndDate.Size = new System.Drawing.Size(110, 21);
             this.dtpQEndDate.TabIndex = 8;
             // 
-            // dtpCEndDate
-            // 
-            this.dtpCEndDate.CustomFormat = "";
-            this.dtpCEndDate.Location = new System.Drawing.Point(39, 35);
-            this.dtpCEndDate.Name = "dtpCEndDate";
-            this.dtpCEndDate.Size = new System.Drawing.Size(110, 21);
-            this.dtpCEndDate.TabIndex = 8;
-            // 
             // dtpQBeginDate
             // 
             this.dtpQBeginDate.CustomFormat = "";
-            this.dtpQBeginDate.Location = new System.Drawing.Point(292, 8);
+            this.dtpQBeginDate.Location = new System.Drawing.Point(39, 8);
             this.dtpQBeginDate.Name = "dtpQBeginDate";
             this.dtpQBeginDate.Size = new System.Drawing.Size(110, 21);
             this.dtpQBeginDate.TabIndex = 8;
-            // 
-            // dtpCBeginDate
-            // 
-            this.dtpCBeginDate.CustomFormat = "";
-            this.dtpCBeginDate.Location = new System.Drawing.Point(39, 8);
-            this.dtpCBeginDate.Name = "dtpCBeginDate";
-            this.dtpCBeginDate.Size = new System.Drawing.Size(110, 21);
-            this.dtpCBeginDate.TabIndex = 8;
-            // 
-            // lblQEnd
-            // 
-            this.lblQEnd.AutoSize = true;
-            this.lblQEnd.Location = new System.Drawing.Point(262, 39);
-            this.lblQEnd.Name = "lblQEnd";
-            this.lblQEnd.Size = new System.Drawing.Size(29, 12);
-            this.lblQEnd.TabIndex = 0;
-            this.lblQEnd.Text = "到：";
             // 
             // lblCEnd
             // 
@@ -175,15 +140,6 @@
             this.lblCEnd.Size = new System.Drawing.Size(29, 12);
             this.lblCEnd.TabIndex = 0;
             this.lblCEnd.Text = "到：";
-            // 
-            // lblQBegin
-            // 
-            this.lblQBegin.AutoSize = true;
-            this.lblQBegin.Location = new System.Drawing.Point(262, 12);
-            this.lblQBegin.Name = "lblQBegin";
-            this.lblQBegin.Size = new System.Drawing.Size(29, 12);
-            this.lblQBegin.TabIndex = 0;
-            this.lblQBegin.Text = "从：";
             // 
             // lblCBegin
             // 
@@ -197,41 +153,30 @@
             // btnExactQuery
             // 
             this.btnExactQuery.BackColor = System.Drawing.Color.White;
-            this.btnExactQuery.Location = new System.Drawing.Point(721, 8);
+            this.btnExactQuery.Location = new System.Drawing.Point(438, 8);
             this.btnExactQuery.Name = "btnExactQuery";
             this.btnExactQuery.Size = new System.Drawing.Size(75, 48);
             this.btnExactQuery.TabIndex = 5;
-            this.btnExactQuery.Text = "精确查询";
+            this.btnExactQuery.Text = "签卡";
             this.btnExactQuery.UseVisualStyleBackColor = false;
             // 
-            // btnQueryLog
+            // btnQuery
             // 
-            this.btnQueryLog.BackColor = System.Drawing.Color.White;
-            this.btnQueryLog.Location = new System.Drawing.Point(408, 8);
-            this.btnQueryLog.Name = "btnQueryLog";
-            this.btnQueryLog.Size = new System.Drawing.Size(75, 48);
-            this.btnQueryLog.TabIndex = 5;
-            this.btnQueryLog.Text = "查询日报";
-            this.btnQueryLog.UseVisualStyleBackColor = false;
+            this.btnQuery.BackColor = System.Drawing.Color.White;
+            this.btnQuery.Location = new System.Drawing.Point(155, 8);
+            this.btnQuery.Name = "btnQuery";
+            this.btnQuery.Size = new System.Drawing.Size(75, 48);
+            this.btnQuery.TabIndex = 5;
+            this.btnQuery.Text = "查询异常";
+            this.btnQuery.UseVisualStyleBackColor = false;
+            this.btnQuery.Click += new System.EventHandler(this.btnQuery_Click);
             // 
-            // btnCreateLog
+            // dgvDayResult
             // 
-            this.btnCreateLog.BackColor = System.Drawing.Color.White;
-            this.btnCreateLog.Location = new System.Drawing.Point(155, 8);
-            this.btnCreateLog.Name = "btnCreateLog";
-            this.btnCreateLog.Size = new System.Drawing.Size(75, 48);
-            this.btnCreateLog.TabIndex = 5;
-            this.btnCreateLog.Text = "生成日报";
-            this.btnCreateLog.UseVisualStyleBackColor = false;
-            this.btnCreateLog.Click += new System.EventHandler(this.btnCreateLog_Click);
-            // 
-            // dgvDayReport
-            // 
-            this.dgvDayReport.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.dgvDayResult.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.dgvDayReport.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.dgvDayReport.BackgroundColor = System.Drawing.SystemColors.ButtonFace;
+            this.dgvDayResult.BackgroundColor = System.Drawing.SystemColors.ButtonFace;
             dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
             dataGridViewCellStyle1.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
@@ -239,9 +184,9 @@
             dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
             dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvDayReport.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
-            this.dgvDayReport.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvDayReport.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.dgvDayResult.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            this.dgvDayResult.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvDayResult.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.AtDate,
             this.SfId,
             this.SfName,
@@ -263,9 +208,9 @@
             dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
             dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvDayReport.DefaultCellStyle = dataGridViewCellStyle2;
-            this.dgvDayReport.Location = new System.Drawing.Point(13, 93);
-            this.dgvDayReport.Name = "dgvDayReport";
+            this.dgvDayResult.DefaultCellStyle = dataGridViewCellStyle2;
+            this.dgvDayResult.Location = new System.Drawing.Point(12, 88);
+            this.dgvDayResult.Name = "dgvDayResult";
             dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
             dataGridViewCellStyle3.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
@@ -273,13 +218,13 @@
             dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
             dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvDayReport.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            this.dgvDayResult.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
             dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.dgvDayReport.RowsDefaultCellStyle = dataGridViewCellStyle4;
-            this.dgvDayReport.RowTemplate.DefaultCellStyle.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.dgvDayReport.RowTemplate.Height = 23;
-            this.dgvDayReport.Size = new System.Drawing.Size(799, 506);
-            this.dgvDayReport.TabIndex = 8;
+            this.dgvDayResult.RowsDefaultCellStyle = dataGridViewCellStyle4;
+            this.dgvDayResult.RowTemplate.DefaultCellStyle.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.dgvDayResult.RowTemplate.Height = 23;
+            this.dgvDayResult.Size = new System.Drawing.Size(986, 629);
+            this.dgvDayResult.TabIndex = 10;
             // 
             // AtDate
             // 
@@ -287,6 +232,7 @@
             this.AtDate.HeaderText = "日期";
             this.AtDate.Name = "AtDate";
             this.AtDate.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.AtDate.Width = 72;
             // 
             // SfId
             // 
@@ -294,6 +240,7 @@
             this.SfId.HeaderText = "考勤号";
             this.SfId.Name = "SfId";
             this.SfId.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.SfId.Width = 72;
             // 
             // SfName
             // 
@@ -301,6 +248,7 @@
             this.SfName.HeaderText = "姓名";
             this.SfName.Name = "SfName";
             this.SfName.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.SfName.Width = 72;
             // 
             // SfGroup
             // 
@@ -308,6 +256,7 @@
             this.SfGroup.HeaderText = "部门";
             this.SfGroup.Name = "SfGroup";
             this.SfGroup.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.SfGroup.Width = 71;
             // 
             // ClassesName
             // 
@@ -315,6 +264,7 @@
             this.ClassesName.HeaderText = "班次";
             this.ClassesName.Name = "ClassesName";
             this.ClassesName.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.ClassesName.Width = 73;
             // 
             // WorkTime1
             // 
@@ -322,6 +272,7 @@
             this.WorkTime1.HeaderText = "上班1";
             this.WorkTime1.Name = "WorkTime1";
             this.WorkTime1.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.WorkTime1.Width = 73;
             // 
             // OffDutyTime1
             // 
@@ -329,6 +280,7 @@
             this.OffDutyTime1.HeaderText = "下班1";
             this.OffDutyTime1.Name = "OffDutyTime1";
             this.OffDutyTime1.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.OffDutyTime1.Width = 73;
             // 
             // WorkTime2
             // 
@@ -336,6 +288,7 @@
             this.WorkTime2.HeaderText = "上班2";
             this.WorkTime2.Name = "WorkTime2";
             this.WorkTime2.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.WorkTime2.Width = 73;
             // 
             // OffDutyTime2
             // 
@@ -343,6 +296,7 @@
             this.OffDutyTime2.HeaderText = "下班2";
             this.OffDutyTime2.Name = "OffDutyTime2";
             this.OffDutyTime2.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.OffDutyTime2.Width = 73;
             // 
             // WorkTime3
             // 
@@ -350,6 +304,7 @@
             this.WorkTime3.HeaderText = "上班3";
             this.WorkTime3.Name = "WorkTime3";
             this.WorkTime3.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.WorkTime3.Width = 72;
             // 
             // OffDutyTime3
             // 
@@ -357,6 +312,7 @@
             this.OffDutyTime3.HeaderText = "下班3";
             this.OffDutyTime3.Name = "OffDutyTime3";
             this.OffDutyTime3.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.OffDutyTime3.Width = 73;
             // 
             // AtDay
             // 
@@ -364,6 +320,7 @@
             this.AtDay.HeaderText = "天数";
             this.AtDay.Name = "AtDay";
             this.AtDay.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.AtDay.Width = 73;
             // 
             // AtState
             // 
@@ -371,6 +328,7 @@
             this.AtState.HeaderText = "考勤状态";
             this.AtState.Name = "AtState";
             this.AtState.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.AtState.Width = 73;
             // 
             // AtSign
             // 
@@ -378,21 +336,21 @@
             this.AtSign.HeaderText = "处理标记";
             this.AtSign.Name = "AtSign";
             this.AtSign.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.AtSign.Width = 73;
             // 
-            // FrmDayReport
+            // FrmSignCard
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(824, 611);
+            this.ClientSize = new System.Drawing.Size(1008, 729);
             this.Controls.Add(this.panel1);
-            this.Controls.Add(this.dgvDayReport);
-            this.Name = "FrmDayReport";
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "考勤日报";
-            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.FrmDayReport_FormClosed);
+            this.Controls.Add(this.dgvDayResult);
+            this.Name = "FrmSignCard";
+            this.Text = "考勤异常";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.FrmSignCard_FormClosed);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvDayReport)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvDayResult)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -400,22 +358,17 @@
         #endregion
 
         private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.DateTimePicker dtpCBeginDate;
-        private System.Windows.Forms.Label lblCBegin;
-        private System.Windows.Forms.Button btnCreateLog;
-        private System.Windows.Forms.DataGridView dgvDayReport;
         private System.Windows.Forms.ComboBox cboName;
         private System.Windows.Forms.Label lblName;
         private System.Windows.Forms.ComboBox cboDepartment;
         private System.Windows.Forms.Label lblDep;
         private System.Windows.Forms.DateTimePicker dtpQEndDate;
-        private System.Windows.Forms.DateTimePicker dtpCEndDate;
         private System.Windows.Forms.DateTimePicker dtpQBeginDate;
-        private System.Windows.Forms.Label lblQEnd;
         private System.Windows.Forms.Label lblCEnd;
-        private System.Windows.Forms.Label lblQBegin;
+        private System.Windows.Forms.Label lblCBegin;
         private System.Windows.Forms.Button btnExactQuery;
-        private System.Windows.Forms.Button btnQueryLog;
+        private System.Windows.Forms.Button btnQuery;
+        private System.Windows.Forms.DataGridView dgvDayResult;
         private System.Windows.Forms.DataGridViewTextBoxColumn AtDate;
         private System.Windows.Forms.DataGridViewTextBoxColumn SfId;
         private System.Windows.Forms.DataGridViewTextBoxColumn SfName;

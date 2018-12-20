@@ -228,7 +228,7 @@ namespace AttReport
                         //计算统计每位员工的考勤记录
                         var AttResult = (from log in dtAttOrganization.AsEnumerable()//查询集合
                                          where Convert.ToInt32(log.Field<Int32>("ClockId")) == iSfId//满足id条件
-                                         && Convert.ToDateTime(log.Field<DateTime>("ClockRecord").ToString()).Date 
+                                         && Convert.ToDateTime(log.Field<DateTime>("ClockRecord").ToString()).Date
                                          == (iToday + StartCheckIn1).Date//满足单日条件
                                          select log.Field<DateTime>("ClockRecord").ToString()).ToList();//返回记录集合
                         #endregion
@@ -237,17 +237,18 @@ namespace AttReport
 
                         /////////////////////
                         //创建局部变量接收唯一打卡值
-                        string OnlyWorkTime1 = "";//上班唯一打卡值1
-                        string OnlyOffDutyTime1 = "";//下班唯一打卡值1
-                        string OnlyWorkTime2 = "";//上班唯一打卡值2
-                        string OnlyOffDutyTime2 = "";//下班唯一打卡值2
-                        string OnlyWorkTime3 = "";//上班唯一打卡值3
-                        string OnlyOffDutyTime3 = "";//下班唯一打卡值3
+                        string OnlyWorkTime1 = null;//上班唯一打卡值1
+                        string OnlyOffDutyTime1 = null;//下班唯一打卡值1
+                        string OnlyWorkTime2 = null;//上班唯一打卡值2
+                        string OnlyOffDutyTime2 = null;//下班唯一打卡值2
+                        string OnlyWorkTime3 = null;//上班唯一打卡值3
+                        string OnlyOffDutyTime3 = null;//下班唯一打卡值3
                                                      ////////////////////////////////////////////
 
                         //上班打卡1---大于等于开始签到时间，小于下班开始签退时间，包含迟到（取第一）
                         OnlyWorkTime1 = AttResult.Where(at => DateTime.Parse(at).TimeOfDay >= StartCheckIn1
                         && DateTime.Parse(at).TimeOfDay < StartSignBack1).FirstOrDefault();
+
                         //下班打卡1---大于第一次上班结束签到时间，小于第二次上班开始签到时间，包含早退（取最后）
                         OnlyOffDutyTime1 = AttResult.Where(at => DateTime.Parse(at).TimeOfDay > EndCheckIn1
                         && DateTime.Parse(at).TimeOfDay < StartCheckIn2).LastOrDefault();
@@ -323,27 +324,6 @@ namespace AttReport
                         //计算正班天数--如果不是多班倒，并且打卡值不为""，则天数增加
                         if (iTimesName2 != "" && iTimesName3 != "")
                         {
-                            if (OnlyWorkTime1 != null && OnlyOffDutyTime1 != null)//上午
-                            {
-                                AtDay = AtDay + 0.5;//考勤天数加半天
-                            }
-                            else//处理上午缺勤
-                            {
-                                AtState = 4;//缺勤,考勤状态 0:正常，1:迟到，2:早退，3:未打卡，4:缺勤（旷工），5:无薪请假，6:底薪休假，7:全薪休假
-                                AtSign = 1;//考勤处理标记 0:未处理，1:已计算，2:已签卡处理，3:已处理假期
-                            }
-
-
-                            if (OnlyWorkTime2 != null && OnlyOffDutyTime2 != null)//下午
-                            {
-                                AtDay = AtDay + 0.5;
-                            }
-                            else//处理下午缺勤
-                            {
-                                AtState = 4;
-                                AtSign = 1;
-                            }
-
                             //处理未打卡
                             if (OnlyWorkTime1 == null || OnlyOffDutyTime1 == null
                                 || OnlyWorkTime2 == null || OnlyOffDutyTime2 == null
@@ -351,6 +331,32 @@ namespace AttReport
                             {
                                 AtState = 3;//未打卡
                                 AtSign = 1;//考勤处理标记 0:未处理，1:已计算，2:已签卡处理，3:已处理假期
+                            }
+
+                            //处理上午考勤
+                            if (OnlyWorkTime1 != null && OnlyOffDutyTime1 != null)//上午
+                            {
+                                AtDay = AtDay + 0.5;//考勤天数加半天
+                                AtState = 0;
+                                AtSign = 1;
+                            }
+                            else//处理上午缺勤
+                            {
+                                AtState = 4;//缺勤,考勤状态 0:正常，1:迟到，2:早退，3:未打卡，4:缺勤（旷工），5:无薪请假，6:底薪休假，7:全薪休假
+                                AtSign = 1;//考勤处理标记 0:未处理，1:已计算，2:已签卡处理，3:已处理假期
+                            }
+
+                            //处理下午考勤
+                            if (OnlyWorkTime2 != null && OnlyOffDutyTime2 != null)//下午
+                            {
+                                AtDay = AtDay + 0.5;
+                                AtState = 0;
+                                AtSign = 1;
+                            }
+                            else//处理下午缺勤
+                            {
+                                AtState = 4;
+                                AtSign = 1;
                             }
 
                             if (OnlyWorkTime1 != null)
@@ -375,7 +381,7 @@ namespace AttReport
                             if (OnlyOffDutyTime1 != null)
                             {
                                 //处理早退
-                                if (DateTime.Parse(OnlyOffDutyTime1).TimeOfDay > OffDutyTime1)
+                                if (DateTime.Parse(OnlyOffDutyTime1).TimeOfDay < OffDutyTime1)
                                 {
                                     AtState = 2;//早退
                                     AtSign = 1;//考勤处理标记 0:未处理，1:已计算，2:已签卡处理，3:已处理假期
@@ -384,11 +390,18 @@ namespace AttReport
 
                             if (OnlyOffDutyTime2 != null)
                             {
-                                if (DateTime.Parse(OnlyOffDutyTime2).TimeOfDay > OffDutyTime2)
+                                if (DateTime.Parse(OnlyOffDutyTime2).TimeOfDay < OffDutyTime2)
                                 {
                                     AtState = 2;//早退
                                     AtSign = 1;//考勤处理标记 0:未处理，1:已计算，2:已签卡处理，3:已处理假期
                                 }
+                            }
+
+                            //处理查询日期当天的记录
+                            if (AtDate >= DateTime.Now.Date)
+                            {
+                                AtState = 0;
+                                AtSign = 0;
                             }
 
                         }
@@ -403,6 +416,8 @@ namespace AttReport
                             if (OnlyWorkTime1 != null && OnlyOffDutyTime1 != null)
                             {
                                 AtDay = AtDay + 1;
+                                AtState = 0;
+                                AtSign = 1;
                             }
 
                             /*处理考勤
@@ -432,7 +447,7 @@ namespace AttReport
                             if (OnlyOffDutyTime1 != null)
                             {
                                 //处理早退
-                                if (DateTime.Parse(OnlyOffDutyTime1).TimeOfDay > OffDutyTime1)
+                                if (DateTime.Parse(OnlyOffDutyTime1).TimeOfDay < OffDutyTime1)
                                 {
                                     AtState = 2;//迟到
                                     AtSign = 1;//考勤处理标记 0:未处理，1:已计算，2:已签卡处理，3:已处理假期
@@ -448,6 +463,12 @@ namespace AttReport
                                 {
                                     AtDay = AtDay - 1;
                                 }
+                            }
+                            //处理查询日期当天的记录
+                            if (AtDate >= DateTime.Now.Date)
+                            {
+                                AtState = 0;
+                                AtSign = 0;
                             }
                         }
 
@@ -497,7 +518,7 @@ namespace AttReport
                 //接收不重复的数据
                 DataTable dtResult = drResult.CopyToDataTable();
                 //批量写入数据库
-                //SQLHelper.UpdataByBulk(dtResult, "DayReport");
+                SQLHelper.UpdataByBulk(dtResult, "DayReport");
             }
 
             #endregion
@@ -521,6 +542,12 @@ namespace AttReport
             Cursor = Cursors.WaitCursor;//鼠标
             CreateDayLog(CBeginDate, CEndDate);
             Cursor = Cursors.Default;//鼠标
+        }
+
+        //关闭事件
+        private void FrmDayReport_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            FrmMain.objFrmDayReport = null;
         }
     }
 }

@@ -271,20 +271,20 @@ namespace AttReport
         }
 
         //员工信息窗口对象
-        public static FrmSfManage objFrmCorporate = null;
+        public static FrmSfManage FrmSfManage = null;
 
         //员工信息菜单事件
         private void 员工信息ToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            if (objFrmCorporate == null)
+            if (FrmSfManage == null)
             {
-                objFrmCorporate = new FrmSfManage();
-                objFrmCorporate.Show();
+                FrmSfManage = new FrmSfManage();
+                FrmSfManage.Show();
             }
             else
             {
-                objFrmCorporate.Activate();//激活只能在最小化的时候起作用
-                objFrmCorporate.WindowState = FormWindowState.Normal;
+                FrmSfManage.Activate();//激活只能在最小化的时候起作用
+                FrmSfManage.WindowState = FormWindowState.Normal;
             }
         }
 
@@ -301,8 +301,8 @@ namespace AttReport
             }
             else
             {
-                objFrmCorporate.Activate();//激活只能在最小化的时候起作用
-                objFrmCorporate.WindowState = FormWindowState.Normal;
+                FrmSfManage.Activate();//激活只能在最小化的时候起作用
+                FrmSfManage.WindowState = FormWindowState.Normal;
             }
         }
 
@@ -393,6 +393,22 @@ namespace AttReport
             {
                 objFrmDayReport.Activate();//激活窗口并给焦点
                 objFrmDayReport.WindowState = FormWindowState.Normal;
+            }
+        }
+
+        //签卡处理
+        public static FrmSignCard objFrmSignCard = null;
+        private void 签卡ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (objFrmSignCard==null)
+            {
+                objFrmSignCard = new FrmSignCard();
+                objFrmSignCard.Show();
+            }
+            else
+            {
+                objFrmSignCard.Activate();//激活窗体
+                objFrmSignCard.WindowState = FormWindowState.Normal;
             }
         }
     }

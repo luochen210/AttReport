@@ -27,13 +27,23 @@ namespace AttReport
 
         //获取报表
 
-        public void GetMonthlyReport()
+        public void GetMonthReport()
         {
             DateTime BeginDate = DateTime.Parse(cboMonthly.Text.Trim()).AddMonths(-1).Date;//设置起始值为上上月最后1天，根据Cbo值计算
 
             DateTime EndDate = DateTime.Parse(cboMonthly.Text.Trim()).AddMonths(1).Date;////设置结束值为本月第1天，根据Cbo值计算
 
-            DataTable DayRecordTable=objRecordService.GetDayReport(BeginDate, EndDate).Tables[0];//获得月度日报
+            DataTable dtDayRecordTable=objRecordService.GetDayReport(BeginDate, EndDate).Tables[0];//获得月度日报
+
+            //动态筛选(伪代码)
+            //dtDayRecordTable.DefaultView.RowFilter = string.Format("WorkTime1>8:00:00");
+
+            //获取员工表
+
+            //计算员工考勤天数
+
+            //
+
 
             //根据日报计算月报
 
@@ -41,14 +51,14 @@ namespace AttReport
 
 
         //窗体关闭事件
-        private void FrmMonthlyReport_FormClosed(object sender, FormClosedEventArgs e)
+        private void FrmMonthReport_FormClosed(object sender, FormClosedEventArgs e)
         {
             FrmMain.objFrmMonthReport = null;
         }
 
         private void btnQuery_Click(object sender, EventArgs e)
         {
-            GetMonthlyReport();
+            GetMonthReport();
 
         }
     }

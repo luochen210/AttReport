@@ -219,7 +219,7 @@ namespace AttReport
 
         private void FrmCorporate_FormClosed(object sender, FormClosedEventArgs e)
         {
-            FrmMain.objFrmCorporate = null;//当窗体关闭时，将窗体对象清理掉
+            FrmMain.FrmSfManage = null;//当窗体关闭时，将窗体对象清理掉
         }
 
         #endregion

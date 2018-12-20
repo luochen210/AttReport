@@ -102,6 +102,12 @@
     <Compile Include="FrmClassesTimes.Designer.cs">
       <DependentUpon>FrmClassesTimes.cs</DependentUpon>
     </Compile>
+    <Compile Include="FrmSignCard.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmSignCard.Designer.cs">
+      <DependentUpon>FrmSignCard.cs</DependentUpon>
+    </Compile>
     <Compile Include="FrmTimesManage.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -133,6 +139,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FrmClassesTimes.resx">
       <DependentUpon>FrmClassesTimes.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmSignCard.resx">
+      <DependentUpon>FrmSignCard.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FrmTimesManage.resx">
       <DependentUpon>FrmTimesManage.cs</DependentUpon>
