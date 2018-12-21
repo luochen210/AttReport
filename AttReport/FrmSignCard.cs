@@ -518,6 +518,7 @@ namespace AttReport
          */
 
         DataTable dtDayResult = null;
+        List<TimesManage> listTimes = null;
 
         //查询异常的日报
         private void btnQuery_Click(object sender, EventArgs e)
@@ -534,9 +535,6 @@ namespace AttReport
 
         }
 
-
-
-
         //关闭窗体事件
         private void FrmSignCard_FormClosed(object sender, FormClosedEventArgs e)
         {
@@ -548,16 +546,58 @@ namespace AttReport
             if (dtDayResult != null)
             {
                 //根据cbo值查筛选
-                dtDayResult.DefaultView.RowFilter =string.Format("ClassesName like '{0}'", cboClassesName.Text.Trim());
+                dtDayResult.DefaultView.RowFilter = string.Format("ClassesName like '{0}'", cboClassesName.Text.Trim());
 
-                //获取时段
-                var listTimesName = objAttRecordService.GetTimesName(cboClassesName.Text.Trim());
-                cboTimeName.DataSource = listTimesName;
-                cboTimeName.DisplayMember = "ClassesName";
-                cboTimeName.ValueMember = "ClassesId";
-                cboTimeName.SelectedIndex = -1;
+                if (cboClassesName.Text.Trim()!="")
+                {
+                    //获取时段名
+                    var listTimesName = objAttRecordService.GetTimesName(cboClassesName.Text.Trim());
+
+                    //List列转行
+                    List<string> timesNameList = new List<string>();
+                    timesNameList.Add(listTimesName[0].TimesName1);
+                    timesNameList.Add(listTimesName[0].TimesName2);
+                    timesNameList.Add(listTimesName[0].TimesName3);
+
+                    //设置源
+                    cboTimeName.DataSource = timesNameList;
+                    cboTimeName.SelectedIndex = -1;
+                }
+
             }
-            
+
+        }
+
+        private void cboTimeName_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (cboTimeName.Text.Trim() != "")
+            {
+                listTimes = objAttRecordService.GetTimes(cboTimeName.Text.Trim());
+
+                List<string> timesList = new List<string>();
+                timesList.Add(listTimes[0].WorkTime);
+                timesList.Add(listTimes[0].OffDutyTime);
+
+                cboTime.DataSource = timesList;
+                cboTime.SelectedIndex = -1;
+            }
+
+        }
+
+        //批量签卡
+        private void btnBatch_Click(object sender, EventArgs e)
+        {
+            //获取签卡时间
+            DateTime time =DateTime.Parse(cboTime.Text.Trim());
+
+            foreach (DataGridViewRow item in dgvDayResult.Rows)
+            {
+                //if (item.Cells["AtState"]==4)
+                //{
+
+                //    item.Cells[""].Value = time;
+                //}
+            }
         }
     }
 }

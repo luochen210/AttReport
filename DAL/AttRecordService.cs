@@ -125,8 +125,8 @@ namespace DAL
         /// <returns>时段List</returns>
         public List<TimesManage> GetTimes(string TimesName)
         {
-            string sql = "select * from TimesManage where TimesName={0}" + TimesName;
-            sql = string.Format(sql);
+            string sql = "select * from TimesManage where TimesName='{0}'";
+            sql = string.Format(sql, TimesName);
             SqlDataReader objReader = SQLHelper.GetReader(sql);
             List<TimesManage> list = new List<TimesManage>();
             while (objReader.Read())
@@ -286,9 +286,9 @@ namespace DAL
             return list;
         }
 
-        public List<TimesManage> GetTimesList(string ClassesName)
-        {
-            string sql = "select ";
-        }
+        //public List<TimesManage> GetTimesList(string ClassesName)
+        //{
+        //    string sql = "select ";
+        //}
     }
 }
