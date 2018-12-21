@@ -25,10 +25,10 @@ namespace AttReport
 
             //获取班次
             var listClasses = objAttRecordService.GetClassesList();
-            cboClasses.DataSource = listClasses;
-            cboClasses.DisplayMember = "ClassesName";
-            cboClasses.ValueMember = "ClassesId";
-            cboClasses.SelectedIndex = -1;
+            cboClassesName.DataSource = listClasses;
+            cboClassesName.DisplayMember = "ClassesName";
+            cboClassesName.ValueMember = "ClassesId";
+            cboClassesName.SelectedIndex = -1;
 
         }
 
@@ -547,7 +547,15 @@ namespace AttReport
         {
             if (dtDayResult != null)
             {
-                dtDayResult.DefaultView.RowFilter = "ClassesName == 'cboClasses.Text.Trim()'";
+                //根据cbo值查筛选
+                dtDayResult.DefaultView.RowFilter =string.Format("ClassesName like '{0}'", cboClassesName.Text.Trim());
+
+                //获取时段
+                var listTimesName = objAttRecordService.GetTimesName(cboClassesName.Text.Trim());
+                cboTimeName.DataSource = listTimesName;
+                cboTimeName.DisplayMember = "ClassesName";
+                cboTimeName.ValueMember = "ClassesId";
+                cboTimeName.SelectedIndex = -1;
             }
             
         }

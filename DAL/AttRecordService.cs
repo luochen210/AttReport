@@ -285,5 +285,10 @@ namespace DAL
             }
             return list;
         }
+
+        public List<TimesManage> GetTimesList(string ClassesName)
+        {
+            string sql = "select ";
+        }
     }
 }
