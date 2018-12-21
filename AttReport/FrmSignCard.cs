@@ -23,9 +23,16 @@ namespace AttReport
             dtpQBeginDate.Text = DateTime.Now.Date.AddMonths(-1).AddDays(1 - DateTime.Now.Day - 1).ToString();//开始时间
             dtpQEndDate.Text = DateTime.Now.Date.ToString();//结束时间
 
+            //获取班次
+            var listClasses = objAttRecordService.GetClassesList();
+            cboClasses.DataSource = listClasses;
+            cboClasses.DisplayMember = "ClassesName";
+            cboClasses.ValueMember = "ClassesId";
+            cboClasses.SelectedIndex = -1;
+
         }
 
-        //#region 日报表计算方法
+        #region 日报表计算方法
 
         ////根据读取的记录生成日报表
         //public void CreateDayLog(DateTime CBeginDate, DateTime CEndDate)
@@ -498,7 +505,7 @@ namespace AttReport
         //    #endregion
         //}
 
-        //#endregion
+        #endregion
 
 
         /*处理考勤
@@ -510,6 +517,8 @@ namespace AttReport
          * 
          */
 
+        DataTable dtDayResult = null;
+
         //查询异常的日报
         private void btnQuery_Click(object sender, EventArgs e)
         {
@@ -518,7 +527,7 @@ namespace AttReport
             DateTime QEndDate = DateTime.Parse(dtpQEndDate.Text.Trim()).Date;//结束日期，到次日的9:00结束
 
             //获得考勤状态为正常的记录
-            DataTable dtDayResult = objAttRecordService.GetDayResult(QBeginDate, QEndDate, 0).Tables[0];
+            dtDayResult = objAttRecordService.GetDayResult(QBeginDate, QEndDate, 0).Tables[0];
 
             //输出
             dgvDayResult.DataSource = dtDayResult;
@@ -532,6 +541,15 @@ namespace AttReport
         private void FrmSignCard_FormClosed(object sender, FormClosedEventArgs e)
         {
             FrmMain.objFrmSignCard = null;
+        }
+
+        private void cboClasses_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (dtDayResult != null)
+            {
+                dtDayResult.DefaultView.RowFilter = "ClassesName == 'cboClasses.Text.Trim()'";
+            }
+            
         }
     }
 }

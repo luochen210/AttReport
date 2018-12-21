@@ -210,7 +210,7 @@ namespace DAL
         }
 
         /// <summary>
-        /// 获取时段名称
+        /// 根据班次获取时段名称
         /// </summary>
         /// <param name="ClassesName">班次名称</param>
         /// <returns>时段名称List</returns>
@@ -262,5 +262,28 @@ namespace DAL
             return SQLHelper.GetDataSet(sql);
         }
 
+
+        /// <summary>
+        /// 获取班次
+        /// </summary>
+        /// <returns></returns>
+        public List<ClassesTimes> GetClassesList()
+        {
+            string sql = "select ClassesId,ClassesName from ClassesTimes";
+
+            SqlDataReader objReader = SQLHelper.GetReader(sql);
+
+            List<ClassesTimes> list = new List<ClassesTimes>();
+
+            while (objReader.Read())
+            {
+                list.Add(new ClassesTimes()
+                {
+                    ClassesId = Convert.ToInt32(objReader["ClassesId"]),
+                    ClassesName=objReader["ClassesName"].ToString()
+                });
+            }
+            return list;
+        }
     }
 }

@@ -28,10 +28,10 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
             this.panel1 = new System.Windows.Forms.Panel();
             this.cboName = new System.Windows.Forms.ComboBox();
             this.lblName = new System.Windows.Forms.Label();
@@ -58,6 +58,11 @@
             this.AtDay = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.AtState = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.AtSign = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.btnBatch = new System.Windows.Forms.Button();
+            this.lblClasses = new System.Windows.Forms.Label();
+            this.cboClasses = new System.Windows.Forms.ComboBox();
+            this.lblTimes = new System.Windows.Forms.Label();
+            this.cboTimes = new System.Windows.Forms.ComboBox();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDayResult)).BeginInit();
             this.SuspendLayout();
@@ -67,14 +72,19 @@
             this.panel1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.panel1.BackColor = System.Drawing.Color.MintCream;
+            this.panel1.Controls.Add(this.cboTimes);
             this.panel1.Controls.Add(this.cboName);
+            this.panel1.Controls.Add(this.lblTimes);
             this.panel1.Controls.Add(this.lblName);
+            this.panel1.Controls.Add(this.cboClasses);
             this.panel1.Controls.Add(this.cboDepartment);
+            this.panel1.Controls.Add(this.lblClasses);
             this.panel1.Controls.Add(this.lblDep);
             this.panel1.Controls.Add(this.dtpQEndDate);
             this.panel1.Controls.Add(this.dtpQBeginDate);
             this.panel1.Controls.Add(this.lblCEnd);
             this.panel1.Controls.Add(this.lblCBegin);
+            this.panel1.Controls.Add(this.btnBatch);
             this.panel1.Controls.Add(this.btnExactQuery);
             this.panel1.Controls.Add(this.btnQuery);
             this.panel1.Location = new System.Drawing.Point(12, 12);
@@ -87,7 +97,7 @@
             this.cboName.FormattingEnabled = true;
             this.cboName.Location = new System.Drawing.Point(311, 35);
             this.cboName.Name = "cboName";
-            this.cboName.Size = new System.Drawing.Size(121, 20);
+            this.cboName.Size = new System.Drawing.Size(97, 20);
             this.cboName.TabIndex = 10;
             // 
             // lblName
@@ -104,7 +114,7 @@
             this.cboDepartment.FormattingEnabled = true;
             this.cboDepartment.Location = new System.Drawing.Point(311, 8);
             this.cboDepartment.Name = "cboDepartment";
-            this.cboDepartment.Size = new System.Drawing.Size(121, 20);
+            this.cboDepartment.Size = new System.Drawing.Size(97, 20);
             this.cboDepartment.TabIndex = 10;
             // 
             // lblDep
@@ -153,7 +163,7 @@
             // btnExactQuery
             // 
             this.btnExactQuery.BackColor = System.Drawing.Color.White;
-            this.btnExactQuery.Location = new System.Drawing.Point(438, 8);
+            this.btnExactQuery.Location = new System.Drawing.Point(414, 8);
             this.btnExactQuery.Name = "btnExactQuery";
             this.btnExactQuery.Size = new System.Drawing.Size(75, 48);
             this.btnExactQuery.TabIndex = 5;
@@ -173,18 +183,19 @@
             // 
             // dgvDayResult
             // 
+            this.dgvDayResult.AllowUserToAddRows = false;
             this.dgvDayResult.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.dgvDayResult.BackgroundColor = System.Drawing.SystemColors.ButtonFace;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvDayResult.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle9.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle9.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            dataGridViewCellStyle9.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle9.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle9.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle9.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvDayResult.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle9;
             this.dgvDayResult.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvDayResult.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.AtDate,
@@ -201,26 +212,26 @@
             this.AtDay,
             this.AtState,
             this.AtSign});
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvDayResult.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle10.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle10.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            dataGridViewCellStyle10.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle10.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle10.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle10.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvDayResult.DefaultCellStyle = dataGridViewCellStyle10;
             this.dgvDayResult.Location = new System.Drawing.Point(12, 88);
             this.dgvDayResult.Name = "dgvDayResult";
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvDayResult.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.dgvDayResult.RowsDefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle11.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle11.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            dataGridViewCellStyle11.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle11.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle11.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle11.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvDayResult.RowHeadersDefaultCellStyle = dataGridViewCellStyle11;
+            dataGridViewCellStyle12.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.dgvDayResult.RowsDefaultCellStyle = dataGridViewCellStyle12;
             this.dgvDayResult.RowTemplate.DefaultCellStyle.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             this.dgvDayResult.RowTemplate.Height = 23;
             this.dgvDayResult.Size = new System.Drawing.Size(986, 629);
@@ -338,6 +349,51 @@
             this.AtSign.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
             this.AtSign.Width = 73;
             // 
+            // btnBatch
+            // 
+            this.btnBatch.BackColor = System.Drawing.Color.White;
+            this.btnBatch.Location = new System.Drawing.Point(864, 6);
+            this.btnBatch.Name = "btnBatch";
+            this.btnBatch.Size = new System.Drawing.Size(75, 48);
+            this.btnBatch.TabIndex = 5;
+            this.btnBatch.Text = "批量签卡";
+            this.btnBatch.UseVisualStyleBackColor = false;
+            // 
+            // lblClasses
+            // 
+            this.lblClasses.AutoSize = true;
+            this.lblClasses.Location = new System.Drawing.Point(509, 10);
+            this.lblClasses.Name = "lblClasses";
+            this.lblClasses.Size = new System.Drawing.Size(41, 12);
+            this.lblClasses.TabIndex = 9;
+            this.lblClasses.Text = "班次：";
+            // 
+            // cboClasses
+            // 
+            this.cboClasses.FormattingEnabled = true;
+            this.cboClasses.Location = new System.Drawing.Point(554, 7);
+            this.cboClasses.Name = "cboClasses";
+            this.cboClasses.Size = new System.Drawing.Size(97, 20);
+            this.cboClasses.TabIndex = 10;
+            this.cboClasses.SelectedIndexChanged += new System.EventHandler(this.cboClasses_SelectedIndexChanged);
+            // 
+            // lblTimes
+            // 
+            this.lblTimes.AutoSize = true;
+            this.lblTimes.Location = new System.Drawing.Point(509, 37);
+            this.lblTimes.Name = "lblTimes";
+            this.lblTimes.Size = new System.Drawing.Size(41, 12);
+            this.lblTimes.TabIndex = 9;
+            this.lblTimes.Text = "时段：";
+            // 
+            // cboTimes
+            // 
+            this.cboTimes.FormattingEnabled = true;
+            this.cboTimes.Location = new System.Drawing.Point(554, 34);
+            this.cboTimes.Name = "cboTimes";
+            this.cboTimes.Size = new System.Drawing.Size(97, 20);
+            this.cboTimes.TabIndex = 10;
+            // 
             // FrmSignCard
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -383,5 +439,10 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn AtDay;
         private System.Windows.Forms.DataGridViewTextBoxColumn AtState;
         private System.Windows.Forms.DataGridViewTextBoxColumn AtSign;
+        private System.Windows.Forms.ComboBox cboTimes;
+        private System.Windows.Forms.Label lblTimes;
+        private System.Windows.Forms.ComboBox cboClasses;
+        private System.Windows.Forms.Label lblClasses;
+        private System.Windows.Forms.Button btnBatch;
     }
 }
