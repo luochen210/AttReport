@@ -17,7 +17,7 @@ namespace AttReport
     public partial class FrmShiftTimes : Form
     {
 
-        SfWorkTimeService objTimesService = new SfWorkTimeService();
+        SfWorkTimeService objSfWorkTimeService = new SfWorkTimeService();
         ShiftTimesService objShiftTimesService = new ShiftTimesService();
 
         List<SfWorkTime> cboDataSource;//cbo数据源成员变量
@@ -26,7 +26,7 @@ namespace AttReport
         {
             InitializeComponent();
 
-            cboDataSource = objTimesService.GetTimesNameList();//初始化成员变量
+            cboDataSource = objSfWorkTimeService.GetTimesNameList();//初始化成员变量
 
             //获取数据
             this.cboTimes1.DataSource = cboDataSource;
