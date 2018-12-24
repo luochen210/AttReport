@@ -271,14 +271,14 @@ namespace AttReport
         }
 
         //员工信息窗口对象
-        public static FrmSfManage FrmSfManage = null;
+        public static FrmStaffInfo FrmSfManage = null;
 
         //员工信息菜单事件
         private void 员工信息ToolStripMenuItem_Click(object sender, EventArgs e)
         {
             if (FrmSfManage == null)
             {
-                FrmSfManage = new FrmSfManage();
+                FrmSfManage = new FrmStaffInfo();
                 FrmSfManage.Show();
             }
             else
@@ -307,14 +307,14 @@ namespace AttReport
         }
 
         //班次管理窗口对象
-        public static FrmClassesTimes objFrmClassesTimes = null;
+        public static FrmShiftTimes objFrmClassesTimes = null;
 
         //班次管理菜单事件
         private void 班次管理ToolStripMenuItem_Click(object sender, EventArgs e)
         {
             if (objFrmClassesTimes == null)
             {
-                objFrmClassesTimes = new FrmClassesTimes();
+                objFrmClassesTimes = new FrmShiftTimes();
                 objFrmClassesTimes.Show();
             }
             else
@@ -325,14 +325,14 @@ namespace AttReport
         }
 
         //时段管理窗口对象
-        public static FrmTimesManage objFrmTimesManage = null;
+        public static FrmSfWorkTime objFrmTimesManage = null;
 
         //时段管理菜单事件
         private void 时段管理ToolStripMenuItem_Click(object sender, EventArgs e)
         {
             if (objFrmTimesManage == null)
             {
-                objFrmTimesManage = new FrmTimesManage();
+                objFrmTimesManage = new FrmSfWorkTime();
                 objFrmTimesManage.Show();
             }
             else

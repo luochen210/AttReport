@@ -14,15 +14,15 @@ using Models;
 
 namespace AttReport
 {
-    public partial class FrmClassesTimes : Form
+    public partial class FrmShiftTimes : Form
     {
 
-        TimesManageService objTimesService = new TimesManageService();
-        ClassesTimesService objClassesService = new ClassesTimesService();
+        SfWorkTimeService objTimesService = new SfWorkTimeService();
+        ShiftTimesService objClassesService = new ShiftTimesService();
 
-        List<TimesManage> cboDataSource;//cbo数据源成员变量
+        List<SfWorkTime> cboDataSource;//cbo数据源成员变量
 
-        public FrmClassesTimes()
+        public FrmShiftTimes()
         {
             InitializeComponent();
 
@@ -39,7 +39,7 @@ namespace AttReport
         //窗体加载时读取班次表
         private void FrmClassesTimes_Load(object sender, EventArgs e)
         {
-            DataTable dgvClassesTable= objClassesService.GetClassesDataSet().Tables[0];//获取数据
+            DataTable dgvClassesTable= objClassesService.GetShiftTimesDataSet().Tables[0];//获取数据
 
             dgvClassesTable.Columns.Remove("ClassesId");//移除数据
 
@@ -74,7 +74,7 @@ namespace AttReport
                 return;
             }
 
-            if (objClassesService.IsClassesNameExisted(txtClassesName.Text.Trim()))
+            if (objClassesService.IsShiftNameExisted(txtClassesName.Text.Trim()))
             {
                 MessageBox.Show("班次名称重复！");
                 txtClassesName.Focus();
@@ -83,9 +83,9 @@ namespace AttReport
             }
 
             //封装对象
-            ClassesTimes objClasses = new ClassesTimes()
+            ShiftTimes objClasses = new ShiftTimes()
             {
-                ClassesName = txtClassesName.Text.Trim(),
+                ShiftName = txtClassesName.Text.Trim(),
                 TimesName1 = cboTimes1.Text.Trim(),
                 TimesName2 = cboTimes2.Text.Trim(),
                 TimesName3 = cboTimes3.Text.Trim(),
@@ -102,11 +102,11 @@ namespace AttReport
 
 
             //插入数据
-            objClassesService.AddClasses(objClasses);
+            objClassesService.AddShift(objClasses);
 
             //刷新DGV显示数据
             //获取数据
-            DataTable dtClasses=objClassesService.GetClassesDataSet().Tables[0];
+            DataTable dtClasses=objClassesService.GetShiftTimesDataSet().Tables[0];
 
             //移除ID列
             dtClasses.Columns.Remove("ClassesId");
@@ -120,7 +120,7 @@ namespace AttReport
         private void btnUpdate_Click(object sender, EventArgs e)
         {
             //验证
-            if (objClassesService.IsClassesNameExisted(txtClassesName.Text.Trim()))
+            if (objClassesService.IsShiftNameExisted(txtClassesName.Text.Trim()))
             {
                 MessageBox.Show("班次名称重复！");
                 txtClassesName.Focus();
@@ -136,9 +136,9 @@ namespace AttReport
 
                 MessageBox.Show(AgoClassesName);
 
-                ClassesTimes objClasses = new ClassesTimes()
+                ShiftTimes objClasses = new ShiftTimes()
                 {
-                    ClassesName = txtClassesName.Text.Trim(),
+                    ShiftName = txtClassesName.Text.Trim(),
                     TimesName1 = cboTimes1.Text.Trim(),
                     TimesName2 = cboTimes2.Text.Trim(),
                     TimesName3 = cboTimes3.Text.Trim(),
@@ -153,11 +153,11 @@ namespace AttReport
                 };
 
                 //插入数据
-                objClassesService.UpdateClasses(objClasses, AgoClassesName);
+                objClassesService.UpdateShift(objClasses, AgoClassesName);
 
                 //更新DGV
                 //获取数据
-                DataTable dtClasses = objClassesService.GetClassesDataSet().Tables[0];
+                DataTable dtClasses = objClassesService.GetShiftTimesDataSet().Tables[0];
 
                 //移除ID列
                 dtClasses.Columns.Remove("ClassesId");

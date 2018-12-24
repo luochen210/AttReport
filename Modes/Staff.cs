@@ -32,7 +32,8 @@ namespace Models
         public string SfRelation { get; set; }//与紧急联络人的关系
         public string SfFriendsPhone { get; set; }//紧急联络人的电话
         public string SfStatus { get; set; }//在职状态
-        public string SfShifts{get;set;}//轮班班次
+        public string WorkShift { get; set; }//轮班班次
+        public int SfShift { get; set; }//轮班标记
 
         public int SfCompanyId { get; set; }//公司ID
         public string SfCompanyName { get; set; }//公司名称

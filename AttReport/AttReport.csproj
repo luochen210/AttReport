@@ -84,11 +84,11 @@
     <Compile Include="FrmMonthReport.Designer.cs">
       <DependentUpon>FrmMonthReport.cs</DependentUpon>
     </Compile>
-    <Compile Include="FrmSfManage.cs">
+    <Compile Include="FrmStaffInfo.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FrmSfManage.Designer.cs">
-      <DependentUpon>FrmSfManage.cs</DependentUpon>
+    <Compile Include="FrmStaffInfo.Designer.cs">
+      <DependentUpon>FrmStaffInfo.cs</DependentUpon>
     </Compile>
     <Compile Include="FrmMain.cs">
       <SubType>Form</SubType>
@@ -96,11 +96,11 @@
     <Compile Include="FrmMain.Designer.cs">
       <DependentUpon>FrmMain.cs</DependentUpon>
     </Compile>
-    <Compile Include="FrmClassesTimes.cs">
+    <Compile Include="FrmShiftTimes.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FrmClassesTimes.Designer.cs">
-      <DependentUpon>FrmClassesTimes.cs</DependentUpon>
+    <Compile Include="FrmShiftTimes.Designer.cs">
+      <DependentUpon>FrmShiftTimes.cs</DependentUpon>
     </Compile>
     <Compile Include="FrmSignCard.cs">
       <SubType>Form</SubType>
@@ -108,11 +108,11 @@
     <Compile Include="FrmSignCard.Designer.cs">
       <DependentUpon>FrmSignCard.cs</DependentUpon>
     </Compile>
-    <Compile Include="FrmTimesManage.cs">
+    <Compile Include="FrmSfWorkTime.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FrmTimesManage.Designer.cs">
-      <DependentUpon>FrmTimesManage.cs</DependentUpon>
+    <Compile Include="FrmSfWorkTime.Designer.cs">
+      <DependentUpon>FrmSfWorkTime.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -131,20 +131,20 @@
     <EmbeddedResource Include="FrmMonthReport.resx">
       <DependentUpon>FrmMonthReport.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FrmSfManage.resx">
-      <DependentUpon>FrmSfManage.cs</DependentUpon>
+    <EmbeddedResource Include="FrmStaffInfo.resx">
+      <DependentUpon>FrmStaffInfo.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FrmMain.resx">
       <DependentUpon>FrmMain.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FrmClassesTimes.resx">
-      <DependentUpon>FrmClassesTimes.cs</DependentUpon>
+    <EmbeddedResource Include="FrmShiftTimes.resx">
+      <DependentUpon>FrmShiftTimes.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FrmSignCard.resx">
       <DependentUpon>FrmSignCard.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FrmTimesManage.resx">
-      <DependentUpon>FrmTimesManage.cs</DependentUpon>
+    <EmbeddedResource Include="FrmSfWorkTime.resx">
+      <DependentUpon>FrmSfWorkTime.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

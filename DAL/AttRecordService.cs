@@ -92,16 +92,16 @@ namespace DAL
         /// 获得所有时间段
         /// </summary>
         /// <returns></returns>
-        public List<TimesManage> GetAllTimesList()
+        public List<SfWorkTime> GetAllTimesList()
         {
-            string sql = "select * from TimesManage";
+            string sql = "select * from SfWorkTime";
             sql = string.Format(sql);
 
             SqlDataReader objReader = SQLHelper.GetReader(sql);
-            List<TimesManage> list = new List<TimesManage>();
+            List<SfWorkTime> list = new List<SfWorkTime>();
             while (objReader.Read())
             {
-                list.Add(new TimesManage()
+                list.Add(new SfWorkTime()
                 {
                     TimesName = objReader["TimesName"].ToString(),
                     WorkTime = objReader["WorkTime"].ToString(),
@@ -123,15 +123,15 @@ namespace DAL
         /// </summary>
         /// <param name="TimesName">时段名称</param>
         /// <returns>时段List</returns>
-        public List<TimesManage> GetTimes(string TimesName)
+        public List<SfWorkTime> GetSfWorkTime(string TimesName)
         {
-            string sql = "select * from TimesManage where TimesName='{0}'";
+            string sql = "select * from SfWorkTime where TimesName='{0}'";
             sql = string.Format(sql, TimesName);
             SqlDataReader objReader = SQLHelper.GetReader(sql);
-            List<TimesManage> list = new List<TimesManage>();
+            List<SfWorkTime> list = new List<SfWorkTime>();
             while (objReader.Read())
             {
-                list.Add(new TimesManage()
+                list.Add(new SfWorkTime()
                 {
                     TimesName = objReader["TimesName"].ToString(),
                     WorkTime = objReader["WorkTime"].ToString(),
@@ -192,9 +192,9 @@ namespace DAL
         /// </summary>
         /// <param name="StaffId">考勤Id</param>
         /// <returns>员工班次名称</returns>
-        public string GetClassesName(int StaffId)
+        public string GetWorkShiftName(int StaffId)
         {
-            string sql = "select SfShifts from Staffs where SfId={0}";
+            string sql = "select WorkShift from Staffs where SfId={0}";
             sql = string.Format(sql, StaffId);
 
             var result = SQLHelper.GetSingleResult(sql);
@@ -212,21 +212,21 @@ namespace DAL
         /// <summary>
         /// 根据班次获取时段名称
         /// </summary>
-        /// <param name="ClassesName">班次名称</param>
+        /// <param name="ShiftName">班次名称</param>
         /// <returns>时段名称List</returns>
-        public List<ClassesTimes> GetTimesName(string ClassesName)
+        public List<ShiftTimes> GetTimesName(string ShiftName)
         {
-            string sql = "select * from ClassesTimes where ClassesName='{0}'";
-            sql = string.Format(sql, ClassesName);
+            string sql = "select * from ShiftTimes where ShiftName='{0}'";
+            sql = string.Format(sql, ShiftName);
 
             SqlDataReader objReader = SQLHelper.GetReader(sql);
 
-            List<ClassesTimes> list = new List<ClassesTimes>();
+            List<ShiftTimes> list = new List<ShiftTimes>();
             while (objReader.Read())
             {
-                list.Add(new ClassesTimes()
+                list.Add(new ShiftTimes()
                 {
-                    ClassesName = objReader["ClassesName"].ToString(),
+                    ShiftName = objReader["ShiftName"].ToString(),
                     TimesName1 = objReader["TimesName1"].ToString(),
                     TimesName2 = objReader["TimesName2"].ToString(),
                     TimesName3 = objReader["TimesName3"].ToString()
@@ -267,28 +267,23 @@ namespace DAL
         /// 获取班次
         /// </summary>
         /// <returns></returns>
-        public List<ClassesTimes> GetClassesList()
+        public List<ShiftTimes> GetClassesList()
         {
-            string sql = "select ClassesId,ClassesName from ClassesTimes";
+            string sql = "select ShiftId,ShiftName from ShiftTimes";
 
             SqlDataReader objReader = SQLHelper.GetReader(sql);
 
-            List<ClassesTimes> list = new List<ClassesTimes>();
+            List<ShiftTimes> list = new List<ShiftTimes>();
 
             while (objReader.Read())
             {
-                list.Add(new ClassesTimes()
+                list.Add(new ShiftTimes()
                 {
-                    ClassesId = Convert.ToInt32(objReader["ClassesId"]),
-                    ClassesName=objReader["ClassesName"].ToString()
+                    ShiftId = Convert.ToInt32(objReader["ShiftId"]),
+                    ShiftName=objReader["ShiftName"].ToString()
                 });
             }
             return list;
         }
-
-        //public List<TimesManage> GetTimesList(string ClassesName)
-        //{
-        //    string sql = "select ";
-        //}
     }
 }

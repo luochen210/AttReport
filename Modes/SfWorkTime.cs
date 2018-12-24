@@ -7,34 +7,60 @@ using System.Threading.Tasks;
 namespace Models
 {
     /// <summary>
-    /// 班次实体类
+    /// 时段实体类
     /// </summary>
-    public class ClassesTimes
+    public class SfWorkTime
     {
-        /// <summary>
-        /// 班次ID
-        /// </summary>
-        public int ClassesId { get; set; }
 
         /// <summary>
-        /// 班次名称
+        /// 时段名称
         /// </summary>
-        public string ClassesName { get; set; }
+        public string TimesName { get; set; }
 
         /// <summary>
-        /// 时段名称1
+        /// 上班时间
         /// </summary>
-        public string TimesName1 { get; set; }
+        public string WorkTime { get; set; }
 
         /// <summary>
-        /// 时段名称2
+        /// 下班时间
         /// </summary>
-        public string TimesName2 { get; set; }
+        public string OffDutyTime { get; set; }
 
         /// <summary>
-        /// 时段名称3
+        /// 开始签到时间
         /// </summary>
-        public string TimesName3 { get; set; }
+        public string StartCheckIn { get; set; }
+
+        /// <summary>
+        /// 结束签到时间
+        /// </summary>
+        public string EndCheckIn { get; set; }
+
+        /// <summary>
+        /// 开始签退时间
+        /// </summary>
+        public string StartSignBack { get; set; }
+
+        /// <summary>
+        /// 结束签退时间
+        /// </summary>
+        public string EndSignBack { get; set; }
+
+        /// <summary>
+        /// 迟到时间
+        /// </summary>
+        public int LateTime { get; set; }
+
+        /// <summary>
+        /// 早退时间
+        /// </summary>
+        public int LeftEarly { get; set; }
+
+        /// <summary>
+        /// 天数
+        /// </summary>
+        public double DayNumber { get; set; }
 
         /// <summary>
         /// 星期一
@@ -70,5 +96,11 @@ namespace Models
         /// 星期日
         /// </summary>
         public int Sunday { get; set; }
+
+        /// <summary>
+        /// 轮班标记，0为无需轮班，1为需要轮班
+        /// </summary>
+        public int AttShift { get; set; }
+
     }
 }

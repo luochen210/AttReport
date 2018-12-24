@@ -13,7 +13,7 @@ namespace DAL
     /// <summary>
     /// 时段管理业务逻辑类
     /// </summary>
-    public class TimesManageService
+    public class SfWorkTimeService
     {
 
         /// <summary>
@@ -22,7 +22,7 @@ namespace DAL
         /// <returns>时段数据集</returns>
         public DataSet GetTimesDataSet()
         {
-            string sql = "select * from TimesManage ";
+            string sql = "select * from SfWorkTime";
             sql = string.Format(sql);
             return SQLHelper.GetDataSet(sql);
         }
@@ -34,7 +34,7 @@ namespace DAL
         /// <returns></returns>
         public bool IsTimesNameExisted(string TimesName)
         {
-            string sql = "select count(*) from TimesManage where TimesName='{0}'";//count(*)代表计算返回的行数
+            string sql = "select count(*) from SfWorkTime where TimesName='{0}'";//count(*)代表计算返回的行数
             sql = string.Format(sql, TimesName);
             int result = Convert.ToInt32(SQLHelper.GetSingleResult(sql));//条目数转换为int
 
@@ -47,16 +47,16 @@ namespace DAL
         /// 获得时段名
         /// </summary>
         /// <returns>时段名集合</returns>
-        public List<TimesManage> GetTimesNameList()
+        public List<SfWorkTime> GetTimesNameList()
         {
-            string sql = "select TimesName from TimesManage";
+            string sql = "select TimesName from SfWorkTime";
             sql = string.Format(sql);
 
             SqlDataReader objReader = SQLHelper.GetReader(sql);
-            List<TimesManage> list = new List<TimesManage>();
+            List<SfWorkTime> list = new List<SfWorkTime>();
             while (objReader.Read())
             {
-                list.Add(new TimesManage()
+                list.Add(new SfWorkTime()
                 {
                     TimesName = objReader["TimesName"].ToString(),
                 });
@@ -69,18 +69,18 @@ namespace DAL
         /// <summary>
         /// 添加时间段数据
         /// </summary>
-        /// <param name="objTimes">时间段对象</param>
+        /// <param name="objSfWorkTime">班次时段对象</param>
         /// <returns>返回执行结果</returns>
-        public int AddTimes(TimesManage objTimes)
+        public int AddTimes(SfWorkTime objSfWorkTime)
         {
             StringBuilder sqlBuilder = new StringBuilder();
-            sqlBuilder.Append("insert into TimesManage(TimesName,WorkTime,OffDutyTime,StartCheckIn,EndCheckIn,");
+            sqlBuilder.Append("insert into SfWorkTime(TimesName,WorkTime,OffDutyTime,StartCheckIn,EndCheckIn,");
             sqlBuilder.Append("StartSignBack,EndSignBack,LateTime,LeftEarly)");
             sqlBuilder.Append(" values('{0}','{1}','{2}','{3}','{4}','{5}','{6}',{7},{8})");
 
-            string sql = string.Format(sqlBuilder.ToString(), objTimes.TimesName, objTimes.WorkTime,
-                objTimes.OffDutyTime, objTimes.StartCheckIn, objTimes.EndCheckIn, objTimes.StartSignBack, objTimes.EndSignBack,
-                objTimes.LateTime, objTimes.LeftEarly);
+            string sql = string.Format(sqlBuilder.ToString(), objSfWorkTime.TimesName, objSfWorkTime.WorkTime,
+                objSfWorkTime.OffDutyTime, objSfWorkTime.StartCheckIn, objSfWorkTime.EndCheckIn, objSfWorkTime.StartSignBack, objSfWorkTime.EndSignBack,
+                objSfWorkTime.LateTime, objSfWorkTime.LeftEarly);
 
             try
             {

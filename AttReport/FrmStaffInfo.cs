@@ -13,9 +13,9 @@ using System.Data.SqlClient;
 
 namespace AttReport
 {
-    public partial class FrmSfManage : Form
+    public partial class FrmStaffInfo : Form
     {
-        public FrmSfManage()
+        public FrmStaffInfo()
         {
             InitializeComponent();
         }

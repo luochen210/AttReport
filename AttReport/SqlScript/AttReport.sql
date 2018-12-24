@@ -64,10 +64,10 @@ go
 --创建班次表
 use AttReport
 go
-if exists(select * from sysobjects where name='Classes')
-drop table Classes
+if exists(select * from sysobjects where name='WorkShift')
+drop table WorkShift
 go
-create table Classes
+create table WorkShift
 (
   ClassesId int not null,--班次ID
   ClassesName varchar(21) not null primary key,--班次名称
@@ -78,10 +78,10 @@ create table Classes
 go
 
 --创建班次时段表
-if exists (select * from sysobjects where name='ClassesTimes')
-drop table ClassesTimes
+if exists (select * from sysobjects where name='ShiftTimes')
+drop table ShiftTimes
 go
-create table ClassesTimes
+create table ShiftTimes
 (
   ClassesId int not null primary key identity(1,1),--班次ID
   ClassesName varchar(24) not null,--班次名称
@@ -94,7 +94,8 @@ create table ClassesTimes
   Thursday bit not null,--星期四
   Friday bit not null,--星期五
   Saturday bit not null,--星期六
-  Sunday bit not null--星期日
+  Sunday bit not null,--星期日
+  AttShift bit not null--轮班标记，0为正常班次，1为多班倒班次
 )
 go
 
@@ -102,10 +103,10 @@ go
 use AttReport
 go
 
-if exists (select * from sysobjects where name='TimesManage')
-drop table TimesManage
+if exists (select * from sysobjects where name='WorkTime')
+drop table WorkTime
 go
-create table TimesManage
+create table WorkTime
 (
   TimesId int not null primary key identity(1,1),--时段ID
   TimesName varchar(18) not null ,--时间段名称
@@ -149,8 +150,9 @@ create table Staffs
   SfFriend varchar(21) not null,--员工亲友/紧急联络人
   SfRelation varchar(12) not null,--亲友关系
   SfFriendsPhone varchar(21) not null,--亲友电话/紧急联络电话  
-  SfStatus varchar(21) not null default'在职',--在职或离职
-  SfShifts varchar(30)--轮班班次
+  SfStatus varchar(21) not null, default'在职',--在职或离职
+  WorkShift varchar(30) not null,default'默认班次',--工作班次，默认为默认班次
+  SfShift bit not null,default 0 --是否需要轮班，0为不需要，1为需要，默认为0
   )
 go
 

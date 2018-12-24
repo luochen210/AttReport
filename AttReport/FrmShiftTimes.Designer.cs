@@ -1,6 +1,6 @@
 ﻿namespace AttReport
 {
-    partial class FrmClassesTimes
+    partial class FrmShiftTimes
     {
         /// <summary>
         /// Required designer variable.

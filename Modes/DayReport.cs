@@ -13,7 +13,7 @@ namespace Models
     {
         public int SfId { get; set; }//员工Id
         public string SfName { get; set; }//员工姓名
-        public string ClassesName { get; set; }//班次名称
+        public string ShiftName { get; set; }//班次名称
         public DateTime WorkTime1 { get; set; }//上班时间1
         public DateTime OffDutyTime1 { get; set; }//下班时间1
         public DateTime WorkTime2 { get; set; }//上班时间2

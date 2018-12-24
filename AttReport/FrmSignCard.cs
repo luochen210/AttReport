@@ -518,7 +518,7 @@ namespace AttReport
          */
 
         DataTable dtDayResult = null;
-        List<TimesManage> listTimes = null;
+        List<SfWorkTime> listTimes = null;
 
         //查询异常的日报
         private void btnQuery_Click(object sender, EventArgs e)
@@ -572,7 +572,7 @@ namespace AttReport
         {
             if (cboTimeName.Text.Trim() != "")
             {
-                listTimes = objAttRecordService.GetTimes(cboTimeName.Text.Trim());
+                listTimes = objAttRecordService.GetSfWorkTime(cboTimeName.Text.Trim());
 
                 List<string> timesList = new List<string>();
                 timesList.Add(listTimes[0].WorkTime);

@@ -14,11 +14,11 @@ using Models;
 
 namespace AttReport
 {
-    public partial class FrmTimesManage : Form
+    public partial class FrmSfWorkTime : Form
     {
-        TimesManageService objTimesService = new TimesManageService();
+        SfWorkTimeService objTimesService = new SfWorkTimeService();
 
-        public FrmTimesManage()
+        public FrmSfWorkTime()
         {
             InitializeComponent();
 
@@ -97,7 +97,7 @@ namespace AttReport
             }
             else
             {
-                TimesManage objTimes = new TimesManage()
+                SfWorkTime objTimes = new SfWorkTime()
                 {
                     TimesName = txtTimesName.Text.Trim(),
                     WorkTime = dtpWorkTime.Text.Trim(),
