@@ -271,20 +271,20 @@ namespace AttReport
         }
 
         //员工信息窗口对象
-        public static FrmStaffInfo FrmSfManage = null;
+        public static FrmStaffInfo objStaffInfo = null;
 
         //员工信息菜单事件
         private void 员工信息ToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            if (FrmSfManage == null)
+            if (objStaffInfo == null)
             {
-                FrmSfManage = new FrmStaffInfo();
-                FrmSfManage.Show();
+                objStaffInfo = new FrmStaffInfo();
+                objStaffInfo.Show();
             }
             else
             {
-                FrmSfManage.Activate();//激活只能在最小化的时候起作用
-                FrmSfManage.WindowState = FormWindowState.Normal;
+                objStaffInfo.Activate();//激活只能在最小化的时候起作用
+                objStaffInfo.WindowState = FormWindowState.Normal;
             }
         }
 
@@ -301,8 +301,8 @@ namespace AttReport
             }
             else
             {
-                FrmSfManage.Activate();//激活只能在最小化的时候起作用
-                FrmSfManage.WindowState = FormWindowState.Normal;
+                objFrmDtManage.Activate();//激活只能在最小化的时候起作用
+                objFrmDtManage.WindowState = FormWindowState.Normal;
             }
         }
 
