@@ -264,10 +264,10 @@ namespace DAL
 
 
         /// <summary>
-        /// 获取班次
+        /// 获取班次名称List
         /// </summary>
         /// <returns></returns>
-        public List<ShiftTimes> GetClassesList()
+        public List<ShiftTimes> GetShiftNameList()
         {
             string sql = "select ShiftId,ShiftName from ShiftTimes";
 

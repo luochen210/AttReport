@@ -112,7 +112,7 @@ namespace AttReport
                         int iSfId = Convert.ToInt32(dtStaff.Rows[s]["SfId"]);//员工Id
                         string iSfName = dtStaff.Rows[s]["SfName"].ToString();//员工姓名
                         string iSfGroupName = dtStaff.Rows[s]["SfGroup"].ToString();//员工组别
-                        string iClassesName = dtStaff.Rows[s]["SfShifts"].ToString();//班次名称
+                        string iClassesName = dtStaff.Rows[s]["WorkShift"].ToString();//班次名称
                         var iTimesNameList = objAttRecordService.GetTimesName(iClassesName);//时段名称List
 
                         if (iTimesNameList.Count != 0)

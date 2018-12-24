@@ -307,38 +307,38 @@ namespace AttReport
         }
 
         //班次管理窗口对象
-        public static FrmShiftTimes objFrmClassesTimes = null;
+        public static FrmShiftTimes objFrmShiftTimes = null;
 
         //班次管理菜单事件
         private void 班次管理ToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            if (objFrmClassesTimes == null)
+            if (objFrmShiftTimes == null)
             {
-                objFrmClassesTimes = new FrmShiftTimes();
-                objFrmClassesTimes.Show();
+                objFrmShiftTimes = new FrmShiftTimes();
+                objFrmShiftTimes.Show();
             }
             else
             {
-                objFrmClassesTimes.Activate();//激活只能在最小化的时候起作用
-                objFrmClassesTimes.WindowState = FormWindowState.Normal;
+                objFrmShiftTimes.Activate();//激活只能在最小化的时候起作用
+                objFrmShiftTimes.WindowState = FormWindowState.Normal;
             }
         }
 
         //时段管理窗口对象
-        public static FrmSfWorkTime objFrmTimesManage = null;
+        public static FrmSfWorkTime objFrmSfWorkTime = null;
 
         //时段管理菜单事件
         private void 时段管理ToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            if (objFrmTimesManage == null)
+            if (objFrmSfWorkTime == null)
             {
-                objFrmTimesManage = new FrmSfWorkTime();
-                objFrmTimesManage.Show();
+                objFrmSfWorkTime = new FrmSfWorkTime();
+                objFrmSfWorkTime.Show();
             }
             else
             {
-                objFrmTimesManage.Activate();
-                objFrmTimesManage.WindowState = FormWindowState.Normal;
+                objFrmSfWorkTime.Activate();
+                objFrmSfWorkTime.WindowState = FormWindowState.Normal;
             }
         }
 

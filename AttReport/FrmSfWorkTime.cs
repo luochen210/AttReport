@@ -146,7 +146,7 @@ namespace AttReport
         //窗口关闭时清理对象
         private void FrmTimesManage_FormClosed(object sender, FormClosedEventArgs e)
         {
-            FrmMain.objFrmTimesManage = null;
+            FrmMain.objFrmSfWorkTime = null;
         }
 
         #endregion

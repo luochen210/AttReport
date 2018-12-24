@@ -24,7 +24,7 @@ namespace AttReport
             dtpQEndDate.Text = DateTime.Now.Date.ToString();//结束时间
 
             //获取班次
-            var listClasses = objAttRecordService.GetClassesList();
+            var listClasses = objAttRecordService.GetShiftNameList();
             cboClassesName.DataSource = listClasses;
             cboClassesName.DisplayMember = "ClassesName";
             cboClassesName.ValueMember = "ClassesId";

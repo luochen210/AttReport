@@ -18,7 +18,7 @@ namespace AttReport
     {
 
         SfWorkTimeService objTimesService = new SfWorkTimeService();
-        ShiftTimesService objClassesService = new ShiftTimesService();
+        ShiftTimesService objShiftTimesService = new ShiftTimesService();
 
         List<SfWorkTime> cboDataSource;//cbo数据源成员变量
 
@@ -37,25 +37,25 @@ namespace AttReport
 
 
         //窗体加载时读取班次表
-        private void FrmClassesTimes_Load(object sender, EventArgs e)
+        private void FrmShiftTimes_Load(object sender, EventArgs e)
         {
-            DataTable dgvClassesTable= objClassesService.GetShiftTimesDataSet().Tables[0];//获取数据
+            DataTable dgvShiftTable = objShiftTimesService.GetShiftTimesDataSet().Tables[0];//获取数据
 
-            dgvClassesTable.Columns.Remove("ClassesId");//移除数据
+            dgvShiftTable.Columns.Remove("ShiftId");//移除数据
 
-            this.dgvClassses.DataSource = dgvClassesTable;//设置源
+            this.dgvShift.DataSource = dgvShiftTable;//设置源
         }
 
 
         //添加班次
-        private void btnClassesAdd_Click(object sender, EventArgs e)
+        private void btnShiftAdd_Click(object sender, EventArgs e)
         {
             //验证输入
-            if (txtClassesName.Text.Trim() == "")
+            if (txtShiftName.Text.Trim() == "")
             {
                 MessageBox.Show("班次名称不能为空！");
-                txtClassesName.Focus();
-                txtClassesName.SelectAll();
+                txtShiftName.Focus();
+                txtShiftName.SelectAll();
                 return;
             }
 
@@ -74,18 +74,18 @@ namespace AttReport
                 return;
             }
 
-            if (objClassesService.IsShiftNameExisted(txtClassesName.Text.Trim()))
+            if (objShiftTimesService.IsShiftNameExisted(txtShiftName.Text.Trim()))
             {
                 MessageBox.Show("班次名称重复！");
-                txtClassesName.Focus();
-                txtClassesName.SelectAll();
+                txtShiftName.Focus();
+                txtShiftName.SelectAll();
                 return;
             }
 
             //封装对象
-            ShiftTimes objClasses = new ShiftTimes()
+            ShiftTimes objShiftTimes = new ShiftTimes()
             {
-                ShiftName = txtClassesName.Text.Trim(),
+                ShiftName = txtShiftName.Text.Trim(),
                 TimesName1 = cboTimes1.Text.Trim(),
                 TimesName2 = cboTimes2.Text.Trim(),
                 TimesName3 = cboTimes3.Text.Trim(),
@@ -102,17 +102,17 @@ namespace AttReport
 
 
             //插入数据
-            objClassesService.AddShift(objClasses);
+            objShiftTimesService.AddShift(objShiftTimes);
 
             //刷新DGV显示数据
             //获取数据
-            DataTable dtClasses=objClassesService.GetShiftTimesDataSet().Tables[0];
+            DataTable dtShift=objShiftTimesService.GetShiftTimesDataSet().Tables[0];
 
             //移除ID列
-            dtClasses.Columns.Remove("ClassesId");
+            dtShift.Columns.Remove("ShiftId");
 
             //设置数据源
-            dgvClassses.DataSource = dtClasses;
+            dgvShift.DataSource = dtShift;
 
         }
 
@@ -120,25 +120,25 @@ namespace AttReport
         private void btnUpdate_Click(object sender, EventArgs e)
         {
             //验证
-            if (objClassesService.IsShiftNameExisted(txtClassesName.Text.Trim()))
+            if (objShiftTimesService.IsShiftNameExisted(txtShiftName.Text.Trim()))
             {
                 MessageBox.Show("班次名称重复！");
-                txtClassesName.Focus();
-                txtClassesName.SelectAll();
+                txtShiftName.Focus();
+                txtShiftName.SelectAll();
                 return;
             }
             else
             {
-                int index = dgvClassses.CurrentRow.Index;
+                int index = dgvShift.CurrentRow.Index;
 
                 //获取原始班次名
-                string AgoClassesName = dgvClassses.Rows[index].Cells[0].Value.ToString();
+                string AgoShiftName = dgvShift.Rows[index].Cells[0].Value.ToString();
 
-                MessageBox.Show(AgoClassesName);
+                MessageBox.Show(AgoShiftName);
 
-                ShiftTimes objClasses = new ShiftTimes()
+                ShiftTimes objShiftTimes = new ShiftTimes()
                 {
-                    ShiftName = txtClassesName.Text.Trim(),
+                    ShiftName = txtShiftName.Text.Trim(),
                     TimesName1 = cboTimes1.Text.Trim(),
                     TimesName2 = cboTimes2.Text.Trim(),
                     TimesName3 = cboTimes3.Text.Trim(),
@@ -153,17 +153,17 @@ namespace AttReport
                 };
 
                 //插入数据
-                objClassesService.UpdateShift(objClasses, AgoClassesName);
+                objShiftTimesService.UpdateShift(objShiftTimes, AgoShiftName);
 
                 //更新DGV
                 //获取数据
-                DataTable dtClasses = objClassesService.GetShiftTimesDataSet().Tables[0];
+                DataTable dtShift = objShiftTimesService.GetShiftTimesDataSet().Tables[0];
 
                 //移除ID列
-                dtClasses.Columns.Remove("ClassesId");
+                dtShift.Columns.Remove("ShiftId");
 
                 //设置数据源
-                dgvClassses.DataSource = dtClasses;
+                dgvShift.DataSource = dtShift;
             }
         }
 
@@ -171,7 +171,7 @@ namespace AttReport
         //移除已占用的时段
         private void cboTimes1_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (FrmMain.objFrmClassesTimes != null)
+            if (FrmMain.objFrmShiftTimes != null)
             {
                 cboTimes2.DataSource = null;//清空源
 
@@ -189,7 +189,7 @@ namespace AttReport
 
         private void cboTimes2_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (FrmMain.objFrmClassesTimes != null)
+            if (FrmMain.objFrmShiftTimes != null)
             {
                 cboTimes3.DataSource = null; //清空源
 
@@ -205,20 +205,20 @@ namespace AttReport
 
         private void dgvClassses_SelectionChanged(object sender, EventArgs e)
         {
-            if (dgvClassses.SelectionMode != DataGridViewSelectionMode.FullColumnSelect)
+            if (dgvShift.SelectionMode != DataGridViewSelectionMode.FullColumnSelect)
             {
-                int index = dgvClassses.CurrentRow.Index;
-                txtClassesName.Text = dgvClassses.Rows[index].Cells[0].Value.ToString();
-                cboTimes1.Text = dgvClassses.Rows[index].Cells[1].Value.ToString();
-                cboTimes2.Text = dgvClassses.Rows[index].Cells[2].Value.ToString();
-                cboTimes3.Text = dgvClassses.Rows[index].Cells[3].Value.ToString();
-                chkMonday.Checked = bool.Parse(dgvClassses.Rows[index].Cells[4].Value.ToString());
-                chkTuesday.Checked = bool.Parse(dgvClassses.Rows[index].Cells[5].Value.ToString());
-                chkWednesday.Checked = bool.Parse(dgvClassses.Rows[index].Cells[6].Value.ToString());
-                chkThursday.Checked = bool.Parse(dgvClassses.Rows[index].Cells[7].Value.ToString());
-                chkFriday.Checked = bool.Parse(dgvClassses.Rows[index].Cells[8].Value.ToString());
-                chkSaturday.Checked = bool.Parse(dgvClassses.Rows[index].Cells[9].Value.ToString());
-                chkSunday.Checked = bool.Parse(dgvClassses.Rows[index].Cells[10].Value.ToString());
+                int index = dgvShift.CurrentRow.Index;
+                txtShiftName.Text = dgvShift.Rows[index].Cells[0].Value.ToString();
+                cboTimes1.Text = dgvShift.Rows[index].Cells[1].Value.ToString();
+                cboTimes2.Text = dgvShift.Rows[index].Cells[2].Value.ToString();
+                cboTimes3.Text = dgvShift.Rows[index].Cells[3].Value.ToString();
+                chkMonday.Checked = bool.Parse(dgvShift.Rows[index].Cells[4].Value.ToString());
+                chkTuesday.Checked = bool.Parse(dgvShift.Rows[index].Cells[5].Value.ToString());
+                chkWednesday.Checked = bool.Parse(dgvShift.Rows[index].Cells[6].Value.ToString());
+                chkThursday.Checked = bool.Parse(dgvShift.Rows[index].Cells[7].Value.ToString());
+                chkFriday.Checked = bool.Parse(dgvShift.Rows[index].Cells[8].Value.ToString());
+                chkSaturday.Checked = bool.Parse(dgvShift.Rows[index].Cells[9].Value.ToString());
+                chkSunday.Checked = bool.Parse(dgvShift.Rows[index].Cells[10].Value.ToString());
             }
         }
 
@@ -228,7 +228,7 @@ namespace AttReport
         //窗口关闭时清理对象
         private void FrmClassesTimes_FormClosed(object sender, FormClosedEventArgs e)
         {
-            FrmMain.objFrmClassesTimes = null;
+            FrmMain.objFrmShiftTimes = null;
         }
 
 
