@@ -88,10 +88,9 @@
             this.panel1.Controls.Add(this.lblCBegin);
             this.panel1.Controls.Add(this.btnLookup);
             this.panel1.Controls.Add(this.btnQuery);
-            this.panel1.Location = new System.Drawing.Point(16, 15);
-            this.panel1.Margin = new System.Windows.Forms.Padding(4);
+            this.panel1.Location = new System.Drawing.Point(12, 12);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1314, 138);
+            this.panel1.Size = new System.Drawing.Size(986, 111);
             this.panel1.TabIndex = 11;
             // 
             // panel2
@@ -104,19 +103,17 @@
             this.panel2.Controls.Add(this.cboClassesName);
             this.panel2.Controls.Add(this.label1);
             this.panel2.Controls.Add(this.lblTimes);
-            this.panel2.Location = new System.Drawing.Point(708, 9);
-            this.panel2.Margin = new System.Windows.Forms.Padding(4);
+            this.panel2.Location = new System.Drawing.Point(531, 7);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(322, 118);
+            this.panel2.Size = new System.Drawing.Size(242, 95);
             this.panel2.TabIndex = 11;
             // 
             // btnBatch
             // 
             this.btnBatch.BackColor = System.Drawing.Color.White;
-            this.btnBatch.Location = new System.Drawing.Point(207, 12);
-            this.btnBatch.Margin = new System.Windows.Forms.Padding(4);
+            this.btnBatch.Location = new System.Drawing.Point(155, 10);
             this.btnBatch.Name = "btnBatch";
-            this.btnBatch.Size = new System.Drawing.Size(100, 91);
+            this.btnBatch.Size = new System.Drawing.Size(75, 73);
             this.btnBatch.TabIndex = 5;
             this.btnBatch.Text = "批量签卡";
             this.btnBatch.UseVisualStyleBackColor = false;
@@ -125,145 +122,131 @@
             // cboTime
             // 
             this.cboTime.FormattingEnabled = true;
-            this.cboTime.Location = new System.Drawing.Point(69, 79);
-            this.cboTime.Margin = new System.Windows.Forms.Padding(4);
+            this.cboTime.Location = new System.Drawing.Point(52, 63);
             this.cboTime.Name = "cboTime";
-            this.cboTime.Size = new System.Drawing.Size(128, 23);
+            this.cboTime.Size = new System.Drawing.Size(97, 20);
             this.cboTime.TabIndex = 10;
+            this.cboTime.SelectedIndexChanged += new System.EventHandler(this.cboTime_SelectedIndexChanged);
             // 
             // lblClasses
             // 
             this.lblClasses.AutoSize = true;
-            this.lblClasses.Location = new System.Drawing.Point(9, 16);
-            this.lblClasses.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblClasses.Location = new System.Drawing.Point(7, 13);
             this.lblClasses.Name = "lblClasses";
-            this.lblClasses.Size = new System.Drawing.Size(52, 15);
+            this.lblClasses.Size = new System.Drawing.Size(41, 12);
             this.lblClasses.TabIndex = 9;
             this.lblClasses.Text = "班次：";
             // 
             // cboTimeName
             // 
             this.cboTimeName.FormattingEnabled = true;
-            this.cboTimeName.Location = new System.Drawing.Point(69, 46);
-            this.cboTimeName.Margin = new System.Windows.Forms.Padding(4);
+            this.cboTimeName.Location = new System.Drawing.Point(52, 37);
             this.cboTimeName.Name = "cboTimeName";
-            this.cboTimeName.Size = new System.Drawing.Size(128, 23);
+            this.cboTimeName.Size = new System.Drawing.Size(97, 20);
             this.cboTimeName.TabIndex = 10;
             this.cboTimeName.SelectedIndexChanged += new System.EventHandler(this.cboTimeName_SelectedIndexChanged);
             // 
             // cboClassesName
             // 
             this.cboClassesName.FormattingEnabled = true;
-            this.cboClassesName.Location = new System.Drawing.Point(69, 12);
-            this.cboClassesName.Margin = new System.Windows.Forms.Padding(4);
+            this.cboClassesName.Location = new System.Drawing.Point(52, 10);
             this.cboClassesName.Name = "cboClassesName";
-            this.cboClassesName.Size = new System.Drawing.Size(128, 23);
+            this.cboClassesName.Size = new System.Drawing.Size(97, 20);
             this.cboClassesName.TabIndex = 10;
             this.cboClassesName.SelectedIndexChanged += new System.EventHandler(this.cboClasses_SelectedIndexChanged);
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(9, 82);
-            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label1.Location = new System.Drawing.Point(7, 66);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(52, 15);
+            this.label1.Size = new System.Drawing.Size(41, 12);
             this.label1.TabIndex = 9;
             this.label1.Text = "时间：";
             // 
             // lblTimes
             // 
             this.lblTimes.AutoSize = true;
-            this.lblTimes.Location = new System.Drawing.Point(9, 50);
-            this.lblTimes.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblTimes.Location = new System.Drawing.Point(7, 40);
             this.lblTimes.Name = "lblTimes";
-            this.lblTimes.Size = new System.Drawing.Size(52, 15);
+            this.lblTimes.Size = new System.Drawing.Size(41, 12);
             this.lblTimes.TabIndex = 9;
             this.lblTimes.Text = "时段：";
             // 
             // cboName
             // 
             this.cboName.FormattingEnabled = true;
-            this.cboName.Location = new System.Drawing.Point(415, 71);
-            this.cboName.Margin = new System.Windows.Forms.Padding(4);
+            this.cboName.Location = new System.Drawing.Point(311, 57);
             this.cboName.Name = "cboName";
-            this.cboName.Size = new System.Drawing.Size(128, 23);
+            this.cboName.Size = new System.Drawing.Size(97, 20);
             this.cboName.TabIndex = 10;
             // 
             // lblName
             // 
             this.lblName.AutoSize = true;
-            this.lblName.Location = new System.Drawing.Point(355, 75);
-            this.lblName.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblName.Location = new System.Drawing.Point(266, 60);
             this.lblName.Name = "lblName";
-            this.lblName.Size = new System.Drawing.Size(52, 15);
+            this.lblName.Size = new System.Drawing.Size(41, 12);
             this.lblName.TabIndex = 9;
             this.lblName.Text = "姓名：";
             // 
             // cboDepartment
             // 
             this.cboDepartment.FormattingEnabled = true;
-            this.cboDepartment.Location = new System.Drawing.Point(415, 38);
-            this.cboDepartment.Margin = new System.Windows.Forms.Padding(4);
+            this.cboDepartment.Location = new System.Drawing.Point(311, 30);
             this.cboDepartment.Name = "cboDepartment";
-            this.cboDepartment.Size = new System.Drawing.Size(128, 23);
+            this.cboDepartment.Size = new System.Drawing.Size(97, 20);
             this.cboDepartment.TabIndex = 10;
             // 
             // lblDep
             // 
             this.lblDep.AutoSize = true;
-            this.lblDep.Location = new System.Drawing.Point(355, 41);
-            this.lblDep.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblDep.Location = new System.Drawing.Point(266, 33);
             this.lblDep.Name = "lblDep";
-            this.lblDep.Size = new System.Drawing.Size(52, 15);
+            this.lblDep.Size = new System.Drawing.Size(41, 12);
             this.lblDep.TabIndex = 9;
             this.lblDep.Text = "部门：";
             // 
             // dtpQEndDate
             // 
             this.dtpQEndDate.CustomFormat = "";
-            this.dtpQEndDate.Location = new System.Drawing.Point(49, 71);
-            this.dtpQEndDate.Margin = new System.Windows.Forms.Padding(4);
+            this.dtpQEndDate.Location = new System.Drawing.Point(37, 57);
             this.dtpQEndDate.Name = "dtpQEndDate";
-            this.dtpQEndDate.Size = new System.Drawing.Size(145, 25);
+            this.dtpQEndDate.Size = new System.Drawing.Size(110, 21);
             this.dtpQEndDate.TabIndex = 8;
             // 
             // dtpQBeginDate
             // 
             this.dtpQBeginDate.CustomFormat = "";
-            this.dtpQBeginDate.Location = new System.Drawing.Point(49, 38);
-            this.dtpQBeginDate.Margin = new System.Windows.Forms.Padding(4);
+            this.dtpQBeginDate.Location = new System.Drawing.Point(37, 30);
             this.dtpQBeginDate.Name = "dtpQBeginDate";
-            this.dtpQBeginDate.Size = new System.Drawing.Size(145, 25);
+            this.dtpQBeginDate.Size = new System.Drawing.Size(110, 21);
             this.dtpQBeginDate.TabIndex = 8;
             // 
             // lblCEnd
             // 
             this.lblCEnd.AutoSize = true;
-            this.lblCEnd.Location = new System.Drawing.Point(9, 76);
-            this.lblCEnd.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblCEnd.Location = new System.Drawing.Point(7, 61);
             this.lblCEnd.Name = "lblCEnd";
-            this.lblCEnd.Size = new System.Drawing.Size(37, 15);
+            this.lblCEnd.Size = new System.Drawing.Size(29, 12);
             this.lblCEnd.TabIndex = 0;
             this.lblCEnd.Text = "到：";
             // 
             // lblCBegin
             // 
             this.lblCBegin.AutoSize = true;
-            this.lblCBegin.Location = new System.Drawing.Point(9, 42);
-            this.lblCBegin.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblCBegin.Location = new System.Drawing.Point(7, 34);
             this.lblCBegin.Name = "lblCBegin";
-            this.lblCBegin.Size = new System.Drawing.Size(37, 15);
+            this.lblCBegin.Size = new System.Drawing.Size(29, 12);
             this.lblCBegin.TabIndex = 0;
             this.lblCBegin.Text = "从：";
             // 
             // btnLookup
             // 
             this.btnLookup.BackColor = System.Drawing.Color.White;
-            this.btnLookup.Location = new System.Drawing.Point(552, 38);
-            this.btnLookup.Margin = new System.Windows.Forms.Padding(4);
+            this.btnLookup.Location = new System.Drawing.Point(414, 30);
             this.btnLookup.Name = "btnLookup";
-            this.btnLookup.Size = new System.Drawing.Size(100, 60);
+            this.btnLookup.Size = new System.Drawing.Size(75, 48);
             this.btnLookup.TabIndex = 5;
             this.btnLookup.Text = "查找";
             this.btnLookup.UseVisualStyleBackColor = false;
@@ -271,10 +254,9 @@
             // btnQuery
             // 
             this.btnQuery.BackColor = System.Drawing.Color.White;
-            this.btnQuery.Location = new System.Drawing.Point(204, 38);
-            this.btnQuery.Margin = new System.Windows.Forms.Padding(4);
+            this.btnQuery.Location = new System.Drawing.Point(153, 30);
             this.btnQuery.Name = "btnQuery";
-            this.btnQuery.Size = new System.Drawing.Size(100, 60);
+            this.btnQuery.Size = new System.Drawing.Size(75, 48);
             this.btnQuery.TabIndex = 5;
             this.btnQuery.Text = "查询异常";
             this.btnQuery.UseVisualStyleBackColor = false;
@@ -319,8 +301,7 @@
             dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.dgvDayResult.DefaultCellStyle = dataGridViewCellStyle2;
-            this.dgvDayResult.Location = new System.Drawing.Point(16, 161);
-            this.dgvDayResult.Margin = new System.Windows.Forms.Padding(4);
+            this.dgvDayResult.Location = new System.Drawing.Point(12, 129);
             this.dgvDayResult.Name = "dgvDayResult";
             dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
@@ -334,7 +315,7 @@
             this.dgvDayResult.RowsDefaultCellStyle = dataGridViewCellStyle4;
             this.dgvDayResult.RowTemplate.DefaultCellStyle.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             this.dgvDayResult.RowTemplate.Height = 23;
-            this.dgvDayResult.Size = new System.Drawing.Size(1315, 735);
+            this.dgvDayResult.Size = new System.Drawing.Size(986, 588);
             this.dgvDayResult.TabIndex = 10;
             // 
             // AtDate
@@ -451,12 +432,11 @@
             // 
             // FrmSignCard
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1344, 911);
+            this.ClientSize = new System.Drawing.Size(1008, 729);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.dgvDayResult);
-            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "FrmSignCard";
             this.Text = "考勤异常";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.FrmSignCard_FormClosed);
