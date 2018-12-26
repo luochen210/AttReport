@@ -26,8 +26,8 @@ namespace AttReport
             //获取班次
             var listClasses = objAttRecordService.GetShiftNameList();
             cboClassesName.DataSource = listClasses;
-            cboClassesName.DisplayMember = "ClassesName";
-            cboClassesName.ValueMember = "ClassesId";
+            cboClassesName.DisplayMember = "ShiftName";
+            cboClassesName.ValueMember = "ShiftId";
             cboClassesName.SelectedIndex = -1;
 
         }

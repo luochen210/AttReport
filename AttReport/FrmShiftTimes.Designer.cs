@@ -103,7 +103,7 @@
             this.dgvShift.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvShift.Size = new System.Drawing.Size(923, 293);
             this.dgvShift.TabIndex = 0;
-            this.dgvShift.SelectionChanged += new System.EventHandler(this.dgvClassses_SelectionChanged);
+            this.dgvShift.SelectionChanged += new System.EventHandler(this.dgvShift_SelectionChanged);
             // 
             // label1
             // 
@@ -413,7 +413,7 @@
             this.Name = "FrmShiftTimes";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "班次管理";
-            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.FrmClassesTimes_FormClosed);
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.FrmShiftTimes_FormClosed);
             this.Load += new System.EventHandler(this.FrmShiftTimes_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvShift)).EndInit();
             this.groupBox1.ResumeLayout(false);

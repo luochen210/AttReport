@@ -134,8 +134,6 @@ namespace AttReport
                 //获取原始班次名
                 string AgoShiftName = dgvShift.Rows[index].Cells[0].Value.ToString();
 
-                MessageBox.Show(AgoShiftName);
-
                 ShiftTimes objShiftTimes = new ShiftTimes()
                 {
                     ShiftName = txtShiftName.Text.Trim(),
@@ -184,7 +182,6 @@ namespace AttReport
                 cboTimes2.DisplayMember = "TimesName";
                 cboTimes2.SelectedIndex = -1;//默认不显示
             }
-
         }
 
         private void cboTimes2_SelectedIndexChanged(object sender, EventArgs e)
@@ -203,7 +200,7 @@ namespace AttReport
             }
         }
 
-        private void dgvClassses_SelectionChanged(object sender, EventArgs e)
+        private void dgvShift_SelectionChanged(object sender, EventArgs e)
         {
             if (dgvShift.SelectionMode != DataGridViewSelectionMode.FullColumnSelect)
             {
@@ -226,14 +223,11 @@ namespace AttReport
         #region 窗口关闭时清理对象
 
         //窗口关闭时清理对象
-        private void FrmClassesTimes_FormClosed(object sender, FormClosedEventArgs e)
+        private void FrmShiftTimes_FormClosed(object sender, FormClosedEventArgs e)
         {
             FrmMain.objFrmShiftTimes = null;
         }
 
-
         #endregion
-
-
     }
 }
