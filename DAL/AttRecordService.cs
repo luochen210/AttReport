@@ -241,10 +241,10 @@ namespace DAL
         /// <param name="BeginDate"></param>
         /// <param name="EndDate"></param>
         /// <returns></returns>
-        public DataSet GetDayReport(DateTime BeginDate,DateTime EndDate)
+        public DataSet GetDayReport(DateTime BeginDate, DateTime EndDate)
         {
             string sql = "select * from DayReport where AtDate>='{0}' and AtDate<='{1}'";
-            sql = string.Format(sql,BeginDate,EndDate);
+            sql = string.Format(sql, BeginDate, EndDate);
             return SQLHelper.GetDataSet(sql);
         }
 
@@ -258,7 +258,7 @@ namespace DAL
         public DataSet GetDayResult(DateTime BeginDate, DateTime EndDate, int AtState)
         {
             string sql = "select * from DayReport where AtDate >= '{0}' and AtDate <= '{1}' and AtState != {2}";
-            sql = string.Format(sql,BeginDate,EndDate,AtState);
+            sql = string.Format(sql, BeginDate, EndDate, AtState);
             return SQLHelper.GetDataSet(sql);
         }
 
@@ -280,10 +280,20 @@ namespace DAL
                 list.Add(new ShiftTimes()
                 {
                     ShiftId = Convert.ToInt32(objReader["ShiftId"]),
-                    ShiftName=objReader["ShiftName"].ToString()
+                    ShiftName = objReader["ShiftName"].ToString()
                 });
             }
             return list;
+        }
+
+        //更新日报
+        public int UpdateDayRepor(string atTime, int AtSign, DateTime atDate, int sfId)
+        {
+            string sql = "update DayReport set WorkTime1='{0}',AtSign={1} where AtDate='{2}' and SfId={3}";
+            sql = string.Format(sql, atTime, AtSign, atDate, sfId);
+
+            return SQLHelper.Update(sql);
+
         }
     }
 }

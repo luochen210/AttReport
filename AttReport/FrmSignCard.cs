@@ -153,6 +153,9 @@ namespace AttReport
                             + DateTime.Parse(listTimes[0].WorkTime).AddMinutes(-1).TimeOfDay).ToString();
 
                             item.Cells["AtSign"].Value = 2;//更改处理状态为已签卡
+
+                            //objAttRecordService.UpdateDayRepor(item.Cells["WorkTime1"].Value.ToString(), Convert.ToInt32(item.Cells["AtSign"].Value),
+                                //DateTime.Parse(item.Cells["AtDate"].Value.ToString()), Convert.ToInt32(item.Cells["SfId"].Value));
                         }
 
                         if (string.IsNullOrEmpty(item.Cells["OffDutyTime1"].Value.ToString()))
@@ -162,7 +165,12 @@ namespace AttReport
                                 + DateTime.Parse(listTimes[0].OffDutyTime).AddMinutes(1).TimeOfDay).ToString();
 
                             item.Cells["AtSign"].Value = 2;//更改处理状态为已签卡
+
+                            //objAttRecordService.UpdateDayRepor(item.Cells["OffDutyTime1"].Value.ToString(), Convert.ToInt32(item.Cells["AtSign"].Value),
+                                //DateTime.Parse(item.Cells["AtDate"].Value.ToString()), Convert.ToInt32(item.Cells["SfId"].Value));
                         }
+
+                        
                     }
 
                     //时段2---待增加时段空值验证
@@ -175,6 +183,9 @@ namespace AttReport
                                 + DateTime.Parse(listTimes[0].WorkTime).AddMinutes(-1).TimeOfDay).ToString();
 
                             item.Cells["AtSign"].Value = 2;//更改处理状态为已签卡
+
+                            //objAttRecordService.UpdateDayRepor(item.Cells["WorkTime2"].Value.ToString(), Convert.ToInt32(item.Cells["AtSign"].Value),
+                                //DateTime.Parse(item.Cells["AtDate"].Value.ToString()), Convert.ToInt32(item.Cells["SfId"].Value));
                         }
 
                         if (string.IsNullOrEmpty(item.Cells["OffDutyTime2"].Value.ToString()))
@@ -184,8 +195,12 @@ namespace AttReport
                                 + DateTime.Parse(listTimes[0].OffDutyTime).AddMinutes(1).TimeOfDay).ToString();
 
                             item.Cells["AtSign"].Value = 2;//更改处理状态为已签卡
+
+                            //objAttRecordService.UpdateDayRepor(item.Cells["OffDutyTime2"].Value.ToString(), Convert.ToInt32(item.Cells["AtSign"].Value),
+                                //DateTime.Parse(item.Cells["AtDate"].Value.ToString()), Convert.ToInt32(item.Cells["SfId"].Value));
                         }
                     }
+
                 }
             }
         }

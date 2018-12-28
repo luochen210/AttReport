@@ -194,9 +194,6 @@ namespace AttReport
 
             #region 数据批量对比去重
 
-            //获取当天日期
-            DateTime iToday = DateTime.Today;//当天日期
-
             //读取数据库已有数据
             DataTable PastLogTable = objAttRecordService.GetAllOriginalLog().Tables[0];
 
