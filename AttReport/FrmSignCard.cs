@@ -117,7 +117,7 @@ namespace AttReport
         private void btnBatch_Click(object sender, EventArgs e)
         {
             //如果勾选了复选框，则执行批量签卡
-            if (chkConfirm.Visible == true)
+            if (chkConfirm.Checked == true)
             {
                 foreach (DataGridViewRow item in dgvDayResult.Rows)
                 {
@@ -179,6 +179,15 @@ namespace AttReport
                                 objAttRecordService.UpdateDayRepor("OffDutyTime2", item.Cells["OffDutyTime2"].Value.ToString(), Convert.ToInt32(item.Cells["AtSign"].Value),
                                     DateTime.Parse(item.Cells["AtDate"].Value.ToString()), Convert.ToInt32(item.Cells["SfId"].Value));
                             }
+                        }                        
+                    }
+                    //处理加班,如果加班存在打卡记录则添加加班标记
+                    if (!string.IsNullOrEmpty(item.Cells["WorkTime3"].Value.ToString()) ||
+                        !string.IsNullOrEmpty(item.Cells["OffDutyTime3"].Value.ToString()))
+                    {
+                        if (Convert.ToInt32(item.Cells["AtState"].Value) == 11)
+                        {
+                            item.Cells["AtOvertime"].Value = 11;//平时加班
                         }
                     }
                 }
