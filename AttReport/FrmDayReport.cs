@@ -22,14 +22,6 @@ namespace AttReport
             InitializeComponent();
         }
 
-        public static DataTable Distinct(DataTable dt, string[] filedNames)
-        {
-            DataView dv = dt.DefaultView;
-            DataTable DistTable = dv.ToTable("Dist", true, filedNames);
-            return DistTable;
-        }
-
-
         #region 日报表计算方法
 
         //根据读取的记录生成日报表
@@ -73,6 +65,7 @@ namespace AttReport
             DataTable dtAttTemp = new DataTable("dtAttTemp");
             //设定列数据
             dtAttTemp.Columns.Add("AtDate", typeof(DateTime)); //日期
+            dtAttTemp.Columns.Add("AtWeek", typeof(string)); //星期            
             dtAttTemp.Columns.Add("SfId", typeof(int));
             dtAttTemp.Columns.Add("SfName", typeof(string));
             dtAttTemp.Columns.Add("SfGroup", typeof(string));
@@ -86,6 +79,7 @@ namespace AttReport
             dtAttTemp.Columns.Add("AtDay", typeof(double));//考勤天数
             dtAttTemp.Columns.Add("AtState", typeof(int));//考勤状态
             dtAttTemp.Columns.Add("AtSign", typeof(int));//处理标记
+            dtAttTemp.Columns.Add("AtOvertime", typeof(int));//加班标记
 
             #endregion
 
@@ -96,7 +90,7 @@ namespace AttReport
                 iToday = dateListResult[i];
 
                 //考勤日期
-                DateTime AtDate = iToday.Date;//考勤日期
+                DateTime AtDate = iToday.Date;//考勤日期                
 
                 #region 计算统计日报
 
@@ -338,6 +332,38 @@ namespace AttReport
 
                                 #endregion
 
+                                #region 计算星期，不包含"今天"
+
+                                //获得星期
+                                string dtWeek = AtDate.DayOfWeek.ToString();//获得星期
+                                string AtWeek = string.Empty;
+                                switch (dtWeek)//返回中文星期
+                                {
+                                    case "Monday":
+                                        AtWeek = "星期一";
+                                        break;
+                                    case "Tuesday":
+                                        AtWeek = "星期二";
+                                        break;
+                                    case "Wednesday":
+                                        AtWeek = "星期三";
+                                        break;
+                                    case "Thursday":
+                                        AtWeek = "星期四";
+                                        break;
+                                    case "Friday":
+                                        AtWeek = "星期五";
+                                        break;
+                                    case "Saturday":
+                                        AtWeek = "星期六";
+                                        break;
+                                    case "Sunday":
+                                        AtWeek = "星期日";
+                                        break;
+                                }
+
+                                #endregion
+
                                 #region 处理考勤状态
 
                                 /*处理考勤
@@ -351,6 +377,7 @@ namespace AttReport
                                 double AtDay = 0;//工作天数
                                 int AtState = 0;//考勤状态 考勤状态 0:正常，1:迟到，2:早退，3:未打卡，4:缺勤，5:无薪请假，6:底薪休假，7:全薪休假
                                 int AtSign = 0;//考勤处理标记 0:未处理，1:已计算，2:已签卡，3:已处理假期
+                                int AtOvertime = 0;//加班标记--0为没加班，11为普通加班，22为周六周日加班，33为节假日加班；默认赋值为0
 
                                 #region 处理正班考勤
 
@@ -503,49 +530,37 @@ namespace AttReport
 
                                 #endregion
 
-                                #endregion
-
-                                #region 丢弃星期天的空记录
-
-                                ////如果日期等于星期天，则将记录加入List集合
-                                //if (AtDate.DayOfWeek == DayOfWeek.Sunday)
-                                //{
-                                //    if (OnlyWorkTime1 == null && OnlyOffDutyTime1 == null && OnlyWorkTime2 == null && OnlyOffDutyTime2 == null
-                                //        && OnlyWorkTime3 == null && OnlyOffDutyTime3 == null)
-                                //    {
-                                //        continue;//开始下一次循环
-                                //    }
-
-                                //}
-
-                                #endregion
+                                #endregion                                
 
                                 #region 将处理好的数据存入Datatable表
+
                                 //存放数据
                                 DataRow dr = dtAttTemp.NewRow();
                                 dr[0] = AtDate;
-                                dr[1] = iSfId;
-                                dr[2] = iSfName;
-                                dr[3] = iSfGroupName;
-                                dr[4] = iShiftName;
-                                dr[5] = OnlyWorkTime1;
-                                dr[6] = OnlyOffDutyTime1;
-                                dr[7] = OnlyWorkTime2;
-                                dr[8] = OnlyOffDutyTime2;
-                                dr[9] = OnlyWorkTime3;
-                                dr[10] = OnlyOffDutyTime3;
-                                dr[11] = AtDay;//天数
-                                dr[12] = AtState;//考勤状态
-                                dr[13] = AtSign;//处理标记
+                                dr[1] = AtWeek;
+                                dr[2] = iSfId;
+                                dr[3] = iSfName;
+                                dr[4] = iSfGroupName;
+                                dr[5] = iShiftName;
+                                dr[6] = OnlyWorkTime1;
+                                dr[7] = OnlyOffDutyTime1;
+                                dr[8] = OnlyWorkTime2;
+                                dr[9] = OnlyOffDutyTime2;
+                                dr[10] = OnlyWorkTime3;
+                                dr[11] = OnlyOffDutyTime3;
+                                dr[12] = AtDay;//天数
+                                dr[13] = AtState;//考勤状态
+                                dr[14] = AtSign;//处理标记
+                                dr[15] = AtOvertime;//考勤标记
                                 dtAttTemp.Rows.Add(dr);
+
                                 #endregion
                             }
                             #endregion
+
                         }
                     }
                 }
-
-
                 #endregion
             }
 

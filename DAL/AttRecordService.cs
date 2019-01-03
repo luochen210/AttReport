@@ -286,11 +286,19 @@ namespace DAL
             return list;
         }
 
-        //更新日报
-        public int UpdateDayRepor(string atTime, int AtSign, DateTime atDate, int sfId)
+        /// <summary>
+        /// 日报签卡
+        /// </summary>
+        /// <param name="Times">SQL表的列名</param>
+        /// <param name="atTime">签卡时间</param>
+        /// <param name="AtSign">考勤标记</param>
+        /// <param name="atDate">打卡日期</param>
+        /// <param name="sfId">考勤Id</param>
+        /// <returns></returns>
+        public int UpdateDayRepor(string Times, string atTime, int AtSign, DateTime atDate, int sfId)
         {
-            string sql = "update DayReport set WorkTime1='{0}',AtSign={1} where AtDate='{2}' and SfId={3}";
-            sql = string.Format(sql, atTime, AtSign, atDate, sfId);
+            string sql = "update DayReport set {0} = '{1}',AtSign = {2} where AtDate = '{3}' and SfId = {4}";
+            sql = string.Format(sql, Times, atTime, AtSign, atDate, sfId);
 
             return SQLHelper.Update(sql);
 

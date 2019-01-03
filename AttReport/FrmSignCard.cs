@@ -25,10 +25,10 @@ namespace AttReport
 
             //获取班次
             var listClasses = objAttRecordService.GetShiftNameList();
-            cboClassesName.DataSource = listClasses;
-            cboClassesName.DisplayMember = "ShiftName";
-            cboClassesName.ValueMember = "ShiftId";
-            cboClassesName.SelectedIndex = -1;
+            cboShiftName.DataSource = listClasses;
+            cboShiftName.DisplayMember = "ShiftName";
+            cboShiftName.ValueMember = "ShiftId";
+            cboShiftName.SelectedIndex = -1;
 
         }
 
@@ -46,29 +46,6 @@ namespace AttReport
         List<ShiftTimes> listTimesName = null;
 
         DateTime dtTime = DateTime.Now;
-
-        #region MyRegion
-
-        //获取时间
-        private void GetTimeName(string timeName)
-        {
-            ////获取所有时段
-            //listTimes = objAttRecordService.GetAllTimesList();                         
-
-            //#region 上下班时间                            
-
-            ////根据员工分配的班次时段名称获取上下班时间，处理null异常
-            //TimeSpan WorkTime1 = TimeSpan.Zero;//上班时间1
-            //TimeSpan OffDutyTime1 = TimeSpan.Zero;//下班时间1
-
-            //var attTimes = listTimes.Where(time => time.TimesName == timeName).ToList();
-
-            //#endregion
-        }
-
-        #endregion
-
-
 
         //查询异常的日报
         private void btnQuery_Click(object sender, EventArgs e)
@@ -96,12 +73,12 @@ namespace AttReport
             if (dtDayResult != null)
             {
                 //根据cbo值查筛选
-                dtDayResult.DefaultView.RowFilter = string.Format("ClassesName like '{0}'", cboClassesName.Text.Trim());
+                dtDayResult.DefaultView.RowFilter = string.Format("ClassesName like '{0}'", cboShiftName.Text.Trim());
 
-                if (cboClassesName.Text.Trim() != "")
+                if (cboShiftName.Text.Trim() != "")
                 {
                     //获取时段名
-                    listTimesName = objAttRecordService.GetTimesName(cboClassesName.Text.Trim());
+                    listTimesName = objAttRecordService.GetTimesName(cboShiftName.Text.Trim());
 
                     //List列转行
                     List<string> timesNameList = new List<string>();
@@ -130,8 +107,8 @@ namespace AttReport
                 timesList.Add(listTimes[0].WorkTime);
                 timesList.Add(listTimes[0].OffDutyTime);
 
-                cboTime.DataSource = timesList;
-                cboTime.SelectedIndex = -1;
+                cboBTime.DataSource = timesList;
+                cboBTime.SelectedIndex = -1;
             }
 
         }
@@ -139,77 +116,84 @@ namespace AttReport
         //批量签卡
         private void btnBatch_Click(object sender, EventArgs e)
         {
-            foreach (DataGridViewRow item in dgvDayResult.Rows)
+            //如果勾选了复选框，则执行批量签卡
+            if (chkConfirm.Visible == true)
             {
-                if (Convert.ToInt32(item.Cells["AtState"].Value) == 3)
+                foreach (DataGridViewRow item in dgvDayResult.Rows)
                 {
-                    //时段1---待增加时段空值验证
-                    if (cboTimeName.Text.Trim() == listTimesName[0].TimesName1)
+                    if (Convert.ToInt32(item.Cells["AtState"].Value) == 3)
                     {
-                        if (string.IsNullOrEmpty(item.Cells["WorkTime1"].Value.ToString()))
+                        //时段1---待增加时段空值验证
+                        if (cboTimeName.Text.Trim() == listTimesName[0].TimesName1)
                         {
-                            item.Cells["WorkTime1"].Value =
-                            (Convert.ToDateTime(item.Cells["AtDate"].Value).Date
-                            + DateTime.Parse(listTimes[0].WorkTime).AddMinutes(-1).TimeOfDay).ToString();
-
-                            item.Cells["AtSign"].Value = 2;//更改处理状态为已签卡
-
-                            //objAttRecordService.UpdateDayRepor(item.Cells["WorkTime1"].Value.ToString(), Convert.ToInt32(item.Cells["AtSign"].Value),
-                                //DateTime.Parse(item.Cells["AtDate"].Value.ToString()), Convert.ToInt32(item.Cells["SfId"].Value));
-                        }
-
-                        if (string.IsNullOrEmpty(item.Cells["OffDutyTime1"].Value.ToString()))
-                        {
-                            item.Cells["OffDutyTime1"].Value =
-                                (Convert.ToDateTime(item.Cells["AtDate"].Value).Date
-                                + DateTime.Parse(listTimes[0].OffDutyTime).AddMinutes(1).TimeOfDay).ToString();
-
-                            item.Cells["AtSign"].Value = 2;//更改处理状态为已签卡
-
-                            //objAttRecordService.UpdateDayRepor(item.Cells["OffDutyTime1"].Value.ToString(), Convert.ToInt32(item.Cells["AtSign"].Value),
-                                //DateTime.Parse(item.Cells["AtDate"].Value.ToString()), Convert.ToInt32(item.Cells["SfId"].Value));
-                        }
-
-                        
-                    }
-
-                    //时段2---待增加时段空值验证
-                    if (cboTimeName.Text.Trim() == listTimesName[0].TimesName2)
-                    {
-                        if (string.IsNullOrEmpty(item.Cells["WorkTime2"].Value.ToString()))
-                        {
-                            item.Cells["WorkTime2"].Value =
+                            if (string.IsNullOrEmpty(item.Cells["WorkTime1"].Value.ToString()))
+                            {
+                                item.Cells["WorkTime1"].Value =
                                 (Convert.ToDateTime(item.Cells["AtDate"].Value).Date
                                 + DateTime.Parse(listTimes[0].WorkTime).AddMinutes(-1).TimeOfDay).ToString();
 
-                            item.Cells["AtSign"].Value = 2;//更改处理状态为已签卡
+                                item.Cells["AtSign"].Value = 2;//更改处理状态为已签卡
 
-                            //objAttRecordService.UpdateDayRepor(item.Cells["WorkTime2"].Value.ToString(), Convert.ToInt32(item.Cells["AtSign"].Value),
-                                //DateTime.Parse(item.Cells["AtDate"].Value.ToString()), Convert.ToInt32(item.Cells["SfId"].Value));
+                                //写入数据库
+                                objAttRecordService.UpdateDayRepor("WorkTime1", item.Cells["WorkTime1"].Value.ToString(), Convert.ToInt32(item.Cells["AtSign"].Value),
+                                    DateTime.Parse(item.Cells["AtDate"].Value.ToString()), Convert.ToInt32(item.Cells["SfId"].Value));
+                            }
+
+                            if (string.IsNullOrEmpty(item.Cells["OffDutyTime1"].Value.ToString()))
+                            {
+                                item.Cells["OffDutyTime1"].Value =
+                                    (Convert.ToDateTime(item.Cells["AtDate"].Value).Date
+                                    + DateTime.Parse(listTimes[0].OffDutyTime).AddMinutes(1).TimeOfDay).ToString();
+
+                                item.Cells["AtSign"].Value = 2;//更改处理状态为已签卡
+
+                                //写入数据库
+                                objAttRecordService.UpdateDayRepor("OffDutyTime1", item.Cells["OffDutyTime1"].Value.ToString(), Convert.ToInt32(item.Cells["AtSign"].Value),
+                                    DateTime.Parse(item.Cells["AtDate"].Value.ToString()), Convert.ToInt32(item.Cells["SfId"].Value));
+                            }
                         }
 
-                        if (string.IsNullOrEmpty(item.Cells["OffDutyTime2"].Value.ToString()))
+                        //时段2---待增加时段空值验证
+                        if (cboTimeName.Text.Trim() == listTimesName[0].TimesName2)
                         {
-                            item.Cells["OffDutyTime2"].Value =
-                                (Convert.ToDateTime(item.Cells["AtDate"].Value).Date
-                                + DateTime.Parse(listTimes[0].OffDutyTime).AddMinutes(1).TimeOfDay).ToString();
+                            if (string.IsNullOrEmpty(item.Cells["WorkTime2"].Value.ToString()))
+                            {
+                                item.Cells["WorkTime2"].Value =
+                                    (Convert.ToDateTime(item.Cells["AtDate"].Value).Date
+                                    + DateTime.Parse(listTimes[0].WorkTime).AddMinutes(-1).TimeOfDay).ToString();
 
-                            item.Cells["AtSign"].Value = 2;//更改处理状态为已签卡
+                                item.Cells["AtSign"].Value = 2;//更改处理状态为已签卡
 
-                            //objAttRecordService.UpdateDayRepor(item.Cells["OffDutyTime2"].Value.ToString(), Convert.ToInt32(item.Cells["AtSign"].Value),
-                                //DateTime.Parse(item.Cells["AtDate"].Value.ToString()), Convert.ToInt32(item.Cells["SfId"].Value));
+                                objAttRecordService.UpdateDayRepor("WorkTime2", item.Cells["WorkTime2"].Value.ToString(), Convert.ToInt32(item.Cells["AtSign"].Value),
+                                    DateTime.Parse(item.Cells["AtDate"].Value.ToString()), Convert.ToInt32(item.Cells["SfId"].Value));
+                            }
+
+                            if (string.IsNullOrEmpty(item.Cells["OffDutyTime2"].Value.ToString()))
+                            {
+                                item.Cells["OffDutyTime2"].Value =
+                                    (Convert.ToDateTime(item.Cells["AtDate"].Value).Date
+                                    + DateTime.Parse(listTimes[0].OffDutyTime).AddMinutes(1).TimeOfDay).ToString();
+
+                                item.Cells["AtSign"].Value = 2;//更改处理状态为已签卡
+
+                                objAttRecordService.UpdateDayRepor("OffDutyTime2", item.Cells["OffDutyTime2"].Value.ToString(), Convert.ToInt32(item.Cells["AtSign"].Value),
+                                    DateTime.Parse(item.Cells["AtDate"].Value.ToString()), Convert.ToInt32(item.Cells["SfId"].Value));
+                            }
                         }
                     }
-
                 }
+            }
+            else
+            {
+                MessageBox.Show("请先确认是否已处理缺勤！");
             }
         }
 
         private void cboTime_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (cboTime.Text.Trim() != "")
+            if (cboBTime.Text.Trim() != "")
             {
-                dtTime = DateTime.Parse(cboTime.Text.Trim());
+                dtTime = DateTime.Parse(cboBTime.Text.Trim());
             }
         }
     }

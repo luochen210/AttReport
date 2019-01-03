@@ -56,7 +56,7 @@
             this.btnConnect = new System.Windows.Forms.Button();
             this.btnGetLog = new System.Windows.Forms.Button();
             this.lblState = new System.Windows.Forms.Label();
-            this.progressBar1 = new System.Windows.Forms.ProgressBar();
+            this.prgDownload = new System.Windows.Forms.ProgressBar();
             this.btnTest = new System.Windows.Forms.Button();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.btnConnect1 = new System.Windows.Forms.Button();
@@ -165,21 +165,21 @@
             // 日报查询ToolStripMenuItem
             // 
             this.日报查询ToolStripMenuItem.Name = "日报查询ToolStripMenuItem";
-            this.日报查询ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.日报查询ToolStripMenuItem.Size = new System.Drawing.Size(124, 22);
             this.日报查询ToolStripMenuItem.Text = "日报查询";
             this.日报查询ToolStripMenuItem.Click += new System.EventHandler(this.日报查询ToolStripMenuItem_Click);
             // 
             // 月报查询ToolStripMenuItem
             // 
             this.月报查询ToolStripMenuItem.Name = "月报查询ToolStripMenuItem";
-            this.月报查询ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.月报查询ToolStripMenuItem.Size = new System.Drawing.Size(124, 22);
             this.月报查询ToolStripMenuItem.Text = "月报查询";
             this.月报查询ToolStripMenuItem.Click += new System.EventHandler(this.月报查询ToolStripMenuItem_Click);
             // 
             // 年报查询ToolStripMenuItem
             // 
             this.年报查询ToolStripMenuItem.Name = "年报查询ToolStripMenuItem";
-            this.年报查询ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.年报查询ToolStripMenuItem.Size = new System.Drawing.Size(124, 22);
             this.年报查询ToolStripMenuItem.Text = "年报查询";
             // 
             // 考勤管理ToolStripMenuItem
@@ -193,14 +193,14 @@
             // 签卡ToolStripMenuItem
             // 
             this.签卡ToolStripMenuItem.Name = "签卡ToolStripMenuItem";
-            this.签卡ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.签卡ToolStripMenuItem.Size = new System.Drawing.Size(100, 22);
             this.签卡ToolStripMenuItem.Text = "签卡";
             this.签卡ToolStripMenuItem.Click += new System.EventHandler(this.签卡ToolStripMenuItem_Click);
             // 
             // lblIP
             // 
             this.lblIP.AutoSize = true;
-            this.lblIP.Location = new System.Drawing.Point(11, 40);
+            this.lblIP.Location = new System.Drawing.Point(11, 39);
             this.lblIP.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblIP.Name = "lblIP";
             this.lblIP.Size = new System.Drawing.Size(17, 12);
@@ -210,7 +210,7 @@
             // txtIP
             // 
             this.txtIP.Location = new System.Drawing.Point(32, 35);
-            this.txtIP.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtIP.Margin = new System.Windows.Forms.Padding(2);
             this.txtIP.Name = "txtIP";
             this.txtIP.Size = new System.Drawing.Size(100, 21);
             this.txtIP.TabIndex = 0;
@@ -219,7 +219,7 @@
             // lblPort
             // 
             this.lblPort.AutoSize = true;
-            this.lblPort.Location = new System.Drawing.Point(155, 40);
+            this.lblPort.Location = new System.Drawing.Point(155, 39);
             this.lblPort.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblPort.Name = "lblPort";
             this.lblPort.Size = new System.Drawing.Size(29, 12);
@@ -228,8 +228,8 @@
             // 
             // txtPort
             // 
-            this.txtPort.Location = new System.Drawing.Point(189, 36);
-            this.txtPort.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtPort.Location = new System.Drawing.Point(189, 35);
+            this.txtPort.Margin = new System.Windows.Forms.Padding(2);
             this.txtPort.Name = "txtPort";
             this.txtPort.Size = new System.Drawing.Size(44, 21);
             this.txtPort.TabIndex = 1;
@@ -238,8 +238,8 @@
             // btnConnect
             // 
             this.btnConnect.AutoSize = true;
-            this.btnConnect.Location = new System.Drawing.Point(253, 35);
-            this.btnConnect.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnConnect.Location = new System.Drawing.Point(241, 34);
+            this.btnConnect.Margin = new System.Windows.Forms.Padding(2);
             this.btnConnect.Name = "btnConnect";
             this.btnConnect.Size = new System.Drawing.Size(56, 22);
             this.btnConnect.TabIndex = 2;
@@ -250,8 +250,8 @@
             // btnGetLog
             // 
             this.btnGetLog.AutoSize = true;
-            this.btnGetLog.Location = new System.Drawing.Point(334, 35);
-            this.btnGetLog.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnGetLog.Location = new System.Drawing.Point(306, 34);
+            this.btnGetLog.Margin = new System.Windows.Forms.Padding(2);
             this.btnGetLog.Name = "btnGetLog";
             this.btnGetLog.Size = new System.Drawing.Size(63, 22);
             this.btnGetLog.TabIndex = 3;
@@ -263,19 +263,19 @@
             // 
             this.lblState.AutoSize = true;
             this.lblState.ForeColor = System.Drawing.SystemColors.Highlight;
-            this.lblState.Location = new System.Drawing.Point(401, 41);
+            this.lblState.Location = new System.Drawing.Point(735, 39);
             this.lblState.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblState.Name = "lblState";
             this.lblState.Size = new System.Drawing.Size(137, 12);
             this.lblState.TabIndex = 8;
             this.lblState.Text = "设备状态：等待连接……";
             // 
-            // progressBar1
+            // prgDownload
             // 
-            this.progressBar1.Location = new System.Drawing.Point(646, 34);
-            this.progressBar1.Name = "progressBar1";
-            this.progressBar1.Size = new System.Drawing.Size(350, 23);
-            this.progressBar1.TabIndex = 1;
+            this.prgDownload.Location = new System.Drawing.Point(378, 34);
+            this.prgDownload.Name = "prgDownload";
+            this.prgDownload.Size = new System.Drawing.Size(350, 23);
+            this.prgDownload.TabIndex = 1;
             // 
             // btnTest
             // 
@@ -289,6 +289,10 @@
             // 
             // splitContainer1
             // 
+            this.splitContainer1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.splitContainer1.FixedPanel = System.Windows.Forms.FixedPanel.Panel1;
             this.splitContainer1.Location = new System.Drawing.Point(12, 66);
             this.splitContainer1.Name = "splitContainer1";
             // 
@@ -317,6 +321,9 @@
             // 
             this.dgvAttLog.AllowUserToAddRows = false;
             this.dgvAttLog.AllowUserToDeleteRows = false;
+            this.dgvAttLog.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.dgvAttLog.BackgroundColor = System.Drawing.SystemColors.ButtonFace;
             dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
@@ -324,7 +331,6 @@
             dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
             dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
             dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.dgvAttLog.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dgvAttLog.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvAttLog.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
@@ -333,20 +339,18 @@
             this.VerifyMode,
             this.InOutMode,
             this.ClockRecord});
-            this.dgvAttLog.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgvAttLog.Location = new System.Drawing.Point(0, 0);
-            this.dgvAttLog.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.dgvAttLog.Margin = new System.Windows.Forms.Padding(2);
             this.dgvAttLog.Name = "dgvAttLog";
             this.dgvAttLog.ReadOnly = true;
-            this.dgvAttLog.RowHeadersWidth = 70;
+            this.dgvAttLog.RowHeadersWidth = 50;
             this.dgvAttLog.RowTemplate.Height = 27;
             this.dgvAttLog.Size = new System.Drawing.Size(841, 650);
             this.dgvAttLog.TabIndex = 0;
-            this.dgvAttLog.RowPostPaint += new System.Windows.Forms.DataGridViewRowPostPaintEventHandler(this.dgvStudentList_RowPostPaint);
+            this.dgvAttLog.RowPostPaint += new System.Windows.Forms.DataGridViewRowPostPaintEventHandler(this.dgvAttLog_RowPostPaint);
             // 
             // ClockId
             // 
-            this.ClockId.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
             this.ClockId.DataPropertyName = "ClockId";
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             this.ClockId.DefaultCellStyle = dataGridViewCellStyle2;
@@ -357,7 +361,6 @@
             // 
             // MachineId
             // 
-            this.MachineId.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
             this.MachineId.DataPropertyName = "MachineId";
             dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             this.MachineId.DefaultCellStyle = dataGridViewCellStyle3;
@@ -368,7 +371,6 @@
             // 
             // VerifyMode
             // 
-            this.VerifyMode.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
             this.VerifyMode.DataPropertyName = "VerifyMode";
             dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             this.VerifyMode.DefaultCellStyle = dataGridViewCellStyle4;
@@ -379,7 +381,6 @@
             // 
             // InOutMode
             // 
-            this.InOutMode.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
             this.InOutMode.DataPropertyName = "InOutMode";
             dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             this.InOutMode.DefaultCellStyle = dataGridViewCellStyle5;
@@ -392,7 +393,7 @@
             // 
             this.ClockRecord.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
             this.ClockRecord.DataPropertyName = "ClockRecord";
-            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             this.ClockRecord.DefaultCellStyle = dataGridViewCellStyle6;
             this.ClockRecord.HeaderText = "打卡时间";
             this.ClockRecord.Name = "ClockRecord";
@@ -403,7 +404,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1008, 729);
-            this.Controls.Add(this.progressBar1);
+            this.Controls.Add(this.prgDownload);
             this.Controls.Add(this.lblState);
             this.Controls.Add(this.btnGetLog);
             this.Controls.Add(this.btnConnect);
@@ -414,7 +415,7 @@
             this.Controls.Add(this.menuStrip1);
             this.Controls.Add(this.splitContainer1);
             this.MainMenuStrip = this.menuStrip1;
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "FrmMain";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "考勤系统";
@@ -446,7 +447,7 @@
         private System.Windows.Forms.ToolStripMenuItem 员工信息ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem 部门信息ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem 班次管理ToolStripMenuItem;
-        private System.Windows.Forms.ProgressBar progressBar1;
+        private System.Windows.Forms.ProgressBar prgDownload;
         private System.Windows.Forms.ToolStripMenuItem 时段管理ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem 职位信息ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem 假ToolStripMenuItem;
@@ -458,12 +459,12 @@
         private System.Windows.Forms.Button btnTest;
         private System.Windows.Forms.SplitContainer splitContainer1;
         private System.Windows.Forms.DataGridView dgvAttLog;
+        private System.Windows.Forms.Button btnConnect1;
         private System.Windows.Forms.DataGridViewTextBoxColumn ClockId;
         private System.Windows.Forms.DataGridViewTextBoxColumn MachineId;
         private System.Windows.Forms.DataGridViewTextBoxColumn VerifyMode;
         private System.Windows.Forms.DataGridViewTextBoxColumn InOutMode;
         private System.Windows.Forms.DataGridViewTextBoxColumn ClockRecord;
-        private System.Windows.Forms.Button btnConnect1;
     }
 }
 

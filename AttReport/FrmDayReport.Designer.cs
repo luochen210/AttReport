@@ -50,6 +50,7 @@
             this.btnCreateLog = new System.Windows.Forms.Button();
             this.dgvDayReport = new System.Windows.Forms.DataGridView();
             this.AtDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.AtWeek = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.SfId = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.SfName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.SfGroup = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -63,6 +64,7 @@
             this.AtDay = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.AtState = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.AtSign = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.AtOvertime = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDayReport)).BeginInit();
             this.SuspendLayout();
@@ -89,7 +91,7 @@
             this.panel1.Controls.Add(this.btnCreateLog);
             this.panel1.Location = new System.Drawing.Point(13, 14);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(799, 63);
+            this.panel1.Size = new System.Drawing.Size(983, 63);
             this.panel1.TabIndex = 9;
             // 
             // cboName
@@ -243,6 +245,7 @@
             this.dgvDayReport.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvDayReport.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.AtDate,
+            this.AtWeek,
             this.SfId,
             this.SfName,
             this.SfGroup,
@@ -255,7 +258,8 @@
             this.OffDutyTime3,
             this.AtDay,
             this.AtState,
-            this.AtSign});
+            this.AtSign,
+            this.AtOvertime});
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
             dataGridViewCellStyle2.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
@@ -274,11 +278,12 @@
             dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.dgvDayReport.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            this.dgvDayReport.RowHeadersWidth = 30;
             dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             this.dgvDayReport.RowsDefaultCellStyle = dataGridViewCellStyle4;
             this.dgvDayReport.RowTemplate.DefaultCellStyle.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             this.dgvDayReport.RowTemplate.Height = 23;
-            this.dgvDayReport.Size = new System.Drawing.Size(799, 506);
+            this.dgvDayReport.Size = new System.Drawing.Size(983, 506);
             this.dgvDayReport.TabIndex = 8;
             // 
             // AtDate
@@ -286,7 +291,13 @@
             this.AtDate.DataPropertyName = "AtDate";
             this.AtDate.HeaderText = "日期";
             this.AtDate.Name = "AtDate";
-            this.AtDate.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            // 
+            // AtWeek
+            // 
+            this.AtWeek.DataPropertyName = "AtWeek";
+            this.AtWeek.HeaderText = "星期";
+            this.AtWeek.Name = "AtWeek";
+            this.AtWeek.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
             // 
             // SfId
             // 
@@ -300,14 +311,12 @@
             this.SfName.DataPropertyName = "SfName";
             this.SfName.HeaderText = "姓名";
             this.SfName.Name = "SfName";
-            this.SfName.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
             // 
             // SfGroup
             // 
             this.SfGroup.DataPropertyName = "SfGroup";
             this.SfGroup.HeaderText = "部门";
             this.SfGroup.Name = "SfGroup";
-            this.SfGroup.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
             // 
             // ClassesName
             // 
@@ -379,11 +388,18 @@
             this.AtSign.Name = "AtSign";
             this.AtSign.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
             // 
+            // AtOvertime
+            // 
+            this.AtOvertime.DataPropertyName = "AtOvertime";
+            this.AtOvertime.HeaderText = "加班标记";
+            this.AtOvertime.Name = "AtOvertime";
+            this.AtOvertime.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            // 
             // FrmDayReport
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(824, 611);
+            this.ClientSize = new System.Drawing.Size(1008, 611);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.dgvDayReport);
             this.Name = "FrmDayReport";
@@ -417,6 +433,7 @@
         private System.Windows.Forms.Button btnExactQuery;
         private System.Windows.Forms.Button btnQueryLog;
         private System.Windows.Forms.DataGridViewTextBoxColumn AtDate;
+        private System.Windows.Forms.DataGridViewTextBoxColumn AtWeek;
         private System.Windows.Forms.DataGridViewTextBoxColumn SfId;
         private System.Windows.Forms.DataGridViewTextBoxColumn SfName;
         private System.Windows.Forms.DataGridViewTextBoxColumn SfGroup;
@@ -430,5 +447,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn AtDay;
         private System.Windows.Forms.DataGridViewTextBoxColumn AtState;
         private System.Windows.Forms.DataGridViewTextBoxColumn AtSign;
+        private System.Windows.Forms.DataGridViewTextBoxColumn AtOvertime;
     }
 }

@@ -22,28 +22,47 @@ namespace AttReport
         public FrmMain()
         {
             InitializeComponent();
-            //cboMonth.Text = DateTime.Today.Month.ToString() + "月";
-
             //加密SQL连接字符串
             //string connstring = DAL.SQLHelper.connString;
             //connstring = Common.StringSecurity.DESEncrypt(connstring);
+            dgvAttLog.Columns[4].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleLeft;//第5列靠左
         }
 
-        int idwErrorCode = 0;
-
-        //声明委托
-        public delegate void GetDataTable();
-        public delegate void UpdataLbl(string msg);
-
-        //根据委托创建对象
-        GetDataTable objGetDataTable;
+        //数据源委托
+        public delegate void SetDataSource(DataTable attLogTable);
+        SetDataSource objSetDataSource;
+        //Lbl提示委托
+        public delegate void UpdataLbl(string str);
         UpdataLbl objUpdataLbl;
+        //进度条委托
+        public delegate void StartPrg(int cNumber);
+        StartPrg objStartPrg;
 
-        private bool bIsConnected = false;//声明一个布尔变量，用于设备连接
-        private int iMachineNumber = 1;//设备的序列号。在连接设备之后，这个值将被改变
+        bool bIsConnected = false;//声明一个布尔变量，用于设备连接
+        int iMachineNumber = 1;//设备的序列号。在连接设备之后，这个值将被改变
+        int iValue = 0;//设备记录数
+        int idwErrorCode = 0;//异常代码
+        int cNumber = 0;//循环记数
 
         //实例化API
         public zkemkeeper.CZKEMClass axCZKEM1 = new zkemkeeper.CZKEMClass();
+
+        #region 委托的实现方法        
+
+        //进度条进度委托实现方法
+        public void startPrg(int cNumber)
+        {
+            prgDownload.Value = cNumber;//设置当前值            
+        }
+
+        //dgv委托更新显示实现方法
+        public void dgvDataSource(DataTable AttLogTable)
+        {
+            //更新dgvAttLog
+            dgvAttLog.DataSource = AttLogTable;
+        }
+
+        #endregion
 
         #region 连接考勤机的事件
         private void btnConnect_Click(object sender, EventArgs e)
@@ -61,7 +80,7 @@ namespace AttReport
                 axCZKEM1.Disconnect();
                 bIsConnected = false;
                 btnConnect.Text = "Connect";
-                lblState.Text = "设备状态：等待连接";
+                lblState.Text = "设备等待连接";
                 Cursor = Cursors.Default;
                 return;
             }
@@ -71,7 +90,7 @@ namespace AttReport
             {
                 btnConnect.Text = "断开";
                 btnConnect.Refresh();
-                lblState.Text = "设备状态：等待连接！";
+                lblState.Text = "设备等待连接";
                 iMachineNumber = 1;//In fact,when you are using the tcp/ip communication,this parameter will be ignored,that is any integer will all right.Here we use 1.
                 axCZKEM1.RegEvent(iMachineNumber, 65535);//Here you can register the realtime events that you want to be triggered(the parameters 65535 means registering all)
             }
@@ -80,7 +99,7 @@ namespace AttReport
                 axCZKEM1.GetLastError(ref idwErrorCode);
                 MessageBox.Show("无法连接设备，错误代码=" + idwErrorCode.ToString(), "Error");
             }
-            lblState.Text = "设备状态：连接成功！请下载记录……";
+            lblState.Text = "连接成功！";
             Cursor = Cursors.Default;
         }
         #endregion
@@ -93,34 +112,53 @@ namespace AttReport
                 MessageBox.Show("请连接设备！", "Error");
                 return;
             }
-
-            Cursor = Cursors.WaitCursor;
-
-            objGetDataTable = iDateTable;
-
+            btnConnect.Enabled = false;//关闭连接按钮
+            btnGetLog.Enabled = false;//关闭下载按钮
+            Cursor = Cursors.WaitCursor;//设置鼠标状态
             axCZKEM1.EnableDevice(iMachineNumber, false);//设置设备状态为关闭
-            if (axCZKEM1.ReadGeneralLogData(iMachineNumber))//将记录读入内存
-            {
-                //异步取得记录
-                BeginInvoke(objGetDataTable);
-            }
-            else
-            {
-                Cursor = Cursors.Default;
-                axCZKEM1.GetLastError(ref idwErrorCode);
 
-                if (idwErrorCode != 0)
+            //获取记录数
+            if (axCZKEM1.GetDeviceStatus(iMachineNumber, 6, ref iValue)) //这里我们使用函数“GetDeviceStatus”来获取记录的计数，“status”参数是6。
+            {
+                //设置进度条的值
+                setPrg(iValue, 1);//参数：maxValue是最大长度值，stepNumber是每次增长值
+
+                //取得记录
+                if (axCZKEM1.ReadGeneralLogData(iMachineNumber))//将记录读入内存
                 {
-                    MessageBox.Show("Reading data from terminal failed,ErrorCode: " + idwErrorCode.ToString(), "Error");
+                    //多线程下载记录
+                    Thread objThread = new Thread(new ThreadStart(getDateTable));
+                    objThread.Start();//线程开始
+                    //判断线程
+                    if (objThread.ThreadState == ThreadState.Suspended)
+                    {
+                        axCZKEM1.EnableDevice(iMachineNumber, true);//设置设备状态为开启
+                        btnConnect.Enabled = true;//开启连接按钮
+                        btnGetLog.Enabled = true;//开起下载按钮
+                    }
                 }
                 else
                 {
+                    Cursor = Cursors.Default;
                     axCZKEM1.GetLastError(ref idwErrorCode);
-                    MessageBox.Show("Operation failed,ErrorCode=" + idwErrorCode.ToString(), "Error");
+
+                    if (idwErrorCode != 0)
+                    {
+                        MessageBox.Show("从终端读取数据失败,错误代码: " + idwErrorCode.ToString(), "Error");
+                    }
+                    else
+                    {
+                        axCZKEM1.GetLastError(ref idwErrorCode);
+                        MessageBox.Show("Operation failed,ErrorCode=" + idwErrorCode.ToString(), "Error");
+                    }
                 }
             }
-            axCZKEM1.EnableDevice(iMachineNumber, true);//设置设备状态为开启
-            Cursor = Cursors.Default;
+            else
+            {
+                axCZKEM1.GetLastError(ref idwErrorCode);//获取异常代码
+                MessageBox.Show("操作失败，错误代码：" + idwErrorCode.ToString(), "Error");
+            }
+            Cursor = Cursors.Default;//线程开启后恢复鼠标
         }
         #endregion
 
@@ -135,19 +173,14 @@ namespace AttReport
 
         #region 添加行号的方法
         //添加行号
-        private void dgvStudentList_RowPostPaint(object sender, DataGridViewRowPostPaintEventArgs e)
+        private void dgvAttLog_RowPostPaint(object sender, DataGridViewRowPostPaintEventArgs e)
         {
-            Common.DataGridViewStyle.DgvRowPostPaint(this.dgvAttLog, e);
+            Common.DataGridViewStyle.DgvRowPostPaint(this.dgvAttLog, e);            
         }
-        //添加行号另一个方法
-        //private void dgvStudentList_RowStateChanged(object sender, DataGridViewRowStateChangedEventArgs e)
-        //{
-        //    e.Row.HeaderCell.Value = (e.Row.Index + 1).ToString();
-        //}
         #endregion
 
         #region 记录下载保存的方法
-        public void iDateTable()
+        public void getDateTable()
         {
             //初始化记录变量
             int idwEnrollNumber = 0;
@@ -157,6 +190,9 @@ namespace AttReport
 
             //实例化委托
             objUpdataLbl = new UpdataLbl(LblState);
+            objStartPrg = startPrg;//实例Prg委托
+
+            #region 创建DataTable表
 
             //创建一个名为"AttLogTable"的DataTable表
             DataTable AttLogTable = new DataTable();
@@ -167,15 +203,19 @@ namespace AttReport
             AttLogTable.Columns.Add("VerifyMode", typeof(int));
             AttLogTable.Columns.Add("InOutMode", typeof(int));
             AttLogTable.Columns.Add("ClockRecord", typeof(DateTime));
-
             //清空DataTable行数据
             AttLogTable.Rows.Clear();
+
+            #endregion
 
             //异步修改lbl值
             BeginInvoke(objUpdataLbl, "正在下载记录……");
 
             while (axCZKEM1.GetGeneralLogDataStr(iMachineNumber, ref idwEnrollNumber, ref idwVerifyMode, ref idwInOutMode, ref sTime))//从内存取得记录
             {
+                cNumber++;//循环记数，当前开写入的记录进度数
+                BeginInvoke(objStartPrg, cNumber);//异步执行，实现进度条更新进度
+                BeginInvoke(objUpdataLbl, cNumber + "/" + iValue);//异步修改lbl值
                 //把记录循环写入DataTable表
                 DataRow dr = AttLogTable.NewRow();
                 dr[0] = idwEnrollNumber;
@@ -185,9 +225,8 @@ namespace AttReport
                 dr[4] = sTime;
                 AttLogTable.Rows.Add(dr);
             }
-
-            //更新dgvAttLog
-            dgvAttLog.DataSource = AttLogTable;
+            objSetDataSource = dgvDataSource;//实例委托            
+            BeginInvoke(objSetDataSource, AttLogTable);//更新dgvAttLog
 
             //异步修改lbl值
             BeginInvoke(objUpdataLbl, "下载完毕！正在筛选记录……");
@@ -204,7 +243,7 @@ namespace AttReport
             if (drResult.Count() > 0)//如果序列元素的个数>0，则写入数据，否则跳过
             {
                 //接收不重复的数据
-                DataTable dtResult = drResult.CopyToDataTable();                
+                DataTable dtResult = drResult.CopyToDataTable();
                 //批量写入数据库
                 SQLHelper.UpdataByBulk(dtResult, "OriginalLog");
                 //异步修改lbl值
@@ -219,6 +258,15 @@ namespace AttReport
             //异步修改lbl值
             BeginInvoke(objUpdataLbl, "数据保存成功！");
 
+        }
+        #endregion
+
+        #region 进度条值设置方法
+        public void setPrg(int maxValue, int stepNumber)
+        {
+            //进度条
+            prgDownload.Maximum = maxValue;//设置最大长度值
+            prgDownload.Step = stepNumber;//设置每次增长多少
         }
         #endregion
 
@@ -397,7 +445,7 @@ namespace AttReport
         public static FrmSignCard objFrmSignCard = null;
         private void 签卡ToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            if (objFrmSignCard==null)
+            if (objFrmSignCard == null)
             {
                 objFrmSignCard = new FrmSignCard();
                 objFrmSignCard.Show();

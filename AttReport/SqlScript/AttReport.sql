@@ -83,8 +83,8 @@ drop table ShiftTimes
 go
 create table ShiftTimes
 (
-  ClassesId int not null primary key identity(1,1),--班次ID
-  ClassesName varchar(24) not null,--班次名称
+  ShiftId int not null primary key identity(1,1),--班次ID
+  ShiftName varchar(24) not null,--班次名称
   TimesName1 varchar(24) not null,--时间段名称1
   TimesName2 varchar(24) not null,--时间段名称2
   TimesName3 varchar(24), --时段名称3
@@ -180,7 +180,8 @@ drop table DayReport
 go
 create table DayReport
 (
-  AtDate datetime,--考勤日期
+  AtDate datetime not null,--考勤日期
+  AtWeek varchar(10) not null,--星期
   SfId int not null,--员工ID、考勤号、工号
   SfName varchar(21) not null,--员工姓名
   SfGroup varchar(21) not null,--员工组别
@@ -191,22 +192,22 @@ create table DayReport
   OffDutyTime2 varchar(21),--下班打卡时间2
   WorkTime3 varchar(21),--上班打卡时间3
   OffDutyTime3 varchar(21),--下班打卡时间3
-  AtDay decimal(2,1),--考勤天数
+  AtDay decimal(2,1) not null default'0',--考勤天数
+  AtState int not null default'0',--考勤状态
+  AtSign int not null default'0',--考勤标记
+  AtOvertime int not null default'0'--加班标记
   ----------------------------------
-  AtState int,--考勤状态
-  AtSign int,--考勤标记
-  AtLateM int,--迟到分钟
-  AtLateNumber int,--迟到次数
-  AtLeaveEarlyM int,--早退分钟
-  AtLeaveEarlyNumber int,--早退次数
-  AtleaveH decimal(2,1),--事假小时数
-  AtleaveNumber int,--事假次数（事假）
-  AtSickLeave decimal(2,1),--病假小时数
-  AtSickLeaveNumber int,--病假次数
-  AtAbsenteeism decimal(2,1),--旷工天数
-  AtAbsenteeismNumber int,--旷工次数
-  AtRestH decimal(2,1),--放假休息小时数
-  AtHoliday decimal(2,1),--节假日，按天计
-
+  --AtLateM int,--迟到分钟
+  --AtLateNumber int,--迟到次数
+  --AtLeaveEarlyM int,--早退分钟
+  --AtLeaveEarlyNumber int,--早退次数
+  --AtleaveH decimal(2,1),--事假小时数
+  --AtleaveNumber int,--事假次数（事假）
+  --AtSickLeave decimal(2,1),--病假小时数
+  --AtSickLeaveNumber int,--病假次数
+  --AtAbsenteeism decimal(2,1),--旷工天数
+  --AtAbsenteeismNumber int,--旷工次数
+  --AtRestH decimal(2,1),--放假休息小时数
+  --AtHoliday decimal(2,1),--节假日，按天计
 )
 go
