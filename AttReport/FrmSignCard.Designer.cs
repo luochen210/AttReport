@@ -48,6 +48,7 @@
             this.lblSTime = new System.Windows.Forms.Label();
             this.lblAttState = new System.Windows.Forms.Label();
             this.panel4 = new System.Windows.Forms.Panel();
+            this.checkBox1 = new System.Windows.Forms.CheckBox();
             this.btnBatch = new System.Windows.Forms.Button();
             this.cboBTime = new System.Windows.Forms.ComboBox();
             this.lblClasses = new System.Windows.Forms.Label();
@@ -73,7 +74,6 @@
             this.AtSign = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.AtOvertime = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.chkConfirm = new System.Windows.Forms.CheckBox();
-            this.checkBox1 = new System.Windows.Forms.CheckBox();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panel3.SuspendLayout();
@@ -243,13 +243,24 @@
             this.panel4.Controls.Add(this.lblTimes);
             this.panel4.Location = new System.Drawing.Point(568, 7);
             this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(262, 95);
+            this.panel4.Size = new System.Drawing.Size(253, 95);
             this.panel4.TabIndex = 11;
+            // 
+            // checkBox1
+            // 
+            this.checkBox1.AutoSize = true;
+            this.checkBox1.ForeColor = System.Drawing.Color.Blue;
+            this.checkBox1.Location = new System.Drawing.Point(167, 12);
+            this.checkBox1.Name = "checkBox1";
+            this.checkBox1.Size = new System.Drawing.Size(84, 16);
+            this.checkBox1.TabIndex = 11;
+            this.checkBox1.Text = "已处理异常";
+            this.checkBox1.UseVisualStyleBackColor = true;
             // 
             // btnBatch
             // 
             this.btnBatch.BackColor = System.Drawing.Color.White;
-            this.btnBatch.Location = new System.Drawing.Point(169, 37);
+            this.btnBatch.Location = new System.Drawing.Point(166, 37);
             this.btnBatch.Name = "btnBatch";
             this.btnBatch.Size = new System.Drawing.Size(80, 46);
             this.btnBatch.TabIndex = 5;
@@ -260,7 +271,7 @@
             // cboBTime
             // 
             this.cboBTime.FormattingEnabled = true;
-            this.cboBTime.Location = new System.Drawing.Point(52, 63);
+            this.cboBTime.Location = new System.Drawing.Point(49, 63);
             this.cboBTime.Name = "cboBTime";
             this.cboBTime.Size = new System.Drawing.Size(110, 20);
             this.cboBTime.TabIndex = 10;
@@ -269,7 +280,7 @@
             // lblClasses
             // 
             this.lblClasses.AutoSize = true;
-            this.lblClasses.Location = new System.Drawing.Point(7, 13);
+            this.lblClasses.Location = new System.Drawing.Point(4, 13);
             this.lblClasses.Name = "lblClasses";
             this.lblClasses.Size = new System.Drawing.Size(41, 12);
             this.lblClasses.TabIndex = 9;
@@ -278,7 +289,7 @@
             // cboTimeName
             // 
             this.cboTimeName.FormattingEnabled = true;
-            this.cboTimeName.Location = new System.Drawing.Point(52, 37);
+            this.cboTimeName.Location = new System.Drawing.Point(49, 37);
             this.cboTimeName.Name = "cboTimeName";
             this.cboTimeName.Size = new System.Drawing.Size(110, 20);
             this.cboTimeName.TabIndex = 10;
@@ -287,7 +298,7 @@
             // cboShiftName
             // 
             this.cboShiftName.FormattingEnabled = true;
-            this.cboShiftName.Location = new System.Drawing.Point(52, 10);
+            this.cboShiftName.Location = new System.Drawing.Point(49, 10);
             this.cboShiftName.Name = "cboShiftName";
             this.cboShiftName.Size = new System.Drawing.Size(110, 20);
             this.cboShiftName.TabIndex = 10;
@@ -296,7 +307,7 @@
             // lblBTime
             // 
             this.lblBTime.AutoSize = true;
-            this.lblBTime.Location = new System.Drawing.Point(7, 66);
+            this.lblBTime.Location = new System.Drawing.Point(4, 66);
             this.lblBTime.Name = "lblBTime";
             this.lblBTime.Size = new System.Drawing.Size(41, 12);
             this.lblBTime.TabIndex = 9;
@@ -305,7 +316,7 @@
             // lblTimes
             // 
             this.lblTimes.AutoSize = true;
-            this.lblTimes.Location = new System.Drawing.Point(7, 40);
+            this.lblTimes.Location = new System.Drawing.Point(4, 40);
             this.lblTimes.Name = "lblTimes";
             this.lblTimes.Size = new System.Drawing.Size(41, 12);
             this.lblTimes.TabIndex = 9;
@@ -382,6 +393,7 @@
             this.AtWeek.DataPropertyName = "AtWeek";
             this.AtWeek.HeaderText = "星期";
             this.AtWeek.Name = "AtWeek";
+            this.AtWeek.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
             // 
             // SfId
             // 
@@ -491,17 +503,6 @@
             this.chkConfirm.Text = "已处理异常";
             this.chkConfirm.UseVisualStyleBackColor = true;
             // 
-            // checkBox1
-            // 
-            this.checkBox1.AutoSize = true;
-            this.checkBox1.ForeColor = System.Drawing.Color.Blue;
-            this.checkBox1.Location = new System.Drawing.Point(170, 12);
-            this.checkBox1.Name = "checkBox1";
-            this.checkBox1.Size = new System.Drawing.Size(84, 16);
-            this.checkBox1.TabIndex = 11;
-            this.checkBox1.Text = "已处理异常";
-            this.checkBox1.UseVisualStyleBackColor = true;
-            // 
             // FrmSignCard
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -551,6 +552,7 @@
         private System.Windows.Forms.ComboBox cboDepartment;
         private System.Windows.Forms.Label lblSTime;
         private System.Windows.Forms.Label lblAttState;
+        private System.Windows.Forms.CheckBox checkBox1;
         private System.Windows.Forms.DataGridViewTextBoxColumn AtDate;
         private System.Windows.Forms.DataGridViewTextBoxColumn AtWeek;
         private System.Windows.Forms.DataGridViewTextBoxColumn SfId;
@@ -568,6 +570,5 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn AtSign;
         private System.Windows.Forms.DataGridViewTextBoxColumn AtOvertime;
         private System.Windows.Forms.CheckBox chkConfirm;
-        private System.Windows.Forms.CheckBox checkBox1;
     }
 }
