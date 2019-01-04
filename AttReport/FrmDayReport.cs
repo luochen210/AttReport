@@ -27,9 +27,6 @@ namespace AttReport
         //根据读取的记录生成日报表
         public void CreateDayLog(DateTime CBeginDate, DateTime CEndDate)
         {
-            //TimeSpan ts = CEndDate.Date - CBeginDate.Date;//计算日期差
-            //int mDay = ts.Days;//计算天数
-
             //根据起始结束时间获取原始数据
             DataTable dtAttOrganization = objAttRecordService.GetReportDataSet(CBeginDate, CEndDate).Tables[0];
 
@@ -332,7 +329,7 @@ namespace AttReport
 
                                 #endregion
 
-                                #region 计算星期，不包含"今天"
+                                #region 计算星期
 
                                 //获得星期
                                 string dtWeek = AtDate.DayOfWeek.ToString();//获得星期
@@ -456,12 +453,18 @@ namespace AttReport
                                         AtSign = 1;//考勤处理标记 0:未处理，1:已计算，2:已签卡处理，3:已处理假期
                                     }
 
+                                    ////修正星期六考勤状态
+                                    //if (AtWeek == "星期六")
+                                    //{
+                                    //    AtState = 3;//考勤状态修正为忘打卡
+                                    //}
+
                                     //处理查询日期当天的记录
                                     if (AtDate >= DateTime.Now.Date)
                                     {
                                         AtState = 0;
                                         AtSign = 0;
-                                    }
+                                    }                                    
                                 }
 
                                 #endregion
@@ -520,12 +523,18 @@ namespace AttReport
                                         AtSign = 1;//考勤处理标记 0:未处理，1:已计算，2:已签卡处理，3:已处理假期
                                     }
 
+                                    ////修正星期六考勤状态
+                                    //if (AtWeek == "星期六")
+                                    //{
+                                    //    AtState = 3;//考勤状态修正为忘打卡
+                                    //}
+
                                     //处理查询日期当天的记录
                                     if (AtDate >= DateTime.Now.Date)
                                     {
                                         AtState = 0;
                                         AtSign = 0;
-                                    }
+                                    }                                    
                                 }
 
                                 #endregion

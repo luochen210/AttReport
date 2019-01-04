@@ -50,6 +50,7 @@ namespace AttReport
         //查询异常的日报
         private void btnQuery_Click(object sender, EventArgs e)
         {
+            btnQuery.Enabled = false;//查询按钮关闭
             //获取日期间隔
             DateTime QBeginDate = DateTime.Parse(dtpQBeginDate.Text.Trim()).Date;//开始日期,从前1天的23:00开始
             DateTime QEndDate = DateTime.Parse(dtpQEndDate.Text.Trim()).Date;//结束日期，到次日的9:00结束
@@ -59,7 +60,7 @@ namespace AttReport
 
             //输出
             dgvDayResult.DataSource = dtDayResult;
-
+            btnQuery.Enabled = true;//查询按钮开启
         }
 
         //关闭窗体事件
@@ -95,32 +96,17 @@ namespace AttReport
 
         }
 
-        private void cboTimeName_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            if (cboTimeName.Text.Trim() != "")
-            {
-                listTimes = objAttRecordService.GetSfWorkTime(cboTimeName.Text.Trim());
-
-                //listShiftTimes=objAttRecordService.get
-
-                List<string> timesList = new List<string>();
-                timesList.Add(listTimes[0].WorkTime);
-                timesList.Add(listTimes[0].OffDutyTime);
-
-                cboBTime.DataSource = timesList;
-                cboBTime.SelectedIndex = -1;
-            }
-
-        }
-
         //批量签卡
         private void btnBatch_Click(object sender, EventArgs e)
         {
+            btnBatch.Enabled = false;//关闭按钮
             //如果勾选了复选框，则执行批量签卡
-            if (chkConfirm.Checked == true)
+            if (chkConfirm2.Checked == true)
             {
                 foreach (DataGridViewRow item in dgvDayResult.Rows)
                 {
+                    //获取时间
+                    listTimes = objAttRecordService.GetSfWorkTime(cboTimeName.Text.Trim());//获取工作时间
                     if (Convert.ToInt32(item.Cells["AtState"].Value) == 3)
                     {
                         //时段1---待增加时段空值验证
@@ -164,6 +150,7 @@ namespace AttReport
 
                                 item.Cells["AtSign"].Value = 2;//更改处理状态为已签卡
 
+                                //写入数据库
                                 objAttRecordService.UpdateDayRepor("WorkTime2", item.Cells["WorkTime2"].Value.ToString(), Convert.ToInt32(item.Cells["AtSign"].Value),
                                     DateTime.Parse(item.Cells["AtDate"].Value.ToString()), Convert.ToInt32(item.Cells["SfId"].Value));
                             }
@@ -176,6 +163,7 @@ namespace AttReport
 
                                 item.Cells["AtSign"].Value = 2;//更改处理状态为已签卡
 
+                                //写入数据库
                                 objAttRecordService.UpdateDayRepor("OffDutyTime2", item.Cells["OffDutyTime2"].Value.ToString(), Convert.ToInt32(item.Cells["AtSign"].Value),
                                     DateTime.Parse(item.Cells["AtDate"].Value.ToString()), Convert.ToInt32(item.Cells["SfId"].Value));
                             }
@@ -196,14 +184,8 @@ namespace AttReport
             {
                 MessageBox.Show("请先确认是否已处理缺勤！");
             }
-        }
 
-        private void cboTime_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            if (cboBTime.Text.Trim() != "")
-            {
-                dtTime = DateTime.Parse(cboBTime.Text.Trim());
-            }
+            btnBatch.Enabled = true;//开启按钮
         }
     }
 }
