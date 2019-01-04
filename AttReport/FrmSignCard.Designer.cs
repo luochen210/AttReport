@@ -28,18 +28,16 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.panel2 = new System.Windows.Forms.Panel();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle21 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle22 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle23 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle24 = new System.Windows.Forms.DataGridViewCellStyle();
             this.btnQuery = new System.Windows.Forms.Button();
             this.lblCBegin = new System.Windows.Forms.Label();
             this.lblCEnd = new System.Windows.Forms.Label();
             this.dtpQBeginDate = new System.Windows.Forms.DateTimePicker();
             this.dtpQEndDate = new System.Windows.Forms.DateTimePicker();
-            this.panel3 = new System.Windows.Forms.Panel();
+            this.chkConfirm = new System.Windows.Forms.CheckBox();
             this.btnSign = new System.Windows.Forms.Button();
             this.cboSTime = new System.Windows.Forms.ComboBox();
             this.lblDepartment = new System.Windows.Forms.Label();
@@ -47,7 +45,6 @@
             this.cboDepartment = new System.Windows.Forms.ComboBox();
             this.lblSTime = new System.Windows.Forms.Label();
             this.lblAttState = new System.Windows.Forms.Label();
-            this.panel4 = new System.Windows.Forms.Panel();
             this.checkBox1 = new System.Windows.Forms.CheckBox();
             this.btnBatch = new System.Windows.Forms.Button();
             this.cboBTime = new System.Windows.Forms.ComboBox();
@@ -73,47 +70,42 @@
             this.AtState = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.AtSign = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.AtOvertime = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.chkConfirm = new System.Windows.Forms.CheckBox();
-            this.panel1.SuspendLayout();
-            this.panel2.SuspendLayout();
-            this.panel3.SuspendLayout();
-            this.panel4.SuspendLayout();
+            this.splitContainer1 = new System.Windows.Forms.SplitContainer();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.comboBox3 = new System.Windows.Forms.ComboBox();
+            this.label5 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
+            this.comboBox2 = new System.Windows.Forms.ComboBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.btnClean = new System.Windows.Forms.Button();
+            this.btnConfirm = new System.Windows.Forms.Button();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.groupBox4 = new System.Windows.Forms.GroupBox();
+            this.dateTimePicker3 = new System.Windows.Forms.DateTimePicker();
+            this.dateTimePicker4 = new System.Windows.Forms.DateTimePicker();
+            this.dateTimePicker5 = new System.Windows.Forms.DateTimePicker();
+            this.dateTimePicker2 = new System.Windows.Forms.DateTimePicker();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDayResult)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
+            this.splitContainer1.Panel1.SuspendLayout();
+            this.splitContainer1.Panel2.SuspendLayout();
+            this.splitContainer1.SuspendLayout();
+            this.groupBox1.SuspendLayout();
+            this.groupBox2.SuspendLayout();
+            this.groupBox3.SuspendLayout();
+            this.groupBox4.SuspendLayout();
             this.SuspendLayout();
-            // 
-            // panel1
-            // 
-            this.panel1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.panel1.BackColor = System.Drawing.Color.MintCream;
-            this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel1.Controls.Add(this.panel2);
-            this.panel1.Controls.Add(this.panel3);
-            this.panel1.Controls.Add(this.panel4);
-            this.panel1.Location = new System.Drawing.Point(12, 12);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(986, 111);
-            this.panel1.TabIndex = 11;
-            // 
-            // panel2
-            // 
-            this.panel2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel2.Controls.Add(this.btnQuery);
-            this.panel2.Controls.Add(this.lblCBegin);
-            this.panel2.Controls.Add(this.lblCEnd);
-            this.panel2.Controls.Add(this.dtpQBeginDate);
-            this.panel2.Controls.Add(this.dtpQEndDate);
-            this.panel2.Location = new System.Drawing.Point(7, 7);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(242, 95);
-            this.panel2.TabIndex = 11;
             // 
             // btnQuery
             // 
             this.btnQuery.BackColor = System.Drawing.Color.White;
-            this.btnQuery.Location = new System.Drawing.Point(155, 22);
+            this.btnQuery.Location = new System.Drawing.Point(51, 70);
             this.btnQuery.Name = "btnQuery";
-            this.btnQuery.Size = new System.Drawing.Size(75, 48);
+            this.btnQuery.Size = new System.Drawing.Size(75, 23);
             this.btnQuery.TabIndex = 5;
             this.btnQuery.Text = "查询异常";
             this.btnQuery.UseVisualStyleBackColor = false;
@@ -122,7 +114,7 @@
             // lblCBegin
             // 
             this.lblCBegin.AutoSize = true;
-            this.lblCBegin.Location = new System.Drawing.Point(9, 26);
+            this.lblCBegin.Location = new System.Drawing.Point(22, 21);
             this.lblCBegin.Name = "lblCBegin";
             this.lblCBegin.Size = new System.Drawing.Size(29, 12);
             this.lblCBegin.TabIndex = 0;
@@ -131,7 +123,7 @@
             // lblCEnd
             // 
             this.lblCEnd.AutoSize = true;
-            this.lblCEnd.Location = new System.Drawing.Point(9, 53);
+            this.lblCEnd.Location = new System.Drawing.Point(22, 48);
             this.lblCEnd.Name = "lblCEnd";
             this.lblCEnd.Size = new System.Drawing.Size(29, 12);
             this.lblCEnd.TabIndex = 0;
@@ -140,7 +132,7 @@
             // dtpQBeginDate
             // 
             this.dtpQBeginDate.CustomFormat = "";
-            this.dtpQBeginDate.Location = new System.Drawing.Point(39, 22);
+            this.dtpQBeginDate.Location = new System.Drawing.Point(52, 17);
             this.dtpQBeginDate.Name = "dtpQBeginDate";
             this.dtpQBeginDate.Size = new System.Drawing.Size(110, 21);
             this.dtpQBeginDate.TabIndex = 8;
@@ -148,33 +140,28 @@
             // dtpQEndDate
             // 
             this.dtpQEndDate.CustomFormat = "";
-            this.dtpQEndDate.Location = new System.Drawing.Point(39, 49);
+            this.dtpQEndDate.Location = new System.Drawing.Point(52, 44);
             this.dtpQEndDate.Name = "dtpQEndDate";
             this.dtpQEndDate.Size = new System.Drawing.Size(110, 21);
             this.dtpQEndDate.TabIndex = 8;
             // 
-            // panel3
+            // chkConfirm
             // 
-            this.panel3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel3.Controls.Add(this.chkConfirm);
-            this.panel3.Controls.Add(this.btnSign);
-            this.panel3.Controls.Add(this.cboSTime);
-            this.panel3.Controls.Add(this.lblDepartment);
-            this.panel3.Controls.Add(this.cboAttState);
-            this.panel3.Controls.Add(this.cboDepartment);
-            this.panel3.Controls.Add(this.lblSTime);
-            this.panel3.Controls.Add(this.lblAttState);
-            this.panel3.Location = new System.Drawing.Point(277, 7);
-            this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(263, 95);
-            this.panel3.TabIndex = 11;
+            this.chkConfirm.AutoSize = true;
+            this.chkConfirm.ForeColor = System.Drawing.Color.Blue;
+            this.chkConfirm.Location = new System.Drawing.Point(53, 106);
+            this.chkConfirm.Name = "chkConfirm";
+            this.chkConfirm.Size = new System.Drawing.Size(84, 16);
+            this.chkConfirm.TabIndex = 11;
+            this.chkConfirm.Text = "已处理异常";
+            this.chkConfirm.UseVisualStyleBackColor = true;
             // 
             // btnSign
             // 
             this.btnSign.BackColor = System.Drawing.Color.White;
-            this.btnSign.Location = new System.Drawing.Point(170, 37);
+            this.btnSign.Location = new System.Drawing.Point(52, 130);
             this.btnSign.Name = "btnSign";
-            this.btnSign.Size = new System.Drawing.Size(80, 46);
+            this.btnSign.Size = new System.Drawing.Size(80, 23);
             this.btnSign.TabIndex = 5;
             this.btnSign.Text = "签卡";
             this.btnSign.UseVisualStyleBackColor = false;
@@ -182,7 +169,7 @@
             // cboSTime
             // 
             this.cboSTime.FormattingEnabled = true;
-            this.cboSTime.Location = new System.Drawing.Point(52, 63);
+            this.cboSTime.Location = new System.Drawing.Point(53, 73);
             this.cboSTime.Name = "cboSTime";
             this.cboSTime.Size = new System.Drawing.Size(110, 20);
             this.cboSTime.TabIndex = 10;
@@ -190,7 +177,7 @@
             // lblDepartment
             // 
             this.lblDepartment.AutoSize = true;
-            this.lblDepartment.Location = new System.Drawing.Point(7, 13);
+            this.lblDepartment.Location = new System.Drawing.Point(8, 23);
             this.lblDepartment.Name = "lblDepartment";
             this.lblDepartment.Size = new System.Drawing.Size(41, 12);
             this.lblDepartment.TabIndex = 9;
@@ -199,7 +186,7 @@
             // cboAttState
             // 
             this.cboAttState.FormattingEnabled = true;
-            this.cboAttState.Location = new System.Drawing.Point(52, 37);
+            this.cboAttState.Location = new System.Drawing.Point(53, 47);
             this.cboAttState.Name = "cboAttState";
             this.cboAttState.Size = new System.Drawing.Size(110, 20);
             this.cboAttState.TabIndex = 10;
@@ -207,7 +194,7 @@
             // cboDepartment
             // 
             this.cboDepartment.FormattingEnabled = true;
-            this.cboDepartment.Location = new System.Drawing.Point(52, 10);
+            this.cboDepartment.Location = new System.Drawing.Point(53, 20);
             this.cboDepartment.Name = "cboDepartment";
             this.cboDepartment.Size = new System.Drawing.Size(110, 20);
             this.cboDepartment.TabIndex = 10;
@@ -215,7 +202,7 @@
             // lblSTime
             // 
             this.lblSTime.AutoSize = true;
-            this.lblSTime.Location = new System.Drawing.Point(7, 66);
+            this.lblSTime.Location = new System.Drawing.Point(8, 76);
             this.lblSTime.Name = "lblSTime";
             this.lblSTime.Size = new System.Drawing.Size(41, 12);
             this.lblSTime.TabIndex = 9;
@@ -224,33 +211,17 @@
             // lblAttState
             // 
             this.lblAttState.AutoSize = true;
-            this.lblAttState.Location = new System.Drawing.Point(7, 40);
+            this.lblAttState.Location = new System.Drawing.Point(8, 50);
             this.lblAttState.Name = "lblAttState";
             this.lblAttState.Size = new System.Drawing.Size(41, 12);
             this.lblAttState.TabIndex = 9;
             this.lblAttState.Text = "状态：";
             // 
-            // panel4
-            // 
-            this.panel4.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel4.Controls.Add(this.checkBox1);
-            this.panel4.Controls.Add(this.btnBatch);
-            this.panel4.Controls.Add(this.cboBTime);
-            this.panel4.Controls.Add(this.lblClasses);
-            this.panel4.Controls.Add(this.cboTimeName);
-            this.panel4.Controls.Add(this.cboShiftName);
-            this.panel4.Controls.Add(this.lblBTime);
-            this.panel4.Controls.Add(this.lblTimes);
-            this.panel4.Location = new System.Drawing.Point(568, 7);
-            this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(253, 95);
-            this.panel4.TabIndex = 11;
-            // 
             // checkBox1
             // 
             this.checkBox1.AutoSize = true;
             this.checkBox1.ForeColor = System.Drawing.Color.Blue;
-            this.checkBox1.Location = new System.Drawing.Point(167, 12);
+            this.checkBox1.Location = new System.Drawing.Point(54, 107);
             this.checkBox1.Name = "checkBox1";
             this.checkBox1.Size = new System.Drawing.Size(84, 16);
             this.checkBox1.TabIndex = 11;
@@ -260,9 +231,9 @@
             // btnBatch
             // 
             this.btnBatch.BackColor = System.Drawing.Color.White;
-            this.btnBatch.Location = new System.Drawing.Point(166, 37);
+            this.btnBatch.Location = new System.Drawing.Point(53, 129);
             this.btnBatch.Name = "btnBatch";
-            this.btnBatch.Size = new System.Drawing.Size(80, 46);
+            this.btnBatch.Size = new System.Drawing.Size(80, 23);
             this.btnBatch.TabIndex = 5;
             this.btnBatch.Text = "批量签卡";
             this.btnBatch.UseVisualStyleBackColor = false;
@@ -271,7 +242,7 @@
             // cboBTime
             // 
             this.cboBTime.FormattingEnabled = true;
-            this.cboBTime.Location = new System.Drawing.Point(49, 63);
+            this.cboBTime.Location = new System.Drawing.Point(54, 76);
             this.cboBTime.Name = "cboBTime";
             this.cboBTime.Size = new System.Drawing.Size(110, 20);
             this.cboBTime.TabIndex = 10;
@@ -280,7 +251,7 @@
             // lblClasses
             // 
             this.lblClasses.AutoSize = true;
-            this.lblClasses.Location = new System.Drawing.Point(4, 13);
+            this.lblClasses.Location = new System.Drawing.Point(9, 26);
             this.lblClasses.Name = "lblClasses";
             this.lblClasses.Size = new System.Drawing.Size(41, 12);
             this.lblClasses.TabIndex = 9;
@@ -289,7 +260,7 @@
             // cboTimeName
             // 
             this.cboTimeName.FormattingEnabled = true;
-            this.cboTimeName.Location = new System.Drawing.Point(49, 37);
+            this.cboTimeName.Location = new System.Drawing.Point(54, 50);
             this.cboTimeName.Name = "cboTimeName";
             this.cboTimeName.Size = new System.Drawing.Size(110, 20);
             this.cboTimeName.TabIndex = 10;
@@ -298,7 +269,7 @@
             // cboShiftName
             // 
             this.cboShiftName.FormattingEnabled = true;
-            this.cboShiftName.Location = new System.Drawing.Point(49, 10);
+            this.cboShiftName.Location = new System.Drawing.Point(54, 23);
             this.cboShiftName.Name = "cboShiftName";
             this.cboShiftName.Size = new System.Drawing.Size(110, 20);
             this.cboShiftName.TabIndex = 10;
@@ -307,7 +278,7 @@
             // lblBTime
             // 
             this.lblBTime.AutoSize = true;
-            this.lblBTime.Location = new System.Drawing.Point(4, 66);
+            this.lblBTime.Location = new System.Drawing.Point(9, 79);
             this.lblBTime.Name = "lblBTime";
             this.lblBTime.Size = new System.Drawing.Size(41, 12);
             this.lblBTime.TabIndex = 9;
@@ -316,7 +287,7 @@
             // lblTimes
             // 
             this.lblTimes.AutoSize = true;
-            this.lblTimes.Location = new System.Drawing.Point(4, 40);
+            this.lblTimes.Location = new System.Drawing.Point(9, 53);
             this.lblTimes.Name = "lblTimes";
             this.lblTimes.Size = new System.Drawing.Size(41, 12);
             this.lblTimes.TabIndex = 9;
@@ -330,14 +301,14 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.dgvDayResult.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgvDayResult.BackgroundColor = System.Drawing.SystemColors.ButtonFace;
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle5.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            dataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvDayResult.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle21.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle21.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle21.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            dataGridViewCellStyle21.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle21.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle21.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle21.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvDayResult.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle21;
             this.dgvDayResult.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.AtDate,
             this.AtWeek,
@@ -355,35 +326,36 @@
             this.AtState,
             this.AtSign,
             this.AtOvertime});
-            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle6.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle6.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            dataGridViewCellStyle6.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvDayResult.DefaultCellStyle = dataGridViewCellStyle6;
-            this.dgvDayResult.Location = new System.Drawing.Point(12, 129);
+            dataGridViewCellStyle22.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle22.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle22.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            dataGridViewCellStyle22.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle22.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle22.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle22.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvDayResult.DefaultCellStyle = dataGridViewCellStyle22;
+            this.dgvDayResult.Location = new System.Drawing.Point(5, 6);
             this.dgvDayResult.Name = "dgvDayResult";
-            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle7.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle7.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            dataGridViewCellStyle7.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle7.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvDayResult.RowHeadersDefaultCellStyle = dataGridViewCellStyle7;
+            dataGridViewCellStyle23.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle23.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle23.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            dataGridViewCellStyle23.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle23.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle23.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle23.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvDayResult.RowHeadersDefaultCellStyle = dataGridViewCellStyle23;
             this.dgvDayResult.RowHeadersWidth = 30;
-            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.dgvDayResult.RowsDefaultCellStyle = dataGridViewCellStyle8;
+            dataGridViewCellStyle24.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.dgvDayResult.RowsDefaultCellStyle = dataGridViewCellStyle24;
             this.dgvDayResult.RowTemplate.DefaultCellStyle.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             this.dgvDayResult.RowTemplate.Height = 23;
-            this.dgvDayResult.Size = new System.Drawing.Size(986, 588);
+            this.dgvDayResult.Size = new System.Drawing.Size(813, 718);
             this.dgvDayResult.TabIndex = 10;
             // 
             // AtDate
             // 
             this.AtDate.DataPropertyName = "AtDate";
+            this.AtDate.FillWeight = 98.11322F;
             this.AtDate.HeaderText = "日期";
             this.AtDate.Name = "AtDate";
             this.AtDate.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
@@ -391,6 +363,7 @@
             // AtWeek
             // 
             this.AtWeek.DataPropertyName = "AtWeek";
+            this.AtWeek.FillWeight = 100.6741F;
             this.AtWeek.HeaderText = "星期";
             this.AtWeek.Name = "AtWeek";
             this.AtWeek.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
@@ -398,6 +371,7 @@
             // SfId
             // 
             this.SfId.DataPropertyName = "SfId";
+            this.SfId.FillWeight = 98.04416F;
             this.SfId.HeaderText = "考勤号";
             this.SfId.Name = "SfId";
             this.SfId.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
@@ -405,6 +379,7 @@
             // SfName
             // 
             this.SfName.DataPropertyName = "SfName";
+            this.SfName.FillWeight = 83.00127F;
             this.SfName.HeaderText = "姓名";
             this.SfName.Name = "SfName";
             this.SfName.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
@@ -412,6 +387,7 @@
             // SfGroup
             // 
             this.SfGroup.DataPropertyName = "SfGroup";
+            this.SfGroup.FillWeight = 99.06306F;
             this.SfGroup.HeaderText = "部门";
             this.SfGroup.Name = "SfGroup";
             this.SfGroup.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
@@ -419,6 +395,7 @@
             // ClassesName
             // 
             this.ClassesName.DataPropertyName = "ClassesName";
+            this.ClassesName.FillWeight = 101.5885F;
             this.ClassesName.HeaderText = "班次";
             this.ClassesName.Name = "ClassesName";
             this.ClassesName.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
@@ -426,6 +403,7 @@
             // WorkTime1
             // 
             this.WorkTime1.DataPropertyName = "WorkTime1";
+            this.WorkTime1.FillWeight = 103.9505F;
             this.WorkTime1.HeaderText = "上班1";
             this.WorkTime1.Name = "WorkTime1";
             this.WorkTime1.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
@@ -433,6 +411,7 @@
             // OffDutyTime1
             // 
             this.OffDutyTime1.DataPropertyName = "OffDutyTime1";
+            this.OffDutyTime1.FillWeight = 101.0931F;
             this.OffDutyTime1.HeaderText = "下班1";
             this.OffDutyTime1.Name = "OffDutyTime1";
             this.OffDutyTime1.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
@@ -440,6 +419,7 @@
             // WorkTime2
             // 
             this.WorkTime2.DataPropertyName = "WorkTime2";
+            this.WorkTime2.FillWeight = 103.4745F;
             this.WorkTime2.HeaderText = "上班2";
             this.WorkTime2.Name = "WorkTime2";
             this.WorkTime2.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
@@ -447,6 +427,7 @@
             // OffDutyTime2
             // 
             this.OffDutyTime2.DataPropertyName = "OffDutyTime2";
+            this.OffDutyTime2.FillWeight = 100.6587F;
             this.OffDutyTime2.HeaderText = "下班2";
             this.OffDutyTime2.Name = "OffDutyTime2";
             this.OffDutyTime2.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
@@ -454,6 +435,7 @@
             // WorkTime3
             // 
             this.WorkTime3.DataPropertyName = "WorkTime3";
+            this.WorkTime3.FillWeight = 103.0573F;
             this.WorkTime3.HeaderText = "上班3";
             this.WorkTime3.Name = "WorkTime3";
             this.WorkTime3.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
@@ -461,6 +443,7 @@
             // OffDutyTime3
             // 
             this.OffDutyTime3.DataPropertyName = "OffDutyTime3";
+            this.OffDutyTime3.FillWeight = 100.2779F;
             this.OffDutyTime3.HeaderText = "下班3";
             this.OffDutyTime3.Name = "OffDutyTime3";
             this.OffDutyTime3.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
@@ -468,6 +451,7 @@
             // AtDay
             // 
             this.AtDay.DataPropertyName = "AtDay";
+            this.AtDay.FillWeight = 102.6916F;
             this.AtDay.HeaderText = "天数";
             this.AtDay.Name = "AtDay";
             this.AtDay.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
@@ -475,6 +459,7 @@
             // AtState
             // 
             this.AtState.DataPropertyName = "AtState";
+            this.AtState.FillWeight = 102.4427F;
             this.AtState.HeaderText = "考勤状态";
             this.AtState.Name = "AtState";
             this.AtState.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
@@ -482,6 +467,7 @@
             // AtSign
             // 
             this.AtSign.DataPropertyName = "AtSign";
+            this.AtSign.FillWeight = 99.7169F;
             this.AtSign.HeaderText = "处理标记";
             this.AtSign.Name = "AtSign";
             this.AtSign.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
@@ -489,46 +475,259 @@
             // AtOvertime
             // 
             this.AtOvertime.DataPropertyName = "AtOvertime";
+            this.AtOvertime.FillWeight = 102.1527F;
             this.AtOvertime.HeaderText = "加班标记";
             this.AtOvertime.Name = "AtOvertime";
             // 
-            // chkConfirm
+            // splitContainer1
             // 
-            this.chkConfirm.AutoSize = true;
-            this.chkConfirm.ForeColor = System.Drawing.Color.Blue;
-            this.chkConfirm.Location = new System.Drawing.Point(171, 13);
-            this.chkConfirm.Name = "chkConfirm";
-            this.chkConfirm.Size = new System.Drawing.Size(84, 16);
-            this.chkConfirm.TabIndex = 11;
-            this.chkConfirm.Text = "已处理异常";
-            this.chkConfirm.UseVisualStyleBackColor = true;
+            this.splitContainer1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.splitContainer1.FixedPanel = System.Windows.Forms.FixedPanel.Panel2;
+            this.splitContainer1.Location = new System.Drawing.Point(0, 0);
+            this.splitContainer1.Name = "splitContainer1";
+            // 
+            // splitContainer1.Panel1
+            // 
+            this.splitContainer1.Panel1.BackColor = System.Drawing.SystemColors.Control;
+            this.splitContainer1.Panel1.Controls.Add(this.dgvDayResult);
+            // 
+            // splitContainer1.Panel2
+            // 
+            this.splitContainer1.Panel2.BackColor = System.Drawing.SystemColors.Control;
+            this.splitContainer1.Panel2.Controls.Add(this.groupBox4);
+            this.splitContainer1.Panel2.Controls.Add(this.groupBox3);
+            this.splitContainer1.Panel2.Controls.Add(this.groupBox2);
+            this.splitContainer1.Panel2.Controls.Add(this.groupBox1);
+            this.splitContainer1.Size = new System.Drawing.Size(1008, 729);
+            this.splitContainer1.SplitterDistance = 822;
+            this.splitContainer1.SplitterWidth = 1;
+            this.splitContainer1.TabIndex = 12;
+            // 
+            // groupBox1
+            // 
+            this.groupBox1.BackColor = System.Drawing.Color.MintCream;
+            this.groupBox1.Controls.Add(this.btnConfirm);
+            this.groupBox1.Controls.Add(this.btnClean);
+            this.groupBox1.Controls.Add(this.comboBox3);
+            this.groupBox1.Controls.Add(this.label5);
+            this.groupBox1.Controls.Add(this.label3);
+            this.groupBox1.Controls.Add(this.label4);
+            this.groupBox1.Controls.Add(this.comboBox2);
+            this.groupBox1.Controls.Add(this.dateTimePicker5);
+            this.groupBox1.Controls.Add(this.dateTimePicker3);
+            this.groupBox1.Controls.Add(this.label2);
+            this.groupBox1.Controls.Add(this.dateTimePicker2);
+            this.groupBox1.Controls.Add(this.dateTimePicker4);
+            this.groupBox1.Controls.Add(this.comboBox1);
+            this.groupBox1.Controls.Add(this.label1);
+            this.groupBox1.Location = new System.Drawing.Point(5, 112);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(173, 271);
+            this.groupBox1.TabIndex = 0;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "异常处理";
+            // 
+            // comboBox3
+            // 
+            this.comboBox3.FormattingEnabled = true;
+            this.comboBox3.Location = new System.Drawing.Point(53, 79);
+            this.comboBox3.Name = "comboBox3";
+            this.comboBox3.Size = new System.Drawing.Size(110, 20);
+            this.comboBox3.TabIndex = 18;
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(20, 129);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(29, 12);
+            this.label5.TabIndex = 11;
+            this.label5.Text = "从：";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(8, 82);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(41, 12);
+            this.label3.TabIndex = 15;
+            this.label3.Text = "状态：";
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(20, 191);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(29, 12);
+            this.label4.TabIndex = 12;
+            this.label4.Text = "到：";
+            // 
+            // comboBox2
+            // 
+            this.comboBox2.FormattingEnabled = true;
+            this.comboBox2.Location = new System.Drawing.Point(53, 50);
+            this.comboBox2.Name = "comboBox2";
+            this.comboBox2.Size = new System.Drawing.Size(110, 20);
+            this.comboBox2.TabIndex = 19;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(8, 53);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(41, 12);
+            this.label2.TabIndex = 16;
+            this.label2.Text = "姓名：";
+            // 
+            // comboBox1
+            // 
+            this.comboBox1.FormattingEnabled = true;
+            this.comboBox1.Location = new System.Drawing.Point(53, 22);
+            this.comboBox1.Name = "comboBox1";
+            this.comboBox1.Size = new System.Drawing.Size(110, 20);
+            this.comboBox1.TabIndex = 20;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(8, 25);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(41, 12);
+            this.label1.TabIndex = 17;
+            this.label1.Text = "部门：";
+            // 
+            // btnClean
+            // 
+            this.btnClean.Location = new System.Drawing.Point(9, 233);
+            this.btnClean.Name = "btnClean";
+            this.btnClean.Size = new System.Drawing.Size(53, 23);
+            this.btnClean.TabIndex = 22;
+            this.btnClean.Text = "清除";
+            this.btnClean.UseVisualStyleBackColor = true;
+            // 
+            // btnConfirm
+            // 
+            this.btnConfirm.Location = new System.Drawing.Point(111, 233);
+            this.btnConfirm.Name = "btnConfirm";
+            this.btnConfirm.Size = new System.Drawing.Size(53, 23);
+            this.btnConfirm.TabIndex = 22;
+            this.btnConfirm.Text = "确认";
+            this.btnConfirm.UseVisualStyleBackColor = true;
+            // 
+            // groupBox2
+            // 
+            this.groupBox2.BackColor = System.Drawing.Color.MintCream;
+            this.groupBox2.Controls.Add(this.chkConfirm);
+            this.groupBox2.Controls.Add(this.btnSign);
+            this.groupBox2.Controls.Add(this.lblAttState);
+            this.groupBox2.Controls.Add(this.cboSTime);
+            this.groupBox2.Controls.Add(this.lblSTime);
+            this.groupBox2.Controls.Add(this.lblDepartment);
+            this.groupBox2.Controls.Add(this.cboDepartment);
+            this.groupBox2.Controls.Add(this.cboAttState);
+            this.groupBox2.Location = new System.Drawing.Point(5, 391);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Size = new System.Drawing.Size(173, 164);
+            this.groupBox2.TabIndex = 12;
+            this.groupBox2.TabStop = false;
+            this.groupBox2.Text = "签卡";
+            // 
+            // groupBox3
+            // 
+            this.groupBox3.BackColor = System.Drawing.Color.MintCream;
+            this.groupBox3.Controls.Add(this.checkBox1);
+            this.groupBox3.Controls.Add(this.btnBatch);
+            this.groupBox3.Controls.Add(this.lblTimes);
+            this.groupBox3.Controls.Add(this.cboBTime);
+            this.groupBox3.Controls.Add(this.lblBTime);
+            this.groupBox3.Controls.Add(this.lblClasses);
+            this.groupBox3.Controls.Add(this.cboShiftName);
+            this.groupBox3.Controls.Add(this.cboTimeName);
+            this.groupBox3.Location = new System.Drawing.Point(5, 562);
+            this.groupBox3.Name = "groupBox3";
+            this.groupBox3.Size = new System.Drawing.Size(173, 162);
+            this.groupBox3.TabIndex = 13;
+            this.groupBox3.TabStop = false;
+            this.groupBox3.Text = "批量签卡";
+            // 
+            // groupBox4
+            // 
+            this.groupBox4.BackColor = System.Drawing.Color.MintCream;
+            this.groupBox4.Controls.Add(this.btnQuery);
+            this.groupBox4.Controls.Add(this.dtpQEndDate);
+            this.groupBox4.Controls.Add(this.lblCBegin);
+            this.groupBox4.Controls.Add(this.dtpQBeginDate);
+            this.groupBox4.Controls.Add(this.lblCEnd);
+            this.groupBox4.Location = new System.Drawing.Point(5, 6);
+            this.groupBox4.Name = "groupBox4";
+            this.groupBox4.Size = new System.Drawing.Size(173, 100);
+            this.groupBox4.TabIndex = 14;
+            this.groupBox4.TabStop = false;
+            this.groupBox4.Text = "查询异常";
+            // 
+            // dateTimePicker3
+            // 
+            this.dateTimePicker3.CustomFormat = "";
+            this.dateTimePicker3.Format = System.Windows.Forms.DateTimePickerFormat.Time;
+            this.dateTimePicker3.Location = new System.Drawing.Point(53, 139);
+            this.dateTimePicker3.Name = "dateTimePicker3";
+            this.dateTimePicker3.Size = new System.Drawing.Size(110, 21);
+            this.dateTimePicker3.TabIndex = 13;
+            // 
+            // dateTimePicker4
+            // 
+            this.dateTimePicker4.CustomFormat = "";
+            this.dateTimePicker4.Format = System.Windows.Forms.DateTimePickerFormat.Time;
+            this.dateTimePicker4.Location = new System.Drawing.Point(53, 201);
+            this.dateTimePicker4.Name = "dateTimePicker4";
+            this.dateTimePicker4.Size = new System.Drawing.Size(110, 21);
+            this.dateTimePicker4.TabIndex = 14;
+            // 
+            // dateTimePicker5
+            // 
+            this.dateTimePicker5.CustomFormat = "";
+            this.dateTimePicker5.Location = new System.Drawing.Point(53, 111);
+            this.dateTimePicker5.Name = "dateTimePicker5";
+            this.dateTimePicker5.Size = new System.Drawing.Size(110, 21);
+            this.dateTimePicker5.TabIndex = 13;
+            // 
+            // dateTimePicker2
+            // 
+            this.dateTimePicker2.CustomFormat = "";
+            this.dateTimePicker2.Location = new System.Drawing.Point(53, 173);
+            this.dateTimePicker2.Name = "dateTimePicker2";
+            this.dateTimePicker2.Size = new System.Drawing.Size(110, 21);
+            this.dateTimePicker2.TabIndex = 14;
             // 
             // FrmSignCard
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.DeepSkyBlue;
             this.ClientSize = new System.Drawing.Size(1008, 729);
-            this.Controls.Add(this.panel1);
-            this.Controls.Add(this.dgvDayResult);
+            this.Controls.Add(this.splitContainer1);
             this.Name = "FrmSignCard";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "考勤异常";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.FrmSignCard_FormClosed);
-            this.panel1.ResumeLayout(false);
-            this.panel2.ResumeLayout(false);
-            this.panel2.PerformLayout();
-            this.panel3.ResumeLayout(false);
-            this.panel3.PerformLayout();
-            this.panel4.ResumeLayout(false);
-            this.panel4.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDayResult)).EndInit();
+            this.splitContainer1.Panel1.ResumeLayout(false);
+            this.splitContainer1.Panel2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
+            this.splitContainer1.ResumeLayout(false);
+            this.groupBox1.ResumeLayout(false);
+            this.groupBox1.PerformLayout();
+            this.groupBox2.ResumeLayout(false);
+            this.groupBox2.PerformLayout();
+            this.groupBox3.ResumeLayout(false);
+            this.groupBox3.PerformLayout();
+            this.groupBox4.ResumeLayout(false);
+            this.groupBox4.PerformLayout();
             this.ResumeLayout(false);
 
         }
 
         #endregion
-
-        private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.DateTimePicker dtpQEndDate;
         private System.Windows.Forms.DateTimePicker dtpQBeginDate;
         private System.Windows.Forms.Label lblCEnd;
@@ -542,9 +741,6 @@
         private System.Windows.Forms.Label lblTimes;
         private System.Windows.Forms.ComboBox cboBTime;
         private System.Windows.Forms.Label lblBTime;
-        private System.Windows.Forms.Panel panel4;
-        private System.Windows.Forms.Panel panel2;
-        private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.Button btnSign;
         private System.Windows.Forms.ComboBox cboSTime;
         private System.Windows.Forms.Label lblDepartment;
@@ -570,5 +766,24 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn AtSign;
         private System.Windows.Forms.DataGridViewTextBoxColumn AtOvertime;
         private System.Windows.Forms.CheckBox chkConfirm;
+        private System.Windows.Forms.SplitContainer splitContainer1;
+        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.Button btnConfirm;
+        private System.Windows.Forms.Button btnClean;
+        private System.Windows.Forms.ComboBox comboBox3;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.ComboBox comboBox2;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.GroupBox groupBox3;
+        private System.Windows.Forms.GroupBox groupBox2;
+        private System.Windows.Forms.GroupBox groupBox4;
+        private System.Windows.Forms.DateTimePicker dateTimePicker5;
+        private System.Windows.Forms.DateTimePicker dateTimePicker3;
+        private System.Windows.Forms.DateTimePicker dateTimePicker2;
+        private System.Windows.Forms.DateTimePicker dateTimePicker4;
     }
 }

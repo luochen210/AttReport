@@ -114,6 +114,12 @@
     <Compile Include="FrmSfWorkTime.Designer.cs">
       <DependentUpon>FrmSfWorkTime.cs</DependentUpon>
     </Compile>
+    <Compile Include="MdiFrmMain.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MdiFrmMain.Designer.cs">
+      <DependentUpon>MdiFrmMain.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="FrmDayReport.resx">
@@ -145,6 +151,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FrmSfWorkTime.resx">
       <DependentUpon>FrmSfWorkTime.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MdiFrmMain.resx">
+      <DependentUpon>MdiFrmMain.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
