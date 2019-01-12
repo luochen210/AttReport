@@ -24,11 +24,13 @@ namespace AttReport
             dtpQEndDate.Text = DateTime.Now.Date.ToString();//结束时间
 
             //获取班次
-            var listClasses = objAttRecordService.GetShiftNameList();
-            cboShiftName.DataSource = listClasses;
+            var listShiftName = objAttRecordService.GetShiftNameList();
+            cboShiftName.DataSource = listShiftName;
             cboShiftName.DisplayMember = "ShiftName";
             cboShiftName.ValueMember = "ShiftId";
             cboShiftName.SelectedIndex = -1;
+
+            //var listDepartment=objAttRecordService.
 
         }
 

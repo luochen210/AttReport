@@ -303,5 +303,30 @@ namespace DAL
             return SQLHelper.Update(sql);
 
         }
+
+        /// <summary>
+        /// 获取所有部门
+        /// </summary>
+        /// <returns></returns>
+        public List<Organization> GetAllDepartment()
+        {
+            string sql = "select DepartmentId, DepartmentName from Department where cyId=1";
+            sql = string.Format(sql);
+
+            SqlDataReader objReader= SQLHelper.GetReader(sql);
+
+            List<Organization> list = new List<Organization>();
+
+            while (objReader.Read())
+            {
+                list.Add(new Organization()
+                {
+                    DepartmentId = Convert.ToInt32(objReader["DepartmentId"]),
+                    DepartmentName=objReader["DepartmentName"].ToString()
+                });
+            }
+
+            return list;
+        }
     }
 }
