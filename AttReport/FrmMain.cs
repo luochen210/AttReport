@@ -456,5 +456,10 @@ namespace AttReport
                 objFrmSignCard.WindowState = FormWindowState.Normal;
             }
         }
+
+        private void 导入员工ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
