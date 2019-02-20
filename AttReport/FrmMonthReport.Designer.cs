@@ -34,8 +34,15 @@
             this.lblQueryTips = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.dgvRecord = new System.Windows.Forms.DataGridView();
-            this.SfDepartment = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.comboBox2 = new System.Windows.Forms.ComboBox();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.dtpMonthly = new System.Windows.Forms.DateTimePicker();
             this.SfId = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.SfDepartment = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.StaffName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.SfJob = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.SfShouldAtt = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -65,13 +72,6 @@
             this.SfRemarks = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.SfAutograph = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.SfLnsurance = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
-            this.comboBox2 = new System.Windows.Forms.ComboBox();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
-            this.cboMonthly = new System.Windows.Forms.ComboBox();
-            this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvRecord)).BeginInit();
             this.groupBox2.SuspendLayout();
@@ -126,8 +126,8 @@
             // 
             this.dgvRecord.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvRecord.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.SfDepartment,
             this.SfId,
+            this.SfDepartment,
             this.StaffName,
             this.SfJob,
             this.SfShouldAtt,
@@ -164,17 +164,89 @@
             this.dgvRecord.Size = new System.Drawing.Size(977, 617);
             this.dgvRecord.TabIndex = 0;
             // 
-            // SfDepartment
+            // comboBox1
             // 
-            this.SfDepartment.DataPropertyName = "SfDepartment";
-            this.SfDepartment.HeaderText = "部门";
-            this.SfDepartment.Name = "SfDepartment";
+            this.comboBox1.Enabled = false;
+            this.comboBox1.FormattingEnabled = true;
+            this.comboBox1.Location = new System.Drawing.Point(578, 13);
+            this.comboBox1.Name = "comboBox1";
+            this.comboBox1.Size = new System.Drawing.Size(121, 20);
+            this.comboBox1.TabIndex = 7;
+            this.comboBox1.Text = "功能暂停";
+            // 
+            // comboBox2
+            // 
+            this.comboBox2.Enabled = false;
+            this.comboBox2.FormattingEnabled = true;
+            this.comboBox2.Location = new System.Drawing.Point(578, 50);
+            this.comboBox2.Name = "comboBox2";
+            this.comboBox2.Size = new System.Drawing.Size(121, 20);
+            this.comboBox2.TabIndex = 7;
+            this.comboBox2.Text = "功能暂停";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(530, 17);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(41, 12);
+            this.label3.TabIndex = 4;
+            this.label3.Text = "部门：";
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(530, 54);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(41, 12);
+            this.label4.TabIndex = 4;
+            this.label4.Text = "员工：";
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(6, 24);
+            this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(41, 12);
+            this.label1.TabIndex = 9;
+            this.label1.Text = "月度：";
+            // 
+            // groupBox2
+            // 
+            this.groupBox2.Controls.Add(this.dtpMonthly);
+            this.groupBox2.Controls.Add(this.progressBar1);
+            this.groupBox2.Controls.Add(this.btnQuery);
+            this.groupBox2.Controls.Add(this.label1);
+            this.groupBox2.Controls.Add(this.lblQueryTips);
+            this.groupBox2.Location = new System.Drawing.Point(13, 10);
+            this.groupBox2.Margin = new System.Windows.Forms.Padding(2);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Padding = new System.Windows.Forms.Padding(2);
+            this.groupBox2.Size = new System.Drawing.Size(508, 56);
+            this.groupBox2.TabIndex = 11;
+            this.groupBox2.TabStop = false;
+            this.groupBox2.Text = "批量查询";
+            // 
+            // dtpMonthly
+            // 
+            this.dtpMonthly.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dtpMonthly.Location = new System.Drawing.Point(43, 20);
+            this.dtpMonthly.Name = "dtpMonthly";
+            this.dtpMonthly.Size = new System.Drawing.Size(84, 21);
+            this.dtpMonthly.TabIndex = 10;
             // 
             // SfId
             // 
             this.SfId.DataPropertyName = "SfId";
             this.SfId.HeaderText = "工号";
             this.SfId.Name = "SfId";
+            // 
+            // SfDepartment
+            // 
+            this.SfDepartment.DataPropertyName = "SfDepartment";
+            this.SfDepartment.HeaderText = "部门";
+            this.SfDepartment.Name = "SfDepartment";
             // 
             // StaffName
             // 
@@ -350,93 +422,6 @@
             this.SfLnsurance.HeaderText = "险种";
             this.SfLnsurance.Name = "SfLnsurance";
             // 
-            // comboBox1
-            // 
-            this.comboBox1.Enabled = false;
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(578, 13);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(121, 20);
-            this.comboBox1.TabIndex = 7;
-            this.comboBox1.Text = "功能暂停";
-            // 
-            // comboBox2
-            // 
-            this.comboBox2.Enabled = false;
-            this.comboBox2.FormattingEnabled = true;
-            this.comboBox2.Location = new System.Drawing.Point(578, 50);
-            this.comboBox2.Name = "comboBox2";
-            this.comboBox2.Size = new System.Drawing.Size(121, 20);
-            this.comboBox2.TabIndex = 7;
-            this.comboBox2.Text = "功能暂停";
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(530, 17);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(41, 12);
-            this.label3.TabIndex = 4;
-            this.label3.Text = "部门：";
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(530, 54);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(41, 12);
-            this.label4.TabIndex = 4;
-            this.label4.Text = "员工：";
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(6, 24);
-            this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(41, 12);
-            this.label1.TabIndex = 9;
-            this.label1.Text = "月度：";
-            // 
-            // cboMonthly
-            // 
-            this.cboMonthly.FormattingEnabled = true;
-            this.cboMonthly.Items.AddRange(new object[] {
-            "",
-            "1月",
-            "2月",
-            "3月",
-            "4月",
-            "5月",
-            "6月",
-            "7月",
-            "8月",
-            "9月",
-            "10月",
-            "11月",
-            "12月"});
-            this.cboMonthly.Location = new System.Drawing.Point(49, 20);
-            this.cboMonthly.Margin = new System.Windows.Forms.Padding(2);
-            this.cboMonthly.Name = "cboMonthly";
-            this.cboMonthly.Size = new System.Drawing.Size(62, 20);
-            this.cboMonthly.TabIndex = 10;
-            // 
-            // groupBox2
-            // 
-            this.groupBox2.Controls.Add(this.progressBar1);
-            this.groupBox2.Controls.Add(this.cboMonthly);
-            this.groupBox2.Controls.Add(this.btnQuery);
-            this.groupBox2.Controls.Add(this.label1);
-            this.groupBox2.Controls.Add(this.lblQueryTips);
-            this.groupBox2.Location = new System.Drawing.Point(13, 10);
-            this.groupBox2.Margin = new System.Windows.Forms.Padding(2);
-            this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Padding = new System.Windows.Forms.Padding(2);
-            this.groupBox2.Size = new System.Drawing.Size(508, 56);
-            this.groupBox2.TabIndex = 11;
-            this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "批量查询";
-            // 
             // FrmMonthReport
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -470,8 +455,15 @@
         private System.Windows.Forms.Label lblQueryTips;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.DataGridView dgvRecord;
-        private System.Windows.Forms.DataGridViewTextBoxColumn SfDepartment;
+        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.ComboBox comboBox2;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.GroupBox groupBox2;
+        private System.Windows.Forms.DateTimePicker dtpMonthly;
         private System.Windows.Forms.DataGridViewTextBoxColumn SfId;
+        private System.Windows.Forms.DataGridViewTextBoxColumn SfDepartment;
         private System.Windows.Forms.DataGridViewTextBoxColumn StaffName;
         private System.Windows.Forms.DataGridViewTextBoxColumn SfJob;
         private System.Windows.Forms.DataGridViewTextBoxColumn SfShouldAtt;
@@ -501,12 +493,5 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn SfRemarks;
         private System.Windows.Forms.DataGridViewTextBoxColumn SfAutograph;
         private System.Windows.Forms.DataGridViewTextBoxColumn SfLnsurance;
-        private System.Windows.Forms.ComboBox comboBox1;
-        private System.Windows.Forms.ComboBox comboBox2;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.ComboBox cboMonthly;
-        private System.Windows.Forms.GroupBox groupBox2;
     }
 }
