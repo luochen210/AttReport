@@ -5,7 +5,7 @@ using System.Text;
 using System.Data;
 using System.Data.OleDb;
 
-namespace DAL.Helper
+namespace DAL
 {
     class OleDbHelper
     {
