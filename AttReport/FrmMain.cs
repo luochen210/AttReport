@@ -175,7 +175,7 @@ namespace AttReport
         //添加行号
         private void dgvAttLog_RowPostPaint(object sender, DataGridViewRowPostPaintEventArgs e)
         {
-            Common.DataGridViewStyle.DgvRowPostPaint(this.dgvAttLog, e);            
+            Common.DataGridViewStyle.DgvRowPostPaint(this.dgvAttLog, e);
         }
         #endregion
 
@@ -459,6 +459,14 @@ namespace AttReport
 
         private void 导入员工ToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            OpenFileDialog dialog = new OpenFileDialog();
+            DialogResult result = dialog.ShowDialog();
+            if (result == DialogResult.OK)
+            {
+                string path = dialog.FileName;
+                ImportDataFromExcel.GetStudentByExcel(path);               
+
+            }
             //ImportDataFromExcel.GetStudentByExcel(Text);
         }
     }

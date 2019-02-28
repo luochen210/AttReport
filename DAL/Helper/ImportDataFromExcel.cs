@@ -17,7 +17,7 @@ namespace DAL
         /// 从Excel文件中读取数据
         /// </summary>
         /// <returns></returns>
-        public List<Staff> GetStudentByExcel(string path)
+        public static List<Staff> GetStudentByExcel(string path)
         {
             List<Staff> list = new List<Staff>();
             DataSet ds = OleDbHelper.GetDataSet("select * from [Staff$] ", path);
@@ -57,7 +57,7 @@ namespace DAL
         /// </summary>
         /// <param name="list"></param>
         /// <returns></returns>
-        public bool Import(List<Staff> list)
+        public static bool Import(List<Staff> list)
         {
             List<string> sqlList = new List<string>();
             StringBuilder sqlBuilder = new StringBuilder();
