@@ -146,6 +146,7 @@ create table Staffs
   SfBirthDate datetime not null,--出生日期
   SfDomicile varchar(60) not null,--户籍地址
   SfResidence varchar(60) not null,--居住地
+  SfIdCard varchar(24) not null,--身份证号
   SfIntroducer varchar(21) not null default'无',--推荐人
   SfFriend varchar(21) not null,--员工亲友/紧急联络人
   SfRelation varchar(12) not null,--亲友关系

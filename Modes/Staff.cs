@@ -11,7 +11,7 @@ namespace Models
     /// </summary>
     public class Staff
     {
-        public int SfId { get; set; } //员工工号
+        public string SfId { get; set; } //员工工号
         public string SfName { get; set; }//员工姓名
         public string SfGender { get; set; }//员工性别
         public double SfSeniority { get; set; }//员工工龄
@@ -26,8 +26,9 @@ namespace Models
         public string SfIntroducer { get; set; }//介绍人
         public DateTime SfEntryDate { get; set; }//入职日期
         public DateTime SfBirthDate { get; set; }//出生日期
-        public string SfDomicile { get; set; }//户籍地址
+        public string SfDomicile { get; set; }//户籍地址        
         public string SfResidence { get; set; }//现居住地
+        public string SfIdCard { get; set; }//身份证号
         public string SfFriend { get; set; }//紧急联络人
         public string SfRelation { get; set; }//与紧急联络人的关系
         public string SfFriendsPhone { get; set; }//紧急联络人的电话

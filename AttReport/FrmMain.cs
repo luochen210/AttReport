@@ -464,9 +464,16 @@ namespace AttReport
             if (result == DialogResult.OK)
             {
                 string path = dialog.FileName;
-                ImportDataFromExcel.GetStudentByExcel(path);               
+                var sfList = ImportDataFromExcel.GetStudentByExcel(path);
 
+                if (sfList.Count>0)
+                {
+                    ImportDataFromExcel.Import(sfList);
+
+                    MessageBox.Show("导入成功！");
+                }
             }
+
             //ImportDataFromExcel.GetStudentByExcel(Text);
         }
     }
