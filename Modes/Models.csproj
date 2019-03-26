@@ -43,6 +43,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AttRecord.cs" />
+    <Compile Include="SfShiftSet.cs" />
     <Compile Include="ShiftTimes.cs" />
     <Compile Include="DayReport.cs" />
     <Compile Include="Organization.cs" />

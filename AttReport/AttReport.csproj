@@ -84,6 +84,12 @@
     <Compile Include="FrmMonthReport.Designer.cs">
       <DependentUpon>FrmMonthReport.cs</DependentUpon>
     </Compile>
+    <Compile Include="FrmSfShiftSet.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmSfShiftSet.Designer.cs">
+      <DependentUpon>FrmSfShiftSet.cs</DependentUpon>
+    </Compile>
     <Compile Include="FrmStaffInfo.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -114,12 +120,6 @@
     <Compile Include="FrmSfWorkTime.Designer.cs">
       <DependentUpon>FrmSfWorkTime.cs</DependentUpon>
     </Compile>
-    <Compile Include="MdiFrmMain.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="MdiFrmMain.Designer.cs">
-      <DependentUpon>MdiFrmMain.cs</DependentUpon>
-    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="FrmDayReport.resx">
@@ -137,6 +137,9 @@
     <EmbeddedResource Include="FrmMonthReport.resx">
       <DependentUpon>FrmMonthReport.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="FrmSfShiftSet.resx">
+      <DependentUpon>FrmSfShiftSet.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FrmStaffInfo.resx">
       <DependentUpon>FrmStaffInfo.cs</DependentUpon>
     </EmbeddedResource>
@@ -151,9 +154,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FrmSfWorkTime.resx">
       <DependentUpon>FrmSfWorkTime.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="MdiFrmMain.resx">
-      <DependentUpon>MdiFrmMain.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

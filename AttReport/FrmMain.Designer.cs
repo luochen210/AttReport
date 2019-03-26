@@ -28,16 +28,16 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle25 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle26 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle27 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle28 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle29 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle30 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.系统管理ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.班次管理ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.时段管理ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.班次设置ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.时段设置ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.人事管理ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.员工入职ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.员工信息ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -67,6 +67,9 @@
             this.VerifyMode = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.InOutMode = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ClockRecord = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.班次管理ToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.班次维护ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.自动轮班ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
@@ -82,8 +85,9 @@
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.系统管理ToolStripMenuItem,
             this.人事管理ToolStripMenuItem,
-            this.报表查询ToolStripMenuItem,
-            this.考勤管理ToolStripMenuItem});
+            this.班次管理ToolStripMenuItem1,
+            this.考勤管理ToolStripMenuItem,
+            this.报表查询ToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Padding = new System.Windows.Forms.Padding(4, 2, 0, 2);
@@ -94,25 +98,25 @@
             // 系统管理ToolStripMenuItem
             // 
             this.系统管理ToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.班次管理ToolStripMenuItem,
-            this.时段管理ToolStripMenuItem});
+            this.班次设置ToolStripMenuItem,
+            this.时段设置ToolStripMenuItem});
             this.系统管理ToolStripMenuItem.Name = "系统管理ToolStripMenuItem";
             this.系统管理ToolStripMenuItem.Size = new System.Drawing.Size(68, 21);
             this.系统管理ToolStripMenuItem.Text = "系统管理";
             // 
-            // 班次管理ToolStripMenuItem
+            // 班次设置ToolStripMenuItem
             // 
-            this.班次管理ToolStripMenuItem.Name = "班次管理ToolStripMenuItem";
-            this.班次管理ToolStripMenuItem.Size = new System.Drawing.Size(124, 22);
-            this.班次管理ToolStripMenuItem.Text = "班次管理";
-            this.班次管理ToolStripMenuItem.Click += new System.EventHandler(this.班次管理ToolStripMenuItem_Click);
+            this.班次设置ToolStripMenuItem.Name = "班次设置ToolStripMenuItem";
+            this.班次设置ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.班次设置ToolStripMenuItem.Text = "班次设置";
+            this.班次设置ToolStripMenuItem.Click += new System.EventHandler(this.班次管理ToolStripMenuItem_Click);
             // 
-            // 时段管理ToolStripMenuItem
+            // 时段设置ToolStripMenuItem
             // 
-            this.时段管理ToolStripMenuItem.Name = "时段管理ToolStripMenuItem";
-            this.时段管理ToolStripMenuItem.Size = new System.Drawing.Size(124, 22);
-            this.时段管理ToolStripMenuItem.Text = "时段管理";
-            this.时段管理ToolStripMenuItem.Click += new System.EventHandler(this.时段管理ToolStripMenuItem_Click);
+            this.时段设置ToolStripMenuItem.Name = "时段设置ToolStripMenuItem";
+            this.时段设置ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.时段设置ToolStripMenuItem.Text = "时段设置";
+            this.时段设置ToolStripMenuItem.Click += new System.EventHandler(this.时段管理ToolStripMenuItem_Click);
             // 
             // 人事管理ToolStripMenuItem
             // 
@@ -129,35 +133,35 @@
             // 员工入职ToolStripMenuItem
             // 
             this.员工入职ToolStripMenuItem.Name = "员工入职ToolStripMenuItem";
-            this.员工入职ToolStripMenuItem.Size = new System.Drawing.Size(124, 22);
+            this.员工入职ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.员工入职ToolStripMenuItem.Text = "员工入职";
             this.员工入职ToolStripMenuItem.Click += new System.EventHandler(this.员工入职ToolStripMenuItem_Click);
             // 
             // 员工信息ToolStripMenuItem
             // 
             this.员工信息ToolStripMenuItem.Name = "员工信息ToolStripMenuItem";
-            this.员工信息ToolStripMenuItem.Size = new System.Drawing.Size(124, 22);
+            this.员工信息ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.员工信息ToolStripMenuItem.Text = "员工信息";
             this.员工信息ToolStripMenuItem.Click += new System.EventHandler(this.员工信息ToolStripMenuItem_Click);
             // 
             // 职位信息ToolStripMenuItem
             // 
             this.职位信息ToolStripMenuItem.Name = "职位信息ToolStripMenuItem";
-            this.职位信息ToolStripMenuItem.Size = new System.Drawing.Size(124, 22);
+            this.职位信息ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.职位信息ToolStripMenuItem.Text = "职位信息";
             this.职位信息ToolStripMenuItem.Click += new System.EventHandler(this.职位信息ToolStripMenuItem_Click);
             // 
             // 部门信息ToolStripMenuItem
             // 
             this.部门信息ToolStripMenuItem.Name = "部门信息ToolStripMenuItem";
-            this.部门信息ToolStripMenuItem.Size = new System.Drawing.Size(124, 22);
+            this.部门信息ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.部门信息ToolStripMenuItem.Text = "部门信息";
             this.部门信息ToolStripMenuItem.Click += new System.EventHandler(this.部门信息ToolStripMenuItem_Click);
             // 
             // 导入员工ToolStripMenuItem
             // 
             this.导入员工ToolStripMenuItem.Name = "导入员工ToolStripMenuItem";
-            this.导入员工ToolStripMenuItem.Size = new System.Drawing.Size(124, 22);
+            this.导入员工ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.导入员工ToolStripMenuItem.Text = "导入员工";
             this.导入员工ToolStripMenuItem.Click += new System.EventHandler(this.导入员工ToolStripMenuItem_Click);
             // 
@@ -202,7 +206,7 @@
             // 签卡ToolStripMenuItem
             // 
             this.签卡ToolStripMenuItem.Name = "签卡ToolStripMenuItem";
-            this.签卡ToolStripMenuItem.Size = new System.Drawing.Size(100, 22);
+            this.签卡ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.签卡ToolStripMenuItem.Text = "签卡";
             this.签卡ToolStripMenuItem.Click += new System.EventHandler(this.签卡ToolStripMenuItem_Click);
             // 
@@ -334,13 +338,13 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.dgvAttLog.BackgroundColor = System.Drawing.SystemColors.ButtonFace;
-            dataGridViewCellStyle25.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle25.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle25.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            dataGridViewCellStyle25.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle25.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle25.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            this.dgvAttLog.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle25;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            this.dgvAttLog.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dgvAttLog.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvAttLog.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.ClockId,
@@ -361,8 +365,8 @@
             // ClockId
             // 
             this.ClockId.DataPropertyName = "ClockId";
-            dataGridViewCellStyle26.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.ClockId.DefaultCellStyle = dataGridViewCellStyle26;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.ClockId.DefaultCellStyle = dataGridViewCellStyle2;
             this.ClockId.HeaderText = "考勤号码";
             this.ClockId.Name = "ClockId";
             this.ClockId.ReadOnly = true;
@@ -371,8 +375,8 @@
             // MachineId
             // 
             this.MachineId.DataPropertyName = "MachineId";
-            dataGridViewCellStyle27.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.MachineId.DefaultCellStyle = dataGridViewCellStyle27;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.MachineId.DefaultCellStyle = dataGridViewCellStyle3;
             this.MachineId.HeaderText = "机器号";
             this.MachineId.Name = "MachineId";
             this.MachineId.ReadOnly = true;
@@ -381,8 +385,8 @@
             // VerifyMode
             // 
             this.VerifyMode.DataPropertyName = "VerifyMode";
-            dataGridViewCellStyle28.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.VerifyMode.DefaultCellStyle = dataGridViewCellStyle28;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.VerifyMode.DefaultCellStyle = dataGridViewCellStyle4;
             this.VerifyMode.HeaderText = "验证方式";
             this.VerifyMode.Name = "VerifyMode";
             this.VerifyMode.ReadOnly = true;
@@ -391,8 +395,8 @@
             // InOutMode
             // 
             this.InOutMode.DataPropertyName = "InOutMode";
-            dataGridViewCellStyle29.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.InOutMode.DefaultCellStyle = dataGridViewCellStyle29;
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.InOutMode.DefaultCellStyle = dataGridViewCellStyle5;
             this.InOutMode.HeaderText = "考勤状态";
             this.InOutMode.Name = "InOutMode";
             this.InOutMode.ReadOnly = true;
@@ -402,11 +406,33 @@
             // 
             this.ClockRecord.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
             this.ClockRecord.DataPropertyName = "ClockRecord";
-            dataGridViewCellStyle30.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            this.ClockRecord.DefaultCellStyle = dataGridViewCellStyle30;
+            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            this.ClockRecord.DefaultCellStyle = dataGridViewCellStyle6;
             this.ClockRecord.HeaderText = "打卡时间";
             this.ClockRecord.Name = "ClockRecord";
             this.ClockRecord.ReadOnly = true;
+            // 
+            // 班次管理ToolStripMenuItem1
+            // 
+            this.班次管理ToolStripMenuItem1.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.班次维护ToolStripMenuItem,
+            this.自动轮班ToolStripMenuItem});
+            this.班次管理ToolStripMenuItem1.Name = "班次管理ToolStripMenuItem1";
+            this.班次管理ToolStripMenuItem1.Size = new System.Drawing.Size(68, 21);
+            this.班次管理ToolStripMenuItem1.Text = "班次管理";
+            // 
+            // 班次维护ToolStripMenuItem
+            // 
+            this.班次维护ToolStripMenuItem.Name = "班次维护ToolStripMenuItem";
+            this.班次维护ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.班次维护ToolStripMenuItem.Text = "班次维护";
+            this.班次维护ToolStripMenuItem.Click += new System.EventHandler(this.班次维护ToolStripMenuItem_Click);
+            // 
+            // 自动轮班ToolStripMenuItem
+            // 
+            this.自动轮班ToolStripMenuItem.Name = "自动轮班ToolStripMenuItem";
+            this.自动轮班ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.自动轮班ToolStripMenuItem.Text = "自动轮班";
             // 
             // FrmMain
             // 
@@ -454,9 +480,9 @@
         private System.Windows.Forms.ToolStripMenuItem 员工入职ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem 员工信息ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem 部门信息ToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem 班次管理ToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem 班次设置ToolStripMenuItem;
         private System.Windows.Forms.ProgressBar prgDownload;
-        private System.Windows.Forms.ToolStripMenuItem 时段管理ToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem 时段设置ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem 职位信息ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem 报表查询ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem 年报查询ToolStripMenuItem;
@@ -475,6 +501,9 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn ClockRecord;
         private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.ToolStripMenuItem 导入员工ToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem 班次管理ToolStripMenuItem1;
+        private System.Windows.Forms.ToolStripMenuItem 班次维护ToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem 自动轮班ToolStripMenuItem;
     }
 }
 

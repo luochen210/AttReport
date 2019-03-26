@@ -45,6 +45,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AttRecordService.cs" />
+    <Compile Include="SfShiftSetService.cs" />
     <Compile Include="ShiftTimesService.cs" />
     <Compile Include="OrganizationService.cs" />
     <Compile Include="Helper\StringSecurity.cs" />

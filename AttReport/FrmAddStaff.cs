@@ -441,7 +441,7 @@ namespace AttReport
                 //JobNo = Convert.ToInt32(strJobNo),//工号和员工ID
                 SfAttCardNo = txtAttCardNo.Text.Trim(),
                 SfDepartmentName = cboDepartment.Text.Trim(),
-                SfDtGroupName = cboGroup.Text.Trim(),
+                SfGroupName = cboGroup.Text.Trim(),
                 SfJobName = cboJob.Text.Trim(),
                 SfName = this.txtName.Text.Trim(),
                 SfGender = this.cboGender.Text.Trim(),

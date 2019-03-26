@@ -36,17 +36,15 @@ namespace Models
         public string WorkShift { get; set; }//轮班班次
         public int SfShift { get; set; }//轮班标记
 
+        //部门、职位实体类
         public int SfCompanyId { get; set; }//公司ID
         public string SfCompanyName { get; set; }//公司名称
-
         public int SfDepartmentId { get; set; }//部门ID
         public string SfDepartmentName { get; set; }//部门名称
         public int SfCyId { get; set; }//关联公司ID
-
         public int SfDtGroupId { get; set; }//工作组ID
-        public string SfDtGroupName { get; set; }//工作组名称
+        public string SfGroupName { get; set; }//工作组名称
         public int SfDtId { get; set; }//关联部门ID
-
         public int SfJobId { get; set; }//职位ID
         public string SfJobName { get; set; }//职位名称
         public int SfDpId { get; set; }//关联组别ID

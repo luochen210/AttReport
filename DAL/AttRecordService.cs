@@ -301,8 +301,8 @@ namespace DAL
             foreach (DayReport objDayReport in list)
             {
                 string sql = string.Format(sqlBuilder.ToString(), objDayReport.WorkTime1, objDayReport.OffDutyTime1,
-                    objDayReport.WorkTime2, objDayReport.OffDutyTime2, objDayReport.WorkTime3, objDayReport.OffDutyTime3,
-                    objDayReport.AtState, objDayReport.AtSign, objDayReport.AtDate, objDayReport.SfId);
+                    objDayReport.WorkTime2, objDayReport.OffDutyTime2,objDayReport.AtState, objDayReport.AtSign,
+                    objDayReport.AtDate, objDayReport.SfId);
                 sqlList.Add(sql);
             }
             return SQLHelper.UpdateByTran(sqlList);

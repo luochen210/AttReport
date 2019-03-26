@@ -29,7 +29,7 @@ namespace DAL
                     SfId = row["考勤号"].ToString(),
                     SfAttCardNo=row["卡号"].ToString(),
                     SfDepartmentName = row["部门"].ToString(),
-                    SfDtGroupName = row["组别"].ToString(),
+                    SfGroupName = row["组别"].ToString(),
                     SfJobName = row["职位"].ToString(),
                     SfName = row["姓名"].ToString(),
                     SfGender = row["性别"].ToString(),
@@ -73,7 +73,7 @@ namespace DAL
             foreach (Staff objStaff in list)
             {
                 string sql = string.Format(sqlBuilder.ToString(), objStaff.SfId, objStaff.SfAttCardNo, objStaff.SfDepartmentName, 
-                    objStaff.SfDtGroupName, objStaff.SfJobName, objStaff.SfName, objStaff.SfGender, objStaff.SfMarriage, 
+                    objStaff.SfGroupName, objStaff.SfJobName, objStaff.SfName, objStaff.SfGender, objStaff.SfMarriage, 
                     objStaff.SfEducation, objStaff.SfMajor, objStaff.SfNativePlace, objStaff.SfNation, objStaff.SfMobilePhone,
                     objStaff.SfEntryDate, objStaff.SfBirthDate, objStaff.SfDomicile, objStaff.SfResidence, objStaff.SfIdCard, 
                     objStaff.SfIntroducer, objStaff.SfFriend, objStaff.SfRelation, objStaff.SfFriendsPhone, objStaff.SfStatus, 
