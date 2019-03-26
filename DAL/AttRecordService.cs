@@ -287,21 +287,25 @@ namespace DAL
         }
 
         /// <summary>
-        /// 日报签卡
+        /// 批量更新日报记录
         /// </summary>
-        /// <param name="Times">SQL表的列名</param>
-        /// <param name="atTime">签卡时间</param>
-        /// <param name="AtSign">考勤标记</param>
-        /// <param name="atDate">打卡日期</param>
-        /// <param name="sfId">考勤Id</param>
+        /// <param name="list">记录列表</param>
         /// <returns></returns>
-        public int UpdateDayRepor(string Times, string atTime, int AtSign, DateTime atDate, int sfId)
+        public bool UpdateDayRepor(List<DayReport> list)
         {
-            string sql = "update DayReport set {0} = '{1}',AtSign = {2} where AtDate = '{3}' and SfId = {4}";
-            sql = string.Format(sql, Times, atTime, AtSign, atDate, sfId);
-
-            return SQLHelper.Update(sql);
-
+            List<string> sqlList = new List<string>();
+            StringBuilder sqlBuilder = new StringBuilder();
+            sqlBuilder.Append("update DayReport set WorkTime1 = '{0}',OffDutyTime1 = '{1}',");
+            sqlBuilder.Append(",WorkTime2 = '{2}',OffDutyTime2 = '{3}',WorkTime3 = '{4}',OffDutyTime3 = '{5}',");
+            sqlBuilder.Append("AtState='{6}',AtSign={7} where AtDate = '{8}' and SfId = {9}");
+            foreach (DayReport objDayReport in list)
+            {
+                string sql = string.Format(sqlBuilder.ToString(), objDayReport.WorkTime1, objDayReport.OffDutyTime1,
+                    objDayReport.WorkTime2, objDayReport.OffDutyTime2, objDayReport.WorkTime3, objDayReport.OffDutyTime3,
+                    objDayReport.AtState, objDayReport.AtSign, objDayReport.AtDate, objDayReport.SfId);
+                sqlList.Add(sql);
+            }
+            return SQLHelper.UpdateByTran(sqlList);
         }
 
         /// <summary>
@@ -313,7 +317,7 @@ namespace DAL
             string sql = "select DepartmentId, DepartmentName from Department where cyId=1";
             sql = string.Format(sql);
 
-            SqlDataReader objReader= SQLHelper.GetReader(sql);
+            SqlDataReader objReader = SQLHelper.GetReader(sql);
 
             List<Organization> list = new List<Organization>();
 
@@ -322,7 +326,7 @@ namespace DAL
                 list.Add(new Organization()
                 {
                     DepartmentId = Convert.ToInt32(objReader["DepartmentId"]),
-                    DepartmentName=objReader["DepartmentName"].ToString()
+                    DepartmentName = objReader["DepartmentName"].ToString()
                 });
             }
 

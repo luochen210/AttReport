@@ -25,7 +25,7 @@ namespace AttReport
             var CompanyList = objJobListService.GetAllCompanyList();
 
 
-            if (CompanyList.Count>0)
+            if (CompanyList.Count > 0)
             {
                 //UI启动时获取部门列表
                 this.cboDepartment.DataSource = objJobListService.GetAllDepartmentList(CompanyList[0].CompanyName);
@@ -124,7 +124,7 @@ namespace AttReport
                 this.txtIDCard.Focus();
 
                 var list = cboDepartment.Items;
-                
+
             }
         }
 
@@ -455,6 +455,7 @@ namespace AttReport
                 SfBirthDate = Convert.ToDateTime(dtpBirthDate.Text.Trim()),
                 SfDomicile = txtDomicile.Text.Trim(),
                 SfResidence = txtRelation.Text.Trim(),
+                SfIdCard = txtIDCard.Text.Trim(),
                 SfIntroducer = txtIntroducer.Text.Trim(),
                 SfFriend = txtFriend.Text.Trim(),
                 SfRelation = txtRelation.Text.Trim(),

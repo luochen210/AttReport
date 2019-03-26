@@ -26,7 +26,7 @@ namespace DAL
             {
                 list.Add(new Staff()
                 {
-                    SfId = row["工号"].ToString(),
+                    SfId = row["考勤号"].ToString(),
                     SfAttCardNo=row["卡号"].ToString(),
                     SfDepartmentName = row["部门"].ToString(),
                     SfDtGroupName = row["组别"].ToString(),

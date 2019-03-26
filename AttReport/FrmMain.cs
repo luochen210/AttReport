@@ -40,9 +40,12 @@ namespace AttReport
 
         bool bIsConnected = false;//声明一个布尔变量，用于设备连接
         int iMachineNumber = 1;//设备的序列号。在连接设备之后，这个值将被改变
-        int iValue = 0;//设备记录数
+        int iValue = 0;//设备记录数        
+        int cNumber = 0;//循环记数        
+
         int idwErrorCode = 0;//异常代码
-        int cNumber = 0;//循环记数
+        //int iGLCount = 0;
+        //int iIndex = 0;
 
         //实例化API
         public zkemkeeper.CZKEMClass axCZKEM1 = new zkemkeeper.CZKEMClass();
@@ -50,9 +53,9 @@ namespace AttReport
         #region 委托的实现方法        
 
         //进度条进度委托实现方法
-        public void startPrg(int cNumber)
+        public void startPrg(int cValue)
         {
-            prgDownload.Value = cNumber;//设置当前值            
+            prgDownload.Value = cValue;//设置当前值
         }
 
         //dgv委托更新显示实现方法
@@ -183,10 +186,16 @@ namespace AttReport
         public void getDateTable()
         {
             //初始化记录变量
-            int idwEnrollNumber = 0;
-            int idwVerifyMode = 0;
-            int idwInOutMode = 0;
-            string sTime = "";
+            string sdwEnrollNumber = "";//考勤记录的用户ID
+            int idwVerifyMode = 0;//验证方式，0代表密码，1代表指纹，2代表ID卡
+            int idwInOutMode = 0;//考勤状态,255代表无考勤状态
+            int idwYear = 0;//年
+            int idwMonth = 0;//月
+            int idwDay = 0;//日
+            int idwHour = 0;//时
+            int idwMinute = 0;//分
+            int idwSecond = 0;//秒
+            int idwWorkcode = 0;//记录的Workcode值
 
             //实例化委托
             objUpdataLbl = new UpdataLbl(LblState);
@@ -202,7 +211,7 @@ namespace AttReport
             AttLogTable.Columns.Add("MachineId", typeof(int));
             AttLogTable.Columns.Add("VerifyMode", typeof(int));
             AttLogTable.Columns.Add("InOutMode", typeof(int));
-            AttLogTable.Columns.Add("ClockRecord", typeof(DateTime));
+            AttLogTable.Columns.Add("ClockRecord", typeof(string));
             //清空DataTable行数据
             AttLogTable.Rows.Clear();
 
@@ -211,18 +220,23 @@ namespace AttReport
             //异步修改lbl值
             BeginInvoke(objUpdataLbl, "正在下载记录……");
 
-            while (axCZKEM1.GetGeneralLogDataStr(iMachineNumber, ref idwEnrollNumber, ref idwVerifyMode, ref idwInOutMode, ref sTime))//从内存取得记录
+            while (axCZKEM1.SSR_GetGeneralLogData(iMachineNumber, out sdwEnrollNumber, out idwVerifyMode,
+                           out idwInOutMode, out idwYear, out idwMonth, out idwDay, out idwHour, out idwMinute, 
+                           out idwSecond, ref idwWorkcode))//从内存取得记录
             {
                 cNumber++;//循环记数，当前开写入的记录进度数
                 BeginInvoke(objStartPrg, cNumber);//异步执行，实现进度条更新进度
+
                 BeginInvoke(objUpdataLbl, cNumber + "/" + iValue);//异步修改lbl值
+
                 //把记录循环写入DataTable表
                 DataRow dr = AttLogTable.NewRow();
-                dr[0] = idwEnrollNumber;
+                dr[0] = sdwEnrollNumber;
                 dr[1] = iMachineNumber;
                 dr[2] = idwVerifyMode;
                 dr[3] = idwInOutMode;
-                dr[4] = sTime;
+                dr[4] = idwYear.ToString() + "-" + idwMonth.ToString() + "-" + idwDay.ToString() + " " + idwHour.ToString() 
+                    + ":" + idwMinute.ToString() + ":" + idwSecond.ToString();
                 AttLogTable.Rows.Add(dr);
             }
             objSetDataSource = dgvDataSource;//实例委托            
@@ -244,8 +258,11 @@ namespace AttReport
             {
                 //接收不重复的数据
                 DataTable dtResult = drResult.CopyToDataTable();
-                //批量写入数据库
+                //批量写入原始记录表
                 SQLHelper.UpdataByBulk(dtResult, "OriginalLog");
+                //批量写入记录备份表
+                SQLHelper.UpdataByBulk(dtResult, "OriginalLog_Bak");
+
                 //异步修改lbl值
                 BeginInvoke(objUpdataLbl, "数据保存成功！");
             }
@@ -466,15 +483,13 @@ namespace AttReport
                 string path = dialog.FileName;
                 var sfList = ImportDataFromExcel.GetStudentByExcel(path);
 
-                if (sfList.Count>0)
+                if (sfList.Count > 0)
                 {
                     ImportDataFromExcel.Import(sfList);
 
                     MessageBox.Show("导入成功！");
                 }
             }
-
-            //ImportDataFromExcel.GetStudentByExcel(Text);
         }
     }
 }

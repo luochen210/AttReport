@@ -105,71 +105,84 @@ namespace AttReport
             //如果勾选了复选框，则执行批量签卡
             if (chkConfirm2.Checked == true)
             {
-                foreach (DataGridViewRow item in dgvDayResult.Rows)
+                //获取时间
+                listTimes = objAttRecordService.GetSfWorkTime(cboTimeName.Text.Trim());//根据时段名称获取工作时间List
+
+                foreach (DataGridViewRow item in dgvDayResult.Rows)//遍历DataGridViewRow
                 {
-                    //获取时间
-                    listTimes = objAttRecordService.GetSfWorkTime(cboTimeName.Text.Trim());//获取工作时间
-                    if (Convert.ToInt32(item.Cells["AtState"].Value) == 3)
+                    if (Convert.ToInt32(item.Cells["AtState"].Value) == 3 || Convert.ToInt32(item.Cells["AtState"].Value) == 4)
                     {
                         //时段1---待增加时段空值验证
                         if (cboTimeName.Text.Trim() == listTimesName[0].TimesName1)
                         {
-                            if (string.IsNullOrEmpty(item.Cells["WorkTime1"].Value.ToString()))
+                            //处理上班
+                            if (string.IsNullOrEmpty(item.Cells["WorkTime1"].Value.ToString()) ||
+                                Convert.ToDateTime(item.Cells["WorkTime1"].Value) > DateTime.Parse(listTimes[0].WorkTime))
                             {
+                                //签卡后等待验证写入
                                 item.Cells["WorkTime1"].Value =
-                                (Convert.ToDateTime(item.Cells["AtDate"].Value).Date
-                                + DateTime.Parse(listTimes[0].WorkTime).AddMinutes(-1).TimeOfDay).ToString();
+                            (Convert.ToDateTime(item.Cells["AtDate"].Value).Date
+                            + DateTime.Parse(listTimes[0].WorkTime).AddMinutes(-1).TimeOfDay).ToString();
 
-                                item.Cells["AtSign"].Value = 2;//更改处理状态为已签卡
-
-                                //写入数据库
-                                objAttRecordService.UpdateDayRepor("WorkTime1", item.Cells["WorkTime1"].Value.ToString(), Convert.ToInt32(item.Cells["AtSign"].Value),
-                                    DateTime.Parse(item.Cells["AtDate"].Value.ToString()), Convert.ToInt32(item.Cells["SfId"].Value));
+                                ////更改考勤状态
+                                //item.Cells["AtSign"].Value = 2;//更改处理状态为已签卡
+                                //item.Cells["AtState"].Value = 0;//更改考勤状态为正常
+                                ////写入数据库
+                                //objAttRecordService.UpdateDayRepor("WorkTime1", item.Cells["WorkTime1"].Value.ToString(), Convert.ToInt32(item.Cells["AtSign"].Value),
+                                //    DateTime.Parse(item.Cells["AtDate"].Value.ToString()), Convert.ToInt32(item.Cells["SfId"].Value));
                             }
 
-                            if (string.IsNullOrEmpty(item.Cells["OffDutyTime1"].Value.ToString()))
+                            //处理下班
+                            if (string.IsNullOrEmpty(item.Cells["OffDutyTime1"].Value.ToString()) ||
+                                Convert.ToDateTime(item.Cells["OffDutyTime1"].Value) < DateTime.Parse(listTimes[0].OffDutyTime))
                             {
+                                //签卡后等待验证写入
                                 item.Cells["OffDutyTime1"].Value =
                                     (Convert.ToDateTime(item.Cells["AtDate"].Value).Date
                                     + DateTime.Parse(listTimes[0].OffDutyTime).AddMinutes(1).TimeOfDay).ToString();
 
-                                item.Cells["AtSign"].Value = 2;//更改处理状态为已签卡
+                                //item.Cells["AtSign"].Value = 2;//更改处理状态为已签卡
+                                //item.Cells["AtState"].Value = 0;//更改考勤状态为正常
 
-                                //写入数据库
-                                objAttRecordService.UpdateDayRepor("OffDutyTime1", item.Cells["OffDutyTime1"].Value.ToString(), Convert.ToInt32(item.Cells["AtSign"].Value),
-                                    DateTime.Parse(item.Cells["AtDate"].Value.ToString()), Convert.ToInt32(item.Cells["SfId"].Value));
+                                ////写入数据库
+                                //objAttRecordService.UpdateDayRepor("OffDutyTime1", item.Cells["OffDutyTime1"].Value.ToString(), Convert.ToInt32(item.Cells["AtSign"].Value),
+                                //    DateTime.Parse(item.Cells["AtDate"].Value.ToString()), Convert.ToInt32(item.Cells["SfId"].Value));
                             }
                         }
 
                         //时段2---待增加时段空值验证
                         if (cboTimeName.Text.Trim() == listTimesName[0].TimesName2)
                         {
-                            if (string.IsNullOrEmpty(item.Cells["WorkTime2"].Value.ToString()))
+                            if (string.IsNullOrEmpty(item.Cells["WorkTime2"].Value.ToString())||
+                                Convert.ToDateTime(item.Cells["WorkTime2"].Value) < DateTime.Parse(listTimes[0].WorkTime))
                             {
                                 item.Cells["WorkTime2"].Value =
                                     (Convert.ToDateTime(item.Cells["AtDate"].Value).Date
                                     + DateTime.Parse(listTimes[0].WorkTime).AddMinutes(-1).TimeOfDay).ToString();
 
-                                item.Cells["AtSign"].Value = 2;//更改处理状态为已签卡
+                                //item.Cells["AtSign"].Value = 2;//更改处理状态为已签卡
+                                //item.Cells["AtState"].Value = 0;//更改考勤状态为正常
 
-                                //写入数据库
-                                objAttRecordService.UpdateDayRepor("WorkTime2", item.Cells["WorkTime2"].Value.ToString(), Convert.ToInt32(item.Cells["AtSign"].Value),
-                                    DateTime.Parse(item.Cells["AtDate"].Value.ToString()), Convert.ToInt32(item.Cells["SfId"].Value));
+                                ////写入数据库
+                                //objAttRecordService.UpdateDayRepor("WorkTime2", item.Cells["WorkTime2"].Value.ToString(), Convert.ToInt32(item.Cells["AtSign"].Value),
+                                //    DateTime.Parse(item.Cells["AtDate"].Value.ToString()), Convert.ToInt32(item.Cells["SfId"].Value));
                             }
 
-                            if (string.IsNullOrEmpty(item.Cells["OffDutyTime2"].Value.ToString()))
+                            if (string.IsNullOrEmpty(item.Cells["OffDutyTime2"].Value.ToString())||
+                                Convert.ToDateTime(item.Cells["OffDutyTime2"].Value) < DateTime.Parse(listTimes[0].OffDutyTime))
                             {
                                 item.Cells["OffDutyTime2"].Value =
                                     (Convert.ToDateTime(item.Cells["AtDate"].Value).Date
                                     + DateTime.Parse(listTimes[0].OffDutyTime).AddMinutes(1).TimeOfDay).ToString();
 
-                                item.Cells["AtSign"].Value = 2;//更改处理状态为已签卡
+                                //item.Cells["AtSign"].Value = 2;//更改处理状态为已签卡
+                                //item.Cells["AtState"].Value = 0;//更改考勤状态为正常
 
-                                //写入数据库
-                                objAttRecordService.UpdateDayRepor("OffDutyTime2", item.Cells["OffDutyTime2"].Value.ToString(), Convert.ToInt32(item.Cells["AtSign"].Value),
-                                    DateTime.Parse(item.Cells["AtDate"].Value.ToString()), Convert.ToInt32(item.Cells["SfId"].Value));
+                                ////写入数据库
+                                //objAttRecordService.UpdateDayRepor("OffDutyTime2", item.Cells["OffDutyTime2"].Value.ToString(), Convert.ToInt32(item.Cells["AtSign"].Value),
+                                //    DateTime.Parse(item.Cells["AtDate"].Value.ToString()), Convert.ToInt32(item.Cells["SfId"].Value));
                             }
-                        }                        
+                        }
                     }
                     //处理加班,如果加班存在打卡记录则添加加班标记
                     if (!string.IsNullOrEmpty(item.Cells["WorkTime3"].Value.ToString()) ||
@@ -180,6 +193,28 @@ namespace AttReport
                             item.Cells["AtOvertime"].Value = 11;//平时加班
                         }
                     }
+
+                    item.Cells["AtSign"].Value = 2;//更改处理状态为已签卡
+                    item.Cells["AtState"].Value = 0;//更改考勤状态为正常
+
+                    //写入数据库
+                    List<DayReport> list = new List<DayReport>();
+                    list.Add(new DayReport()
+                    {
+                        WorkTime1 = Convert.ToDateTime(item.Cells["WorkTime1"].Value),
+                        OffDutyTime1= Convert.ToDateTime(item.Cells["OffDutyTime1"].Value),
+                        WorkTime2 = Convert.ToDateTime(item.Cells["WorkTime2"].Value),
+                        OffDutyTime2 = Convert.ToDateTime(item.Cells["OffDutyTime2"].Value),
+                        WorkTime3 = Convert.ToDateTime(item.Cells["WorkTime3"].Value),
+                        OffDutyTime3 = Convert.ToDateTime(item.Cells["OffDutyTime3"].Value),
+                        AtState= Convert.ToInt32(item.Cells["AtState"].Value),
+                        AtSign= Convert.ToInt32(item.Cells["AtSign"].Value),
+                        AtDate= Convert.ToDateTime(item.Cells["AtDate"].Value),
+                        SfId = Convert.ToInt32(item.Cells["SfId"].Value),
+                    });
+
+                    objAttRecordService.UpdateDayRepor(list);
+
                 }
             }
             else
@@ -188,6 +223,16 @@ namespace AttReport
             }
 
             btnBatch.Enabled = true;//开启按钮
+        }
+
+        private void btnSign_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnConfirm_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

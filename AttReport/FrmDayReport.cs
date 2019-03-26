@@ -46,10 +46,6 @@ namespace AttReport
             //当天日期标记
             DateTime iToday = DateTime.Today;//日期标记，用于日报计算
 
-            ////时间
-            //TimeSpan psAm = TimeSpan.Parse("00:00:00");//1天开始
-            //TimeSpan psPm = TimeSpan.Parse("23:59:59");//1天结束
-
             //获取员工表
             DataTable dtStaff = objAttRecordService.GetAllStaffsDataSet().Tables[0];
 
@@ -93,10 +89,10 @@ namespace AttReport
 
                 if (AtDate != DateTime.Now.Date)
                 {
-                    //计算日报（基于员工）
+                    //计算日报（基于员工Id）
                     for (int s = 0; s < dtStaff.Rows.Count; s++)
                     {
-                        int iSfId = Convert.ToInt32(dtStaff.Rows[s]["SfId"]);//员工Id
+                        int iSfId = Convert.ToInt32(dtStaff.Rows[s]["SfId"].ToString());//员工Id
                         string iSfName = dtStaff.Rows[s]["SfName"].ToString();//员工姓名
                         string iSfGroupName = dtStaff.Rows[s]["SfGroup"].ToString();//员工组别
                         string iShiftName = dtStaff.Rows[s]["WorkShift"].ToString();//班次名称
@@ -539,7 +535,7 @@ namespace AttReport
 
                                 #endregion
 
-                                #endregion                                
+                                #endregion
 
                                 #region 将处理好的数据存入Datatable表
 
@@ -563,7 +559,7 @@ namespace AttReport
                                 dr[15] = AtOvertime;//考勤标记
                                 dtAttTemp.Rows.Add(dr);
 
-                                #endregion
+                                #endregion                                
                             }
                             #endregion
 
@@ -621,6 +617,21 @@ namespace AttReport
         private void FrmDayReport_FormClosed(object sender, FormClosedEventArgs e)
         {
             FrmMain.objFrmDayReport = null;
+        }
+
+
+        //查询日报
+        private void btnQueryLog_Click(object sender, EventArgs e)
+        {
+            DateTime QBeginDate = DateTime.Parse(dtpQBeginDate.Text.Trim()).Date.AddDays(-1).AddHours(23);//开始日期,从前1天的23:00开始
+            DateTime QEndDate = DateTime.Parse(dtpQEndDate.Text.Trim()).Date.AddDays(1).AddHours(9);//结束日期，到次日的9:00结束
+
+            Cursor = Cursors.WaitCursor;//鼠标
+            DataTable dtDayRecord = objAttRecordService.GetDayReport(QBeginDate, QEndDate).Tables[0];//查询日报
+            Cursor = Cursors.Default;//鼠标
+
+            //显示到DGV
+            dgvDayReport.DataSource = dtDayRecord;
         }
     }
 }

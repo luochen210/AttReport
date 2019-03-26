@@ -28,10 +28,10 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle17 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle18 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle19 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle20 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this.btnQuery = new System.Windows.Forms.Button();
             this.lblCBegin = new System.Windows.Forms.Label();
             this.lblCEnd = new System.Windows.Forms.Label();
@@ -69,7 +69,9 @@
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.chkConfirm2 = new System.Windows.Forms.CheckBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.chkConfirm1 = new System.Windows.Forms.CheckBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.btnConfirm = new System.Windows.Forms.Button();
             this.btnClean = new System.Windows.Forms.Button();
@@ -85,8 +87,6 @@
             this.dateTimePicker4 = new System.Windows.Forms.DateTimePicker();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.chkConfirm1 = new System.Windows.Forms.CheckBox();
-            this.chkConfirm2 = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDayResult)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
@@ -152,6 +152,7 @@
             this.btnSign.TabIndex = 5;
             this.btnSign.Text = "签卡";
             this.btnSign.UseVisualStyleBackColor = false;
+            this.btnSign.Click += new System.EventHandler(this.btnSign_Click);
             // 
             // cboSTime
             // 
@@ -258,14 +259,14 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.dgvDayResult.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgvDayResult.BackgroundColor = System.Drawing.SystemColors.ButtonFace;
-            dataGridViewCellStyle17.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle17.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle17.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            dataGridViewCellStyle17.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle17.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle17.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle17.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvDayResult.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle17;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvDayResult.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dgvDayResult.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.AtDate,
             this.AtWeek,
@@ -283,30 +284,30 @@
             this.AtState,
             this.AtSign,
             this.AtOvertime});
-            dataGridViewCellStyle18.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle18.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle18.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            dataGridViewCellStyle18.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle18.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle18.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle18.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvDayResult.DefaultCellStyle = dataGridViewCellStyle18;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvDayResult.DefaultCellStyle = dataGridViewCellStyle2;
             this.dgvDayResult.Location = new System.Drawing.Point(5, 6);
             this.dgvDayResult.Name = "dgvDayResult";
-            dataGridViewCellStyle19.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle19.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle19.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            dataGridViewCellStyle19.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle19.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle19.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle19.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvDayResult.RowHeadersDefaultCellStyle = dataGridViewCellStyle19;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvDayResult.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
             this.dgvDayResult.RowHeadersWidth = 30;
-            dataGridViewCellStyle20.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.dgvDayResult.RowsDefaultCellStyle = dataGridViewCellStyle20;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.dgvDayResult.RowsDefaultCellStyle = dataGridViewCellStyle4;
             this.dgvDayResult.RowTemplate.DefaultCellStyle.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             this.dgvDayResult.RowTemplate.Height = 23;
-            this.dgvDayResult.Size = new System.Drawing.Size(816, 718);
+            this.dgvDayResult.Size = new System.Drawing.Size(822, 718);
             this.dgvDayResult.TabIndex = 10;
             // 
             // AtDate
@@ -456,7 +457,7 @@
             this.splitContainer1.Panel2.Controls.Add(this.groupBox2);
             this.splitContainer1.Panel2.Controls.Add(this.groupBox1);
             this.splitContainer1.Size = new System.Drawing.Size(1008, 729);
-            this.splitContainer1.SplitterDistance = 825;
+            this.splitContainer1.SplitterDistance = 831;
             this.splitContainer1.SplitterWidth = 1;
             this.splitContainer1.TabIndex = 12;
             // 
@@ -491,6 +492,17 @@
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "批量签卡";
             // 
+            // chkConfirm2
+            // 
+            this.chkConfirm2.AutoSize = true;
+            this.chkConfirm2.ForeColor = System.Drawing.Color.Blue;
+            this.chkConfirm2.Location = new System.Drawing.Point(54, 85);
+            this.chkConfirm2.Name = "chkConfirm2";
+            this.chkConfirm2.Size = new System.Drawing.Size(84, 16);
+            this.chkConfirm2.TabIndex = 11;
+            this.chkConfirm2.Text = "已处理异常";
+            this.chkConfirm2.UseVisualStyleBackColor = true;
+            // 
             // groupBox2
             // 
             this.groupBox2.BackColor = System.Drawing.Color.MintCream;
@@ -508,6 +520,17 @@
             this.groupBox2.TabIndex = 12;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "签卡";
+            // 
+            // chkConfirm1
+            // 
+            this.chkConfirm1.AutoSize = true;
+            this.chkConfirm1.ForeColor = System.Drawing.Color.Blue;
+            this.chkConfirm1.Location = new System.Drawing.Point(53, 108);
+            this.chkConfirm1.Name = "chkConfirm1";
+            this.chkConfirm1.Size = new System.Drawing.Size(84, 16);
+            this.chkConfirm1.TabIndex = 11;
+            this.chkConfirm1.Text = "已处理异常";
+            this.chkConfirm1.UseVisualStyleBackColor = true;
             // 
             // groupBox1
             // 
@@ -541,6 +564,7 @@
             this.btnConfirm.TabIndex = 22;
             this.btnConfirm.Text = "确认";
             this.btnConfirm.UseVisualStyleBackColor = true;
+            this.btnConfirm.Click += new System.EventHandler(this.btnConfirm_Click);
             // 
             // btnClean
             // 
@@ -653,28 +677,6 @@
             this.label1.Size = new System.Drawing.Size(41, 12);
             this.label1.TabIndex = 17;
             this.label1.Text = "部门：";
-            // 
-            // chkConfirm1
-            // 
-            this.chkConfirm1.AutoSize = true;
-            this.chkConfirm1.ForeColor = System.Drawing.Color.Blue;
-            this.chkConfirm1.Location = new System.Drawing.Point(53, 108);
-            this.chkConfirm1.Name = "chkConfirm1";
-            this.chkConfirm1.Size = new System.Drawing.Size(84, 16);
-            this.chkConfirm1.TabIndex = 11;
-            this.chkConfirm1.Text = "已处理异常";
-            this.chkConfirm1.UseVisualStyleBackColor = true;
-            // 
-            // chkConfirm2
-            // 
-            this.chkConfirm2.AutoSize = true;
-            this.chkConfirm2.ForeColor = System.Drawing.Color.Blue;
-            this.chkConfirm2.Location = new System.Drawing.Point(54, 85);
-            this.chkConfirm2.Name = "chkConfirm2";
-            this.chkConfirm2.Size = new System.Drawing.Size(84, 16);
-            this.chkConfirm2.TabIndex = 11;
-            this.chkConfirm2.Text = "已处理异常";
-            this.chkConfirm2.UseVisualStyleBackColor = true;
             // 
             // FrmSignCard
             // 

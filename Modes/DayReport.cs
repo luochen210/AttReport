@@ -11,6 +11,8 @@ namespace Models
     /// </summary>
     public class DayReport
     {
+        public DateTime AtDate { get; set; }//考勤日期
+        public string AtWeek { get; set; }//星期
         public int SfId { get; set; }//员工Id
         public string SfName { get; set; }//员工姓名
         public string ShiftName { get; set; }//班次名称
@@ -23,5 +25,6 @@ namespace Models
         public double AttDay { get; set; }//考勤天数
         public int AtState { get; set; }//考勤状态
         public int AtSign { get; set; }//处理标记
+        public int AtOvertime { get; set; }//加班标记
     }
 }

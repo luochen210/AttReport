@@ -173,6 +173,22 @@ create table OriginalLog
 )
 go
 
+--创建OriginalLog_Bak表 --原始记录备份
+use AttReport
+go
+if exists(select*from sysobjects where name='OriginalLog_Bak')
+drop table OriginalLog_Bak
+go
+create table OriginalLog_Bak
+(
+  ClockId int not null,--考勤号
+  MachineId int not null,--机器号  
+  VerifyMode int not null,--验证方式：0为密码验证，1为指纹验证，2为卡验证
+  InOutMode int not null,--考勤状态
+  ClockRecord datetime not null,--打卡时间
+)
+go
+
 --创建DailyReport表 --考勤日报表
 use AttReport
 go
